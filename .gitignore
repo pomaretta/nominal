@@ -1,0 +1,19 @@
+# Node
+
+node_modules
+
+# NextJS
+
+.next
+
+# Custom Directories
+
+test
+
+# Files
+
+
+
+# OS Files
+
+.DS_Store
