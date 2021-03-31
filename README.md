@@ -12,7 +12,7 @@
     <img src="readme/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Company Manager</h3>
+  <h3 align="center"><b>Nominal</b></h3>
 
   <p align="center">
     Company Employee Managing System
