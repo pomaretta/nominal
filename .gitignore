@@ -1,6 +1,7 @@
 # Node
 
 node_modules
+package-lock.json
 
 # NextJS
 
@@ -8,7 +9,11 @@ node_modules
 
 # Custom Directories
 
-test
+tests
+.vscode
+coverage
+.idea
+env
 
 # Files
 
