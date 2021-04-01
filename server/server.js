@@ -31,9 +31,11 @@ server.use(bodyParser.urlencoded({extended: true}))
 server.use(bodyParser.json())
 
 // ROUTES
-server.get('/',(req,res) => {
-    res.sendStatus(200)
-})
+import employees from './routes/api/employee.js'
+import company from './routes/api/company.js'
+
+server.use(employees)
+server.use(company)
 
 // LISTENER
 server.listen(port, () => {
