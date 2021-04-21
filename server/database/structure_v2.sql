@@ -345,9 +345,6 @@ CREATE TABLE payroll_data (
     date_to                 DATE NOT NULL,
     date_total_days         INT NOT NULL,
 
-    -- COMPLEMENTS
-    complements             INT,
-
     -- BASE SALARY
     base_salary             FLOAT,
 
@@ -409,5 +406,6 @@ CREATE TABLE payroll_data (
     PRIMARY KEY (payroll),
     CONSTRAINT payroll_data_id
         FOREIGN KEY (payroll)
-        REFERENCES payroll (id)
+        REFERENCES payroll (id),
+    FOREIGN KEY (schedule) REFERENCES schedule (id)
 );
