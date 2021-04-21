@@ -62,7 +62,7 @@ CREATE TABLE schedule (
 
     id                      INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (id)
-)
+);
 
 -- #####################################
 -- CREATE COMMON TABLES
@@ -98,8 +98,7 @@ CREATE TABLE company_currency (
     currency_digit          VARCHAR(3) NOT NULL,
     currency_name           VARCHAR(255) NOT NULL,
 
-    PRIMARY KEY (id),
-    FOREIGN KEY (agreement) REFERENCES agreement (id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE employee_salary_values (
@@ -214,7 +213,7 @@ CREATE TABLE employee_contact (
     phone_number            VARCHAR(255),
 
     PRIMARY KEY (employee),
-    CONSTRAINT employee_information_id
+    CONSTRAINT employee_contact_id
         FOREIGN KEY (employee)
         REFERENCES employee (id)
 );
@@ -297,10 +296,10 @@ CREATE TABLE payroll_complement (
     PRIMARY KEY (payroll,title),
     CONSTRAINT payroll_complement_id
         FOREIGN KEY (payroll)
-        REFERENCES payroll (id),
+        REFERENCES payroll (id)
 );
 
-CREATE TABLE payroll_data {
+CREATE TABLE payroll_data (
 
     payroll                 INT NOT NULL,
     created_at              TIMESTAMP DEFAULT NOW(),
@@ -408,7 +407,7 @@ CREATE TABLE payroll_data {
     total_to_receive        FLOAT,
 
     PRIMARY KEY (payroll),
-    CONSTRAINT payroll_complement_id
+    CONSTRAINT payroll_data_id
         FOREIGN KEY (payroll)
-        REFERENCES payroll (id),
-}
+        REFERENCES payroll (id)
+);
