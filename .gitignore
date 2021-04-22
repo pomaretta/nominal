@@ -14,10 +14,12 @@ tests
 coverage
 .idea
 env
+target
+test
 
 # Files
 
-
+*.iml
 
 # OS Files
 

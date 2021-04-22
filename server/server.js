@@ -17,28 +17,3 @@
 import getBanner from './util/banner.js'
 import colors from './util/colors.js'
 import colorTransform from './util/colorizer.js'
-
-// IMPORTS
-import express from 'express'
-import bodyParser from 'body-parser'
-
-// APPLICATION
-const server = express()
-const port = process.env.NODE_PORT | 8000
-
-// MIDDLEWARES
-server.use(bodyParser.urlencoded({extended: true}))
-server.use(bodyParser.json())
-
-// ROUTES
-import employees from './routes/api/employee.js'
-import company from './routes/api/company.js'
-
-server.use(employees)
-server.use(company)
-
-// LISTENER
-server.listen(port, () => {
-    console.log(colorTransform(colors.FGRED,getBanner()))
-    console.log(colorTransform(`${colors.UNDERSCORE}${colors.FGMAGENTA}`,`STARTING SERVER ON ${port}`))
-})
