@@ -203,8 +203,6 @@ CREATE TABLE employee_contract (
     created_at              TIMESTAMP DEFAULT NOW(),
     id                      INT NOT NULL AUTO_INCREMENT,
 
-    join_date               DATE NOT NULL,
-    expiration_date         DATE NOT NULL,
     category                INT NOT NULL,
     irpf                    FLOAT NOT NULL,
     hourly                  BOOLEAN DEFAULT 0,
@@ -322,4 +320,44 @@ CREATE TABLE payroll_complement (
     CONSTRAINT payroll_complement_id
         FOREIGN KEY (payroll)
         REFERENCES payroll (id)
+);
+
+-- #####################################
+-- TRANSACTIONAL TABLES
+-- #####################################
+
+CREATE TABLE company_employee (
+    
+    id                      INT NOT NULL AUTO_INCREMENT,
+    company                 INT NOT NULL,
+    employee                INT NOT NULL,
+    
+    created_at              TIMESTAMP DEFAULT NOW(),
+    join_date               DATE NOT NULL,
+    expiration_date         DATE NULL,
+
+    PRIMARY KEY (id,company,employee),
+    CONSTRAINT company_emp_id
+        FOREIGN KEY (company)
+        REFERENCES company (id),
+    CONSTRAINT employee_com_id
+        FOREIGN KEY (employee)
+        REFERENCES employee (id)
+);
+
+CREATE TABLE company_agreement (
+    
+    id                      INT NOT NULL AUTO_INCREMENT,
+    company                 INT NOT NULL,
+    agreement               INT NOT NULL,
+    
+    created_at              TIMESTAMP DEFAULT NOW(),
+
+    PRIMARY KEY (id,company,agreement),
+    CONSTRAINT company_agr_id
+        FOREIGN KEY (company)
+        REFERENCES company (id),
+    CONSTRAINT agreement_com_id
+        FOREIGN KEY (agreement)
+        REFERENCES agreement (id)
 );
