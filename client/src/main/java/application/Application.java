@@ -21,7 +21,7 @@ public class Application {
     private Application(String[] initArgs) {
         this.args = initArgs;
         applicationManager = new application.Manager();
-        sceneManager = new scenes.Manager(applicationManager.getStage(),this);
+        sceneManager = new scenes.Manager(applicationManager.getStage(),this,1280,720);
     }
 
     public String[] getArgs() {
