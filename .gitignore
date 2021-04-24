@@ -9,13 +9,11 @@ package-lock.json
 
 # Custom Directories
 
-tests
 .vscode
 coverage
 .idea
 env
 target
-test
 
 # Files
 
