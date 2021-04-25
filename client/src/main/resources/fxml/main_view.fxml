@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../../../../Desktop/SceneTests/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/home_style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="-6.0" prefHeight="720.0" prefWidth="228.0" style="-fx-background-color: #2490EF; -fx-background-radius: 8;">
          <children>
@@ -44,7 +44,7 @@
                         <Insets right="20.0" />
                      </StackPane.margin>
                      <image>
-                        <Image url="@../images/Adan%20corps.png" />
+                        <Image url="@../images/close.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Adan Corps." wrappingWidth="201.7421875" StackPane.alignment="CENTER_LEFT">
