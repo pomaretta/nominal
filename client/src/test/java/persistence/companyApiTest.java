@@ -12,7 +12,7 @@ public class companyApiTest {
 
     static {
         try {
-            a = new NominalAPI("jdbc:mysql://carlospomares.es:35462/nominal", "nominal", "1f7b4f1dbe8fa53089854e0ffa829523");
+            a = new NominalAPI();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
