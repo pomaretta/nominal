@@ -25,7 +25,7 @@ public class NominalFX extends Application {
     }
 
     public void displayFirstView(){
-        stageManager.switchScenes(Views.MAIN);
+        stageManager.switchScenes(Views.LOGIN);
     }
 
     public static void main(String[] args) {

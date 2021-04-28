@@ -12,7 +12,7 @@ package application;
 
 public enum Views {
 
-    MAIN {
+    LOGIN {
         @Override
         public String getTitle() {
             return "Login";

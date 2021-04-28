@@ -1,3 +1,13 @@
+/*
+
+ Nominal Application
+ Nominal FX Login Controller
+
+ @author     Carlos Pomares
+ Date        2021-04-28
+
+*/
+
 package controllers;
 
 import javafx.fxml.Initializable;
@@ -10,7 +20,7 @@ public class LoginController extends BaseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Hello World!");
+        // When this controller in called with the stage manager calls this function.
     }
 
 
