@@ -16,10 +16,10 @@ import java.sql.SQLException;
 
 public class Queries extends persistence.Queries {
 
-    private PreparedStatement selectAllEmployees;
-    private PreparedStatement selectAllCompanies;
-    private PreparedStatement selectAllAgreements;
-    private PreparedStatement selectAllPayrolls;
+    public PreparedStatement selectAllEmployees;
+    public PreparedStatement selectAllCompanies;
+    public PreparedStatement selectAllAgreements;
+    public PreparedStatement selectAllPayrolls;
 
     public Queries(Connection connection) throws SQLException {
         super(connection);
@@ -27,6 +27,7 @@ public class Queries extends persistence.Queries {
         selectAllCompanies = this.connection.prepareStatement(Statements.SELECT_ALL_COMPANIES.getQuery());
         selectAllAgreements = this.connection.prepareStatement(Statements.SELECT_ALL_AGREEMENTS.getQuery());
         selectAllPayrolls = this.connection.prepareStatement(Statements.SELECT_ALL_PAYROLLS.getQuery());
+
     }
 
 }
