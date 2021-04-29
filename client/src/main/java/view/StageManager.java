@@ -35,7 +35,11 @@ public class StageManager {
         show(root,view.getTitle());
     }
 
-    private void show(final Parent root,String title){
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    private void show(final Parent root, String title){
         Scene scene = prepareScene(root);
 
         primaryStage.setTitle(title);

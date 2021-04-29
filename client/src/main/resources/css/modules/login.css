@@ -1,0 +1,51 @@
+/*====================
+  LOGIN MODULE CSS
+  REV: 1.2
+  GENERAL
+====================*/
+
+#root {
+    -fx-background-radius: 12px;
+    -fx-background-color: transparent;
+}
+
+.left-panel {
+    -fx-background-color: linear-gradient(
+            to bottom left
+            ,-fx-primary
+             ,-fx-primary-3
+         );
+    -fx-background-radius: 12px 0 0 12px;
+}
+
+.right-panel {
+    -fx-background-color: -fx-light;
+    -fx-background-radius: 0 12px 12px 0;
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),20,0,-10,0);
+}
+
+.transparent {
+    -fx-background-color: transparent;
+}
+
+/*====================
+  SPECIFIC
+====================*/
+
+
+
+#logo {
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,0);
+}
+
+.login-button {
+    -fx-text-fill: -fx-light;
+    -fx-background-color: linear-gradient(
+          to bottom left
+          ,#2490EF
+          ,#2dc4ed
+    );
+    -fx-background-radius: 4px;
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,0);
+    -fx-font-size: 18px;
+}
