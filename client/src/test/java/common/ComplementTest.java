@@ -4,7 +4,7 @@ import common.payroll.Complement;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class complementTest {
+public class ComplementTest {
     @Test
     public void testGettersComplemet(){
         Complement c1= new Complement("complement", 55, 22, 22);

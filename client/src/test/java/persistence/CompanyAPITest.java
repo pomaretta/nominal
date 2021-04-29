@@ -1,18 +1,18 @@
 package persistence;
 
-import common.Company;
+import configuration.DatabaseDeveloper;
 import persistence.service.NominalAPI;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class companyApiTest {
+public class CompanyAPITest {
 
     static NominalAPI a;
 
     static {
         try {
-            a = new NominalAPI();
+            a = new NominalAPI(DatabaseDeveloper.NOMINAL.getURL(),DatabaseDeveloper.NOMINAL.getUser(), DatabaseDeveloper.NOMINAL.getPassword());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -19,7 +19,29 @@ public enum DatabaseDeveloper {
      *
      */
 
-    DEVELOPER {
+    NOMINAL {
+        @Override
+        public String getUser() {
+            return "USERNAME";
+        }
+        @Override
+        public String getPassword() {
+            return "PASSWORD";
+        }
+        @Override
+        public String getHostname() {
+            return "HOSTNAME";
+        }
+        @Override
+        public String getPort() {
+            return "PORT";
+        }
+        @Override
+        public String getDatabase() {
+            return "DATABASE";
+        }
+    },
+    AUTH {
         @Override
         public String getUser() {
             return "USERNAME";

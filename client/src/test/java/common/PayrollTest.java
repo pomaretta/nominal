@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class payrollTest {
+public class PayrollTest {
     @Test
     public void testGettersPayroll(){
         Antiquity ant1= new Antiquity(1, Timestamp.valueOf("2001-08-01 22:22:22"), 2, 2, 1992, 2);

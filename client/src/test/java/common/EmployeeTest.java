@@ -4,7 +4,7 @@ import java.sql.Date;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class employeeTest {
+public class EmployeeTest {
     @Test
     public void testGettersEmployee(){
         Employee emp1 = new Employee(1, "passport", "Tofol", "Manolo", "Isaac", "Fernandez",
