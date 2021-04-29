@@ -1,7 +1,7 @@
 /*
 
  Nominal Application
- Database Reader Credentials
+ Database Developer Credentials
 
  @author     Carlos Pomares
  Date        2021-04-29
@@ -10,7 +10,7 @@
 
 package configuration;
 
-public enum DatabaseReader {
+public enum DatabaseDeveloper {
 
     /**
      *
@@ -19,29 +19,7 @@ public enum DatabaseReader {
      *
      */
 
-    NOMINAL {
-        @Override
-        public String getUser() {
-            return "USERNAME";
-        }
-        @Override
-        public String getPassword() {
-            return "PASSWORD";
-        }
-        @Override
-        public String getHostname() {
-            return "HOSTNAME";
-        }
-        @Override
-        public String getPort() {
-            return "PORT";
-        }
-        @Override
-        public String getDatabase() {
-            return "DATABASE";
-        }
-    },
-    AUTH {
+    DEVELOPER {
         @Override
         public String getUser() {
             return "USERNAME";

@@ -1,3 +1,13 @@
+/*
+
+ Nominal Application
+ Database Writer Credentials
+
+ @author     Carlos Pomares
+ Date        2021-04-29
+
+*/
+
 package configuration;
 
 public enum DatabaseWriter {
