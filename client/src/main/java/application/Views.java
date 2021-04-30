@@ -22,6 +22,17 @@ public enum Views {
         public String getFile() {
             return "/fxml/login.fxml";
         }
+    },
+    HOME {
+        @Override
+        public String getTitle() {
+            return "Home";
+        }
+
+        @Override
+        public String getFile() {
+            return "/fxml/main_view.fxml";
+        }
     };
 
     public abstract String getTitle();

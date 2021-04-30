@@ -38,6 +38,10 @@
     -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,0);
 }
 
+.input-field {
+    -fx-font-size: 16px;
+}
+
 .login-button {
     -fx-text-fill: -fx-light;
     -fx-background-color: linear-gradient(

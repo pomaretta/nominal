@@ -47,12 +47,12 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0" styleClass="right-panel" StackPane.alignment="CENTER">
                      <children>
-                        <TextField layoutX="117.0" layoutY="271.0" prefHeight="60.0" prefWidth="475.0" promptText="Email ( ex: a@nominal.com )">
+                        <TextField fx:id="emailField" layoutX="117.0" layoutY="271.0" prefHeight="60.0" prefWidth="475.0" promptText="Email ( ex: a@nominal.com )" styleClass="input-field">
                            <font>
                               <Font name="Poppins Regular" size="18.0" />
                            </font>
                         </TextField>
-                        <TextField layoutX="117.0" layoutY="368.0" prefHeight="60.0" prefWidth="475.0" promptText="Password">
+                        <TextField fx:id="passwordField" layoutX="117.0" layoutY="368.0" prefHeight="60.0" prefWidth="475.0" promptText="Password" styleClass="input-field">
                            <font>
                               <Font name="Poppins Regular" size="18.0" />
                            </font>
@@ -62,12 +62,15 @@
                               <Font name="Courier New" size="36.0" />
                            </font>
                         </Label>
-                        <Button fx:id="loginButton" layoutX="259.0" layoutY="501.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="192.0" styleClass="login-button" text="Sign In">
+                        <Button fx:id="loginButton" layoutX="259.0" layoutY="501.0" mnemonicParsing="false" onAction="#loginHandler" prefHeight="65.0" prefWidth="192.0" styleClass="login-button" text="Sign In">
                            <font>
                               <Font size="18.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
-                        <HBox fx:id="exitButton" onMouseClicked="#exitHandler" layoutX="651.0" layoutY="23.0" prefHeight="8.0" prefWidth="9.0">
+                        <HBox fx:id="exitButton" layoutX="651.0" layoutY="23.0" onMouseClicked="#exitHandler" prefHeight="8.0" prefWidth="9.0">
                            <children>
                               <ImageView fitHeight="22.0" fitWidth="22.0">
                                  <image>
@@ -79,7 +82,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </HBox>
-                        <HBox fx:id="minimizeButton" onMouseClicked="#minimizeHandler" layoutX="615.0" layoutY="23.0" prefHeight="12.0" prefWidth="5.0">
+                        <HBox fx:id="minimizeButton" layoutX="615.0" layoutY="23.0" onMouseClicked="#minimizeHandler" prefHeight="12.0" prefWidth="5.0">
                            <children>
                               <ImageView fitHeight="23.0" fitWidth="23.0">
                                  <image>

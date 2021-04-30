@@ -10,11 +10,20 @@
 
 package application;
 
+import configuration.DatabaseDeveloper;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import persistence.auth.AuthAPI;
+import persistence.service.NominalAPI;
+import util.MD5;
 import view.StageManager;
 
+import java.sql.SQLException;
+
 public class NominalFX extends Application {
+
+    public static AuthAPI authAPI;
+    public static NominalAPI nominalAPI;
 
     protected StageManager stageManager;
 
@@ -28,7 +37,14 @@ public class NominalFX extends Application {
         stageManager.switchScenes(Views.LOGIN);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
+        try {
+            authAPI = new AuthAPI(DatabaseDeveloper.AUTH.getURL(), DatabaseDeveloper.AUTH.getUser(),DatabaseDeveloper.AUTH.getPassword());
+        } catch (SQLException exception){
+            //
+        }
+
         launch(args);
     }
 

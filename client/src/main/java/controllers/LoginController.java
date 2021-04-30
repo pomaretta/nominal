@@ -13,18 +13,26 @@
 
 package controllers;
 
+import application.NominalFX;
+import application.Views;
+import common.auth.User;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import persistence.auth.AuthenticationException;
+import util.MD5;
 import view.BaseController;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController extends BaseController implements Initializable {
@@ -42,6 +50,11 @@ public class LoginController extends BaseController implements Initializable {
 
     @FXML
     private HBox exitButton;
+
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField passwordField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,6 +90,22 @@ public class LoginController extends BaseController implements Initializable {
     @FXML
     private void minimizeHandler(){
         this.stageManager.getPrimaryStage().setIconified(true);
+    }
+
+    @FXML
+    private void loginHandler(){
+        // SEARCH FOR AN USER WITH GET TEXT FROM EMAIL FIELD
+        User user;
+        try {
+            user = NominalFX.authAPI.getUserByName(emailField.getText());
+            if (user.getPassword().equals(MD5.getMD5(passwordField.getText()))) {
+                this.stageManager.switchScenes(Views.HOME);
+            }
+        } catch (AuthenticationException authenticationException){
+            //
+        } catch (Exception sqlException){
+            System.out.println(sqlException.getMessage());
+        }
     }
 
 }
