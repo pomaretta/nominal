@@ -10,8 +10,6 @@
 
 package persistence;
 
-import persistence.service.Queries;
-
 public interface API {
     public Queries getQueries();
 }

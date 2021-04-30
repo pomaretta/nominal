@@ -27,7 +27,6 @@ public class Queries extends persistence.Queries {
         selectAllCompanies = this.connection.prepareStatement(Statements.SELECT_ALL_COMPANIES.getQuery());
         selectAllAgreements = this.connection.prepareStatement(Statements.SELECT_ALL_AGREEMENTS.getQuery());
         selectAllPayrolls = this.connection.prepareStatement(Statements.SELECT_ALL_PAYROLLS.getQuery());
-
     }
 
 }

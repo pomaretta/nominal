@@ -1,0 +1,30 @@
+/*
+
+    CSS GLOBALS
+    REV: 1.0
+
+*/
+
+* {
+    -fx-primary: #2490EF;
+    -fx-secondary: #B23CFD;
+    -fx-primary-2: #0E6CBE;
+    -fx-primary-3: #2dc4ed;
+    -fx-warning: #FFA900;
+    -fx-success: #00B74A;
+    -fx-danger: #F93154;
+    -fx-light: #fff;
+    -fx-dark: #262626;
+
+    -fx-font-family: "Poppins";
+
+}
+
+.title {
+    -fx-font-family: "Poppins";
+    -fx-font-weight: bold !important;
+}
+
+.title-2 {
+    -fx-font-family: "Poppins SemiBold";
+}
