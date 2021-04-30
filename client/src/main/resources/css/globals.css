@@ -23,8 +23,11 @@
 .title {
     -fx-font-family: "Poppins";
     -fx-font-weight: bold !important;
+
 }
 
 .title-2 {
+    -fx-font-size: 20px;
     -fx-font-family: "Poppins SemiBold";
+    -fx-fill: -fx-dark;
 }
