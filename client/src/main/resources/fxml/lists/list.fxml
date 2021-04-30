@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="583.0" prefWidth="910.0" style="-fx-background-color: #FFF;" stylesheets="@../../css/globals.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.Reports">
+   <children>
+      <Label layoutX="57.0" layoutY="25.0" prefHeight="44.0" prefWidth="126.0" styleClass="title" text="Reports" textFill="#2490ef">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <VBox layoutX="57.0" layoutY="89.0" prefHeight="486.0" prefWidth="800.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #F3F3F3;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="100.0" text="Company">
+                     <opaqueInsets>
+                        <Insets left="50.0" />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="100.0" text="CIF">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="100.0" text="Agrement">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="100.0" text="Employees">
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="41.0" prefWidth="100.0" text="Settings">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <VBox alignment="TOP_CENTER" prefHeight="314.0" prefWidth="800.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="800.0" style="-fx-background-color: #F7F8FC;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="17.0" prefWidth="100.0" text="Scafold">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="32.0" prefWidth="100.0" text="B – 76365789">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="32.0" prefWidth="100.0" text="Agrement1">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="100.0" text="Employee">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Button">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="800.0" style="-fx-background-color: #F0F2F9;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="17.0" prefWidth="100.0" text="Microsoft">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="32.0" prefWidth="100.0" text="N – 74332245">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="32.0" prefWidth="100.0" text="Agrement2">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="100.0" text="Employee">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Button">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="800.0" style="-fx-background-color: #F7F8FC;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="17.0" prefWidth="100.0" text="Scafold">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="32.0" prefWidth="100.0" text="B – 76365789">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="32.0" prefWidth="100.0" text="Agrement1">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="100.0" text="Employee">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Button">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="800.0" style="-fx-background-color: #F0F2F9;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="17.0" prefWidth="100.0" text="Microsoft">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="32.0" prefWidth="100.0" text="N – 74332245">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="BOTTOM" prefHeight="32.0" prefWidth="100.0" text="Agrement2">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="100.0" text="Employee">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" prefWidth="100.0" text="Button">
+                           <HBox.margin>
+                              <Insets left="65.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
