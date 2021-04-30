@@ -28,6 +28,7 @@ public class StageManager {
     public StageManager(Stage stage) {
         loaderManager = new LoaderManager();
         this.primaryStage = stage;
+        this.primaryStage.initStyle(StageStyle.TRANSPARENT);
     }
 
     public void switchScenes(final Views view){
@@ -47,7 +48,6 @@ public class StageManager {
         primaryStage.sizeToScene();
         primaryStage.centerOnScreen();
 
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
 
         try {

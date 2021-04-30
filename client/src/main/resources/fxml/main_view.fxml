@@ -15,20 +15,20 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
    <children>
-      <AnchorPane layoutX="-6.0" prefHeight="720.0" prefWidth="228.0" styleClass="left_pane">
+      <AnchorPane layoutX="-6.0" prefHeight="720.0" prefWidth="228.0" styleClass="xd">
          <children>
-            <StackPane layoutX="5.0" layoutY="14.0" prefHeight="51.0" prefWidth="244.0" styleClass="title_home">
+            <StackPane layoutX="8.0" layoutY="33.0" prefHeight="66.0" prefWidth="233.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title_home" text="Nominal">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="penicles" text="Nominal">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
                </children>
             </StackPane>
-            <StackPane alignment="CENTER_LEFT" layoutX="13.0" layoutY="195.0" prefHeight="32.0" prefWidth="228.0" styleClass="sections">
+            <StackPane alignment="CENTER_LEFT" layoutX="7.0" layoutY="196.0" prefHeight="32.0" prefWidth="228.0">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-2" text="Sections" wrappingWidth="196.16015625">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Sections">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -38,17 +38,17 @@
                   <Insets left="20.0" />
                </padding>
             </StackPane>
-            <StackPane alignment="CENTER_LEFT" layoutX="11.0" layoutY="134.0" prefHeight="42.0" prefWidth="233.0">
+            <StackPane alignment="CENTER_LEFT" layoutX="5.0" layoutY="134.0" prefHeight="42.0" prefWidth="233.0">
                <children>
-                  <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+                  <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
                      <StackPane.margin>
                         <Insets right="20.0" />
                      </StackPane.margin>
                      <image>
-                        <Image url="@../images/Iconos/close.png" />
+                        <Image url="@../images/iconos/close.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="company_name" text="Adan Corps." wrappingWidth="201.7421875" StackPane.alignment="CENTER_LEFT">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Adan Corps." wrappingWidth="201.7421875" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -57,109 +57,97 @@
                      </StackPane.margin>
                   </Text>
                </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
             </StackPane>
-            <StackPane layoutX="30.0" layoutY="240.0" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 8;" styleClass="sections">
+            <StackPane layoutX="31.0" layoutY="240.0" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 8;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sections" text="Home" wrappingWidth="143.71202087402344" StackPane.alignment="CENTER_LEFT">
+                  <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@../images/iconos/homeWhite.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" StackPane.alignment="CENTER_LEFT">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Poppins Regular" size="14.0" />
                      </font>
                      <StackPane.margin>
                         <Insets left="40.0" />
                      </StackPane.margin>
                   </Text>
-                  <ImageView fitHeight="20.0" fitWidth="25.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
-                     <image>
-                        <Image url="@../images/Iconos/home_filled.png" />
-                     </image>
-                     <StackPane.margin>
-                        <Insets left="5.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
             </StackPane>
-            <StackPane layoutX="30.0" layoutY="300.0" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 8;" styleClass="sections">
+            <StackPane layoutX="31.0" layoutY="280.0" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 8;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sections" text="Employees" wrappingWidth="143.71202087402344" StackPane.alignment="CENTER_LEFT">
+                  <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@../images/iconos/homeWhite.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Employees" wrappingWidth="86.70401000976562" StackPane.alignment="CENTER_LEFT">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Poppins Regular" size="14.0" />
                      </font>
                      <StackPane.margin>
                         <Insets left="40.0" />
                      </StackPane.margin>
                   </Text>
-                  <ImageView fitHeight="20.0" fitWidth="22.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
-                     <image>
-                        <Image url="@../images/Iconos/Employees.png" />
-                     </image>
-                     <StackPane.margin>
-                        <Insets left="5.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
             </StackPane>
-            <StackPane layoutX="30.0" layoutY="360.0" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 8;" styleClass="sections">
+            <StackPane layoutX="32.0" layoutY="320.0" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 8;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sections" text="Payroll Expeditions" wrappingWidth="143.71202087402344" StackPane.alignment="CENTER_LEFT">
+                  <ImageView fitHeight="20.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                     <image>
+                        <Image url="@../images/iconos/homeWhite.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary Expeditions" wrappingWidth="143.71202087402344" StackPane.alignment="CENTER_LEFT">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Poppins Regular" size="14.0" />
                      </font>
                      <StackPane.margin>
                         <Insets left="40.0" />
                      </StackPane.margin>
                   </Text>
-                  <ImageView fitHeight="20.0" fitWidth="25.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
-                     <image>
-                        <Image url="@../images/Iconos/payroll.png" />
-                     </image>
-                     <StackPane.margin>
-                        <Insets left="5.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
             </StackPane>
             <HBox alignment="CENTER" layoutX="4.0" layoutY="587.0" prefHeight="133.0" prefWidth="233.0">
                <children>
                   <StackPane prefHeight="133.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutHandler" prefHeight="30.0" prefWidth="30.0" StackPane.alignment="CENTER_RIGHT">
+                        <Button fx:id="logoutButton" onAction="#logoutHandler" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #2490EF;" StackPane.alignment="CENTER_RIGHT">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0">
                                  <image>
-                                    <Image url="@../images/Iconos/logout.png" />
+                                    <Image url="@../images/iconos/logout.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="34.0" StackPane.alignment="CENTER_LEFT">
+                        <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="34.0" style="-fx-background-color: #2490EF;" StackPane.alignment="CENTER_LEFT">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="24.0">
                                  <image>
-                                    <Image url="@../images/Iconos/settings.png" />
+                                    <Image url="@../images/iconos/settings.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -173,34 +161,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <Pane layoutX="243.0" layoutY="-4.0" prefHeight="730.0" prefWidth="1037.0">
-         <children>
-            <StackPane prefHeight="90.0" prefWidth="1037.0" />
-            <HBox fx:id="exitButton" layoutX="995.0" layoutY="27.0" onMouseClicked="#exitHandler" prefHeight="8.0" prefWidth="9.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <children>
-                  <ImageView fitHeight="22.0" fitWidth="22.0">
-                     <image>
-                        <Image url="@../images/Iconos/close.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <HBox fx:id="minimizeButton" layoutX="955.0" layoutY="27.0" onMouseClicked="#minimizeHandler" prefHeight="12.0" prefWidth="5.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <children>
-                  <ImageView fitHeight="23.0" fitWidth="23.0">
-                     <image>
-                        <Image url="@../images/Iconos/minimize_test.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-         </children></Pane>
+      <Pane layoutX="235.0" layoutY="-4.0" prefHeight="730.0" prefWidth="1045.0" />
    </children>
    <stylesheets>
       <URL value="@../css/globals.css" />

@@ -71,7 +71,7 @@
                            <children>
                               <ImageView fitHeight="22.0" fitWidth="22.0">
                                  <image>
-                                    <Image url="@../images/close.png" />
+                                    <Image url="@../images/iconos/close.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -83,7 +83,7 @@
                            <children>
                               <ImageView fitHeight="23.0" fitWidth="23.0">
                                  <image>
-                                    <Image url="@../images/minimize_test.png" />
+                                    <Image url="@../images/iconos/minimize_test.png" />
                                  </image>
                               </ImageView>
                            </children>

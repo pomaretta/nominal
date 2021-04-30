@@ -71,7 +71,6 @@ public class HomeController extends BaseController implements Initializable {
 
     @FXML
     private void logoutHandler(){
-
         this.stageManager.switchScenes(Views.LOGIN);
     }
 }
