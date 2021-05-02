@@ -12,25 +12,20 @@ package view;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.layout.Pane;
 
 public class ViewManager {
 
     private final BaseController controller;
-    private final Parent root;
+    private final Pane root;
 
-    public ViewManager(Parent root,BaseController baseController) {
+    public ViewManager(Pane root,BaseController baseController) {
         this.root = root;
         this.controller = baseController;
     }
 
     public BaseController getController() {
         return controller;
-    }
-
-    private void switchScenes(String url){
-        Parent view = loadView(url);
-        this.root.getChildrenUnmodifiable().clear();
-        this.root.getChildrenUnmodifiable().add(view);
     }
 
     private Parent loadView(String url) {
@@ -45,6 +40,12 @@ public class ViewManager {
             System.out.println(e.getMessage());
         }
         return root;
+    }
+
+    public void switchScenes(String url){
+        Parent view = loadView(url);
+        this.root.getChildren().clear();
+        this.root.getChildren().add(view);
     }
 
 }
