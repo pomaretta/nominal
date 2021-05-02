@@ -93,3 +93,14 @@
 .field:focused {
  -fx-text-fill: -fx-accent-2;
 }
+
+/*====================*/
+
+.user-avatar {
+ -fx-background-position: center;
+ -fx-background-size: cover;
+ -fx-blend-mode: clip;
+ -fx-border-color: red;
+ -fx-border-radius: 20;
+ -fx-border-width: 1;
+}

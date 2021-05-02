@@ -50,36 +50,64 @@
                      <children>
                         <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false">
                            <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons/primary/bell-c-primary.png" />
+                                 </image></ImageView>
                            </graphic>
                            <FlowPane.margin>
                               <Insets right="10.0" />
                            </FlowPane.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
-                        <AnchorPane prefHeight="30.0" prefWidth="30.0">
+                        <FlowPane alignment="CENTER" prefHeight="30.0" prefWidth="30.0">
                            <FlowPane.margin>
-                              <Insets right="10.0" />
+                              <Insets right="15.0" />
                            </FlowPane.margin>
-                        </AnchorPane>
-                        <Label text="Admin">
+                           <children>
+                              <ImageView fx:id="avatar" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/person-template.jpg" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </FlowPane>
+                        <Label fx:id="userName" text="Admin">
                            <FlowPane.margin>
                               <Insets right="10.0" />
                            </FlowPane.margin>
                         </Label>
                         <Button mnemonicParsing="false">
                            <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons/primary/chevron-c-primary.png" />
+                                 </image></ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                         </Button>
                      </children>
                   </FlowPane>
-               </children></AnchorPane>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></AnchorPane>
          </children>
          <styleClass>
             <String fx:value="layout-top" />
             <String fx:value="layout-corner-top-right" />
             <String fx:value="shadow-bottom" />
-         </styleClass></AnchorPane>
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="MOVE" />
+         </cursor></AnchorPane>
       <AnchorPane prefHeight="720.0" prefWidth="250.0">
          <children>
             <HBox prefHeight="70.0" prefWidth="250.0">
@@ -146,7 +174,7 @@
                </children></VBox>
             <VBox alignment="TOP_CENTER" layoutY="150.0" prefHeight="370.0" prefWidth="250.0" styleClass="layout-top">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="200.0" styleClass="active">
+                  <Button fx:id="overviewButton" mnemonicParsing="false" onAction="#check" prefWidth="200.0">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
                            <children>
@@ -172,7 +200,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="27.0" layoutY="35.0" mnemonicParsing="false" prefWidth="200.0">
+                  <Button fx:id="companyButton" layoutX="27.0" layoutY="35.0" mnemonicParsing="false" onAction="#check" prefWidth="200.0">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
                            <children>
@@ -198,7 +226,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="27.0" layoutY="98.0" mnemonicParsing="false" prefWidth="200.0">
+                  <Button fx:id="employeeButton" layoutX="27.0" layoutY="98.0" mnemonicParsing="false" onAction="#check" prefWidth="200.0">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
                            <children>
@@ -224,7 +252,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="27.0" layoutY="247.0" mnemonicParsing="false" prefWidth="200.0">
+                  <Button fx:id="settingsButton" layoutX="27.0" layoutY="247.0" mnemonicParsing="false" onAction="#check" prefWidth="200.0">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
                            <children>
@@ -250,7 +278,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button onAction="#logoutHandler" layoutX="35.0" layoutY="294.0" mnemonicParsing="false" prefWidth="200.0">
+                  <Button layoutX="35.0" layoutY="294.0" mnemonicParsing="false" onAction="#logoutHandler" prefWidth="200.0">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
                            <children>
@@ -285,9 +313,9 @@
                <children>
                   <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="180.0">
+                        <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="250.0">
                            <graphic>
-                              <ImageView fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="170.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/card.png" />
                                  </image>

@@ -100,6 +100,7 @@ public class LoginController extends BaseController implements Initializable {
         try {
             user = NominalFX.authAPI.getUserByName(emailField.getText());
             if (user.getPassword().equals(MD5.getMD5(passwordField.getText()))) {
+                NominalFX.authAPI.setLogedUser(user);
                 this.stageManager.switchScenes(Views.HOME);
             }
         } catch (AuthenticationException authenticationException){

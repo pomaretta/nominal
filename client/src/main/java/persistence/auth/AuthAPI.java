@@ -20,6 +20,7 @@ import java.sql.SQLException;
 public class AuthAPI extends Driver {
 
     private persistence.auth.Queries queries;
+    private User logedUser;
 
     public AuthAPI(String url, String username, String password) throws SQLException {
         super(url, username, password);
@@ -29,6 +30,14 @@ public class AuthAPI extends Driver {
     @Override
     public Queries getQueries() {
         return queries;
+    }
+
+    public User getLogedUser() {
+        return logedUser;
+    }
+
+    public void setLogedUser(User logedUser) {
+        this.logedUser = logedUser;
     }
 
     public Privilege getPrivilege(int id) throws SQLException {

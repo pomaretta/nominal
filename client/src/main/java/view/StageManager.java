@@ -43,7 +43,7 @@ public class StageManager {
     private void show(final Parent root, String title){
         Scene scene = prepareScene(root);
 
-        primaryStage.setTitle(title);
+        primaryStage.setTitle(title + " - Nominal");
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.centerOnScreen();
