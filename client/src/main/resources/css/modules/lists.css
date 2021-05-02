@@ -1,0 +1,45 @@
+/*====================
+  LIST MODULE CSS
+  REV: 1.2
+  GENERAL
+====================*/
+
+
+
+.main{
+    -fx-background-radius: 5px;
+}
+
+.list-header{
+    -fx-background-color:  #FFF;
+    -fx-effect: dropshadow(gaussian,rgba(46,46,46,0.05),10,0,0,5);
+    -fx-background-radius: 12px;
+}
+
+.list-header-tittles{
+    -fx-font-weight: bold;
+}
+
+.list-buttons{
+    -fx-background-color: #713BDB;
+    -fx-background-radius: 12px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.scroll{
+    -fx-border-color: #f3f3f3;
+    -fx-background-radius: 0 0 0 12px;
+    -fx-background-radius: 0 0 12px 0;
+
+}
+
+.scroll-item{
+    -fx-background-color: -fx-accent-2;
+    -fx-background-radius: 5px !important;
+}
+
+.scroll-item .label{
+    -fx-text-fill: -fx-light;
+    -fx-font-weight: bold;
+}
