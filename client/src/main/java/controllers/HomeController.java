@@ -29,12 +29,6 @@ public class HomeController extends BaseController implements Initializable {
     @FXML
     private AnchorPane root;
 
-    @FXML
-    private Button logoutButton;
-
-    @FXML
-    private HBox exitButton;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // When this controller in called with the stage manager calls this function.
@@ -59,18 +53,10 @@ public class HomeController extends BaseController implements Initializable {
             }
         });
     }
-    @FXML
-    private void exitHandler(){
-        Platform.exit();
-    }
 
     @FXML
-    private void minimizeHandler(){
-        this.stageManager.getPrimaryStage().setIconified(true);
-    }
-
-    @FXML
-    private void logoutHandler(){
+    public void logoutHandler(){
         this.stageManager.switchScenes(Views.LOGIN);
     }
+
 }
