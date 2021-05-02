@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -48,24 +49,42 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0" styleClass="right-panel" StackPane.alignment="CENTER">
                      <children>
-                        <TextField fx:id="emailField" layoutX="117.0" layoutY="271.0" prefHeight="60.0" prefWidth="475.0" promptText="Email ( ex: a@nominal.com )" styleClass="input-field">
+                        <StackPane alignment="CENTER_LEFT" layoutX="9.0" layoutY="84.0" prefHeight="72.0" prefWidth="701.0">
+                           <children>
+                              <ImageView fitHeight="88.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/your_comp.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets left="60.0" />
+                           </padding>
+                        </StackPane>
+                        <TextField fx:id="emailField" layoutX="118.0" layoutY="291.0" prefHeight="60.0" prefWidth="475.0" promptText="Email ( ex: a@nominal.com )" styleClass="input-field">
                            <font>
                               <Font name="Poppins Regular" size="18.0" />
                            </font>
                         </TextField>
-                        <PasswordField fx:id="passwordField" layoutX="117.0" layoutY="368.0" prefHeight="60.0" prefWidth="475.0" promptText="Password" styleClass="input-field" />
-                        <Label alignment="CENTER" layoutX="117.0" layoutY="148.0" prefHeight="65.0" prefWidth="475.0" styleClass="title" text="Sign In into account">
+                        <PasswordField fx:id="passwordField" layoutX="117.0" layoutY="386.0" prefHeight="60.0" prefWidth="475.0" promptText="Password" styleClass="input-field" />
+                        <Label layoutX="1.0" layoutY="209.0" prefHeight="65.0" prefWidth="710.0" styleClass="title-2" text="Sign In into account">
                            <font>
-                              <Font name="Courier New" size="36.0" />
+                              <Font name="Courier New" size="16.0" />
                            </font>
+                           <padding>
+                              <Insets left="80.0" />
+                           </padding>
                         </Label>
-                        <Button fx:id="loginButton" layoutX="259.0" layoutY="501.0" mnemonicParsing="false" onAction="#loginHandler" prefHeight="65.0" prefWidth="192.0" styleClass="login-button" text="Sign In">
+                        <Button fx:id="loginButton" layoutX="254.0" layoutY="500.0" mnemonicParsing="false" onAction="#loginHandler" prefHeight="40.0" prefWidth="200.0" styleClass="login-button" text="Sign In">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <padding>
+                              <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
+                           </padding>
                         </Button>
                         <HBox fx:id="exitButton" layoutX="651.0" layoutY="23.0" onMouseClicked="#exitHandler" prefHeight="8.0" prefWidth="9.0">
                            <children>
@@ -73,6 +92,9 @@
                                  <image>
                                     <Image url="@../images/iconos/close.png" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
                               </ImageView>
                            </children>
                            <cursor>
@@ -85,13 +107,47 @@
                                  <image>
                                     <Image url="@../images/iconos/minimize_test.png" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
                               </ImageView>
                            </children>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </HBox>
+                        <Label layoutY="156.0" prefHeight="65.0" prefWidth="710.0" styleClass="title_wb" text="Welcome Back,">
+                           <font>
+                              <Font name="Courier New" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="80.0" top="30.0" />
+                           </padding>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="-1.0" layoutY="613.0" prefHeight="107.0" prefWidth="710.0">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconos/github-big-logo.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ImageView>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconos/twitter_login.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="40.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
                      </children>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
                   </Pane>
                </children>
             </StackPane>
