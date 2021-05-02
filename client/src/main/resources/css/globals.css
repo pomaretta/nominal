@@ -7,8 +7,9 @@
 
 * {
 
-    -fx-primary: #2490EF;
-    -fx-accent: #B23CFD;
+    -fx-primary: #9DA2B7;
+    -fx-accent: #2490EF;
+    -fx-accent-2: #713BDB;
 
     -fx-warning: #FFA900;
     -fx-success: #00B74A;
@@ -17,11 +18,18 @@
     -fx-light: #fff;
     -fx-dark: #2E2E2E;
 
-    -fx-primary-2: #0E6CBE;
-    -fx-primary-3: #2dc4ed;
+
+    -fx-background-content: #F5F6FB;
+
+    -fx-primary-3: #0E6CBE;
+    -fx-primary-4: #2dc4ed;
 
     -fx-font-family: "Poppins";
 
+}
+
+#root {
+    -fx-background-color: transparent;
 }
 
 .title {
