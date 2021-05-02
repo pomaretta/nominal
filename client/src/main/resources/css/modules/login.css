@@ -50,7 +50,7 @@
           ,#2dc4ed
     );
     -fx-background-radius: 4px;
-    -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,0);
+    /*-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),20,0,0,0);*/
     -fx-font-size: 18px;
 }
 

@@ -6,15 +6,19 @@
 */
 
 * {
+
     -fx-primary: #2490EF;
-    -fx-secondary: #B23CFD;
-    -fx-primary-2: #0E6CBE;
-    -fx-primary-3: #2dc4ed;
+    -fx-accent: #B23CFD;
+
     -fx-warning: #FFA900;
     -fx-success: #00B74A;
     -fx-danger: #F93154;
+
     -fx-light: #fff;
-    -fx-dark: #262626;
+    -fx-dark: #2E2E2E;
+
+    -fx-primary-2: #0E6CBE;
+    -fx-primary-3: #2dc4ed;
 
     -fx-font-family: "Poppins";
 
@@ -23,7 +27,6 @@
 .title {
     -fx-font-family: "Poppins";
     -fx-font-weight: bold !important;
-
 }
 
 .title-2 {
