@@ -39,79 +39,9 @@ public class GenerateDNI {
     }
 
     private static String getLetter(int sum){
-        String letter = "";
-        switch (sum % 23){
-            case 0:
-                letter = "t";
-                break;
-            case 1:
-                letter = "r";
-                break;
-            case 2:
-                letter = "w";
-                break;
-            case 3:
-                letter = "a";
-                break;
-            case 4:
-                letter = "g";
-                break;
-            case 5:
-                letter = "m";
-                break;
-            case 6:
-                letter = "y";
-                break;
-            case 7:
-                letter = "f";
-                break;
-            case 8:
-                letter = "p";
-                break;
-            case 9:
-                letter = "d";
-                break;
-            case 10:
-                letter = "x";
-                break;
-            case 11:
-                letter = "b";
-                break;
-            case 12:
-                letter = "n";
-                break;
-            case 13:
-                letter = "j";
-                break;
-            case 14:
-                letter = "z";
-                break;
-            case 15:
-                letter = "s";
-                break;
-            case 16:
-                letter = "q";
-                break;
-            case 17:
-                letter = "v";
-                break;
-            case 18:
-                letter = "h";
-                break;
-            case 19:
-                letter = "l";
-                break;
-            case 20:
-                letter = "c";
-                break;
-            case 21:
-                letter = "k";
-                break;
-            case 22:
-                letter = "e";
-                break;
-        }
-        return letter;
+        String letters = "TRWAGMYFPDXBNJZSQVHLCKET";
+        int rest = sum % 23;
+        return letters.substring(rest,rest + 1).toLowerCase();
     }
 
 }
