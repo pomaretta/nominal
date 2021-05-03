@@ -18,14 +18,23 @@ public class User {
 
     private int id;
     private HashSet<Company> companies;
+    private Privilege privilege;
     private final String name;
     private final String password;
 
-    public User(int id, String name, String password, HashSet<Company> companies) {
+    public User(int id, HashSet<Company> companies, String name, String password, Privilege privilege) {
         this.id = id;
+        this.companies = companies;
         this.name = name;
         this.password = password;
-        this.companies = companies;
+        this.privilege = privilege;
+    }
+
+    public User(int id, Privilege privilege, String name, String password) {
+        this.id = id;
+        this.privilege = privilege;
+        this.name = name;
+        this.password = password;
     }
 
     public User(int id, String name, String password) {
@@ -45,6 +54,10 @@ public class User {
 
     public HashSet<Company> getCompanies() {
         return companies;
+    }
+
+    public Privilege getPrivilege() {
+        return privilege;
     }
 
     public String getName() {

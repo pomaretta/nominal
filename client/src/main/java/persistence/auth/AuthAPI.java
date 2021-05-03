@@ -61,9 +61,10 @@ public class AuthAPI extends Driver {
             result = this.queries.selectUserById.executeQuery();
             result.next();
             user = new User(
-                result.getInt("id"),
-                result.getString("name"),
-                result.getString("password")
+                    result.getInt("user"),
+                    getPrivilege(result.getInt("privilege")),
+                    result.getString("name"),
+                    result.getString("password")
             );
         } finally {
             result.close();
