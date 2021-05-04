@@ -1,0 +1,19 @@
+/*====================
+  FORMS MODULE CSS
+  REV: 1.2
+  GENERAL
+====================*/
+
+.anchor-panel{
+    -fx-background-color: #F3F3F3;
+}
+
+.scroll-panel{
+    -fx-background-color:-fx-background-content;
+}
+
+.scroll-item{
+    -fx-background-color: #FFFF;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0)
+}
