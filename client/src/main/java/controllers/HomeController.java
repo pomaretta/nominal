@@ -15,12 +15,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import persistence.auth.AuthenticationException;
 import util.MD5;
 import view.BaseController;
+import view.ViewManager;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -32,6 +34,9 @@ public class HomeController extends BaseController implements Initializable {
 
     @FXML
     private AnchorPane root;
+
+    @FXML
+    private Pane contentPane;
 
     @FXML
     private ImageView avatar;
@@ -47,6 +52,8 @@ public class HomeController extends BaseController implements Initializable {
     private Button employeeButton;
     @FXML
     private Button settingsButton;
+
+    private ViewManager formManager;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,6 +81,13 @@ public class HomeController extends BaseController implements Initializable {
 
         this.userName.setText(NominalFX.authAPI.getLogedUser().getName());
 
+        formManager = new ViewManager(this.contentPane,this);
+
+    }
+
+    @FXML
+    public void companyHandler(){
+        this.formManager.switchScenes("/fxml/company/company_creation.fxml");
     }
 
     @FXML

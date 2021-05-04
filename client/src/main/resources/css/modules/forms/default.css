@@ -5,6 +5,10 @@
 
 */
 
+#root {
+    -fx-background-radius: 0 0 12px 0;
+}
+
 /*====================*/
 
 .button {
@@ -32,7 +36,7 @@
 /*====================*/
 
 .selector {
-    -fx-background-color: -fx-primary;
+    -fx-background-color: -fx-background-content;
 }
 
 .selector-title {
