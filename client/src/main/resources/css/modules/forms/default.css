@@ -1,0 +1,81 @@
+/*
+
+    FORM GLOBALS
+    REV: 1.0
+
+*/
+
+/*====================*/
+
+.button {
+    -fx-background-color: -fx-accent-2;
+    -fx-background-radius: 4px;
+    -fx-text-fill: -fx-light !important;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian,rgba(46,46,46,0.2),5,0,0,0);
+}
+
+.button .label {
+    -fx-text-fill: -fx-primary;
+    -fx-font-weight: bold;
+}
+
+.danger {
+    -fx-background-color: -fx-danger;
+}
+
+.success {
+    -fx-background-color: -fx-success;
+    -fx-text-fill: -fx-dark !important;
+}
+
+/*====================*/
+
+.selector {
+    -fx-background-color: -fx-primary;
+}
+
+.selector-title {
+    -fx-font-size: 14px;
+    -fx-padding: 0 15px 0 0;
+    -fx-text-fill: -fx-dark;
+}
+
+.selector-content {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 30px 0 0;
+}
+
+/*====================*/
+
+.tab {
+    -fx-background-color: -fx-accent-2;
+    -fx-background-radius: 0;
+}
+
+.tab-label {
+    -fx-text-fill: -fx-light;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: -fx-light !important;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: -fx-dark;
+    -fx-background-color: -fx-light;
+}
+
+/*====================*/
+
+.content-root {
+    -fx-background-color: -fx-light;
+    -fx-background-radius: 8px;
+}

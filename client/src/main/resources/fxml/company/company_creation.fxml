@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1030.0" stylesheets="@../../css/globals.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="650.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane hbarPolicy="NEVER" prefHeight="650.0" prefWidth="1030.0" style="-fx-background-radius: 0 0 12px 0; -fx-background-color: #F5F6FB;" vbarPolicy="NEVER">
          <content>
@@ -21,25 +22,25 @@
                <children>
                   <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);">
                      <children>
-                        <ComboBox layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #F5F6FB;" />
-                        <FlowPane alignment="CENTER_LEFT" layoutX="223.0" layoutY="16.0" prefHeight="40.0" prefWidth="715.0">
+                        <ComboBox layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" styleClass="selector" />
+                        <FlowPane alignment="CENTER_LEFT" layoutX="233.0" layoutY="16.0" prefHeight="40.0" prefWidth="705.0">
                            <children>
-                              <Label text="Company Name">
+                              <Label styleClass="selector-title" text="Company Name">
                                  <FlowPane.margin>
-                                    <Insets right="10.0" />
+                                    <Insets />
                                  </FlowPane.margin>
                               </Label>
-                              <Label layoutX="10.0" layoutY="22.0" text="CIF">
+                              <Label layoutX="10.0" layoutY="22.0" styleClass="selector-content" text="&lt;CIF&gt;">
                                  <FlowPane.margin>
-                                    <Insets right="25.0" />
+                                    <Insets />
                                  </FlowPane.margin>
                               </Label>
-                              <Label text="Employees">
+                              <Label styleClass="selector-title" text="Employees">
                                  <FlowPane.margin>
-                                    <Insets right="10.0" />
+                                    <Insets />
                                  </FlowPane.margin>
                               </Label>
-                              <Label text="23" />
+                              <Label styleClass="selector-content" text="&lt;NUMBER&gt;" />
                            </children>
                         </FlowPane>
                      </children>
@@ -48,7 +49,7 @@
                     <tabs>
                       <Tab closable="false" style="-fx-background-color: #713BDB; -fx-text-fill: #fff; -fx-fill: #fff;" text="Information">
                            <content>
-                              <AnchorPane prefHeight="280.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 0 0 8px 8px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);">
+                              <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root">
                                  <children>
                                     <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: -fx-dark;" text="Company Information " />
                                     <AnchorPane layoutX="22.0" layoutY="66.0">
@@ -109,7 +110,7 @@
                                     </FlowPane>
                                     <AnchorPane layoutX="597.0" layoutY="105.0">
                                        <children>
-                                          <Button layoutX="4.0" layoutY="87.0" mnemonicParsing="false" text="Remove">
+                                          <Button layoutX="4.0" layoutY="87.0" mnemonicParsing="false" styleClass="danger" text="Remove">
                                              <padding>
                                                 <Insets bottom="9.0" left="16.0" right="16.0" top="9.0" />
                                              </padding>
@@ -122,19 +123,55 @@
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="89.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: -fx-dark;" text="Logo" />
                                        </children>
                                     </AnchorPane>
-                                    <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" text="Save changes">
+                                    <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
                                        <padding>
                                           <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                        </padding>
                                     </Button>
+                                    <Button layoutX="308.0" layoutY="93.0" mnemonicParsing="false" text="Generate" />
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="Financial">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;" />
-                          </content>
+                        <Tab closable="false" style="-fx-background-color: #713BDB; -fx-text-fill: #fff; -fx-fill: #fff;" text="Financial">
+                           <content>
+                              <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root">
+                                 <children>
+                                    <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: -fx-dark;" text="Company Financial" />
+                                    <AnchorPane layoutX="22.0" layoutY="66.0">
+                                       <children>
+                                          <AnchorPane>
+                                             <children>
+                                                <Label prefHeight="20.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Social Security ID" />
+                                                <TextField editable="false" layoutY="29.0" prefWidth="150.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="193.0" layoutY="66.0">
+                                       <children>
+                                          <AnchorPane>
+                                             <children>
+                                                <Label prefHeight="20.0" prefWidth="229.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Agreement" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
+                                       <padding>
+                                          <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <ComboBox layoutX="193.0" layoutY="93.0" prefWidth="150.0" styleClass="selector" />
+                                    <AnchorPane layoutX="22.0" layoutY="137.0" prefHeight="60.0" prefWidth="150.0">
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Currency" />
+                                          <ComboBox layoutY="34.0" prefWidth="150.0" styleClass="selector" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
                         </Tab>
                     </tabs>
                   </TabPane>
@@ -143,4 +180,8 @@
          </content>
       </ScrollPane>
    </children>
+   <stylesheets>
+      <URL value="@../../css/globals.css" />
+      <URL value="@../../css/modules/forms/default.css" />
+   </stylesheets>
 </AnchorPane>
