@@ -17,13 +17,14 @@
 }
 
 .list-header-tittles{
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
 
 .list-buttons{
     -fx-background-color: #713BDB;
     -fx-background-radius: 12px;
-    -fx-font-size: 10px;
+    -fx-font-size: 12px;
     -fx-font-weight: bold;
 }
 
@@ -42,4 +43,8 @@
 .scroll-item .label{
     -fx-text-fill: -fx-light;
     -fx-font-weight: bold;
+}
+
+.list-titles{
+    -fx-font-size: 12px;
 }

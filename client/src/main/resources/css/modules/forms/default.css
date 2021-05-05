@@ -84,7 +84,13 @@
     -fx-background-radius: 8px;
 }
 
-.text-field{
+.content-title {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
+}
+
+.content-root-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill:  -fx-dark;
 }
