@@ -143,23 +143,11 @@ CREATE TABLE company_financial (
     created_at              TIMESTAMP DEFAULT NOW(),
     id                      INT NOT NULL AUTO_INCREMENT,
 
-    social_security_id      VARCHAR(255) NOT NULL,
+    currency                INT NOT NULL,
 
     PRIMARY KEY (id),
-    FOREIGN KEY (company) REFERENCES company (id)
-);
-
-CREATE TABLE company_currency (
-
-    company                 INT NOT NULL,
-    created_at              TIMESTAMP DEFAULT NOW(),
-    id                      INT NOT NULL AUTO_INCREMENT,
-
-    currency_digit          VARCHAR(3) NOT NULL,
-    currency_name           VARCHAR(255) NOT NULL,
-
-    PRIMARY KEY (id),
-    FOREIGN KEY (company) REFERENCES company (id)
+    FOREIGN KEY (company) REFERENCES company (id),
+    FOREIGN KEY (currency) REFERENCES currency (id)
 );
 
 -- #####################################
