@@ -83,3 +83,8 @@
     -fx-background-color: -fx-light;
     -fx-background-radius: 8px;
 }
+
+.text-field{
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
