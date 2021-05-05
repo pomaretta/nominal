@@ -91,6 +91,11 @@ public class HomeController extends BaseController implements Initializable {
     }
 
     @FXML
+    public void employeeHandler(){
+        this.formManager.switchScenes("/fxml/employee/employee_creation.fxml");
+    }
+
+    @FXML
     public void logoutHandler(){
         this.stageManager.switchScenes(Views.LOGIN);
     }

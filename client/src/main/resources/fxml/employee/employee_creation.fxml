@@ -6,7 +6,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
@@ -15,219 +14,215 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1030.0" styleClass="anchor-panel" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="root" prefHeight="650.0" prefWidth="1030.0" styleClass="layout-corner-bottom-right" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.forms.EmployeeForm">
    <children>
-      <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="10.0" prefHeight="650.0" prefWidth="1030.0" style="-fx-background-radius: 0 0 12px 0; -fx-background-color: #F5F6FB;" vbarPolicy="NEVER">
-         <content>
-            <AnchorPane prefHeight="650.0" prefWidth="1030.0" style="-fx-background-color: #F5F6FB;">
+      <AnchorPane prefHeight="650.0" prefWidth="1030.0" style="-fx-background-color: -fx-background-content;" styleClass="layout-corner-bottom-right">
+         <children>
+            <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                <children>
-                  <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                  <ComboBox layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
+                  <FlowPane alignment="CENTER_LEFT" layoutX="223.0" layoutY="16.0" prefHeight="40.0" prefWidth="715.0">
                      <children>
-                        <ComboBox layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
-                        <FlowPane alignment="CENTER_LEFT" layoutX="223.0" layoutY="16.0" prefHeight="40.0" prefWidth="715.0">
-                           <children>
-                              <Label prefHeight="20.0" prefWidth="131.0" styleClass="selector-title" text="Employee Name">
-                                 <FlowPane.margin>
-                                    <Insets right="10.0" />
-                                 </FlowPane.margin>
-                              </Label>
-                              <Label layoutX="10.0" layoutY="22.0" prefHeight="20.0" prefWidth="90.0" styleClass="selector-content" text="&lt;Name&gt;">
-                                 <FlowPane.margin>
-                                    <Insets right="25.0" />
-                                 </FlowPane.margin>
-                              </Label>
-                              <Label styleClass="selector-title" text="Passport">
-                                 <FlowPane.margin>
-                                    <Insets right="10.0" />
-                                 </FlowPane.margin>
-                              </Label>
-                              <Label styleClass="selector-content" text="&lt;Passport&gt;" />
-                           </children>
-                        </FlowPane>
+                        <Label prefHeight="20.0" prefWidth="131.0" styleClass="selector-title" text="Employee Name">
+                           <FlowPane.margin>
+                              <Insets right="10.0" />
+                           </FlowPane.margin>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="22.0" prefHeight="20.0" prefWidth="90.0" styleClass="selector-content" text="&lt;Name&gt;">
+                           <FlowPane.margin>
+                              <Insets right="25.0" />
+                           </FlowPane.margin>
+                        </Label>
+                        <Label styleClass="selector-title" text="Passport">
+                           <FlowPane.margin>
+                              <Insets right="10.0" />
+                           </FlowPane.margin>
+                        </Label>
+                        <Label styleClass="selector-content" text="&lt;Passport&gt;" />
                      </children>
-                  </AnchorPane>
-                  <TabPane layoutX="40.0" layoutY="125.0" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
-                     <tabs>
-                        <Tab closable="false" text="Information">
-                           <content>
-                              <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
-                                 <children>
-                                    <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Employee Information " />
-                                    <VBox fillWidth="false" layoutX="25.0" layoutY="60.0" prefHeight="163.0" prefWidth="300.0">
-                                       <children>
-                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Email" />
-                                          <TextField prefHeight="25.0" prefWidth="150.0">
-                                             <VBox.margin>
-                                                <Insets bottom="20.0" top="5.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Address" />
-                                          <TextField prefHeight="25.0" prefWidth="150.0">
-                                             <VBox.margin>
-                                                <Insets bottom="20.0" top="5.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Phone" />
-                                          <TextField prefHeight="25.0" prefWidth="100.0">
-                                             <VBox.margin>
-                                                <Insets bottom="20.0" top="5.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Lastname" />
-                                          <TextField prefHeight="20.0" prefWidth="100.0">
-                                             <VBox.margin>
-                                                <Insets bottom="20.0" top="5.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="20.0" left="10.0" right="10.0" />
-                                       </padding>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </VBox>
-                                    <VBox fillWidth="false" layoutX="250.0" layoutY="60.0" prefHeight="163.0" prefWidth="398.0">
-                                       <children>
-                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Passport" />
-                                          <TextField prefHeight="25.0" prefWidth="100.0">
-                                             <VBox.margin>
-                                                <Insets bottom="20.0" top="5.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Name" />
-                                          <TextField prefHeight="25.0" prefWidth="100.0">
-                                             <VBox.margin>
-                                                <Insets bottom="20.0" top="5.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Name 2" />
-                                          <TextField prefHeight="20.0" prefWidth="100.0">
-                                             <VBox.margin>
-                                                <Insets bottom="20.0" top="5.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                          <Label prefHeight="20.0" prefWidth="134.0" styleClass="content-title" text="Lastname2" />
-                                          <TextField prefHeight="25.0" prefWidth="100.0">
-                                             <VBox.margin>
-                                                <Insets bottom="20.0" top="5.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                    <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
-                                       <padding>
-                                          <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
-                                       </padding>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </Tab>
-                        <Tab text="Contact">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-                                 <children>
-                                    <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Employee Contact" />
-                                    <VBox layoutX="25.0" layoutY="60.0">
-                                       <children>
-                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Category" />
-                                          <ComboBox prefWidth="150.0" styleClass="selector">
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </ComboBox>
-                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="IRPF">
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <TextField prefHeight="20.0" prefWidth="100.0">
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="250.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <HBox>
-                                             <children>
-                                                <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="72.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Hourly" />
-                                                <CheckBox mnemonicParsing="false" />
-                                             </children>
-                                          </HBox>
-                                          <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Hired-Hours">
-                                             <VBox.margin>
-                                                <Insets top="45.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <TextField prefHeight="20.0" prefWidth="100.0">
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                    <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save changes">
-                                       <padding>
-                                          <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
-                                       </padding>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </Tab>
-                        <Tab text="Schedule">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
-                                 <children>
-                                    <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Schedule" />
-                                    <VBox layoutX="25.0" layoutY="60.0">
-                                       <children>
-                                          <HBox>
-                                             <children>
-                                                <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Nocturnal" />
-                                                <CheckBox mnemonicParsing="false" styleClass="selector" />
-                                             </children>
-                                          </HBox>
-                                          <Label prefHeight="20.0" prefWidth="181.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Complementary hour">
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <TextField prefHeight="25.0" prefWidth="197.0">
-                                             <VBox.margin>
-                                                <Insets top="10.0" />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="250.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0">
-                                       <children>
-                                          <HBox>
-                                             <children>
-                                                <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Turnicity" />
-                                                <CheckBox mnemonicParsing="false" />
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
-                                    <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save changes">
-                                       <padding>
-                                          <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
-                                       </padding>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </Tab>
-                     </tabs>
-                  </TabPane>
+                  </FlowPane>
                </children>
             </AnchorPane>
-         </content>
-      </ScrollPane>
+            <TabPane layoutX="40.0" layoutY="125.0" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
+               <tabs>
+                  <Tab closable="false" text="Information">
+                     <content>
+                        <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Employee Information " />
+                              <VBox fillWidth="false" layoutX="25.0" layoutY="60.0" prefHeight="163.0" prefWidth="300.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Email" />
+                                    <TextField prefHeight="25.0" prefWidth="150.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Address" />
+                                    <TextField prefHeight="25.0" prefWidth="150.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Phone" />
+                                    <TextField prefHeight="25.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Lastname" />
+                                    <TextField prefHeight="20.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="10.0" right="10.0" />
+                                 </padding>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox fillWidth="false" layoutX="250.0" layoutY="60.0" prefHeight="163.0" prefWidth="398.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Passport" />
+                                    <TextField prefHeight="25.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Name" />
+                                    <TextField prefHeight="25.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Name 2" />
+                                    <TextField prefHeight="20.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label prefHeight="20.0" prefWidth="134.0" styleClass="content-title" text="Lastname2" />
+                                    <TextField prefHeight="25.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
+                                 <padding>
+                                    <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Contact">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Employee Contact" />
+                              <VBox layoutX="25.0" layoutY="60.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Category" />
+                                    <ComboBox prefWidth="150.0" styleClass="selector">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </ComboBox>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="IRPF">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField prefHeight="20.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="250.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="72.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Hourly" />
+                                          <CheckBox mnemonicParsing="false" />
+                                       </children>
+                                    </HBox>
+                                    <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Hired-Hours">
+                                       <VBox.margin>
+                                          <Insets top="45.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField prefHeight="20.0" prefWidth="100.0">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save changes">
+                                 <padding>
+                                    <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Schedule">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Schedule" />
+                              <VBox layoutX="25.0" layoutY="60.0">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Nocturnal" />
+                                          <CheckBox mnemonicParsing="false" styleClass="selector" />
+                                       </children>
+                                    </HBox>
+                                    <Label prefHeight="20.0" prefWidth="181.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Complementary hours">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField prefHeight="25.0" prefWidth="197.0">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="250.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Turnicity" />
+                                          <CheckBox mnemonicParsing="false" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save changes">
+                                 <padding>
+                                    <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
    </children>
    <stylesheets>
       <URL value="@../../css/globals.css" />

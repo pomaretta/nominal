@@ -226,7 +226,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="employeeButton" layoutX="27.0" layoutY="98.0" mnemonicParsing="false" onAction="#check" prefWidth="200.0">
+                  <Button fx:id="employeeButton" layoutX="27.0" layoutY="98.0" mnemonicParsing="false" onAction="#check" onMouseClicked="#employeeHandler" prefWidth="200.0">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
                            <children>
