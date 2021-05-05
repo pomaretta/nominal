@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane id="root" prefHeight="650.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.forms.CompanyForm">
+<AnchorPane id="root" prefHeight="650.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.forms.CompanyForm">
    <children>
       <AnchorPane prefHeight="650.0" prefWidth="1030.0" style="-fx-background-color: -fx-background-content;" styleClass="layout-corner-bottom-right">
          <children>
@@ -53,19 +53,19 @@
                                  <children>
                                     <AnchorPane>
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Identificator" />
+                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="text-field" text="Identificator" />
                                           <TextField editable="false" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="67.0">
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Name" />
+                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="text-field" text="Name" />
                                           <TextField layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="136.0">
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="State" />
+                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="text-field" text="State" />
                                           <TextField layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
@@ -75,13 +75,13 @@
                                  <children>
                                     <AnchorPane>
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="229.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Street Address" />
+                                          <Label prefHeight="20.0" prefWidth="229.0" styleClass="text-field" text="Street Address" />
                                           <TextField layoutY="29.0" prefHeight="25.0" prefWidth="229.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="69.0">
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Phone number" />
+                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="text-field" text="Phone number" />
                                           <TextField layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
@@ -89,7 +89,7 @@
                               </AnchorPane>
                               <AnchorPane layoutX="193.0" layoutY="66.0">
                                  <children>
-                                    <Label prefHeight="20.0" prefWidth="107.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="CIF" />
+                                    <Label prefHeight="20.0" prefWidth="107.0" styleClass="text-field" text="CIF" />
                                     <TextField layoutY="29.0" prefHeight="25.0" prefWidth="106.0" />
                                  </children>
                               </AnchorPane>
@@ -139,7 +139,7 @@
                                  <children>
                                     <AnchorPane>
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Social Security ID" />
+                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="text-field" text="Social Security ID" />
                                           <TextField editable="false" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
@@ -149,7 +149,7 @@
                                  <children>
                                     <AnchorPane>
                                        <children>
-                                          <Label prefHeight="20.0" prefWidth="229.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Agreement" />
+                                          <Label prefHeight="20.0" prefWidth="229.0" styleClass="text-field" text="Agreement" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -162,7 +162,7 @@
                               <ComboBox layoutX="193.0" layoutY="93.0" prefWidth="150.0" styleClass="selector" />
                               <AnchorPane layoutX="22.0" layoutY="137.0" prefHeight="60.0" prefWidth="150.0">
                                  <children>
-                                    <Label prefHeight="20.0" prefWidth="150.0" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Currency" />
+                                    <Label prefHeight="20.0" prefWidth="150.0" styleClass="text-field" text="Currency" />
                                     <ComboBox layoutY="34.0" prefWidth="150.0" styleClass="selector" />
                                  </children>
                               </AnchorPane>
