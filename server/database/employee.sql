@@ -2,18 +2,18 @@ USE nominal_dev;
 
 -- EMPLOYEE
 
-INSERT INTO nominal_dev.employee (cif) VALUES
-    ("99999999R")
-    ,('53559315C')
-    ,('45399445K')
-    ,('83377533A')
-    ,('73129711S')
-    ,('84111929D')
-    ,('81244291B')
-    ,('41353917D')
-    ,('16538499G')
-    ,('53823675H')
-    ,('18938831X');
+INSERT INTO nominal_dev.employee (passport,naf) VALUES
+    ("99999999R","")
+    ,('53559315C',"")
+    ,('45399445K',"")
+    ,('83377533A',"")
+    ,('73129711S',"")
+    ,('84111929D',"")
+    ,('81244291B',"")
+    ,('41353917D',"")
+    ,('16538499G',"")
+    ,('53823675H',"")
+    ,('18938831X',"");
 
 INSERT INTO nominal_dev.employee_information (employee,name,name_2,lastname,lastname_2,active,apportion) VALUES
     (1,"Manolo","","Martinez","Cabrera",1,0)

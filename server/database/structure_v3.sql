@@ -51,6 +51,20 @@ CREATE TABLE agreement (
 );
 
 -- #####################################
+-- UTILITY TABLES
+-- #####################################
+
+CREATE TABLE currency (
+    
+    id                      INT NOT NULL AUTO_INCREMENT,
+
+    digit                   VARCHAR(3) NOT NULL,
+    name                    VARCHAR(255) NOT NULL,
+
+    PRIMARY KEY (id)
+);
+
+-- #####################################
 -- CREATE AGREEMENT TABLES
 -- #####################################
 
@@ -349,18 +363,4 @@ CREATE TABLE company_agreement (
     CONSTRAINT agreement_com_id
         FOREIGN KEY (agreement)
         REFERENCES agreement (id)
-);
-
--- #####################################
--- UTILITY TABLES
--- #####################################
-
-CREATE TABLE currency (
-    
-    id                      INT NOT NULL AUTO_INCREMENT,
-
-    digit                   VARCHAR(3) NOT NULL,
-    name                    VARCHAR(255) NOT NULL,
-
-    PRIMARY KEY (id)
 );

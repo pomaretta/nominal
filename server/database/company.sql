@@ -95,7 +95,7 @@ INSERT INTO nominal_dev.currency (name,digit) VALUES
     ,('Myanmar kyat','MMK')
     ,('Mongolian tögrög','MNT')
     ,('Macanese pataca','MOP')
-    ,('Mauritanian ouguiya','MRU[11]')
+    ,('Mauritanian ouguiya','MRU')
     ,('Mauritian rupee','MUR')
     ,('Maldivian rufiyaa','MVR')
     ,('Malawian kwacha','MWK')
@@ -133,7 +133,7 @@ INSERT INTO nominal_dev.currency (name,digit) VALUES
     ,('Somali shilling','SOS')
     ,('Surinamese dollar','SRD')
     ,('South Sudanese pound','SSP')
-    ,('São Tomé and Príncipe dobra','STN[13]')
+    ,('São Tomé and Príncipe dobra','STN')
     ,('Salvadoran colón','SVC')
     ,('Syrian pound','SYP')
     ,('Swazi lilangeni','SZL')
@@ -207,7 +207,7 @@ INSERT INTO nominal_dev.company_financial (company,currency) VALUES
     ,(2,47)
     ,(3,47)
     ,(4,47)
-    ,(5,47)
+    ,(5,47);
 
 INSERT INTO nominal_dev.company_agreement (company,agreement) VALUES
     (1,1)
