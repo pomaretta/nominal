@@ -2,8 +2,8 @@
 --           NOMINAL DATABASE
 -- #####################################
 
--- REVISION: 3.0
--- DATE: 22/04/2021
+-- REVISION: 3.1
+-- DATE: 05/05/2021
 -- AUTHORS
 --      CARLOS POMARES (https://www.github.com/pomaretta)
 --      ADÁN INAREJOS (https://github.com/ainarejos)
@@ -36,6 +36,7 @@ CREATE TABLE employee (
 
     id                      INT NOT NULL AUTO_INCREMENT,
     passport                VARCHAR(255) NOT NULL,
+    naf                     VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
     UNIQUE(passport)
 );
