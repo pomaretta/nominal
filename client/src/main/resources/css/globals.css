@@ -7,7 +7,7 @@
 
 * {
 
-    -fx-primary: #F5F6FB;
+    -fx-primary: #9DA2B7;
     -fx-accent: #2490EF;
     -fx-accent-2: #713BDB;
 
@@ -31,6 +31,34 @@
 #root {
     -fx-background-color: transparent;
 }
+
+.layout-master {
+    -fx-background-color: transparent;
+}
+
+.layout-top {
+    -fx-background-color: -fx-light;
+}
+
+.layout-corner-top-left {
+    -fx-background-radius: 12px 0 0 0;
+}
+
+.layout-corner-top-right {
+    -fx-background-radius: 0 12px 0 0;
+}
+
+.layout-corner-bottom-left {
+    -fx-background-radius: 0 0 0 12px;
+}
+
+.layout-corner-bottom-right {
+    -fx-background-radius: 0 0 12px 0;
+}
+
+/*====================
+  OLD
+====================*/
 
 .title {
     -fx-font-family: "Poppins";
