@@ -35,6 +35,7 @@ public class Employee implements NominalMaster {
     // CONTACT
     String mailAddress;
     String phoneNumber;
+    String streetAddress;
 
     // CONTRACT
     Category category;
@@ -48,7 +49,7 @@ public class Employee implements NominalMaster {
     float hiredHours;
     float irpf;
 
-    public Employee(int id, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
+    public Employee(int id, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, String streetAddress, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
         this.id = id;
         this.passport = passport;
         this.naf = naf;
@@ -58,6 +59,7 @@ public class Employee implements NominalMaster {
         this.lastName2 = lastName2;
         this.mailAddress = mailAddress;
         this.phoneNumber = phoneNumber;
+        this.streetAddress = streetAddress;
         this.category = category;
         this.joinDate = joinDate;
         this.expirationDate = expirationDate;
@@ -68,7 +70,7 @@ public class Employee implements NominalMaster {
         this.irpf = irpf;
     }
 
-    public Employee(String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
+    public Employee(String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, String streetAddress, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
         this.passport = passport;
         this.naf = naf;
         this.name = name;
@@ -77,6 +79,7 @@ public class Employee implements NominalMaster {
         this.lastName2 = lastName2;
         this.mailAddress = mailAddress;
         this.phoneNumber = phoneNumber;
+        this.streetAddress = streetAddress;
         this.category = category;
         this.joinDate = joinDate;
         this.expirationDate = expirationDate;
@@ -124,6 +127,10 @@ public class Employee implements NominalMaster {
         return phoneNumber;
     }
 
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -155,5 +162,4 @@ public class Employee implements NominalMaster {
     public float getIrpf() {
         return irpf;
     }
-
 }

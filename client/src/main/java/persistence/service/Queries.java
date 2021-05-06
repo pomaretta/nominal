@@ -20,6 +20,34 @@ public class Queries extends persistence.Queries {
     public PreparedStatement selectAllCompanies;
     public PreparedStatement selectAllAgreements;
     public PreparedStatement selectAllPayrolls;
+    public PreparedStatement selectAllCurrencies;
+
+    public PreparedStatement selectCurrencyById;
+
+    // AGREEMENT
+
+    public PreparedStatement selectCategoryById;
+    public PreparedStatement selectQuotationById;
+
+    public PreparedStatement selectSalaryById;
+    public PreparedStatement selectAntiquityById;
+
+    public PreparedStatement selectAgreementById;
+    public PreparedStatement selectAgreementCategories;
+    public PreparedStatement selectAgreementQuotations;
+    public PreparedStatement selectAgreementSalaryTables;
+    public PreparedStatement selectAgreementAntiquityTables;
+
+    // COMPANY
+
+    public PreparedStatement selectCompanyById;
+    public PreparedStatement selectAllCompaniesId;
+    public PreparedStatement selectCompanyEmployees;
+
+    // EMPLOYEE
+
+    public PreparedStatement selectEmployeeById;
+    public PreparedStatement selectEmployeeScheduleById;
 
     public Queries(Connection connection) throws SQLException {
         super(connection);
@@ -27,6 +55,29 @@ public class Queries extends persistence.Queries {
         selectAllCompanies = this.connection.prepareStatement(Statements.SELECT_ALL_COMPANIES.getQuery());
         selectAllAgreements = this.connection.prepareStatement(Statements.SELECT_ALL_AGREEMENTS.getQuery());
         selectAllPayrolls = this.connection.prepareStatement(Statements.SELECT_ALL_PAYROLLS.getQuery());
+        selectAllCurrencies = this.connection.prepareStatement(Statements.SELECT_ALL_CURRENCIES.getQuery());
+
+        selectCurrencyById = this.connection.prepareStatement(Statements.SELECT_CURRENCY_BY_ID.getQuery());
+
+        selectCategoryById = this.connection.prepareStatement(Statements.SELECT_CATEGORY_BY_ID.getQuery());
+        selectQuotationById = this.connection.prepareStatement(Statements.SELECT_QUOTATION_BY_ID.getQuery());
+
+        selectSalaryById = this.connection.prepareStatement(Statements.SELECT_SALARY_BY_ID.getQuery());
+        selectAntiquityById = this.connection.prepareStatement(Statements.SELECT_ANTIQUITY_BY_ID.getQuery());
+
+        selectAgreementById = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_BY_ID.getQuery());
+        selectAgreementCategories = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_CATEGORIES.getQuery());
+        selectAgreementQuotations = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_QUOTATIONS.getQuery());
+        selectAgreementSalaryTables = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_SALARY_TABLES.getQuery());
+        selectAgreementAntiquityTables = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_ANTIQUITY_TABLES.getQuery());
+
+        selectCompanyById = this.connection.prepareStatement(Statements.SELECT_COMPANY_BY_ID.getQuery());
+        selectAllCompaniesId = this.connection.prepareStatement(Statements.SELECT_ALL_COMPANIES_ID.getQuery());
+        selectCompanyEmployees = this.connection.prepareStatement(Statements.SELECT_COMPANY_EMPLOYEES.getQuery());
+
+        selectEmployeeById = this.connection.prepareStatement(Statements.SELECT_EMPLOYEE_BY_ID.getQuery());
+        selectEmployeeScheduleById = this.connection.prepareStatement(Statements.SELECT_SCHEDULE_BY_ID.getQuery());
+
     }
 
 }

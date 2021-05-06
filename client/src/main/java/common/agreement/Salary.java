@@ -16,20 +16,18 @@ public class Salary {
 
     // IDENTIFIER
     int id;
-    Timestamp created;
 
     // RELATIONS
-    int categoryLevel;
-    int quotationLevel;
+    Category category;
+    Quotation quotation;
 
     // VALUE
     float value;
 
-    public Salary(int id, Timestamp created, int categoryLevel, int quotationLevel, float value) {
+    public Salary(int id, Category category, Quotation quotation, float value) {
         this.id = id;
-        this.created = created;
-        this.categoryLevel = categoryLevel;
-        this.quotationLevel = quotationLevel;
+        this.category = category;
+        this.quotation = quotation;
         this.value = value;
     }
 
@@ -37,19 +35,16 @@ public class Salary {
         return id;
     }
 
-    public Timestamp getCreated() {
-        return created;
+    public Category getCategory() {
+        return category;
     }
 
-    public int getCategoryLevel() {
-        return categoryLevel;
-    }
-
-    public int getQuotationLevel() {
-        return quotationLevel;
+    public Quotation getQuotation() {
+        return quotation;
     }
 
     public float getValue() {
         return value;
     }
+
 }

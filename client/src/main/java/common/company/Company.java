@@ -41,10 +41,9 @@ public class Company implements NominalMaster {
     private String phoneNumber;
 
     // FINANCIAL
-    private String currency;
-    private String currencyDigit;
+    private Currency currency;
 
-    public Company(int id, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String streetAddress, String state, String phoneNumber, String currency, String currencyDigit) {
+    public Company(int id, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String streetAddress, String state, String phoneNumber, Currency currency) {
         this.id = id;
         this.agreement = agreement;
         this.employees = employees;
@@ -54,10 +53,9 @@ public class Company implements NominalMaster {
         this.state = state;
         this.phoneNumber = phoneNumber;
         this.currency = currency;
-        this.currencyDigit = currencyDigit;
     }
 
-    public Company(Agreement agreement, ArrayList<Employee> employees, String name, String cif, String streetAddress, String state, String phoneNumber, String currency, String currencyDigit) {
+    public Company(Agreement agreement, ArrayList<Employee> employees, String name, String cif, String streetAddress, String state, String phoneNumber, Currency currency) {
         this.agreement = agreement;
         this.employees = employees;
         this.name = name;
@@ -66,10 +64,9 @@ public class Company implements NominalMaster {
         this.state = state;
         this.phoneNumber = phoneNumber;
         this.currency = currency;
-        this.currencyDigit = currencyDigit;
     }
 
-    public Company(Agreement agreement, String name, String cif, String streetAddress, String state, String phoneNumber, String currency, String currencyDigit) {
+    public Company(Agreement agreement, String name, String cif, String streetAddress, String state, String phoneNumber, Currency currency) {
         this.agreement = agreement;
         this.name = name;
         this.cif = cif;
@@ -77,7 +74,6 @@ public class Company implements NominalMaster {
         this.state = state;
         this.phoneNumber = phoneNumber;
         this.currency = currency;
-        this.currencyDigit = currencyDigit;
     }
 
     @Override
@@ -113,11 +109,7 @@ public class Company implements NominalMaster {
         return phoneNumber;
     }
 
-    public String getCurrency() {
+    public Currency getCurrency() {
         return currency;
-    }
-
-    public String getCurrencyDigit() {
-        return currencyDigit;
     }
 }

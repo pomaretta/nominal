@@ -12,9 +12,10 @@ package persistence.service;
 
 public enum Statements {
 
-    SELECT_ALL_EMPLOYEES("SELECT * FROM employee"),
-    SELECT_ALL_COMPANIES("SELECT * FROM company"),
-    SELECT_ALL_AGREEMENTS("SELECT * FROM company_agreement"),
+    SELECT_ALL_EMPLOYEES("SELECT DISTINCT e.id FROM nominal_dev.employee e"),
+    SELECT_ALL_COMPANIES("SELECT DISTINCT c.id FROM nominal_dev.company c"),
+    SELECT_ALL_AGREEMENTS("SELECT DISTINCT a.id as id FROM nominal_dev.agreement a"),
+    SELECT_ALL_CURRENCIES("SELECT DISTINCT c.id as id FROM nominal_dev.currency c"),
     SELECT_ALL_PAYROLLS("SELECT * FROM payroll"),
 
     // CURRENCY

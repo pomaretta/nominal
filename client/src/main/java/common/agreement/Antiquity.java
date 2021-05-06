@@ -16,21 +16,19 @@ public class Antiquity {
 
     // IDENTIFIER
     int id;
-    Timestamp created;
 
     // RELATIONS
-    int categoryLevel;
-    int quotationLevel;
+    Category category;
+    Quotation quotation;
     int years;
 
     // VALUE
     float value;
 
-    public Antiquity(int id, Timestamp created, int categoryLevel, int quotationLevel, int years, float value) {
+    public Antiquity(int id, Category category, Quotation quotation, int years, float value) {
         this.id = id;
-        this.created = created;
-        this.categoryLevel = categoryLevel;
-        this.quotationLevel = quotationLevel;
+        this.category = category;
+        this.quotation = quotation;
         this.years = years;
         this.value = value;
     }
@@ -39,16 +37,12 @@ public class Antiquity {
         return id;
     }
 
-    public Timestamp getCreated() {
-        return created;
+    public Category getCategory() {
+        return category;
     }
 
-    public int getCategoryLevel() {
-        return categoryLevel;
-    }
-
-    public int getQuotationLevel() {
-        return quotationLevel;
+    public Quotation getQuotation() {
+        return quotation;
     }
 
     public int getYears() {
@@ -58,5 +52,4 @@ public class Antiquity {
     public float getValue() {
         return value;
     }
-
 }
