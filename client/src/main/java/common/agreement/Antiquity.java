@@ -18,14 +18,14 @@ public class Antiquity {
     int id;
 
     // RELATIONS
-    Category category;
-    Quotation quotation;
+    int category;
+    int quotation;
     int years;
 
     // VALUE
     float value;
 
-    public Antiquity(int id, Category category, Quotation quotation, int years, float value) {
+    public Antiquity(int id, int category, int quotation, int years, float value) {
         this.id = id;
         this.category = category;
         this.quotation = quotation;
@@ -37,11 +37,11 @@ public class Antiquity {
         return id;
     }
 
-    public Category getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public Quotation getQuotation() {
+    public int getQuotation() {
         return quotation;
     }
 

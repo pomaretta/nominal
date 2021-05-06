@@ -97,8 +97,8 @@ public class NominalAPI extends Driver {
             resultSet.next();
             salary = new Salary(
                     resultSet.getInt("id")
-                    ,getCategoryById(resultSet.getInt("category"))
-                    ,getQuotationById(resultSet.getInt("quotation"))
+                    ,resultSet.getInt("category")
+                    ,resultSet.getInt("quotation")
                     ,resultSet.getFloat("value")
             );
         } finally {
@@ -120,8 +120,8 @@ public class NominalAPI extends Driver {
             resultSet.next();
             antiquity = new Antiquity(
                     resultSet.getInt("id")
-                    ,getCategoryById(resultSet.getInt("category"))
-                    ,getQuotationById(resultSet.getInt("quotation"))
+                    ,resultSet.getInt("category")
+                    ,resultSet.getInt("quotation")
                     ,resultSet.getInt("years")
                     ,resultSet.getFloat("value")
             );

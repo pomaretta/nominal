@@ -18,13 +18,13 @@ public class Salary {
     int id;
 
     // RELATIONS
-    Category category;
-    Quotation quotation;
+    int category;
+    int quotation;
 
     // VALUE
     float value;
 
-    public Salary(int id, Category category, Quotation quotation, float value) {
+    public Salary(int id, int category, int quotation, float value) {
         this.id = id;
         this.category = category;
         this.quotation = quotation;
@@ -35,16 +35,15 @@ public class Salary {
         return id;
     }
 
-    public Category getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public Quotation getQuotation() {
+    public int getQuotation() {
         return quotation;
     }
 
     public float getValue() {
         return value;
     }
-
 }
