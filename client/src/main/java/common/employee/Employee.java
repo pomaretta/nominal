@@ -12,7 +12,10 @@
 
 */
 
-package common;
+package common.employee;
+
+import common.NominalMaster;
+import common.agreement.Category;
 
 import java.sql.Date;
 
@@ -21,6 +24,7 @@ public class Employee implements NominalMaster {
     // IDENTIFIER
     int id;
     String passport;
+    String naf;
 
     // INFORMATION
     String name;
@@ -33,9 +37,9 @@ public class Employee implements NominalMaster {
     String phoneNumber;
 
     // CONTRACT
+    Category category;
     Date joinDate;
     Date expirationDate;
-    int category;
     boolean active;
     boolean hourly;
 
@@ -44,18 +48,19 @@ public class Employee implements NominalMaster {
     float hiredHours;
     float irpf;
 
-    public Employee(int id, String passport, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, Date joinDate, Date expirationDate, int category, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
+    public Employee(int id, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
         this.id = id;
         this.passport = passport;
+        this.naf = naf;
         this.name = name;
         this.name2 = name2;
         this.lastName = lastName;
         this.lastName2 = lastName2;
         this.mailAddress = mailAddress;
         this.phoneNumber = phoneNumber;
+        this.category = category;
         this.joinDate = joinDate;
         this.expirationDate = expirationDate;
-        this.category = category;
         this.active = active;
         this.hourly = hourly;
         this.apportion = apportion;
@@ -63,17 +68,18 @@ public class Employee implements NominalMaster {
         this.irpf = irpf;
     }
 
-    public Employee(String passport, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, Date joinDate, Date expirationDate, int category, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
+    public Employee(String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
         this.passport = passport;
+        this.naf = naf;
         this.name = name;
         this.name2 = name2;
         this.lastName = lastName;
         this.lastName2 = lastName2;
         this.mailAddress = mailAddress;
         this.phoneNumber = phoneNumber;
+        this.category = category;
         this.joinDate = joinDate;
         this.expirationDate = expirationDate;
-        this.category = category;
         this.active = active;
         this.hourly = hourly;
         this.apportion = apportion;
@@ -88,6 +94,10 @@ public class Employee implements NominalMaster {
 
     public String getPassport() {
         return passport;
+    }
+
+    public String getNaf() {
+        return naf;
     }
 
     public String getName() {
@@ -114,16 +124,16 @@ public class Employee implements NominalMaster {
         return phoneNumber;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
     public Date getJoinDate() {
         return joinDate;
     }
 
     public Date getExpirationDate() {
         return expirationDate;
-    }
-
-    public int getCategory() {
-        return category;
     }
 
     public boolean isActive() {
@@ -145,4 +155,5 @@ public class Employee implements NominalMaster {
     public float getIrpf() {
         return irpf;
     }
+
 }

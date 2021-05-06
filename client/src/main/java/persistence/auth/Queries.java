@@ -30,7 +30,6 @@ public class Queries extends persistence.Queries {
         this.selectAllUsers = this.connection.prepareStatement(Statements.SELECT_ALL_USERS.getQuery());
         this.selectAllPrivileges = this.connection.prepareStatement(Statements.SELECT_ALL_PRIVILEGES.getQuery());
         this.selectUserByName = this.connection.prepareStatement(Statements.SELECT_USER_BY_NAME.getQuery());
-        this.selectPrivilegesFromUser = this.connection.prepareStatement(Statements.SELECT_PRIVILEGES_FROM_USER.getQuery());
         this.selectUserById = this.connection.prepareStatement(Statements.SELECT_USER_BY_ID.getQuery());
         this.selectPrivilegeById = this.connection.prepareStatement(Statements.SELECT_PRIVILEGE_BY_ID.getQuery());
     }

@@ -10,7 +10,7 @@
 
 package common.auth;
 
-import common.Company;
+import common.company.Company;
 
 import java.util.HashSet;
 

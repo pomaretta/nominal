@@ -10,8 +10,8 @@
 
 package common.payroll;
 
-import common.Company;
-import common.Employee;
+import common.company.Company;
+import common.employee.Employee;
 import common.NominalMaster;
 import common.agreement.Agreement;
 

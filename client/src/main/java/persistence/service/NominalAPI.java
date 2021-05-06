@@ -13,6 +13,7 @@
 
 package persistence.service;
 
+import common.agreement.*;
 import service.Driver;
 
 import java.sql.SQLException;
@@ -29,6 +30,27 @@ public class NominalAPI extends Driver {
     @Override
     public Queries getQueries() {
         return queries;
+    }
+
+    // AGREEMENT
+
+    public Category getCategoryById(int id){
+
+
+
+        return null;
+    }
+
+    public Quotation getQuotationById(int id){
+        return null;
+    }
+
+    public Salary getSalary(int agreementId,Category category, Quotation quotation){
+        return null;
+    }
+
+    public Antiquity getAntiquity(int agreementId,Category category,Quotation quotation){
+        return null;
     }
 
 }
