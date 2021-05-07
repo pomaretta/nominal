@@ -38,6 +38,9 @@ public class Queries extends persistence.Queries {
     public PreparedStatement selectAgreementSalaryTables;
     public PreparedStatement selectAgreementAntiquityTables;
 
+    public PreparedStatement selectSalaryTableByFields;
+    public PreparedStatement selectAntiquityTableByFields;
+
     // COMPANY
 
     public PreparedStatement selectCompanyById;
@@ -70,6 +73,9 @@ public class Queries extends persistence.Queries {
         selectAgreementQuotations = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_QUOTATIONS.getQuery());
         selectAgreementSalaryTables = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_SALARY_TABLES.getQuery());
         selectAgreementAntiquityTables = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_ANTIQUITY_TABLES.getQuery());
+
+        selectSalaryTableByFields = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_SALARY_TABLE_BY_FIELDS.getQuery());
+        selectAntiquityTableByFields = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_ANTIQUITY_TABLE_BY_FIELDS.getQuery());
 
         selectCompanyById = this.connection.prepareStatement(Statements.SELECT_COMPANY_BY_ID.getQuery());
         selectAllCompaniesId = this.connection.prepareStatement(Statements.SELECT_ALL_COMPANIES_ID.getQuery());

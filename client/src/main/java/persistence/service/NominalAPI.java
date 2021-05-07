@@ -216,6 +216,45 @@ public class NominalAPI extends Driver {
         return antiquities;
     }
 
+    public Salary getSalaryTableByFields(Agreement agreement,Category category, Quotation quotation) throws SQLException{
+
+        this.queries.selectSalaryTableByFields.setInt(1,agreement.getId());
+        this.queries.selectSalaryTableByFields.setInt(2,category.getId());
+        this.queries.selectSalaryTableByFields.setInt(3,quotation.getId());
+
+        ResultSet resultSet = null;
+        Salary salary;
+
+        try {
+            resultSet = this.queries.selectSalaryTableByFields.executeQuery();
+            salary = getSalaryById(resultSet.getInt("id"));
+        } finally {
+            resultSet.close();
+        }
+
+        return salary;
+    }
+
+    public Antiquity getAntiquityByFields(Agreement agreement,Category category, Quotation quotation, int years) throws SQLException {
+
+        this.queries.selectAntiquityTableByFields.setInt(1,agreement.getId());
+        this.queries.selectAntiquityTableByFields.setInt(2,category.getId());
+        this.queries.selectAntiquityTableByFields.setInt(3,quotation.getId());
+        this.queries.selectAntiquityTableByFields.setInt(4,years);
+
+        ResultSet resultSet = null;
+        Antiquity antiquity;
+
+        try {
+            resultSet = this.queries.selectAntiquityTableByFields.executeQuery();
+            antiquity = getAntiquityById(resultSet.getInt("id"));
+        } finally {
+            resultSet.close();
+        }
+
+        return antiquity;
+    }
+
     public Agreement getAgreementById(int agreementId) throws SQLException {
 
         this.queries.selectAgreementById.setInt(1,agreementId);

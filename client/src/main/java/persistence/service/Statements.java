@@ -31,6 +31,9 @@ public enum Statements {
     SELECT_AGREEMENT_QUOTATIONS("SELECT acq.id FROM nominal_dev.agreement_com_quotation acq WHERE acq.agreement = ?"),
     SELECT_AGREEMENT_SALARY_TABLES("SELECT esv.id FROM nominal_dev.employee_salary_values esv WHERE esv.agreement = ?"),
     SELECT_AGREEMENT_ANTIQUITY_TABLES("SELECT eav.id FROM nominal_dev.employee_antiquity_values eav WHERE eav.agreement = ?"),
+    
+    SELECT_AGREEMENT_SALARY_TABLE_BY_FIELDS("SELECT esv.id as id FROM nominal_dev.employee_salary_values esv WHERE esv.agreement = ? AND esv.category = ? AND esv.quotation = ? ORDER BY esv.created_at DESC LIMIT 1"),
+    SELECT_AGREEMENT_ANTIQUITY_TABLE_BY_FIELDS("SELECT eav.id as id FROM nominal_dev.employee_antiquity_values eav WHERE eav.agreement = ? AND eav.category = ? AND eav.quotation = ? AND eav.years = ? ORDER BY eav.created_at DESC LIMIT 1"),
 
     // COMPANY
     SELECT_COMPANY_BY_ID("SELECT A.id as id, A.name as name, B.agreement as agreement, C.currency as currency, D.phone_number as phone_number, D.state as state, D.street_address as street_address, E.cif as cif FROM ( SELECT c.created_at as creation , c.id as id , c.name as name FROM nominal_dev.company c ) A INNER JOIN ( SELECT ca.created_at as creation , ca.agreement as agreement , ca.company as company FROM nominal_dev.company_agreement ca ) B ON A.id = B.company INNER JOIN ( SELECT cf.created_at as creation , cf.company as company , cf.currency as currency FROM nominal_dev.company_financial cf ) C ON A.id = C.company INNER JOIN ( SELECT cc.created_at as creation , cc.company as company , cc.phone_number as phone_number , cc.state as state , cc.street_address as street_address FROM nominal_dev.company_contact cc ) D ON A.id = D.company INNER JOIN ( SELECT ci.created_at as creation , ci.company as company , ci.cif as cif FROM nominal_dev.company_information ci ) E ON A.id = E.company WHERE A.id = ? ORDER BY B.creation DESC, C.creation DESC, D.creation DESC, E.creation DESC LIMIT 1"),
