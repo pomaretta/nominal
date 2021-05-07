@@ -15,27 +15,27 @@ import static org.junit.Assert.*;
 public class PayrollTest {
     @Test
     public void testGettersPayroll(){
-        Antiquity ant1= new Antiquity(1, Timestamp.valueOf("2001-08-01 22:22:22"), 2, 2, 1992, 2);
-        Salary sal1= new Salary(1, Timestamp.valueOf("2001-08-01 22:22:22"), 2, 2, 5 );
-        Category cat1= new Category(1, "category", 2);
-        Quotation q1= new Quotation(1, "quotation", 2);
-        Complement cmp1= new Complement("complement", 55, 22, 22);
-        Complement cmp2= new Complement("complement2", 55, 22, 22);
+//        Antiquity ant1= new Antiquity(1, Timestamp.valueOf("2001-08-01 22:22:22"), 2, 2, 1992, 2);
+//        Salary sal1= new Salary(1, Timestamp.valueOf("2001-08-01 22:22:22"), 2, 2, 5 );
+//        Category cat1= new Category(1, "category", 2);
+//        Quotation q1= new Quotation(1, "quotation", 2);
+//        Complement cmp1= new Complement("complement", 55, 22, 22);
+//        Complement cmp2= new Complement("complement2", 55, 22, 22);
+//
+//        ArrayList<Quotation> QuatationArray = new ArrayList<>();
+//        QuatationArray.add(q1);
+//        ArrayList<Category> CategoryArray = new ArrayList<>();
+//        CategoryArray.add(cat1);
+//        ArrayList<Salary> SalaryArray = new ArrayList<>();
+//        SalaryArray.add(sal1);
+//        ArrayList<Antiquity> AntiquityArray = new ArrayList<>();
+//        AntiquityArray.add(ant1);
+//        ArrayList<Complement> ComplementArray = new ArrayList<>();
+//        ComplementArray.add(cmp1);
+//        ArrayList<Complement> Complement2Array = new ArrayList<>();
+//        Complement2Array.add(cmp2);
 
-        ArrayList<Quotation> QuatationArray = new ArrayList<>();
-        QuatationArray.add(q1);
-        ArrayList<Category> CategoryArray = new ArrayList<>();
-        CategoryArray.add(cat1);
-        ArrayList<Salary> SalaryArray = new ArrayList<>();
-        SalaryArray.add(sal1);
-        ArrayList<Antiquity> AntiquityArray = new ArrayList<>();
-        AntiquityArray.add(ant1);
-        ArrayList<Complement> ComplementArray = new ArrayList<>();
-        ComplementArray.add(cmp1);
-        ArrayList<Complement> Complement2Array = new ArrayList<>();
-        Complement2Array.add(cmp2);
-
-        Agreement a1= new Agreement(1, "agreement", QuatationArray ,CategoryArray, SalaryArray, AntiquityArray );
+//        Agreement a1= new Agreement(1, "agreement", QuatationArray ,CategoryArray, SalaryArray, AntiquityArray );
 //        Company c1 = new Company(a1, "ScafoldInteractive", "cif", "securityid", "calle manolo", "state", "6000444", "currency", "cdigit");
 ////        Employee emp1 = new Employee(1, "passport", "Tofol", "Manolo", "Isaac", "Fernandez", "tofol@tofol.com", "602015412", Date.valueOf("2001-01-22") , Date.valueOf("2002-01-22"), 2, true, true, false, 22, 55 );
 //

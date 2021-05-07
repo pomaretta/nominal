@@ -52,6 +52,11 @@ public class Queries extends persistence.Queries {
     public PreparedStatement selectEmployeeById;
     public PreparedStatement selectEmployeeScheduleById;
 
+    // MINIMAL
+
+    public PreparedStatement selectCompaniesMinimal;
+    public PreparedStatement selectEmployeesInCompanyMinimal;
+
     public Queries(Connection connection) throws SQLException {
         super(connection);
         selectAllEmployees = this.connection.prepareStatement(Statements.SELECT_ALL_EMPLOYEES.getQuery());
@@ -83,6 +88,9 @@ public class Queries extends persistence.Queries {
 
         selectEmployeeById = this.connection.prepareStatement(Statements.SELECT_EMPLOYEE_BY_ID.getQuery());
         selectEmployeeScheduleById = this.connection.prepareStatement(Statements.SELECT_SCHEDULE_BY_ID.getQuery());
+
+        selectCompaniesMinimal = this.connection.prepareStatement(Statements.SELECT_COMPANIES_MINIMAL.getQuery());
+        selectEmployeesInCompanyMinimal = this.connection.prepareStatement(Statements.SELECT_EMPLOYEES_MINIMAL.getQuery());
 
     }
 

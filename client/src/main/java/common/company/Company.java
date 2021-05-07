@@ -23,25 +23,27 @@ import java.util.ArrayList;
 public class Company implements NominalMaster {
 
     // IDENTIFIER
-    private int id;
+    protected int id;
 
     // AGREEMENT
-    private Agreement agreement;
+    protected Agreement agreement;
 
     // EMPLOYEES
-    private ArrayList<Employee> employees;
+    protected ArrayList<Employee> employees;
 
     // INFORMATION
-    private String name;
-    private String cif;
+    protected String name;
+    protected String cif;
 
     // CONTACT
-    private String streetAddress;
-    private String state;
-    private String phoneNumber;
+    protected String streetAddress;
+    protected String state;
+    protected String phoneNumber;
 
     // FINANCIAL
-    private Currency currency;
+    protected Currency currency;
+
+    public Company(){}
 
     public Company(int id, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String streetAddress, String state, String phoneNumber, Currency currency) {
         this.id = id;

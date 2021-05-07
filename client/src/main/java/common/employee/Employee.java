@@ -22,32 +22,34 @@ import java.sql.Date;
 public class Employee implements NominalMaster {
 
     // IDENTIFIER
-    int id;
-    String passport;
-    String naf;
+    protected int id;
+    protected String passport;
+    protected String naf;
 
     // INFORMATION
-    String name;
-    String name2;
-    String lastName;
-    String lastName2;
+    protected String name;
+    protected String name2;
+    protected String lastName;
+    protected String lastName2;
 
     // CONTACT
-    String mailAddress;
-    String phoneNumber;
-    String streetAddress;
+    protected String mailAddress;
+    protected String phoneNumber;
+    protected String streetAddress;
 
     // CONTRACT
-    Category category;
-    Date joinDate;
-    Date expirationDate;
-    boolean active;
-    boolean hourly;
+    protected Category category;
+    protected Date joinDate;
+    protected Date expirationDate;
+    protected boolean active;
+    protected boolean hourly;
 
     // FINANCIAL
-    boolean apportion;
-    float hiredHours;
-    float irpf;
+    protected boolean apportion;
+    protected float hiredHours;
+    protected float irpf;
+
+    public Employee(){}
 
     public Employee(int id, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, String streetAddress, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
         this.id = id;

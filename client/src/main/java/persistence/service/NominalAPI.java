@@ -15,8 +15,10 @@ package persistence.service;
 
 import common.agreement.*;
 import common.company.Company;
+import common.company.CompanyMinimal;
 import common.company.Currency;
 import common.employee.Employee;
+import common.employee.EmployeeMinimal;
 import common.employee.Schedule;
 import service.Driver;
 
@@ -472,6 +474,54 @@ public class NominalAPI extends Driver {
         }
 
         return companies;
+    }
+
+    public ArrayList<Company> getCompaniesMinimal() throws SQLException {
+
+        ResultSet resultSet = null;
+        ArrayList<Company> companies = new ArrayList<>();
+
+        try {
+            resultSet = this.queries.selectCompaniesMinimal.executeQuery();
+            while (resultSet.next()){
+                companies.add(
+                        new CompanyMinimal(
+                                resultSet.getInt("id")
+                                ,resultSet.getString("name")
+                        )
+                );
+            }
+        } finally {
+            resultSet.close();
+        }
+
+        return companies;
+    }
+
+    public ArrayList<Employee> getEmployeeInCompanyMinimal(int companyId) throws SQLException {
+        this.queries.selectEmployeesInCompanyMinimal.setInt(1,companyId);
+
+        ResultSet resultSet = null;
+        ArrayList<Employee> employees = new ArrayList<>();
+
+        try {
+            resultSet = this.queries.selectEmployeesInCompanyMinimal.executeQuery();
+            while(resultSet.next()){
+                employees.add(
+                        new EmployeeMinimal(
+                                resultSet.getInt("id")
+                                ,resultSet.getString("name")
+                                ,resultSet.getString("lastname")
+                                ,resultSet.getString("lastname2")
+                                ,resultSet.getString("email_address")
+                        )
+                );
+            }
+        } finally {
+            resultSet.close();
+        }
+
+        return employees;
     }
 
 }

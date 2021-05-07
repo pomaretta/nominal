@@ -3,12 +3,16 @@ package controllers;
 import application.NominalFX;
 import application.Views;
 import common.auth.User;
+import common.company.Company;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -26,6 +30,7 @@ import view.ViewManager;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class HomeController extends BaseController implements Initializable {
@@ -55,6 +60,9 @@ public class HomeController extends BaseController implements Initializable {
 
     private ViewManager formManager;
 
+    @FXML
+    private ComboBox companySelector;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // When this controller in called with the stage manager calls this function.
@@ -82,6 +90,16 @@ public class HomeController extends BaseController implements Initializable {
         this.userName.setText(NominalFX.authAPI.getLogedUser().getName());
 
         formManager = new ViewManager(this.contentPane,this);
+
+        try {
+            ObservableList<String> items = FXCollections.observableArrayList();
+            for(Company c : NominalFX.nominalAPI.getCompaniesMinimal()){
+                items.add(c.getName());
+            }
+            companySelector.setItems(items);
+        } catch (Exception e){
+            //
+        }
 
     }
 

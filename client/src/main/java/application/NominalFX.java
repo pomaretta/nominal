@@ -10,6 +10,7 @@
 
 package application;
 
+import common.company.Company;
 import configuration.DatabaseDeveloper;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -19,6 +20,7 @@ import util.MD5;
 import view.StageManager;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class NominalFX extends Application {
 
