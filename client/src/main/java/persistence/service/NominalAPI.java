@@ -450,6 +450,7 @@ public class NominalAPI extends Driver {
                     ,resultSet.getString("state")
                     ,resultSet.getString("phone_number")
                     ,getCurrencyById(resultSet.getInt("currency"))
+                    ,getQuotationById(resultSet.getInt("quotation"))
             );
         } finally {
             resultSet.close();
