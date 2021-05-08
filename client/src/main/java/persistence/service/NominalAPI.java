@@ -445,6 +445,7 @@ public class NominalAPI extends Driver {
                     ,getEmployeesByCompanyId(resultSet.getInt("id"))
                     ,resultSet.getString("name")
                     ,resultSet.getString("cif")
+                    ,resultSet.getString("social_security_id")
                     ,resultSet.getString("street_address")
                     ,resultSet.getString("state")
                     ,resultSet.getString("phone_number")
