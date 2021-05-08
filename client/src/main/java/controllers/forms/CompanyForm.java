@@ -18,27 +18,37 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import optimization.Cache;
 import view.ViewController;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CompanyForm extends ViewController implements Initializable {
-    private ObservableList companielist = FXCollections.observableArrayList();
+    private ObservableList companyList = FXCollections.observableArrayList();
     private ArrayList<Company> companies;
+    private ArrayList<Object> objectsList = new ArrayList<>();
+
+    private Cache cache = new Cache();
 
     @FXML
     private ComboBox companySelector;
     @FXML
-    private TextField fieldName;
+    private TextField idField;
     @FXML
-    private TextField fieldCif;
+    private TextField nameField;
     @FXML
-    private TextField fieldAdress;
+    private TextField stateField;
+    @FXML
+    private TextField cifField;
+    @FXML
+    private TextField streetAddressField;
+    @FXML
+    private TextField phoneNumberField;
+    @FXML
+    private TextField socialSecurityField;
 
 
     @Override
@@ -49,21 +59,31 @@ public class CompanyForm extends ViewController implements Initializable {
             //
         }
         for (Company c : companies){
-            companielist.add(c.getName());
+            companyList.add(c.getName());
         }
 
-        companySelector.setItems(companielist);
+        companySelector.setItems(companyList);
 
 
     }
 
     @FXML
-    public void updateFields(ActionEvent e){
-        Object evt = e.getSource();
+    public void updateFields() throws SQLException {
 
-        if (evt.equals(companySelector)){
-            fieldName.setText(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getName());
+        if (cache.containsCompany(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getId())){
+            idField.setText(String.valueOf(cache.getCompanyById(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getId()).getId()));
+            nameField.setText(String.valueOf(cache.getCompanyById(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getId()).getName()));
+            stateField.setText(String.valueOf(cache.getCompanyById(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getId()).getState()));
+            cifField.setText(String.valueOf(cache.getCompanyById(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getId()).getCif()));
+            streetAddressField.setText(String.valueOf(cache.getCompanyById(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getId()).getStreetAddress()));
+            phoneNumberField.setText(String.valueOf(cache.getCompanyById(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getId()).getPhoneNumber()));
+            socialSecurityField.setText(String.valueOf(cache.getCompanyById(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getId()).getSocialSecurityId()));
+
+        } else {
+            cache.add(NominalFX.nominalAPI.getCompanyById(companies.get(companySelector.getSelectionModel().getSelectedIndex()).getId()), cache.getCompanies());
+            updateFields();
         }
+
     }
 
 }
