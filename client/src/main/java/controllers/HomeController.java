@@ -63,6 +63,11 @@ public class HomeController extends BaseController implements Initializable {
     @FXML
     private ComboBox companySelector;
 
+    private ObservableList<String> items;
+    private ArrayList<Company> companies;
+
+    private Company currentCompany;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // When this controller in called with the stage manager calls this function.
@@ -92,8 +97,9 @@ public class HomeController extends BaseController implements Initializable {
         formManager = new ViewManager(this.contentPane,this);
 
         try {
-            ObservableList<String> items = FXCollections.observableArrayList();
-            for(Company c : NominalFX.nominalAPI.getCompaniesMinimal()){
+            this.items = FXCollections.observableArrayList();
+            this.companies = NominalFX.nominalAPI.getCompaniesMinimal();
+            for(Company c : this.companies){
                 items.add(c.getName());
             }
             companySelector.setItems(items);
@@ -128,6 +134,21 @@ public class HomeController extends BaseController implements Initializable {
             settingsButton.getStyleClass().remove("active");
             button.getStyleClass().add("active");
         }
+    }
+
+    @FXML
+    public void companySelection() throws SQLException {
+        if(NominalFX.cache.containsCompany(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId())){
+            this.currentCompany = NominalFX.cache.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId());
+            System.out.println(this.currentCompany.getName());
+        } else {
+            NominalFX.cache.add(NominalFX.nominalAPI.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId()),NominalFX.cache.getCompanies());
+            companySelection();
+        }
+    }
+
+    public Company getCurrentCompany() {
+        return currentCompany;
     }
 
 }

@@ -123,4 +123,12 @@ public class Company implements NominalMaster {
     public Currency getCurrency() {
         return currency;
     }
+
+    public String getSocialSecurityId() {
+        return socialSecurityId;
+    }
+
+    public Quotation getQuotation() {
+        return quotation;
+    }
 }
