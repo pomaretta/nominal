@@ -104,4 +104,41 @@ public class Cache {
         return false;
     }
 
+    // GET ID OBJECTS
+    public Agreement getAgreementById(int agreementId){
+        for(Agreement a : getAgreements()){
+            if (a.getId() == agreementId){
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public Company getCompanyById(int companyId){
+        for(Company p : getCompanies()){
+            if (p.getId() == companyId){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public Employee getEmployeeById(int employeeId){
+        for(Employee e : getEmployees()){
+            if (e.getId() == employeeId){
+                return e;
+            }
+        }
+        return null;
+    }
+
+    public Payroll getPayrollById(int payrollId){
+        for(Payroll p : getPayrolls()){
+            if (p.getId() == payrollId){
+                return p;
+            }
+        }
+        return null;
+    }
+
 }
