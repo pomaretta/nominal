@@ -2,7 +2,7 @@
 --           NOMINAL DATABASE
 -- #####################################
 
--- REVISION: 3.1
+-- REVISION: 3.3
 -- DATE: 05/05/2021
 -- AUTHORS
 --      CARLOS POMARES (https://www.github.com/pomaretta)
@@ -132,6 +132,7 @@ CREATE TABLE company_information (
     id                      INT NOT NULL AUTO_INCREMENT,
 
     cif                     VARCHAR(255) NOT NULL,
+    socialSecurityId        VARCHAR(255) NOT NULL,
 
     PRIMARY KEY (id),
     FOREIGN KEY (company) REFERENCES company (id)
@@ -157,11 +158,13 @@ CREATE TABLE company_financial (
     created_at              TIMESTAMP DEFAULT NOW(),
     id                      INT NOT NULL AUTO_INCREMENT,
 
+    quotation               INT NOT NULL,
     currency                INT NOT NULL,
 
     PRIMARY KEY (id),
     FOREIGN KEY (company) REFERENCES company (id),
-    FOREIGN KEY (currency) REFERENCES currency (id)
+    FOREIGN KEY (currency) REFERENCES currency (id),
+    FOREIGN KEY (quotation) REFERENCES agreement_com_quotation (id)
 );
 
 -- #####################################
@@ -212,7 +215,8 @@ CREATE TABLE employee_contract (
     hired_hours             FLOAT DEFAULT 0,
 
     PRIMARY KEY (id),
-    FOREIGN KEY (employee) REFERENCES employee (id)
+    FOREIGN KEY (employee) REFERENCES employee (id),
+    FOREIGN KEY (category) REFERENCES agreement_emp_category (id)
 );
 
 CREATE TABLE employee_schedule (

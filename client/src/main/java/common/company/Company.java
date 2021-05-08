@@ -16,6 +16,7 @@ package common.company;
 
 import common.NominalMaster;
 import common.agreement.Agreement;
+import common.agreement.Quotation;
 import common.employee.Employee;
 
 import java.util.ArrayList;
@@ -43,10 +44,11 @@ public class Company implements NominalMaster {
 
     // FINANCIAL
     protected Currency currency;
+    protected Quotation quotation;
 
     public Company(){}
 
-    public Company(int id, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency) {
+    public Company(int id, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency, Quotation quotation) {
         this.id = id;
         this.agreement = agreement;
         this.employees = employees;
@@ -57,9 +59,10 @@ public class Company implements NominalMaster {
         this.state = state;
         this.phoneNumber = phoneNumber;
         this.currency = currency;
+        this.quotation = quotation;
     }
 
-    public Company(Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency) {
+    public Company(Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency, Quotation quotation) {
         this.agreement = agreement;
         this.employees = employees;
         this.name = name;
@@ -69,9 +72,10 @@ public class Company implements NominalMaster {
         this.state = state;
         this.phoneNumber = phoneNumber;
         this.currency = currency;
+        this.quotation = quotation;
     }
 
-    public Company(Agreement agreement, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency) {
+    public Company(Agreement agreement, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency, Quotation quotation) {
         this.agreement = agreement;
         this.name = name;
         this.cif = cif;
@@ -80,6 +84,7 @@ public class Company implements NominalMaster {
         this.state = state;
         this.phoneNumber = phoneNumber;
         this.currency = currency;
+        this.quotation = quotation;
     }
 
     @Override

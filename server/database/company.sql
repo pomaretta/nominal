@@ -188,12 +188,12 @@ INSERT INTO nominal_dev.company (name) VALUES
     ,("Barcelo")
     ,("Gas Soller");
 
-INSERT INTO nominal_dev.company_information (company,cif) VALUES
-    (1,"B-235323")
-    ,(2,"A-643434")
-    ,(3,"A-235895")
-    ,(4,"B-325673")
-    ,(5,"A-956840");
+INSERT INTO nominal_dev.company_information (company,cif,socialSecurityId) VALUES
+    (1,"B-235323","SS-22543")
+    ,(2,"A-643434","SS-23444")
+    ,(3,"A-235895","SS-24243")
+    ,(4,"B-325673","SS-26243")
+    ,(5,"A-956840","SS-24243");
 
 INSERT INTO nominal_dev.company_contact (company,street_address,state,phone_number) VALUES
     (1,"C\ Calcat 2, 1ro 1era","Spain","971568423")
@@ -202,12 +202,12 @@ INSERT INTO nominal_dev.company_contact (company,street_address,state,phone_numb
     ,(4,"C\ Son Castello 67","Spain","971235783")
     ,(5,"C\ Gerani 23","Spain","986235633");
 
-INSERT INTO nominal_dev.company_financial (company,currency) VALUES
-    (1,47)
-    ,(2,47)
-    ,(3,47)
-    ,(4,47)
-    ,(5,47);
+INSERT INTO nominal_dev.company_financial (company,currency,quotation) VALUES
+    (1,47,3)
+    ,(2,47,6)
+    ,(3,47,1)
+    ,(4,47,15)
+    ,(5,47,2);
 
 INSERT INTO nominal_dev.company_agreement (company,agreement) VALUES
     (1,1)

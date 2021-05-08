@@ -13,16 +13,16 @@ public class Cache {
     private final ArrayList<Object> items;
 
     // AGREEMENTS
-    private final ArrayList<Agreement> agreements;
+    private final ArrayList<Object> agreements;
 
     // PAYROLLS
-    private final ArrayList<Payroll> payrolls;
+    private final ArrayList<Object> payrolls;
 
     // COMPANY
-    private final ArrayList<Company> companies;
+    private final ArrayList<Object> companies;
 
     // EMPLOYEES
-    private final ArrayList<Employee> employees;
+    private final ArrayList<Object> employees;
 
     public Cache(){
         this.items = new ArrayList<>();
@@ -36,19 +36,19 @@ public class Cache {
         return items;
     }
 
-    public ArrayList<Agreement> getAgreements() {
+    public ArrayList<Object> getAgreements() {
         return agreements;
     }
 
-    public ArrayList<Payroll> getPayrolls() {
+    public ArrayList<Object> getPayrolls() {
         return payrolls;
     }
 
-    public ArrayList<Company> getCompanies() {
+    public ArrayList<Object> getCompanies() {
         return companies;
     }
 
-    public ArrayList<Employee> getEmployees() {
+    public ArrayList<Object> getEmployees() {
         return employees;
     }
 
@@ -66,8 +66,8 @@ public class Cache {
 
     // AGREEMENTS
     public boolean containsAgreement(int agreementId){
-        for(Agreement a : getAgreements()){
-            if (a.getId() == agreementId){
+        for(Object a : getAgreements()){
+             if (((Agreement) a).getId() == agreementId){
                 return true;
             }
         }
@@ -76,8 +76,8 @@ public class Cache {
 
     // COMPANY
     public boolean containsCompany(int companyId){
-        for(Company c : getCompanies()){
-            if (c.getId() == companyId){
+        for(Object c : getCompanies()){
+            if (((Company) c).getId() == companyId){
                 return true;
             }
         }
@@ -86,8 +86,8 @@ public class Cache {
 
     // EMPLOYEE
     public boolean containsEmployee(int employeeId){
-        for(Employee e : getEmployees()){
-            if (e.getId() == employeeId){
+        for(Object e : getEmployees()){
+            if (((Employee) e).getId() == employeeId){
                 return true;
             }
         }
@@ -96,8 +96,8 @@ public class Cache {
 
     // PAYROLL
     public boolean containsPayroll(int payrollId){
-        for(Payroll p : getPayrolls()){
-            if (p.getId() == payrollId){
+        for(Object p : getPayrolls()){
+            if (((Payroll) p).getId() == payrollId){
                 return true;
             }
         }
@@ -106,36 +106,36 @@ public class Cache {
 
     // GET ID OBJECTS
     public Agreement getAgreementById(int agreementId){
-        for(Agreement a : getAgreements()){
-            if (a.getId() == agreementId){
-                return a;
+        for(Object a : getAgreements()){
+            if (((Agreement) a).getId() == agreementId){
+                return (Agreement) a;
             }
         }
         return null;
     }
 
     public Company getCompanyById(int companyId){
-        for(Company p : getCompanies()){
-            if (p.getId() == companyId){
-                return p;
+        for(Object p : getCompanies()){
+            if (((Company) p).getId() == companyId){
+                return (Company) p;
             }
         }
         return null;
     }
 
     public Employee getEmployeeById(int employeeId){
-        for(Employee e : getEmployees()){
-            if (e.getId() == employeeId){
-                return e;
+        for(Object e : getEmployees()){
+            if (((Employee) e).getId() == employeeId){
+                return (Employee) e;
             }
         }
         return null;
     }
 
     public Payroll getPayrollById(int payrollId){
-        for(Payroll p : getPayrolls()){
-            if (p.getId() == payrollId){
-                return p;
+        for(Object p : getPayrolls()){
+            if (((Payroll) p).getId() == payrollId){
+                return (Payroll) p;
             }
         }
         return null;
