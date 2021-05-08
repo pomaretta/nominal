@@ -14,6 +14,7 @@ import common.company.Company;
 import configuration.DatabaseDeveloper;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import optimization.Cache;
 import persistence.auth.AuthAPI;
 import persistence.service.NominalAPI;
 import util.MD5;
@@ -26,6 +27,8 @@ public class NominalFX extends Application {
 
     public static AuthAPI authAPI;
     public static NominalAPI nominalAPI;
+
+    public static Cache cache;
 
     protected StageManager stageManager;
 
@@ -40,14 +43,13 @@ public class NominalFX extends Application {
     }
 
     public static void main(String[] args) throws Exception {
-
         try {
             authAPI = new AuthAPI(DatabaseDeveloper.AUTH.getURL(), DatabaseDeveloper.AUTH.getUser(),DatabaseDeveloper.AUTH.getPassword());
             nominalAPI = new NominalAPI(DatabaseDeveloper.NOMINAL.getURL(),DatabaseDeveloper.NOMINAL.getUser(),DatabaseDeveloper.NOMINAL.getPassword());
         } catch (SQLException exception){
             //
         }
-
+        cache = new Cache();
         launch(args);
     }
 

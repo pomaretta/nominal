@@ -47,6 +47,11 @@ public enum Statements {
     SELECT_COMPANIES_MINIMAL("SELECT c.id as id, c.name as name FROM nominal_dev.company c"),
     SELECT_EMPLOYEES_MINIMAL("SELECT DISTINCT A.employee as id ,B.name as name ,B.lastname as lastname ,B.lastname_2 as lastname2 ,C.email_address FROM nominal_dev.company_employee A INNER JOIN nominal_dev.employee_information B ON A.employee = B.id INNER JOIN nominal_dev.employee_contact C ON A.employee = C.employee WHERE A.company = ? AND A.expiration_date IS NULL ORDER BY B.created_at DESC"),
 
+    // PAYROLL
+    SELECT_PAYROLL_BY_ID(""),
+    SELECT_PAYROLL_BY_EMPLOYEE_ID(""),
+    SELECT_PAYROLL_BY_COMPANY_ID(""),
+
     PLACEHOLDER("");
 
     private final String query;

@@ -18,17 +18,6 @@ public class Connections {
 
     /**
      *
-     * Creates connection with default url and credentials given by the BDCredentials object.
-     *
-     * @return a SQL Connection.
-     * @throws SQLException if the connection fails.
-     */
-    public static Connection createConnection() throws SQLException {
-        return DriverManager.getConnection(Credentials.getUrl(),Credentials.USERNAME.getData(),Credentials.PASSWORD.getData());
-    }
-
-    /**
-     *
      * Creates connection with url, username, password arguments and tries to establish connection.
      *
      * @param url the url of the jdbc pointing to the database.

@@ -16,20 +16,23 @@ import java.util.ArrayList;
 public class Agreement implements NominalMaster {
 
     // IDENTIFIER
-    int id;
-    String name;
+    protected int id;
+    protected String name;
 
     // QUOTATION GROUPS
-    ArrayList<Quotation> quotations;
+    protected ArrayList<Quotation> quotations;
 
     // CATEGORY GROUPS
-    ArrayList<Category> categories;
+    protected ArrayList<Category> categories;
 
     // SALARIES
-    ArrayList<Salary> salaries;
+    protected ArrayList<Salary> salaries;
 
     // ANTIQUITY
-    ArrayList<Antiquity> antiquities;
+    protected ArrayList<Antiquity> antiquities;
+
+    public Agreement() {
+    }
 
     public Agreement(int id, String name, ArrayList<Quotation> quotations, ArrayList<Category> categories, ArrayList<Salary> salaries, ArrayList<Antiquity> antiquities) {
         this.id = id;

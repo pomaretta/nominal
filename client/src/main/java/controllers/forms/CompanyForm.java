@@ -10,9 +10,11 @@
 
 package controllers.forms;
 
+import common.company.Company;
 import javafx.fxml.Initializable;
 import view.ViewController;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 

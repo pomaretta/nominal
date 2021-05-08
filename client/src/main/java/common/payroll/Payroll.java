@@ -22,67 +22,70 @@ import java.util.ArrayList;
 public class Payroll implements NominalMaster {
 
     // IDENTIFIER
-    private int id;
-    private final Timestamp created;
+    protected int id;
+    protected Timestamp created;
 
     // REFERENCES
-    private final Company company;
-    private final Agreement agreement;
-    private final Employee employee;
+    protected Company company;
+    protected Agreement agreement;
+    protected Employee employee;
 
     // DATES
-    private final Date from;
-    private final Date to;
-    private final int totalDays;
+    protected Date from;
+    protected Date to;
+    protected int totalDays;
 
     // COMPLEMENTS
-    private final ArrayList<Complement> salaryComplements;
-    private final ArrayList<Complement> nonSalaryComplements;
+    protected ArrayList<Complement> salaryComplements;
+    protected ArrayList<Complement> nonSalaryComplements;
 
-    private final float salaryKind;
-    private final float totalEarned;
+    protected float salaryKind;
+    protected float totalEarned;
 
     // CC
-    private final float ccPercentage;
-    private final float ccValue;
+    protected float ccPercentage;
+    protected float ccValue;
 
     // Unemployment
-    private final float unemploymentPercentage;
-    private final float unemploymentValue;
+    protected float unemploymentPercentage;
+    protected float unemploymentValue;
 
     // Training
-    private final float trainingPercentage;
-    private final float trainingValue;
+    protected float trainingPercentage;
+    protected float trainingValue;
 
     // Ordinary Hours
-    private final float ohPercentage;
-    private final float ohValue;
+    protected float ohPercentage;
+    protected float ohValue;
 
     // Extra hours
-    private final float ehPercentage;
-    private final float ehValue;
+    protected float ehPercentage;
+    protected float ehValue;
 
     // Total apportions
-    private final float totalApportions;
+    protected float totalApportions;
 
     // IRPF
-    private final float irpfPercentage;
-    private final float irpfValue;
+    protected float irpfPercentage;
+    protected float irpfValue;
 
     // ADVANCE PAYS
-    private final float advancePays;
+    protected float advancePays;
 
     // Salary Kind Deduction
-    private final float salaryKindDeduction;
+    protected float salaryKindDeduction;
 
     // Other deduction
-    private final float otherDeduction;
+    protected float otherDeduction;
 
     // Total Deduction
-    private final float totalDeduction;
+    protected float totalDeduction;
 
     // Total to Receive
-    private final float totalToReceive;
+    protected float totalToReceive;
+
+    public Payroll() {
+    }
 
     public Payroll(int id, Timestamp created, Company company, Agreement agreement, Employee employee, Date from, Date to, int totalDays, ArrayList<Complement> salaryComplements, ArrayList<Complement> nonSalaryComplements, float salaryKind, float totalEarned, float ccPercentage, float ccValue, float unemploymentPercentage, float unemploymentValue, float trainingPercentage, float trainingValue, float ohPercentage, float ohValue, float ehPercentage, float ehValue, float totalApportions, float irpfPercentage, float irpfValue, float advancePays, float salaryKindDeduction, float otherDeduction, float totalDeduction, float totalToReceive) {
         this.id = id;

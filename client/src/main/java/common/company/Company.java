@@ -34,6 +34,7 @@ public class Company implements NominalMaster {
     // INFORMATION
     protected String name;
     protected String cif;
+    protected String socialSecurityId;
 
     // CONTACT
     protected String streetAddress;
@@ -45,33 +46,36 @@ public class Company implements NominalMaster {
 
     public Company(){}
 
-    public Company(int id, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String streetAddress, String state, String phoneNumber, Currency currency) {
+    public Company(int id, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency) {
         this.id = id;
         this.agreement = agreement;
         this.employees = employees;
         this.name = name;
         this.cif = cif;
+        this.socialSecurityId = socialSecurityId;
         this.streetAddress = streetAddress;
         this.state = state;
         this.phoneNumber = phoneNumber;
         this.currency = currency;
     }
 
-    public Company(Agreement agreement, ArrayList<Employee> employees, String name, String cif, String streetAddress, String state, String phoneNumber, Currency currency) {
+    public Company(Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency) {
         this.agreement = agreement;
         this.employees = employees;
         this.name = name;
         this.cif = cif;
+        this.socialSecurityId = socialSecurityId;
         this.streetAddress = streetAddress;
         this.state = state;
         this.phoneNumber = phoneNumber;
         this.currency = currency;
     }
 
-    public Company(Agreement agreement, String name, String cif, String streetAddress, String state, String phoneNumber, Currency currency) {
+    public Company(Agreement agreement, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency) {
         this.agreement = agreement;
         this.name = name;
         this.cif = cif;
+        this.socialSecurityId = socialSecurityId;
         this.streetAddress = streetAddress;
         this.state = state;
         this.phoneNumber = phoneNumber;
