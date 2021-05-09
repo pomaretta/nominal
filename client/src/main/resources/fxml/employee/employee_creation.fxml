@@ -20,17 +20,17 @@
          <children>
             <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                <children>
-                  <ComboBox layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
-                  <FlowPane alignment="CENTER_LEFT" layoutX="223.0" layoutY="16.0" prefHeight="40.0" prefWidth="715.0">
+                  <ComboBox fx:id="employeeSelector" layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
+                  <FlowPane alignment="CENTER_LEFT" layoutX="231.0" layoutY="16.0" prefHeight="40.0" prefWidth="707.0">
                      <children>
                         <Label prefHeight="20.0" prefWidth="131.0" styleClass="selector-title" text="Employee Name">
                            <FlowPane.margin>
                               <Insets right="10.0" />
                            </FlowPane.margin>
                         </Label>
-                        <Label layoutX="10.0" layoutY="22.0" prefHeight="20.0" prefWidth="90.0" styleClass="selector-content" text="&lt;Name&gt;">
+                        <Label fx:id="employeePreviewName" layoutX="10.0" layoutY="22.0" prefHeight="20.0" prefWidth="90.0" styleClass="selector-content" text="&lt;Name&gt;">
                            <FlowPane.margin>
-                              <Insets right="25.0" />
+                              <Insets />
                            </FlowPane.margin>
                         </Label>
                         <Label styleClass="selector-title" text="Passport">
@@ -38,7 +38,7 @@
                               <Insets right="10.0" />
                            </FlowPane.margin>
                         </Label>
-                        <Label styleClass="selector-content" text="&lt;Passport&gt;" />
+                        <Label fx:id="employeePreviewPassport" styleClass="selector-content" text="&lt;Passport&gt;" />
                      </children>
                   </FlowPane>
                </children>

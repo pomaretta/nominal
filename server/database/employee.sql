@@ -74,3 +74,21 @@ INSERT INTO nominal_dev.company_employee (company,employee,join_date) VALUES
     ,(4,8,DATE('2020-06-03'))
     ,(2,9,DATE('2020-06-03'))
     ,(1,10,DATE('2014-06-03'));
+
+CREATE TRIGGER employee_contact AFTER INSERT 
+ON nominal_dev.employee_contact FOR EACH ROW
+BEGIN 
+	UPDATE nominal_dev.employee SET last_update = NOW() WHERE id = NEW.employee;
+END
+
+CREATE TRIGGER employee_information AFTER INSERT 
+ON nominal_dev.employee_information FOR EACH ROW
+BEGIN 
+	UPDATE nominal_dev.employee SET last_update = NOW() WHERE id = NEW.employee;
+END
+
+CREATE TRIGGER employee_contract AFTER INSERT 
+ON nominal_dev.employee_contract FOR EACH ROW
+BEGIN 
+	UPDATE nominal_dev.employee SET last_update = NOW() WHERE id = NEW.employee;
+END

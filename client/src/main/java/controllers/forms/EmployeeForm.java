@@ -12,4 +12,10 @@ public class EmployeeForm extends ViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+    @Override
+    public void shouldUpdate() {
+
+    }
+
 }

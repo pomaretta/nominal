@@ -24,6 +24,7 @@ USE nominal;
 CREATE TABLE company (
 
     created_at              TIMESTAMP DEFAULT NOW(),
+    last_update             TIMESTAMP DEFAULT NOW(),
 
     id                      INT NOT NULL AUTO_INCREMENT,
     name                    VARCHAR(255) NOT NULL,
@@ -33,6 +34,7 @@ CREATE TABLE company (
 CREATE TABLE employee (
 
     created_at              TIMESTAMP DEFAULT NOW(),
+    last_update             TIMESTAMP DEFAULT NOW(),
 
     id                      INT NOT NULL AUTO_INCREMENT,
     passport                VARCHAR(255) NOT NULL,
@@ -44,6 +46,7 @@ CREATE TABLE employee (
 CREATE TABLE agreement (
 
     created_at              TIMESTAMP DEFAULT NOW(),
+    last_update             TIMESTAMP DEFAULT NOW(),
 
     id                      INT NOT NULL AUTO_INCREMENT,
     name                    VARCHAR(255) NOT NULL,
@@ -268,6 +271,15 @@ CREATE TABLE payroll (
     cc_percentage           FLOAT,
     cc_value                FLOAT,
 
+    -- prestaciones o indemnizaciones de la SS
+    benefits_and_compensations FLOAT,
+
+    -- indemnizaciones por despido, traslado o despido
+    redundancy_payment      FLOAT,
+
+    -- other prestations
+    other_benefits          FLOAT,
+
     -- UNEMPLOYMENT
     unemployment_percentage FLOAT,
     unemployment_value      FLOAT,
@@ -277,10 +289,12 @@ CREATE TABLE payroll (
     training_value          FLOAT,
     
     -- OVERWHELMING HOURS REDUCTION
+    oh_original_value       FLOAT,
     oh_percentage           FLOAT,
     oh_value                FLOAT,
 
     -- EXTRA HOURS REDUCTION
+    eh_original_value       FLOAT,
     eh_percentage           FLOAT,
     eh_value                FLOAT,
 
