@@ -22,15 +22,24 @@ import common.employee.EmployeeMinimal;
 import common.employee.Schedule;
 import service.Driver;
 
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class NominalAPI extends Driver {
 
+    // Queries
     public persistence.service.Queries queries;
 
+    /**
+     *
+     * The nominal API to perform all queries about Nominal Internal objects.
+     *
+     * @param url the url for jdbc.
+     * @param username the username to access database.
+     * @param password the password to access database.
+     * @throws SQLException if something fails.
+     */
     public NominalAPI(String url, String username, String password) throws SQLException {
         super(url, username, password);
         this.queries = new persistence.service.Queries(this.connection);
@@ -43,6 +52,14 @@ public class NominalAPI extends Driver {
 
     // AGREEMENT
 
+    /**
+     *
+     * Get the category info from the database.
+     *
+     * @param id the id of the category.
+     * @return the category object.
+     * @throws SQLException if something fails.
+     */
     public Category getCategoryById(int id) throws SQLException {
 
         this.queries.selectCategoryById.setInt(1,id);
@@ -65,6 +82,14 @@ public class NominalAPI extends Driver {
         return category;
     }
 
+    /**
+     *
+     * Get the quotation by his identification.
+     *
+     * @param id the id of the quotation.
+     * @return the quotation object.
+     * @throws SQLException if something fails.
+     */
     public Quotation getQuotationById(int id) throws SQLException {
 
         this.queries.selectQuotationById.setInt(1,id);
@@ -87,6 +112,14 @@ public class NominalAPI extends Driver {
         return quotation;
     }
 
+    /**
+     *
+     * Get the salary by id.
+     *
+     * @param id the id of the salary.
+     * @return the salary object.
+     * @throws SQLException if something fails.
+     */
     public Salary getSalaryById(int id) throws SQLException {
 
         this.queries.selectSalaryById.setInt(1,id);
@@ -110,6 +143,14 @@ public class NominalAPI extends Driver {
         return salary;
     }
 
+    /**
+     *
+     * Get the antiquity by id.
+     *
+     * @param id the id of the antiquity.
+     * @return the antiquity object.
+     * @throws SQLException if something fails.
+     */
     public Antiquity getAntiquityById(int id) throws SQLException {
 
         this.queries.selectAntiquityById.setInt(1,id);
@@ -134,6 +175,15 @@ public class NominalAPI extends Driver {
         return antiquity;
     }
 
+    /**
+     *
+     * Get the categories list from agreement, and for each category
+     * calls the getCategoryById.
+     *
+     * @param agreementId the id of the agreement.
+     * @return the list of the categories.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Category> getCategories(int agreementId) throws SQLException {
 
         this.queries.selectAgreementCategories.setInt(1,agreementId);
@@ -155,6 +205,15 @@ public class NominalAPI extends Driver {
         return categories;
     }
 
+    /**
+     *
+     * Get the quotation list from the agreement, and for each quotation
+     * calls the getQuotationById.
+     *
+     * @param agreementId the id of the agreement.
+     * @return the list of the quotations.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Quotation> getQuotations(int agreementId) throws SQLException {
 
         this.queries.selectAgreementQuotations.setInt(1,agreementId);
@@ -176,6 +235,15 @@ public class NominalAPI extends Driver {
         return quotations;
     }
 
+    /**
+     *
+     * Get the salary list from the agreement, and for each salary
+     * calls the getSalaryById.
+     *
+     * @param agreementId the id of the agreement.
+     * @return the list of the salary tables.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Salary> getSalaryTables(int agreementId) throws SQLException {
 
         this.queries.selectAgreementSalaryTables.setInt(1,agreementId);
@@ -197,6 +265,15 @@ public class NominalAPI extends Driver {
         return salaries;
     }
 
+    /**
+     *
+     * Get the antiquity list from the agreement, and for each antiquity
+     * calls the getAntiquityById.
+     *
+     * @param agreementId the id of the agreement.
+     * @return the list of antiquities.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Antiquity> getAntiquityTables(int agreementId) throws SQLException {
 
         this.queries.selectAgreementAntiquityTables.setInt(1,agreementId);
@@ -218,6 +295,17 @@ public class NominalAPI extends Driver {
         return antiquities;
     }
 
+    /**
+     *
+     * Get the salary from agreement, category and quotation fields to obtain the
+     * desired salary.
+     *
+     * @param agreement id of the agreement.
+     * @param category object.
+     * @param quotation object.
+     * @return the desired salary object.
+     * @throws SQLException if something fails.
+     */
     public Salary getSalaryTableByFields(Agreement agreement,Category category, Quotation quotation) throws SQLException{
 
         this.queries.selectSalaryTableByFields.setInt(1,agreement.getId());
@@ -237,6 +325,17 @@ public class NominalAPI extends Driver {
         return salary;
     }
 
+    /**
+     *
+     * Get the antiquity from agreement by desired category and quotation groups.
+     *
+     * @param agreement id of the agreement.
+     * @param category object.
+     * @param quotation object.
+     * @param years the years of the antiquity.
+     * @return the desired salary object.
+     * @throws SQLException if something fails.
+     */
     public Antiquity getAntiquityByFields(Agreement agreement,Category category, Quotation quotation, int years) throws SQLException {
 
         this.queries.selectAntiquityTableByFields.setInt(1,agreement.getId());
@@ -257,6 +356,14 @@ public class NominalAPI extends Driver {
         return antiquity;
     }
 
+    /**
+     *
+     * Get agreement by id.
+     *
+     * @param agreementId id of the agreement.
+     * @return agreement object.
+     * @throws SQLException if something fails.
+     */
     public Agreement getAgreementById(int agreementId) throws SQLException {
 
         this.queries.selectAgreementById.setInt(1,agreementId);
@@ -283,6 +390,13 @@ public class NominalAPI extends Driver {
         return agreement;
     }
 
+    /**
+     *
+     * Get all agreements in a list, and for each id calls getAgreementById.
+     *
+     * @return a list with all agreements.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Agreement> getAgreements() throws SQLException {
 
         ResultSet resultSet = null;
@@ -304,6 +418,14 @@ public class NominalAPI extends Driver {
 
     // EMPLOYEE
 
+    /**
+     *
+     * Get an employee by id.
+     *
+     * @param id the id of the employee.
+     * @return an employee object.
+     * @throws SQLException if something fails.
+     */
     public Employee getEmployeeById(int id) throws SQLException {
 
         this.queries.selectEmployeeById.setInt(1,id);
@@ -342,6 +464,14 @@ public class NominalAPI extends Driver {
         return employee;
     }
 
+    /**
+     *
+     * Get an schedule by id.
+     *
+     * @param id the id of the schedule.
+     * @return an schedule object.
+     * @throws SQLException if something fails.
+     */
     public Schedule getScheduleById(int id) throws SQLException {
 
         this.queries.selectEmployeeScheduleById.setInt(1,id);
@@ -369,6 +499,14 @@ public class NominalAPI extends Driver {
 
     // COMPANY
 
+    /**
+     *
+     * Get currency by id.
+     *
+     * @param id currency id.
+     * @return currency object.
+     * @throws SQLException if something fails.
+     */
     public Currency getCurrencyById(int id) throws SQLException {
 
         this.queries.selectCurrencyById.setInt(1,id);
@@ -391,6 +529,13 @@ public class NominalAPI extends Driver {
         return currency;
     }
 
+    /**
+     *
+     * Get a list of currencies and for each one calls getCurrencyId.
+     *
+     * @return currency object.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Currency> getCurrencies() throws SQLException {
 
         ResultSet resultSet = null;
@@ -410,6 +555,14 @@ public class NominalAPI extends Driver {
         return currencies;
     }
 
+    /**
+     *
+     * Get a list of employees of a company and for each one calls getEmployeeById.
+     *
+     * @param companyId the company to get the employees list.
+     * @return a list of employees.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Employee> getEmployeesByCompanyId(int companyId) throws SQLException {
 
         this.queries.selectCompanyEmployees.setInt(1,companyId);
@@ -431,6 +584,14 @@ public class NominalAPI extends Driver {
         return employees;
     }
 
+    /**
+     *
+     * Get company by given ID.
+     *
+     * @param id of the company.
+     * @return a company.
+     * @throws SQLException if something fails.
+     */
     public Company getCompanyById(int id) throws SQLException {
 
         this.queries.selectCompanyById.setInt(1,id);
@@ -462,6 +623,13 @@ public class NominalAPI extends Driver {
         return company;
     }
 
+    /**
+     *
+     * Get a list of companies, and for each one calls getCompanyById.
+     *
+     * @return a list of companies.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Company> getCompanies() throws SQLException {
 
         ResultSet resultSet = null;
@@ -481,6 +649,13 @@ public class NominalAPI extends Driver {
         return companies;
     }
 
+    /**
+     *
+     * Get companies name and id only for performance design.
+     *
+     * @return a list of companies.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Company> getCompaniesMinimal() throws SQLException {
 
         ResultSet resultSet = null;
@@ -503,6 +678,14 @@ public class NominalAPI extends Driver {
         return companies;
     }
 
+    /**
+     *
+     * Get employees name and passport and if for performance design.
+     *
+     * @param companyId of the employees.
+     * @return a list of employees.
+     * @throws SQLException if something fails.
+     */
     public ArrayList<Employee> getEmployeeInCompanyMinimal(int companyId) throws SQLException {
         this.queries.selectEmployeesInCompanyMinimal.setInt(1,companyId);
 
@@ -531,6 +714,14 @@ public class NominalAPI extends Driver {
 
     // CHECKERS
 
+    /**
+     *
+     * Check if the actual lastUpdate of the company is equal to the Timestamp of the database.
+     *
+     * @param company object to get lastUpdate.
+     * @return if the lastUpdate is older.
+     * @throws SQLException if something fails.
+     */
     public boolean checkCompany(Company company) throws SQLException {
 
         this.queries.checkCompanyUpdate.setTimestamp(1,company.getLastUpdated());
@@ -550,6 +741,14 @@ public class NominalAPI extends Driver {
         return shouldUpdate;
     }
 
+    /**
+     *
+     * Check if the actual lastUpdate of the employee is equal to the Timestamp of the database.
+     *
+     * @param employee object to get lastUpdate.
+     * @return if the lastUpdate is older.
+     * @throws SQLException if something fails.
+     */
     public boolean checkEmployee(Employee employee) throws SQLException {
 
         this.queries.checkEmployeeUpdate.setTimestamp(1,employee.getLastUpdated());
@@ -569,6 +768,14 @@ public class NominalAPI extends Driver {
         return shouldUpdate;
     }
 
+    /**
+     *
+     * Check if the actual lastUpdate of the agreement is equal to the Timestamp of the database.
+     *
+     * @param agreement object to get lastUpdate.
+     * @return if the lastUpdate is older.
+     * @throws SQLException if something fails.
+     */
     public boolean checkAgreement(Agreement agreement) throws SQLException {
 
         this.queries.checkAgreementUpdate.setTimestamp(1,agreement.getLastUpdated());

@@ -12,6 +12,13 @@ package application;
 
 public enum Views {
 
+    /**
+     *
+     * Contains the main scenes that are in the application
+     * with their name for Application title and FXML path
+     *
+     */
+
     LOGIN {
         @Override
         public String getTitle() {

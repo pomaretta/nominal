@@ -63,6 +63,13 @@ public class Queries extends persistence.Queries {
     public PreparedStatement checkEmployeeUpdate;
     public PreparedStatement checkAgreementUpdate;
 
+    /**
+     *
+     * All queries from NominalAPI using PreparedStatement
+     *
+     * @param connection the connection to perfom queries.
+     * @throws SQLException if something fails.
+     */
     public Queries(Connection connection) throws SQLException {
         super(connection);
         selectAllEmployees = this.connection.prepareStatement(Statements.SELECT_ALL_EMPLOYEES.getQuery());
