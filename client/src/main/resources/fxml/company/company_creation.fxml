@@ -19,7 +19,7 @@
          <children>
             <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);">
                <children>
-                  <ComboBox layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" styleClass="selector" />
+                  <ComboBox onAction="#updateFields" fx:id="companySelector" layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" styleClass="selector" />
                   <FlowPane alignment="CENTER_LEFT" layoutX="233.0" layoutY="16.0" prefHeight="40.0" prefWidth="705.0">
                      <children>
                         <Label styleClass="selector-title" text="Company Name">
@@ -54,19 +54,19 @@
                                     <AnchorPane>
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Identificator" />
-                                          <TextField editable="false" layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="idField" editable="false" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="67.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Name" />
-                                          <TextField layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="nameField" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="136.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="State" />
-                                          <TextField layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="stateField" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -76,13 +76,13 @@
                                     <AnchorPane>
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="229.0" styleClass="content-title" text="Street Address" />
-                                          <TextField layoutY="29.0" prefHeight="25.0" prefWidth="229.0" />
+                                          <TextField fx:id="streetAddressField" layoutY="29.0" prefHeight="25.0" prefWidth="229.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="69.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Phone number" />
-                                          <TextField layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="phoneNumberField" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -90,7 +90,7 @@
                               <AnchorPane layoutX="193.0" layoutY="66.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="107.0" styleClass="content-title" text="CIF" />
-                                    <TextField layoutY="29.0" prefHeight="25.0" prefWidth="106.0" />
+                                    <TextField fx:id="cifField" layoutY="29.0" prefHeight="25.0" prefWidth="106.0" />
                                  </children>
                               </AnchorPane>
                               <FlowPane alignment="CENTER" layoutX="707.0" layoutY="76.0" prefHeight="180.0" prefWidth="201.0" style="-fx-background-color: -fx-background-content; -fx-background-radius: 12px;">
@@ -140,7 +140,7 @@
                                     <AnchorPane>
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Social Security ID" />
-                                          <TextField editable="false" layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="socialSecurityField" editable="false" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
