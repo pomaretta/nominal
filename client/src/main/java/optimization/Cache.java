@@ -24,6 +24,12 @@ public class Cache {
     // EMPLOYEES
     private final ArrayList<Object> employees;
 
+    /**
+     *
+     * The cache class acts like an storage that contains all the
+     * needed objects that are in the database.
+     *
+     */
     public Cache(){
         this.items = new ArrayList<>();
         this.agreements = new ArrayList<>();

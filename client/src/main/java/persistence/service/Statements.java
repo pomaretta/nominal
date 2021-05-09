@@ -12,6 +12,12 @@ package persistence.service;
 
 public enum Statements {
 
+    /**
+     *
+     * All queries for NominalAPI
+     *
+     */
+
     SELECT_ALL_EMPLOYEES("SELECT DISTINCT e.id FROM nominal_dev.employee e"),
     SELECT_ALL_COMPANIES("SELECT DISTINCT c.id FROM nominal_dev.company c"),
     SELECT_ALL_AGREEMENTS("SELECT DISTINCT a.id as id FROM nominal_dev.agreement a"),
