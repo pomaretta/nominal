@@ -203,11 +203,11 @@ INSERT INTO nominal_dev.company_contact (company,street_address,state,phone_numb
     ,(5,"C\ Gerani 23","Spain","986235633");
 
 INSERT INTO nominal_dev.company_financial (company,currency,quotation) VALUES
-    (1,47,3)
-    ,(2,47,6)
-    ,(3,47,1)
-    ,(4,47,15)
-    ,(5,47,2);
+    (1,48,3)
+    ,(2,48,6)
+    ,(3,48,1)
+    ,(4,48,15)
+    ,(5,48,2);
 
 INSERT INTO nominal_dev.company_agreement (company,agreement) VALUES
     (1,1)
@@ -215,3 +215,34 @@ INSERT INTO nominal_dev.company_agreement (company,agreement) VALUES
     ,(3,1)
     ,(4,1)
     ,(5,1);
+
+-- Triggers
+CREATE TRIGGER company_information AFTER INSERT 
+ON nominal_dev.company_information FOR EACH ROW
+BEGIN 
+	UPDATE nominal_dev.company SET last_update = NOW() WHERE id = NEW.company;
+END
+
+CREATE TRIGGER company_contact AFTER INSERT 
+ON nominal_dev.company_contact FOR EACH ROW
+BEGIN 
+	UPDATE nominal_dev.company SET last_update = NOW() WHERE id = NEW.company;
+END
+
+CREATE TRIGGER company_financial AFTER INSERT 
+ON nominal_dev.company_financial FOR EACH ROW
+BEGIN 
+	UPDATE nominal_dev.company SET last_update = NOW() WHERE id = NEW.company;
+END
+
+CREATE TRIGGER company_employee AFTER INSERT 
+ON nominal_dev.company_employee FOR EACH ROW
+BEGIN 
+	UPDATE nominal_dev.company SET last_update = NOW() WHERE id = NEW.company;
+END
+
+CREATE TRIGGER company_agreement AFTER INSERT 
+ON nominal_dev.company_agreement FOR EACH ROW
+BEGIN 
+	UPDATE nominal_dev.company SET last_update = NOW() WHERE id = NEW.company;
+END
