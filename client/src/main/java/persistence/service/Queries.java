@@ -57,6 +57,12 @@ public class Queries extends persistence.Queries {
     public PreparedStatement selectCompaniesMinimal;
     public PreparedStatement selectEmployeesInCompanyMinimal;
 
+    // CHECKERS
+
+    public PreparedStatement checkCompanyUpdate;
+    public PreparedStatement checkEmployeeUpdate;
+    public PreparedStatement checkAgreementUpdate;
+
     public Queries(Connection connection) throws SQLException {
         super(connection);
         selectAllEmployees = this.connection.prepareStatement(Statements.SELECT_ALL_EMPLOYEES.getQuery());
@@ -91,6 +97,10 @@ public class Queries extends persistence.Queries {
 
         selectCompaniesMinimal = this.connection.prepareStatement(Statements.SELECT_COMPANIES_MINIMAL.getQuery());
         selectEmployeesInCompanyMinimal = this.connection.prepareStatement(Statements.SELECT_EMPLOYEES_MINIMAL.getQuery());
+
+        checkCompanyUpdate = this.connection.prepareStatement(Statements.CHECK_COMPANY_UPDATE.getQuery());
+        checkEmployeeUpdate = this.connection.prepareStatement(Statements.CHECK_EMPLOYEE_UPDATE.getQuery());
+        checkAgreementUpdate = this.connection.prepareStatement(Statements.CHECK_AGREEMENT_UPDATE.getQuery());
 
     }
 

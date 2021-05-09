@@ -269,6 +269,7 @@ public class NominalAPI extends Driver {
             resultSet.next();
             agreement = new Agreement(
                     resultSet.getInt("id")
+                    ,resultSet.getTimestamp("last_update")
                     ,resultSet.getString("name")
                     ,getQuotations(resultSet.getInt("id"))
                     ,getCategories(resultSet.getInt("id"))
@@ -315,6 +316,7 @@ public class NominalAPI extends Driver {
             resultSet.next();
             employee = new Employee(
                     resultSet.getInt("id")
+                    ,resultSet.getTimestamp("last_update")
                     ,resultSet.getString("passport")
                     ,resultSet.getString("naf")
                     ,resultSet.getString("name")
@@ -441,6 +443,7 @@ public class NominalAPI extends Driver {
             resultSet.next();
             company = new Company(
                     resultSet.getInt("id")
+                    ,resultSet.getTimestamp("last_update")
                     ,getAgreementById(resultSet.getInt("agreement"))
                     ,getEmployeesByCompanyId(resultSet.getInt("id"))
                     ,resultSet.getString("name")
@@ -524,6 +527,65 @@ public class NominalAPI extends Driver {
         }
 
         return employees;
+    }
+
+    // CHECKERS
+
+    public boolean checkCompany(Company company) throws SQLException {
+
+        this.queries.checkCompanyUpdate.setTimestamp(1,company.getLastUpdated());
+        this.queries.checkCompanyUpdate.setInt(2,company.getId());
+
+        ResultSet resultSet = null;
+        boolean shouldUpdate;
+
+        try {
+            resultSet = this.queries.checkCompanyUpdate.executeQuery();
+            resultSet.next();
+            shouldUpdate = resultSet.getBoolean("should_update");
+        } finally {
+            resultSet.close();
+        }
+
+        return shouldUpdate;
+    }
+
+    public boolean checkEmployee(Employee employee) throws SQLException {
+
+        this.queries.checkEmployeeUpdate.setTimestamp(1,employee.getLastUpdated());
+        this.queries.checkEmployeeUpdate.setInt(2,employee.getId());
+
+        ResultSet resultSet = null;
+        boolean shouldUpdate;
+
+        try {
+            resultSet = this.queries.checkEmployeeUpdate.executeQuery();
+            resultSet.next();
+            shouldUpdate = resultSet.getBoolean("should_update");
+        } finally {
+            resultSet.close();
+        }
+
+        return shouldUpdate;
+    }
+
+    public boolean checkAgreement(Agreement agreement) throws SQLException {
+
+        this.queries.checkAgreementUpdate.setTimestamp(1,agreement.getLastUpdated());
+        this.queries.checkAgreementUpdate.setInt(2,agreement.getId());
+
+        ResultSet resultSet = null;
+        boolean shouldUpdate;
+
+        try {
+            resultSet = this.queries.checkAgreementUpdate.executeQuery();
+            resultSet.next();
+            shouldUpdate = resultSet.getBoolean("should_update");
+        } finally {
+            resultSet.close();
+        }
+
+        return shouldUpdate;
     }
 
 }

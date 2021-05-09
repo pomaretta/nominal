@@ -18,11 +18,13 @@ import common.NominalMaster;
 import common.agreement.Category;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Employee implements NominalMaster {
 
     // IDENTIFIER
     protected int id;
+    protected Timestamp lastUpdated;
     protected String passport;
     protected String naf;
 
@@ -51,8 +53,9 @@ public class Employee implements NominalMaster {
 
     public Employee(){}
 
-    public Employee(int id, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, String streetAddress, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
+    public Employee(int id, Timestamp lastUpdated, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, String streetAddress, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
         this.id = id;
+        this.lastUpdated = lastUpdated;
         this.passport = passport;
         this.naf = naf;
         this.name = name;
@@ -95,6 +98,10 @@ public class Employee implements NominalMaster {
     @Override
     public int getId() {
         return id;
+    }
+
+    public Timestamp getLastUpdated() {
+        return lastUpdated;
     }
 
     public String getPassport() {

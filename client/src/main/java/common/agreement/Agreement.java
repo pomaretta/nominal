@@ -11,12 +11,15 @@
 package common.agreement;
 
 import common.NominalMaster;
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class Agreement implements NominalMaster {
 
     // IDENTIFIER
     protected int id;
+    protected Timestamp lastUpdated;
     protected String name;
 
     // QUOTATION GROUPS
@@ -34,8 +37,9 @@ public class Agreement implements NominalMaster {
     public Agreement() {
     }
 
-    public Agreement(int id, String name, ArrayList<Quotation> quotations, ArrayList<Category> categories, ArrayList<Salary> salaries, ArrayList<Antiquity> antiquities) {
+    public Agreement(int id, Timestamp lastUpdated, String name, ArrayList<Quotation> quotations, ArrayList<Category> categories, ArrayList<Salary> salaries, ArrayList<Antiquity> antiquities) {
         this.id = id;
+        this.lastUpdated = lastUpdated;
         this.name = name;
         this.quotations = quotations;
         this.categories = categories;
@@ -46,6 +50,10 @@ public class Agreement implements NominalMaster {
     @Override
     public int getId() {
         return id;
+    }
+
+    public Timestamp getLastUpdated() {
+        return lastUpdated;
     }
 
     public String getName() {

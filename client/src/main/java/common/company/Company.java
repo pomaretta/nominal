@@ -19,12 +19,14 @@ import common.agreement.Agreement;
 import common.agreement.Quotation;
 import common.employee.Employee;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class Company implements NominalMaster {
 
     // IDENTIFIER
     protected int id;
+    protected Timestamp lastUpdated;
 
     // AGREEMENT
     protected Agreement agreement;
@@ -48,8 +50,9 @@ public class Company implements NominalMaster {
 
     public Company(){}
 
-    public Company(int id, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency, Quotation quotation) {
+    public Company(int id, Timestamp lastUpdated, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency, Quotation quotation) {
         this.id = id;
+        this.lastUpdated = lastUpdated;
         this.agreement = agreement;
         this.employees = employees;
         this.name = name;
@@ -90,6 +93,10 @@ public class Company implements NominalMaster {
     @Override
     public int getId() {
         return id;
+    }
+
+    public Timestamp getLastUpdated() {
+        return lastUpdated;
     }
 
     public Agreement getAgreement() {
