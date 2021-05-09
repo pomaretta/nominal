@@ -50,6 +50,11 @@ public class CompanyForm extends ViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
+    @Override
+    public void run() {
+        updateFields();
+    }
+
     @FXML
     public void updateFields() {
         HomeController controller = (HomeController) this.manager.getController();
