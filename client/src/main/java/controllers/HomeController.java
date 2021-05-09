@@ -26,6 +26,7 @@ import javafx.scene.text.Text;
 import persistence.auth.AuthenticationException;
 import util.MD5;
 import view.BaseController;
+import view.ViewController;
 import view.ViewManager;
 
 import java.net.URL;
@@ -140,7 +141,9 @@ public class HomeController extends BaseController implements Initializable {
     public void companySelection() throws SQLException {
         if(NominalFX.cache.containsCompany(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId())){
             this.currentCompany = NominalFX.cache.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId());
-            System.out.println(this.currentCompany.getName());
+            for (ViewController c : this.formManager.getViewControllers()){
+                c.shouldUpdate();
+            }
         } else {
             NominalFX.cache.add(NominalFX.nominalAPI.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId()),NominalFX.cache.getCompanies());
             companySelection();
