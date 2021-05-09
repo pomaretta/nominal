@@ -13,31 +13,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane id="root" prefHeight="650.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.forms.CompanyForm">
+<AnchorPane id="root" prefHeight="650.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.forms.CompanyForm">
    <children>
       <AnchorPane prefHeight="650.0" prefWidth="1030.0" style="-fx-background-color: -fx-background-content;" styleClass="layout-corner-bottom-right">
          <children>
-            <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);">
+            <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="128.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);">
                <children>
-                  <ComboBox onAction="#updateFields" fx:id="companySelector" layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" styleClass="selector" />
-                  <FlowPane alignment="CENTER_LEFT" layoutX="233.0" layoutY="16.0" prefHeight="40.0" prefWidth="705.0">
+                  <FlowPane alignment="CENTER_LEFT" layoutX="13.0" layoutY="16.0" prefHeight="40.0" prefWidth="90.0">
                      <children>
-                        <Label styleClass="selector-title" text="Company Name">
-                           <FlowPane.margin>
-                              <Insets />
-                           </FlowPane.margin>
-                        </Label>
-                        <Label layoutX="10.0" layoutY="22.0" styleClass="selector-content" text="&lt;CIF&gt;">
-                           <FlowPane.margin>
-                              <Insets />
-                           </FlowPane.margin>
-                        </Label>
-                        <Label styleClass="selector-title" text="Employees">
-                           <FlowPane.margin>
-                              <Insets />
-                           </FlowPane.margin>
-                        </Label>
-                        <Label styleClass="selector-content" text="&lt;NUMBER&gt;" />
+                        <Button mnemonicParsing="false" text="New company" />
                      </children>
                   </FlowPane>
                </children>
@@ -90,7 +74,7 @@
                               <AnchorPane layoutX="193.0" layoutY="66.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="107.0" styleClass="content-title" text="CIF" />
-                                    <TextField fx:id="cifField" layoutY="29.0" prefHeight="25.0" prefWidth="106.0" />
+                                    <TextField fx:id="cifField" editable="false" layoutY="29.0" prefHeight="25.0" prefWidth="106.0" />
                                  </children>
                               </AnchorPane>
                               <FlowPane alignment="CENTER" layoutX="707.0" layoutY="76.0" prefHeight="180.0" prefWidth="201.0" style="-fx-background-color: -fx-background-content; -fx-background-radius: 12px;">
@@ -125,7 +109,6 @@
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
                               </Button>
-                              <Button layoutX="308.0" layoutY="93.0" mnemonicParsing="false" text="Generate" />
                            </children>
                         </AnchorPane>
                      </content>
