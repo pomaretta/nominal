@@ -18,6 +18,8 @@ public abstract class ViewController {
         this.manager = manager;
     }
 
+    public abstract void run();
+
     public abstract void shouldUpdate();
 
 }

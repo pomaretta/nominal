@@ -45,6 +45,7 @@ public class ViewManager {
             root = loader.load();
             ViewController viewController = loader.getController();
             viewController.setManager(this);
+            viewController.run();
             this.viewControllers.add(viewController);
         } catch (Exception e){
             System.out.println(e.getMessage());
