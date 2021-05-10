@@ -24,7 +24,7 @@
          <children>
             <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                <children>
-                  <ComboBox fx:id="employeeSelector" layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
+                  <ComboBox fx:id="employeeSelector" layoutX="14.0" layoutY="16.0" onAction="#employeeSelection" prefHeight="40.0" prefWidth="200.0" promptText="Select employee" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
                   <FlowPane alignment="CENTER_LEFT" layoutX="231.0" layoutY="16.0" prefHeight="40.0" prefWidth="707.0">
                      <children>
                         <Label prefHeight="20.0" prefWidth="131.0" styleClass="selector-title" text="Employee Name">
@@ -43,12 +43,12 @@
                            </FlowPane.margin>
                         </Label>
                         <Label fx:id="employeePreviewPassport" styleClass="selector-content" text="&lt;Passport&gt;" />
-                        <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="New Employee">
+                        <Button fx:id="newEmployeeButton" alignment="CENTER_RIGHT" mnemonicParsing="false" text="New Employee">
                            <FlowPane.margin>
                               <Insets right="25.0" />
                            </FlowPane.margin>
                         </Button>
-                        <Button alignment="CENTER_RIGHT" layoutX="437.0" layoutY="18.0" mnemonicParsing="false" styleClass="danger" text="Fire it" />
+                        <Button fx:id="fireItButton" alignment="CENTER_RIGHT" layoutX="437.0" layoutY="18.0" mnemonicParsing="false" styleClass="danger" text="Fire it" />
                      </children>
                   </FlowPane>
                </children>
@@ -60,7 +60,7 @@
                         <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                            <children>
                               <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Employee Information " />
-                              <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
+                              <Button fx:id="saveChangesInformation" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
@@ -70,8 +70,8 @@
                                     <AnchorPane>
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="CIF" />
-                                          <TextField fx:id="idField" editable="false" layoutY="29.0" prefWidth="150.0" />
-                                          <Button layoutX="123.0" layoutY="-2.0" mnemonicParsing="false" text="G" />
+                                          <TextField fx:id="cifField" editable="false" layoutY="29.0" prefWidth="150.0" />
+                                          <Button fx:id="cifGenerator" layoutX="123.0" layoutY="-2.0" mnemonicParsing="false" text="G" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="67.0">
@@ -83,7 +83,7 @@
                                     <AnchorPane layoutY="136.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Last name" />
-                                          <TextField fx:id="stateField" layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="lastNameField" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -93,20 +93,20 @@
                                     <AnchorPane>
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="NAF" />
-                                          <TextField fx:id="idField1" editable="false" layoutY="29.0" prefWidth="150.0" />
-                                          <Button layoutX="125.0" layoutY="-3.0" mnemonicParsing="false" text="G" />
+                                          <TextField fx:id="nafField" editable="false" layoutY="29.0" prefWidth="150.0" />
+                                          <Button fx:id="nafGenerator" layoutX="125.0" layoutY="-3.0" mnemonicParsing="false" text="G" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="67.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Second Name" />
-                                          <TextField fx:id="nameField1" layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="secondNameField" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="136.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Second last name" />
-                                          <TextField fx:id="stateField1" layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="secondLastNameField" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -116,31 +116,31 @@
                                     <AnchorPane>
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Email" />
-                                          <TextField fx:id="idField11" layoutY="29.0" prefHeight="25.0" prefWidth="338.0" />
+                                          <TextField fx:id="emailField" layoutY="29.0" prefHeight="25.0" prefWidth="338.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="67.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Street Address" />
-                                          <TextField fx:id="nameField11" layoutY="29.0" prefHeight="25.0" prefWidth="338.0" />
+                                          <TextField fx:id="streetField" layoutY="29.0" prefHeight="25.0" prefWidth="338.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="136.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="State" />
-                                          <TextField fx:id="stateField11" layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="stateField" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                     <Label layoutX="188.0" layoutY="136.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Phone Number" />
-                                    <TextField fx:id="stateField111" layoutX="188.0" layoutY="165.0" prefWidth="150.0" />
+                                    <TextField fx:id="phoneNumberField" layoutX="188.0" layoutY="165.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <Label layoutX="690.0" layoutY="42.0" styleClass="content-title" text="Image" />
-                              <Button layoutX="823.0" layoutY="40.0" mnemonicParsing="false" styleClass="danger" text="Remove" />
-                              <Button layoutX="749.0" layoutY="40.0" mnemonicParsing="false" text="Change" />
+                              <Button fx:id="removeImageButton" layoutX="823.0" layoutY="40.0" mnemonicParsing="false" styleClass="danger" text="Remove" />
+                              <Button fx:id="changeImageButton" layoutX="749.0" layoutY="40.0" mnemonicParsing="false" text="Change" />
                               <FlowPane alignment="CENTER" layoutX="690.0" layoutY="93.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: -fx-background-content; -fx-background-radius: 8px;">
                                  <children>
-                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="employeeImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <padding>
                                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -155,7 +155,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                            <children>
                               <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Employee Contract" />
-                              <Button layoutX="185.0" layoutY="191.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save">
+                              <Button fx:id="saveCategoryField" layoutX="185.0" layoutY="191.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -163,7 +163,7 @@
                               <AnchorPane layoutX="24.0" layoutY="70.0" prefHeight="46.0" prefWidth="154.0">
                                  <children>
                                     <Label layoutX="3.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="IRPF" />
-                                    <TextField fx:id="nameField2" layoutX="1.0" layoutY="28.0" prefWidth="150.0" />
+                                    <TextField fx:id="irpfField" layoutX="1.0" layoutY="28.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="193.0" layoutY="68.0" prefHeight="40.0" prefWidth="150.0">
@@ -173,7 +173,7 @@
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Hourly" />
                                        </children>
                                     </AnchorPane>
-                                    <CheckBox layoutY="34.0" mnemonicParsing="false" text="Yes" />
+                                    <CheckBox fx:id="hourlyCheck" layoutY="34.0" mnemonicParsing="false" text="Yes" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="24.0" layoutY="265.0">
@@ -184,17 +184,17 @@
                                  </children>
                               </AnchorPane>
                               <Label layoutX="370.0" layoutY="68.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Hired hours" />
-                              <TextField fx:id="idField121" editable="false" layoutX="370.0" layoutY="97.0" prefWidth="150.0" />
+                              <TextField fx:id="hiredHoursField" editable="false" layoutX="370.0" layoutY="97.0" prefWidth="150.0" />
                               <Label layoutX="26.0" layoutY="160.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Category" />
-                              <ComboBox layoutX="22.0" layoutY="192.0" prefWidth="150.0" styleClass="selector" />
-                              <TableView layoutX="25.0" layoutY="264.0" prefHeight="72.0" prefWidth="224.0">
+                              <ComboBox fx:id="categoryComboField" layoutX="22.0" layoutY="192.0" prefWidth="150.0" styleClass="selector" />
+                              <TableView fx:id="salaryView" layoutX="25.0" layoutY="264.0" prefHeight="72.0" prefWidth="224.0">
                                 <columns>
                                   <TableColumn prefWidth="75.0" text="Quotation" />
                                   <TableColumn prefWidth="75.0" text="Category" />
                                     <TableColumn prefWidth="75.0" text="Value" />
                                 </columns>
                               </TableView>
-                              <TableView layoutX="25.0" layoutY="375.0" prefHeight="72.0" prefWidth="301.0">
+                              <TableView fx:id="antiquityView" layoutX="25.0" layoutY="375.0" prefHeight="72.0" prefWidth="301.0">
                                  <columns>
                                     <TableColumn prefWidth="75.0" text="Quotation" />
                                     <TableColumn prefWidth="75.0" text="Category" />
@@ -204,7 +204,7 @@
                               </TableView>
                               <Label layoutX="26.0" layoutY="235.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Salary Table Plus" />
                               <Label layoutX="23.0" layoutY="347.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Antiquity Table Plus" />
-                              <Button layoutX="789.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
+                              <Button fx:id="contractSaveButton" layoutX="570.0" layoutY="78.0" mnemonicParsing="false" styleClass="success" text="Save changes">
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
@@ -218,16 +218,16 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                            <children>
                               <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Schedule Planning" />
-                              <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save changes">
+                              <Button fx:id="scheduleSaveButton" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save changes">
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
                               </Button>
-                              <DatePicker layoutX="129.0" layoutY="65.0" />
+                              <DatePicker fx:id="scheduleSelector" layoutX="129.0" layoutY="65.0" />
                               <Label layoutX="22.0" layoutY="67.0" prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Select Date" />
                               <Label layoutX="22.0" layoutY="107.0" prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Selected" />
-                              <TextField layoutX="129.0" layoutY="105.0" prefHeight="25.0" prefWidth="180.0" />
-                              <Button layoutX="129.0" layoutY="144.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Search">
+                              <TextField fx:id="selectedDateField" layoutX="129.0" layoutY="105.0" prefHeight="25.0" prefWidth="180.0" />
+                              <Button fx:id="searchButton" layoutX="129.0" layoutY="144.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Search">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -239,7 +239,7 @@
                                           <HBox>
                                              <children>
                                                 <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Nocturnal" />
-                                                <CheckBox mnemonicParsing="false" styleClass="selector" />
+                                                <CheckBox fx:id="nocturnalCheck" mnemonicParsing="false" styleClass="selector" />
                                              </children>
                                           </HBox>
                                           <Label prefHeight="20.0" prefWidth="181.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Complementary hours">
@@ -247,7 +247,7 @@
                                                 <Insets top="10.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <TextField prefHeight="25.0" prefWidth="197.0">
+                                          <TextField fx:id="complementaryHoursField" prefHeight="25.0" prefWidth="197.0">
                                              <VBox.margin>
                                                 <Insets top="10.0" />
                                              </VBox.margin>
@@ -259,15 +259,15 @@
                                           <HBox>
                                              <children>
                                                 <Label alignment="TOP_CENTER" prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Turnicity" />
-                                                <CheckBox mnemonicParsing="false" />
+                                                <CheckBox fx:id="turnicityCheck" mnemonicParsing="false" />
                                              </children>
                                           </HBox>
                                        </children>
                                     </VBox>
                                     <Label layoutX="14.0" layoutY="118.0" prefHeight="20.0" prefWidth="181.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Overwhelming hours" />
-                                    <TextField layoutX="14.0" layoutY="146.0" prefHeight="25.0" prefWidth="197.0" />
+                                    <TextField fx:id="overwhelmingHoursField" layoutX="14.0" layoutY="146.0" prefHeight="25.0" prefWidth="197.0" />
                                     <Label layoutX="14.0" layoutY="183.0" prefHeight="20.0" prefWidth="181.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Extra hours" />
-                                    <TextField layoutX="14.0" layoutY="211.0" prefHeight="25.0" prefWidth="197.0" />
+                                    <TextField fx:id="extraHoursField" layoutX="14.0" layoutY="211.0" prefHeight="25.0" prefWidth="197.0" />
                                  </children>
                               </AnchorPane>
                            </children>

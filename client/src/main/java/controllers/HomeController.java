@@ -108,6 +108,14 @@ public class HomeController extends BaseController implements Initializable {
             //
         }
 
+        this.companyButton.setDisable(true);
+        this.employeeButton.setDisable(true);
+
+    }
+
+    private void allowConfiguration(){
+        this.companyButton.setDisable(false);
+        this.employeeButton.setDisable(false);
     }
 
     @FXML
@@ -144,6 +152,7 @@ public class HomeController extends BaseController implements Initializable {
             for (ViewController c : this.formManager.getViewControllers()){
                 c.shouldUpdate();
             }
+            allowConfiguration();
         } else {
             NominalFX.cache.add(NominalFX.nominalAPI.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId()),NominalFX.cache.getCompanies());
             companySelection();

@@ -193,7 +193,7 @@
                                     <Image url="@../images/icons/primary/companies-c-primary.png" />
                                  </image>
                               </ImageView>
-                              <Label text="Companies" />
+                              <Label text="Company" />
                            </children>
                            <padding>
                               <Insets left="15.0" />
