@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 import persistence.Queries;
 import service.Driver;
 
-import java.io.InputStream;
+import java.io.*;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,7 +40,7 @@ public class ImageAPI extends Driver {
             resultSet.next();
             image = new NominalImage(
                     resultSet.getInt("id")
-                    ,new Image((InputStream) resultSet.getBlob("image"))
+                    ,new Image(resultSet.getBlob("image").getBinaryStream())
             );
         } finally {
             resultSet.close();
@@ -104,9 +104,9 @@ public class ImageAPI extends Driver {
     }
 
     // INSERT NEW IMAGE
-    public int registerNewImage(Image image) throws SQLException {
+    public int registerNewImage(File image) throws SQLException, FileNotFoundException {
 
-        this.queries.insertNewImage.setBlob(1, (Blob) image);
+        this.queries.insertNewImage.setBlob(1,new FileInputStream(image));
         this.queries.insertNewImage.execute();
 
         ResultSet resultSet = null;
@@ -114,6 +114,7 @@ public class ImageAPI extends Driver {
 
         try {
             resultSet = this.queries.selectLastId.executeQuery();
+            resultSet.next();
             id = resultSet.getInt("id");
         } finally {
             resultSet.close();
@@ -123,7 +124,7 @@ public class ImageAPI extends Driver {
     }
 
     // INSERT NEW USER IMAGE
-    public boolean registerNewUserImage(User user, Image image) throws SQLException {
+    public boolean registerNewUserImage(User user, File image) throws SQLException, FileNotFoundException {
         int imageId = registerNewImage(image);
         this.queries.insertUserImage.setInt(1,user.getId());
         this.queries.insertUserImage.setInt(2,imageId);
@@ -131,7 +132,7 @@ public class ImageAPI extends Driver {
     }
 
     // INSERT NEW EMPLOYEE IMAGE
-    public boolean registerNewUserImage(Employee employee, Image image) throws SQLException {
+    public boolean registerNewUserImage(Employee employee, File image) throws SQLException, FileNotFoundException {
         int imageId = registerNewImage(image);
         this.queries.insertEmployeeImage.setInt(1,employee.getId());
         this.queries.insertEmployeeImage.setInt(2,imageId);
@@ -139,11 +140,67 @@ public class ImageAPI extends Driver {
     }
 
     // INSERT NEW COMPANY IMAGE
-    public boolean registerNewCompanyImage(Company company, Image image) throws SQLException {
+    public boolean registerNewCompanyImage(Company company, File image) throws SQLException, FileNotFoundException {
         int imageId = registerNewImage(image);
         this.queries.insertCompanyImage.setInt(1,company.getId());
         this.queries.insertCompanyImage.setInt(2,imageId);
         return this.queries.insertCompanyImage.execute();
+    }
+
+    // MINIMAL
+
+    public int getUserImageMinimal(int userId) throws SQLException {
+
+        this.queries.selectImageByUserId.setInt(1,userId);
+
+        ResultSet resultSet = null;
+        int image;
+
+        try {
+            resultSet = this.queries.selectImageByUserId.executeQuery();
+            resultSet.next();
+            image = resultSet.getInt("id");
+        } finally {
+            resultSet.close();
+        }
+
+        return image;
+    }
+
+    public int getEmployeeImageMinimal(int employeeId) throws SQLException {
+
+        this.queries.selectImageByEmployeeId.setInt(1,employeeId);
+
+        ResultSet resultSet = null;
+        int image;
+
+        try {
+            resultSet = this.queries.selectImageByEmployeeId.executeQuery();
+            resultSet.next();
+            image = resultSet.getInt("id");
+        } finally {
+            resultSet.close();
+        }
+
+        return image;
+    }
+
+    public int getCompanyImageMinimal(int companyId) throws SQLException {
+
+        this.queries.selectImageByCompanyId.setInt(1,companyId);
+
+        ResultSet resultSet = null;
+        int image;
+
+        try {
+            resultSet = this.queries.selectImageByCompanyId.executeQuery();
+            resultSet.next();
+            image = resultSet.getInt("id");
+        } finally {
+            resultSet.close();
+        }
+
+        return image;
     }
 
 }

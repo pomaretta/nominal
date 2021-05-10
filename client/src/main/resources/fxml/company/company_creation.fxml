@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -21,7 +22,10 @@
                <children>
                   <FlowPane alignment="CENTER_LEFT" layoutX="13.0" layoutY="16.0" prefHeight="40.0" prefWidth="90.0">
                      <children>
-                        <Button mnemonicParsing="false" text="New company" />
+                        <Button fx:id="newCompanyButton" mnemonicParsing="false" text="New company">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </FlowPane>
                </children>
@@ -79,7 +83,7 @@
                               </AnchorPane>
                               <FlowPane alignment="CENTER" layoutX="707.0" layoutY="76.0" prefHeight="180.0" prefWidth="201.0" style="-fx-background-color: -fx-background-content; -fx-background-radius: 12px;">
                                  <children>
-                                    <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),20,0,0,0);">
+                                    <ImageView fx:id="companyImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),20,0,0,0);">
                                        <image>
                                           <Image url="@../../images/nominal-w.png" />
                                        </image>
@@ -91,15 +95,21 @@
                               </FlowPane>
                               <AnchorPane layoutX="597.0" layoutY="105.0">
                                  <children>
-                                    <Button layoutX="4.0" layoutY="87.0" mnemonicParsing="false" styleClass="danger" text="Remove">
+                                    <Button fx:id="removeImageButton" layoutX="4.0" layoutY="87.0" mnemonicParsing="false" styleClass="danger" text="Remove">
                                        <padding>
                                           <Insets bottom="9.0" left="16.0" right="16.0" top="9.0" />
                                        </padding>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
-                                    <Button layoutX="4.0" layoutY="41.0" mnemonicParsing="false" text="Change">
+                                    <Button fx:id="changeImageButton" onAction="#uploadImage" layoutX="4.0" layoutY="41.0" mnemonicParsing="false" text="Change">
                                        <padding>
                                           <Insets bottom="9.0" left="16.0" right="16.0" top="9.0" />
                                        </padding>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </Button>
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="89.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: -fx-dark;" text="Logo" />
                                  </children>
@@ -108,6 +118,9 @@
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
                            </children>
                         </AnchorPane>
@@ -130,9 +143,14 @@
                               </AnchorPane>
                               <AnchorPane layoutX="193.0" layoutY="66.0">
                                  <children>
-                                    <AnchorPane>
+                                    <AnchorPane prefHeight="54.0" prefWidth="229.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="229.0" styleClass="content-title" text="Agreement" />
+                                          <ComboBox fx:id="agreementSelector" layoutY="30.0" prefWidth="150.0" styleClass="selector">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </ComboBox>
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -141,12 +159,27 @@
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </Button>
-                              <ComboBox layoutX="193.0" layoutY="93.0" prefWidth="150.0" styleClass="selector" />
                               <AnchorPane layoutX="22.0" layoutY="137.0" prefHeight="60.0" prefWidth="150.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Currency" />
-                                    <ComboBox layoutY="34.0" prefWidth="150.0" styleClass="selector" />
+                                    <ComboBox fx:id="currencySelector" layoutY="34.0" prefWidth="150.0" styleClass="selector">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></ComboBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="193.0" layoutY="140.0" prefHeight="54.0" prefWidth="229.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="229.0" styleClass="content-title" text="Quotation group" />
+                                    <ComboBox fx:id="quotationSelector" layoutY="30.0" prefWidth="150.0" styleClass="selector">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </ComboBox>
                                  </children>
                               </AnchorPane>
                            </children>

@@ -3,6 +3,7 @@ package optimization;
 import common.agreement.Agreement;
 import common.company.Company;
 import common.employee.Employee;
+import common.image.NominalImage;
 import common.payroll.Payroll;
 
 import java.util.ArrayList;
@@ -24,6 +25,9 @@ public class Cache {
     // EMPLOYEES
     private final ArrayList<Object> employees;
 
+    // IMAGES
+    private final ArrayList<Object> images;
+
     /**
      *
      * The cache class acts like an storage that contains all the
@@ -36,6 +40,7 @@ public class Cache {
         this.payrolls = new ArrayList<>();
         this.companies = new ArrayList<>();
         this.employees = new ArrayList<>();
+        this.images = new ArrayList<>();
     }
 
     public ArrayList<Object> getItems() {
@@ -56,6 +61,10 @@ public class Cache {
 
     public ArrayList<Object> getEmployees() {
         return employees;
+    }
+
+    public ArrayList<Object> getImages() {
+        return images;
     }
 
     public boolean add(Object object, ArrayList<Object> list){
@@ -110,6 +119,16 @@ public class Cache {
         return false;
     }
 
+    // IMAGE
+    public boolean containsImage(int imageId){
+        for(Object i : getImages()){
+            if (((NominalImage) i).getId() == imageId){
+                return true;
+            }
+        }
+        return false;
+    }
+
     // GET ID OBJECTS
     public Agreement getAgreementById(int agreementId){
         for(Object a : getAgreements()){
@@ -142,6 +161,15 @@ public class Cache {
         for(Object p : getPayrolls()){
             if (((Payroll) p).getId() == payrollId){
                 return (Payroll) p;
+            }
+        }
+        return null;
+    }
+
+    public NominalImage getImageById(int imageId){
+        for(Object i : getImages()){
+            if (((NominalImage) i).getId() == imageId){
+                return (NominalImage) i;
             }
         }
         return null;

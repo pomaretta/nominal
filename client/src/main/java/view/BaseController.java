@@ -18,4 +18,7 @@ public abstract class BaseController {
         this.stageManager = stageManager;
     }
 
+    public StageManager getStageManager() {
+        return stageManager;
+    }
 }

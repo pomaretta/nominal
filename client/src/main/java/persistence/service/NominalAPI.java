@@ -416,6 +416,35 @@ public class NominalAPI extends Driver {
         return agreements;
     }
 
+    /**
+     *
+     * Get all agreements in a list, and for each id calls getAgreementById.
+     *
+     * @return a list with all agreements.
+     * @throws SQLException if something fails.
+     */
+    public ArrayList<Agreement> getAgreementsMinimal() throws SQLException {
+
+        ResultSet resultSet = null;
+        ArrayList<Agreement> agreements = new ArrayList<>();
+
+        try {
+            resultSet = this.queries.selectAgreementsMinimal.executeQuery();
+            while(resultSet.next()){
+                agreements.add(
+                        new AgreementMinimal(
+                                resultSet.getInt("id")
+                                ,resultSet.getString("name")
+                        )
+                );
+            }
+        } finally {
+            resultSet.close();
+        }
+
+        return agreements;
+    }
+
     // EMPLOYEE
 
     /**
