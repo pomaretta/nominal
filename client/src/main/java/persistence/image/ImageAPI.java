@@ -1,10 +1,13 @@
 package persistence.image;
 
+import application.NominalFX;
 import common.auth.User;
 import common.company.Company;
 import common.employee.Employee;
 import common.image.NominalImage;
 import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import persistence.Queries;
 import service.Driver;
 
@@ -132,7 +135,7 @@ public class ImageAPI extends Driver {
     }
 
     // INSERT NEW EMPLOYEE IMAGE
-    public boolean registerNewUserImage(Employee employee, File image) throws SQLException, FileNotFoundException {
+    public boolean registerNewEmployeeImage(Employee employee, File image) throws SQLException, FileNotFoundException {
         int imageId = registerNewImage(image);
         this.queries.insertEmployeeImage.setInt(1,employee.getId());
         this.queries.insertEmployeeImage.setInt(2,imageId);
@@ -201,6 +204,16 @@ public class ImageAPI extends Driver {
         }
 
         return image;
+    }
+
+    // UPLOAD
+
+    public File chooseFile(Stage primaryStage) throws Exception {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image to upload");
+        File file = fileChooser.showOpenDialog(primaryStage);
+        assert file != null;
+        return file;
     }
 
 }

@@ -36,6 +36,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class CompanyForm extends ViewController implements Initializable {
@@ -168,8 +169,8 @@ public class CompanyForm extends ViewController implements Initializable {
                 setImage();
             }
         } catch (Exception e){
-            System.out.println(e.getMessage());
-            // System.out.println("No image in BBDD.");
+             // System.out.println("No image in BBDD.");
+             this.companyImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/unknown.jpg"))));
         }
     }
 

@@ -95,15 +95,7 @@
                               </FlowPane>
                               <AnchorPane layoutX="597.0" layoutY="105.0">
                                  <children>
-                                    <Button fx:id="removeImageButton" layoutX="4.0" layoutY="87.0" mnemonicParsing="false" styleClass="danger" text="Remove">
-                                       <padding>
-                                          <Insets bottom="9.0" left="16.0" right="16.0" top="9.0" />
-                                       </padding>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                    <Button fx:id="changeImageButton" onAction="#uploadImage" layoutX="4.0" layoutY="41.0" mnemonicParsing="false" text="Change">
+                                    <Button fx:id="changeImageButton" layoutX="4.0" layoutY="41.0" mnemonicParsing="false" onAction="#uploadImage" text="Change">
                                        <padding>
                                           <Insets bottom="9.0" left="16.0" right="16.0" top="9.0" />
                                        </padding>

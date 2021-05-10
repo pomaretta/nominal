@@ -309,14 +309,15 @@ public class NominalAPI extends Driver {
     public Salary getSalaryTableByFields(Agreement agreement,Category category, Quotation quotation) throws SQLException{
 
         this.queries.selectSalaryTableByFields.setInt(1,agreement.getId());
-        this.queries.selectSalaryTableByFields.setInt(2,category.getId());
-        this.queries.selectSalaryTableByFields.setInt(3,quotation.getId());
+        this.queries.selectSalaryTableByFields.setInt(2,category.getLevel());
+        this.queries.selectSalaryTableByFields.setInt(3,quotation.getLevel());
 
         ResultSet resultSet = null;
         Salary salary;
 
         try {
             resultSet = this.queries.selectSalaryTableByFields.executeQuery();
+            resultSet.next();
             salary = getSalaryById(resultSet.getInt("id"));
         } finally {
             resultSet.close();
@@ -339,8 +340,8 @@ public class NominalAPI extends Driver {
     public Antiquity getAntiquityByFields(Agreement agreement,Category category, Quotation quotation, int years) throws SQLException {
 
         this.queries.selectAntiquityTableByFields.setInt(1,agreement.getId());
-        this.queries.selectAntiquityTableByFields.setInt(2,category.getId());
-        this.queries.selectAntiquityTableByFields.setInt(3,quotation.getId());
+        this.queries.selectAntiquityTableByFields.setInt(2,category.getLevel());
+        this.queries.selectAntiquityTableByFields.setInt(3,quotation.getLevel());
         this.queries.selectAntiquityTableByFields.setInt(4,years);
 
         ResultSet resultSet = null;
@@ -348,6 +349,7 @@ public class NominalAPI extends Driver {
 
         try {
             resultSet = this.queries.selectAntiquityTableByFields.executeQuery();
+            resultSet.next();
             antiquity = getAntiquityById(resultSet.getInt("id"));
         } finally {
             resultSet.close();

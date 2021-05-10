@@ -9,7 +9,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
@@ -136,8 +135,7 @@
                                  </children>
                               </AnchorPane>
                               <Label layoutX="690.0" layoutY="42.0" styleClass="content-title" text="Image" />
-                              <Button fx:id="removeImageButton" layoutX="823.0" layoutY="40.0" mnemonicParsing="false" styleClass="danger" text="Remove" />
-                              <Button fx:id="changeImageButton" layoutX="749.0" layoutY="40.0" mnemonicParsing="false" text="Change" />
+                              <Button fx:id="changeImageButton" onAction="#uploadImage" layoutX="824.0" layoutY="40.0" mnemonicParsing="false" text="Change" />
                               <FlowPane alignment="CENTER" layoutX="690.0" layoutY="93.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: -fx-background-content; -fx-background-radius: 8px;">
                                  <children>
                                     <ImageView fx:id="employeeImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
@@ -187,21 +185,8 @@
                               <TextField fx:id="hiredHoursField" editable="false" layoutX="370.0" layoutY="97.0" prefWidth="150.0" />
                               <Label layoutX="26.0" layoutY="160.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Category" />
                               <ComboBox fx:id="categoryComboField" layoutX="22.0" layoutY="192.0" prefWidth="150.0" styleClass="selector" />
-                              <TableView fx:id="salaryView" layoutX="25.0" layoutY="264.0" prefHeight="72.0" prefWidth="224.0">
-                                <columns>
-                                  <TableColumn prefWidth="75.0" text="Quotation" />
-                                  <TableColumn prefWidth="75.0" text="Category" />
-                                    <TableColumn prefWidth="75.0" text="Value" />
-                                </columns>
-                              </TableView>
-                              <TableView fx:id="antiquityView" layoutX="25.0" layoutY="375.0" prefHeight="72.0" prefWidth="301.0">
-                                 <columns>
-                                    <TableColumn prefWidth="75.0" text="Quotation" />
-                                    <TableColumn prefWidth="75.0" text="Category" />
-                                    <TableColumn prefWidth="75.0" text="Years" />
-                                    <TableColumn prefWidth="75.0" text="Value" />
-                                 </columns>
-                              </TableView>
+                              <TableView fx:id="salaryView" layoutX="25.0" layoutY="264.0" prefHeight="72.0" prefWidth="224.0" />
+                              <TableView fx:id="antiquityView" layoutX="25.0" layoutY="375.0" prefHeight="72.0" prefWidth="301.0" />
                               <Label layoutX="26.0" layoutY="235.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Salary Table Plus" />
                               <Label layoutX="23.0" layoutY="347.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Antiquity Table Plus" />
                               <Button fx:id="contractSaveButton" layoutX="570.0" layoutY="78.0" mnemonicParsing="false" styleClass="success" text="Save changes">

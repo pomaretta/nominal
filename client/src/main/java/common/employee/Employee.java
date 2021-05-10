@@ -19,6 +19,8 @@ import common.agreement.Category;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDate;
 
 public class Employee implements NominalMaster {
 
@@ -171,4 +173,28 @@ public class Employee implements NominalMaster {
     public float getIrpf() {
         return irpf;
     }
+
+    public int calculateYears(){
+        LocalDate d1 = this.joinDate.toLocalDate();
+        LocalDate d2 = LocalDate.now();
+        Duration diff = Duration.between(d1.atStartOfDay(),d2.atStartOfDay());
+        double difference = (double) diff.toDays() / 365;
+        int years = (int)Math.floor(difference);
+        if(years >= 24){
+            return 24;
+        } else if (years >= 19){
+            return 19;
+        } else if (years >= 14){
+            return 14;
+        } else if (years >= 9){
+            return 9;
+        } else if (years >= 6){
+            return 6;
+        } else if (years >= 3){
+            return 3;
+        } else {
+            return 0;
+        }
+    }
+
 }
