@@ -259,7 +259,7 @@ CREATE TABLE payroll (
 
     -- APPORTION
     employee_apportion      BOOLEAN,
-    apportion               BOOLEAN,
+    apportion               FLOAT,
 
     -- SALARY KIND
     salary_kind             FLOAT,
