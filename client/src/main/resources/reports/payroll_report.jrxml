@@ -32,9 +32,21 @@
 	</style>
 	<subDataset name="Dataset1" uuid="4b498ac9-5d0c-4682-b350-3cca30eb92bb">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Nominal"/>
-		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.sql.tables">
+			<![CDATA[bm9taW5hbF9kZXYucGF5cm9sbF9jb21wbGVtZW50ICwxNSwxNSxmMTA2NTc0My05OTgwLTQwMzkt
+YWE3NC00N2QwMTlmNmQ3OGI7]]>
+		</property>
+		<parameter name="PAYROLL_ID" class="java.lang.Integer"/>
 		<queryString>
-			<![CDATA[SELECT pc.title as title ,pc.salarial as salarial ,pc.value_original as original ,pc.value_percentage as percentage ,pc.value as value FROM nominal_dev.payroll_complement pc WHERE pc.payroll = 1 AND pc.salarial = 1]]>
+			<![CDATA[SELECT pc.title AS title,
+	pc.salarial AS salarial,
+	pc.value_original AS original,
+	pc.value_percentage AS percentage,
+	pc.value AS value
+FROM nominal_dev.payroll_complement pc
+WHERE 
+	 pc.payroll =  $P{PAYROLL_ID} 
+	 AND pc.salarial = 1]]>
 		</queryString>
 		<field name="title" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="title"/>
@@ -79,17 +91,44 @@
 		</field>
 	</subDataset>
 	<subDataset name="Dataset3" uuid="8c0f5714-ae67-46f8-a8d1-e361d560a039">
-		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.sql.tables">
+			<![CDATA[bm9taW5hbF9kZXYucGF5cm9sbF9jb21wbGVtZW50ICwxNSwxNSw4MjRmYzU2My00NWIyLTRlNGEt
+YWE3Yi04MTg4ZDY3OTg2ZWE7]]>
+		</property>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Nominal"/>
-		<parameter name="Parameter1" class="java.lang.String"/>
+		<parameter name="PAYROLL_ID" class="java.lang.Integer"/>
 		<queryString language="SQL">
-			<![CDATA[SELECT pc.title as title ,pc.salarial as salarial ,pc.value_original as original ,pc.value_percentage as percentage ,pc.value as value FROM nominal_dev.payroll_complement pc WHERE pc.payroll = 1 AND pc.salarial = 0]]>
+			<![CDATA[SELECT pc.title AS title,
+	pc.salarial AS salarial,
+	pc.value_original AS original,
+	pc.value_percentage AS percentage,
+	pc.value AS value
+FROM nominal_dev.payroll_complement pc
+WHERE 
+	 pc.payroll = $P{PAYROLL_ID} 
+	 AND pc.salarial = 0]]>
 		</queryString>
 		<field name="title" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="title"/>
 			<property name="com.jaspersoft.studio.field.label" value="title"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="payroll_complement"/>
 			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="salarial" class="java.lang.Boolean">
+			<property name="com.jaspersoft.studio.field.name" value="salarial"/>
+			<property name="com.jaspersoft.studio.field.label" value="salarial"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="payroll_complement"/>
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="original" class="java.lang.Float">
+			<property name="com.jaspersoft.studio.field.name" value="value_original"/>
+			<property name="com.jaspersoft.studio.field.label" value="original"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="payroll_complement"/>
+		</field>
+		<field name="percentage" class="java.lang.Float">
+			<property name="com.jaspersoft.studio.field.name" value="value_percentage"/>
+			<property name="com.jaspersoft.studio.field.label" value="percentage"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="payroll_complement"/>
 		</field>
 		<field name="value" class="java.lang.Float">
 			<property name="com.jaspersoft.studio.field.name" value="value"/>
@@ -98,9 +137,118 @@
 			<fieldDescription><![CDATA[]]></fieldDescription>
 		</field>
 	</subDataset>
-	<parameter name="PAYROLL_ID" class="java.lang.String"/>
+	<parameter name="PAYROLL_ID" class="java.lang.Integer" evaluationTime="Early"/>
 	<queryString>
-		<![CDATA[SELECT DISTINCT A.id as id , A.created_at as creation , A.employee as employee , A.agreement as agreement , A.company as company , A.date_from as date_from , A.date_to as date_to , A.date_total_days as total_days , A.base_salary as base_salary , A.employee_apportion as emp_apportion , A.apportion as apportion , A.salary_kind as salary_kind , A.total_earned as total_earned , A.cc_percentage as cc_percentage , A.cc_value as cc_value , A.unemployment_percentage as unemployment_percentage , A.unemployment_value as unemployment_value , A.training_percentage as training_percentage , A.training_value as training_value , A.oh_original_value as oh_original_value , A.oh_percentage as oh_percentage , A.oh_value as oh_value , A.eh_original_value as eh_original_value , A.eh_percentage as eh_percentage , A.eh_value as eh_value , A.total_aportations as total_aportations , A.irpf_percentage as irpf_percentage , A.irpf_value as irpf_value , A.advance_pays as advance_pays , A.sk_reduction as sk_reduction , A.other_reduction as other_reduction , A.total_deduction as total_deduction , A.total_to_receive as total_to_receive , A.total_bccc as total_bccc, A.benefits_and_compensations as benefits_and_compensations, A.other_benefits as other_benefits, A.redundancy_payment as redundancy_payment , A.company_cc_percentage as company_cc_percentage , A.company_cc_value as company_cc_value , A.company_eh_percentage as company_eh_percentage , A.company_eh_value as company_eh_value , A.company_oh_percentage as company_oh_percentage , A.company_oh_value as company_oh_value , A.company_pc_at_percentage as company_pc_at_percentage , A.company_pc_at_value as company_pc_at_value , A.company_pc_unemployment_percentage as company_pc_unemployment_percentage , A.company_pc_unemployment_value as company_pc_unemployment_value , A.company_pc_fogasa_percentage as company_pc_fogasa_percentage , A.company_pc_fogasa_value as company_pc_fogasa_value , A.company_pc_training_percentage as company_pc_training_percentage, A.company_pc_training_value as company_pc_training_value, B.naf as emp_naf , B.passport as emp_nif , C.name as name , C.name_2 as name2 , C.lastname as lastname , C.lastname_2 as lastname2 , G.name as category_name , F.name as quotation_name , J.street_address as comp_street_address , I.cif as comp_cif , I.socialSecurityId as comp_ss , E.nocturnal as nocturnal , E.turnicity as turnicity, O.name as comp_name, J.state as state, E.complementary_hours as comp_hours, K.digit as currency_digit FROM nominal_dev.payroll A INNER JOIN nominal_dev.employee B ON A.employee = B.id INNER JOIN nominal_dev.employee_information C ON A.employee = C.id INNER JOIN nominal_dev.employee_contract D ON A.employee = D.id INNER JOIN nominal_dev.employee_schedule E ON A.employee = E.employee INNER JOIN nominal_dev.company_financial H ON H.company = A.company INNER JOIN nominal_dev.company_information I ON I.company = A.company INNER JOIN nominal_dev.company_contact J ON J.company = A.company INNER JOIN nominal_dev.company O ON O.id = A.company INNER JOIN nominal_dev.currency K ON K.id = H.currency INNER JOIN nominal_dev.agreement_com_quotation F ON F.id = H.quotation INNER JOIN nominal_dev.agreement_emp_category G ON G.id = D.category WHERE A.id = $P{PAYROLL_ID}   AND E.created_at BETWEEN date_from AND date_to AND B.created_at BETWEEN DATE("2000-01-01") AND date_to AND C.created_at BETWEEN DATE("2000-01-01") AND date_to AND D.created_at BETWEEN DATE("2000-01-01") AND date_to AND H.created_at BETWEEN DATE("2000-01-01") AND date_to AND I.created_at BETWEEN DATE("2000-01-01") AND date_to AND J.created_at BETWEEN DATE("2000-01-01") AND date_to ORDER BY C.created_at DESC , B.created_at DESC , D.created_at DESC , H.created_at DESC , I.created_at DESC , J.created_at DESC LIMIT 1]]>
+		<![CDATA[SELECT
+	DISTINCT A.id as id ,
+	A.created_at as creation ,
+	A.employee as employee ,
+	A.agreement as agreement ,
+	A.company as company ,
+	A.date_from as date_from ,
+	A.date_to as date_to ,
+	A.date_total_days as total_days ,
+	A.base_salary as base_salary ,
+	A.employee_apportion as emp_apportion ,
+	A.apportion as apportion ,
+	A.salary_kind as salary_kind ,
+	A.total_earned as total_earned ,
+	A.cc_percentage as cc_percentage ,
+	A.cc_value as cc_value ,
+	A.unemployment_percentage as unemployment_percentage ,
+	A.unemployment_value as unemployment_value ,
+	A.training_percentage as training_percentage ,
+	A.training_value as training_value ,
+	A.oh_original_value as oh_original_value ,
+	A.oh_percentage as oh_percentage ,
+	A.oh_value as oh_value ,
+	A.eh_original_value as eh_original_value ,
+	A.eh_percentage as eh_percentage ,
+	A.eh_value as eh_value ,
+	A.total_aportations as total_aportations ,
+	A.irpf_percentage as irpf_percentage ,
+	A.irpf_value as irpf_value ,
+	A.advance_pays as advance_pays ,
+	A.sk_reduction as sk_reduction ,
+	A.other_reduction as other_reduction ,
+	A.total_deduction as total_deduction ,
+	A.total_to_receive as total_to_receive ,
+	A.total_bccc as total_bccc,
+	A.benefits_and_compensations as benefits_and_compensations,
+	A.other_benefits as other_benefits,
+	A.redundancy_payment as redundancy_payment ,
+	A.company_cc_percentage as company_cc_percentage ,
+	A.company_cc_value as company_cc_value ,
+	A.company_eh_percentage as company_eh_percentage ,
+	A.company_eh_value as company_eh_value ,
+	A.company_oh_percentage as company_oh_percentage ,
+	A.company_oh_value as company_oh_value ,
+	A.company_pc_at_percentage as company_pc_at_percentage ,
+	A.company_pc_at_value as company_pc_at_value ,
+	A.company_pc_unemployment_percentage as company_pc_unemployment_percentage ,
+	A.company_pc_unemployment_value as company_pc_unemployment_value ,
+	A.company_pc_fogasa_percentage as company_pc_fogasa_percentage ,
+	A.company_pc_fogasa_value as company_pc_fogasa_value ,
+	A.company_pc_training_percentage as company_pc_training_percentage,
+	A.company_pc_training_value as company_pc_training_value,
+	B.naf as emp_naf ,
+	B.passport as emp_nif ,
+	C.name as name ,
+	C.name_2 as name2 ,
+	C.lastname as lastname ,
+	C.lastname_2 as lastname2 ,
+	G.name as category_name ,
+	F.name as quotation_name ,
+	J.street_address as comp_street_address ,
+	I.cif as comp_cif ,
+	I.socialSecurityId as comp_ss ,
+	E.nocturnal as nocturnal ,
+	E.turnicity as turnicity,
+	O.name as comp_name,
+	J.state as state,
+	E.complementary_hours as comp_hours,
+	K.digit as currency_digit
+FROM
+	nominal_dev.payroll A
+INNER JOIN nominal_dev.employee B ON
+	A.employee = B.id
+INNER JOIN nominal_dev.employee_information C ON
+	A.employee = C.id
+INNER JOIN nominal_dev.employee_contract D ON
+	A.employee = D.id
+INNER JOIN nominal_dev.employee_schedule E ON
+	A.employee = E.employee
+INNER JOIN nominal_dev.company_financial H ON
+	H.company = A.company
+INNER JOIN nominal_dev.company_information I ON
+	I.company = A.company
+INNER JOIN nominal_dev.company_contact J ON
+	J.company = A.company
+INNER JOIN nominal_dev.company O ON
+	O.id = A.company
+INNER JOIN nominal_dev.currency K ON
+	K.id = H.currency
+INNER JOIN nominal_dev.agreement_com_quotation F ON
+	F.id = H.quotation
+INNER JOIN nominal_dev.agreement_emp_category G ON
+	G.id = D.category
+WHERE
+	A.id = $P{PAYROLL_ID} 
+	AND E.created_at BETWEEN date_from AND date_to
+	AND B.created_at BETWEEN DATE("2000-01-01") AND date_to
+	AND C.created_at BETWEEN DATE("2000-01-01") AND date_to
+	AND D.created_at BETWEEN DATE("2000-01-01") AND date_to
+	AND H.created_at BETWEEN DATE("2000-01-01") AND date_to
+	AND I.created_at BETWEEN DATE("2000-01-01") AND date_to
+	AND J.created_at BETWEEN DATE("2000-01-01") AND date_to
+ORDER BY
+	C.created_at DESC ,
+	B.created_at DESC ,
+	D.created_at DESC ,
+	H.created_at DESC ,
+	I.created_at DESC ,
+	J.created_at DESC
+LIMIT 1]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
@@ -1239,8 +1387,8 @@ de la Empresa]]></text>
 			<componentElement>
 				<reportElement x="20" y="70" width="419" height="10" uuid="62fd3bcb-0ec5-4465-a570-dd712864605a"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="Dataset1" uuid="7ee64832-f3f7-4986-adf1-7ef5e318806b">
-						<datasetParameter name="JASPER_REPORT">
+					<datasetRun subDataset="Dataset1" uuid="39f55a7c-a104-4b86-be1d-9604082c93e1">
+						<datasetParameter name="PAYROLL_ID">
 							<datasetParameterExpression><![CDATA[$P{PAYROLL_ID}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -1318,7 +1466,10 @@ de la Empresa]]></text>
 			<componentElement>
 				<reportElement x="20" y="180" width="420" height="10" uuid="1b184b91-3de5-473b-9b58-c75b8b35cae0"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="Dataset3" uuid="409f7be6-d96e-47f1-8936-f018773ddaad">
+					<datasetRun subDataset="Dataset3" uuid="1da48e8f-f6f0-4f2d-a7aa-36f51a17a538">
+						<datasetParameter name="PAYROLL_ID">
+							<datasetParameterExpression><![CDATA[$P{PAYROLL_ID}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:listContents height="10" width="420">
