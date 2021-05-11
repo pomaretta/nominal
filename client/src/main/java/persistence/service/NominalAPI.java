@@ -20,6 +20,8 @@ import common.company.Currency;
 import common.employee.Employee;
 import common.employee.EmployeeMinimal;
 import common.employee.Schedule;
+import common.payroll.Complement;
+import common.payroll.Payroll;
 import service.Driver;
 
 import java.sql.ResultSet;
@@ -392,6 +394,27 @@ public class NominalAPI extends Driver {
         return agreement;
     }
 
+    public Agreement getAgreementByIdMinimal(int agreementId) throws SQLException {
+
+        this.queries.selectAgreementByIdMinimal.setInt(1,agreementId);
+
+        ResultSet resultSet = null;
+        Agreement agreement;
+
+        try {
+            resultSet = this.queries.selectAgreementByIdMinimal.executeQuery();
+            resultSet.next();
+            agreement = new AgreementMinimal(
+                    resultSet.getInt("id")
+                    ,resultSet.getString("name")
+            );
+        } finally {
+            resultSet.close();
+        }
+
+        return agreement;
+    }
+
     /**
      *
      * Get all agreements in a list, and for each id calls getAgreementById.
@@ -487,6 +510,29 @@ public class NominalAPI extends Driver {
                     ,resultSet.getBoolean("apportion")
                     ,resultSet.getFloat("hours")
                     ,resultSet.getFloat("irpf")
+            );
+        } finally {
+            resultSet.close();
+        }
+
+        return employee;
+    }
+
+    public Employee getEmployeeByIdMinimal(int id) throws SQLException {
+
+        this.queries.selectEmployeeByIdMinimal.setInt(1,id);
+
+        ResultSet resultSet = null;
+        Employee employee;
+
+        try {
+            resultSet = this.queries.selectEmployeeByIdMinimal.executeQuery();
+            employee = new EmployeeMinimal(
+                    resultSet.getInt("id")
+                    ,resultSet.getString("name")
+                    ,resultSet.getString("lastname")
+                    ,resultSet.getString("lastname2")
+                    ,resultSet.getString("email_address")
             );
         } finally {
             resultSet.close();
@@ -654,6 +700,26 @@ public class NominalAPI extends Driver {
         return company;
     }
 
+    public Company getCompanyByIdMinimal(int id) throws SQLException {
+        this.queries.selectCompanyByIdMinimal.setInt(1,id);
+
+        ResultSet resultSet = null;
+        Company company;
+
+        try {
+            resultSet = this.queries.selectCompanyByIdMinimal.executeQuery();
+            resultSet.next();
+            company = new CompanyMinimal(
+                    resultSet.getInt("id")
+                    ,resultSet.getString("name")
+            );
+        } finally {
+            resultSet.close();
+        }
+
+        return company;
+    }
+
     /**
      *
      * Get a list of companies, and for each one calls getCompanyById.
@@ -678,6 +744,104 @@ public class NominalAPI extends Driver {
         }
 
         return companies;
+    }
+
+    // PAYROLL
+
+    public Payroll getPayrollById(int id) throws SQLException {
+
+        this.queries.selectPayrollById.setInt(1,id);
+
+        ResultSet resultSet = null;
+        Payroll payroll;
+
+        try {
+            resultSet = this.queries.selectPayrollById.executeQuery();
+            payroll = new Payroll(
+                    resultSet.getInt("id")
+                    ,resultSet.getTimestamp("creation")
+                    ,getCompanyByIdMinimal(resultSet.getInt("company"))
+                    ,getAgreementByIdMinimal(resultSet.getInt("agreement"))
+                    ,getEmployeeByIdMinimal(resultSet.getInt("employee"))
+                    ,resultSet.getDate("date_from")
+                    ,resultSet.getDate("date_to")
+                    ,resultSet.getInt("total_days")
+                    ,resultSet.getFloat("base_salary")
+                    ,resultSet.getBoolean("emp_apportion")
+                    ,resultSet.getFloat("apportion")
+                    ,getComplementsByPayroll(resultSet.getInt("id"),true)
+                    ,getComplementsByPayroll(resultSet.getInt("id"),false)
+                    ,resultSet.getFloat("salary_kind")
+                    ,resultSet.getFloat("total_earned")
+                    ,resultSet.getFloat("cc_percentage")
+                    ,resultSet.getFloat("cc_value")
+                    ,resultSet.getFloat("benefits_and_compensations")
+                    ,resultSet.getFloat("redundancy_payment")
+                    ,resultSet.getFloat("other_benefits")
+                    ,resultSet.getFloat("unemployment_percentage")
+                    ,resultSet.getFloat("unemployment_value")
+                    ,resultSet.getFloat("training_percentage")
+                    ,resultSet.getFloat("training_value")
+                    ,resultSet.getFloat("oh_original_value")
+                    ,resultSet.getFloat("oh_percentage")
+                    ,resultSet.getFloat("oh_value")
+                    ,resultSet.getFloat("eh_original_value")
+                    ,resultSet.getFloat("eh_percentage")
+                    ,resultSet.getFloat("eh_value")
+                    ,resultSet.getFloat("total_aportations")
+                    ,resultSet.getFloat("irpf_percentage")
+                    ,resultSet.getFloat("irpf_value")
+                    ,resultSet.getFloat("advance_pays")
+                    ,resultSet.getFloat("sk_reduction")
+                    ,resultSet.getFloat("other_reduction")
+                    ,resultSet.getFloat("total_bccc")
+                    ,resultSet.getFloat("total_deduction")
+                    ,resultSet.getFloat("total_to_receive")
+                    ,resultSet.getFloat("company_cc_percentage")
+                    ,resultSet.getFloat("company_cc_value")
+                    ,resultSet.getFloat("company_pc_at_percentage")
+                    ,resultSet.getFloat("company_pc_at_value")
+                    ,resultSet.getFloat("company_pc_unemployment_percentage")
+                    ,resultSet.getFloat("company_pc_unemployment_value")
+                    ,resultSet.getFloat("company_pc_training_percentage")
+                    ,resultSet.getFloat("company_pc_training_value")
+                    ,resultSet.getFloat("company_pc_fogasa_percentage")
+                    ,resultSet.getFloat("company_pc_fogasa_value")
+                    ,resultSet.getFloat("company_eh_percentage")
+                    ,resultSet.getFloat("company_eh_value")
+                    ,resultSet.getFloat("company_oh_percentage")
+                    ,resultSet.getFloat("company_oh_value")
+            );
+        } finally {
+            resultSet.close();
+        }
+
+        return payroll;
+    }
+
+    public ArrayList<Complement> getComplementsByPayroll(int payrollId, boolean salarial) throws SQLException {
+
+        this.queries.selectPayrollComplementById.setInt(1,payrollId);
+        this.queries.selectPayrollComplementById.setBoolean(2,salarial);
+
+        ResultSet resultSet = null;
+        ArrayList<Complement> complements = new ArrayList<>();
+
+        try {
+            resultSet = this.queries.selectPayrollComplementById.executeQuery();
+            while(resultSet.next()){
+                complements.add(new Complement(
+                        resultSet.getString("title")
+                        ,resultSet.getFloat("original")
+                        ,resultSet.getFloat("percentage")
+                        ,resultSet.getFloat("value")
+                ));
+            }
+        } finally {
+            resultSet.close();
+        }
+
+        return complements;
     }
 
     /**
