@@ -314,6 +314,9 @@ CREATE TABLE payroll (
     -- OTHER REDUCTIONS
     other_reduction         FLOAT,
 
+    -- TOTAL BASE SALARY + APPORTION
+    total_bccc              FLOAT,
+
     -- TOTAL REDUCTIONS
     total_deduction         FLOAT,
 
