@@ -320,6 +320,36 @@ CREATE TABLE payroll (
     -- TOTAL TO RECEIVE
     total_to_receive        FLOAT,
 
+    -- BOTTOM PAYROLL
+
+    -- COMMON CONTINGENCIES
+    company_cc_percentage   FLOAT,
+    company_cc_value        FLOAT,
+
+    -- AT AND EP
+    company_pc_at_percentage FLOAT,
+    company_pc_at_value     FLOAT,
+
+    -- UNEMPLOYMENT
+    company_pc_unemployment_percentage FLOAT,
+    company_pc_unemployment_value FLOAT,
+    
+    -- TRAINING
+    company_pc_training_percentage FLOAT,
+    company_pc_training_value FLOAT,
+    
+    -- FOGASA
+    company_pc_fogasa_percentage FLOAT,
+    company_pc_fogasa_value FLOAT,
+
+    -- EXTRA HOURS
+    company_eh_percentage   FLOAT,
+    company_eh_value        FLOAT,
+    
+    -- OVERWHELMING HOURS
+    company_oh_percentage   FLOAT,
+    company_oh_value        FLOAT,
+
     PRIMARY KEY (id),
     FOREIGN KEY (company) REFERENCES company (id),
     FOREIGN KEY (agreement) REFERENCES agreement (id),
