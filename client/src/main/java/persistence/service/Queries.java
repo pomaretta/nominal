@@ -80,6 +80,25 @@ public class Queries extends persistence.Queries {
     public PreparedStatement checkEmployeeUpdate;
     public PreparedStatement checkAgreementUpdate;
 
+    // INSERTS
+
+    public PreparedStatement selectLastId;
+
+    public PreparedStatement insertEmployeeContact;
+    public PreparedStatement insertEmployeeInformation;
+    public PreparedStatement insertEmployeeFinancial;
+    public PreparedStatement insertEmployeeCompany;
+    public PreparedStatement insertEmployee;
+
+    public PreparedStatement insertCompanyContact;
+    public PreparedStatement insertCompanyInformation;
+    public PreparedStatement insertCompanyFinancial;
+    public PreparedStatement insertCompanyAgreement;
+    public PreparedStatement insertCompany;
+
+    public PreparedStatement insertPayroll;
+    public PreparedStatement insertPayrollComplement;
+
     /**
      *
      * All queries from NominalAPI using PreparedStatement
@@ -141,6 +160,24 @@ public class Queries extends persistence.Queries {
         checkCompanyUpdate = this.connection.prepareStatement(Statements.CHECK_COMPANY_UPDATE.getQuery());
         checkEmployeeUpdate = this.connection.prepareStatement(Statements.CHECK_EMPLOYEE_UPDATE.getQuery());
         checkAgreementUpdate = this.connection.prepareStatement(Statements.CHECK_AGREEMENT_UPDATE.getQuery());
+
+        // INSERTS
+        insertEmployee = this.connection.prepareStatement(Statements.INSERT_NEW_EMPLOYEE.getQuery());
+        insertEmployeeContact = this.connection.prepareStatement(Statements.INSERT_EMPLOYEE_CONTACT.getQuery());
+        insertEmployeeInformation = this.connection.prepareStatement(Statements.INSERT_EMPLOYEE_INFORMATION.getQuery());
+        insertEmployeeFinancial = this.connection.prepareStatement(Statements.INSERT_EMPLOYEE_FINANCIAL.getQuery());
+        insertEmployeeCompany = this.connection.prepareStatement(Statements.INSERT_EMPLOYEE_COMPANY.getQuery());
+
+        insertCompanyContact = this.connection.prepareStatement(Statements.INSERT_COMPANY_CONTACT.getQuery());
+        insertCompanyInformation = this.connection.prepareStatement(Statements.INSERT_COMPANY_INFORMATION.getQuery());
+        insertCompanyFinancial = this.connection.prepareStatement(Statements.INSERT_COMPANY_FINANCIAL.getQuery());
+        insertCompanyAgreement = this.connection.prepareStatement(Statements.INSERT_COMPANY_AGREEMENT.getQuery());
+        insertCompany = this.connection.prepareStatement(Statements.INSERT_NEW_COMPANY.getQuery());
+
+        insertPayroll = this.connection.prepareStatement(Statements.INSERT_PAYROLL.getQuery());
+        insertPayrollComplement = this.connection.prepareStatement(Statements.INSERT_PAYROLL_COMPLEMENTS.getQuery());
+
+        selectLastId = this.connection.prepareStatement(Statements.SELECT_LAST_INSERT_ID.getQuery());
 
     }
 

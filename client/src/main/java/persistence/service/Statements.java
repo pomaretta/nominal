@@ -92,6 +92,8 @@ public enum Statements {
     CHECK_AGREEMENT_UPDATE("SELECT a.last_update > ? as should_update FROM nominal_dev.agreement a WHERE a.id = ?"),
     CHECK_EMPLOYEE_UPDATE("SELECT e.last_update > ? as should_update FROM nominal_dev.employee e WHERE e.id = ?"),
 
+    SELECT_LAST_INSERT_ID("SELECT LAST_INSERT_ID() as id"),
+
     PLACEHOLDER("");
 
     private final String query;

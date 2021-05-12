@@ -42,12 +42,12 @@
                            </FlowPane.margin>
                         </Label>
                         <Label fx:id="employeePreviewPassport" styleClass="selector-content" text="&lt;Passport&gt;" />
-                        <Button fx:id="newEmployeeButton" alignment="CENTER_RIGHT" mnemonicParsing="false" text="New Employee">
+                        <Button fx:id="newEmployeeButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#createNewEmployee" text="New Employee">
                            <FlowPane.margin>
                               <Insets right="25.0" />
                            </FlowPane.margin>
                         </Button>
-                        <Button fx:id="fireItButton" alignment="CENTER_RIGHT" layoutX="437.0" layoutY="18.0" mnemonicParsing="false" styleClass="danger" text="Fire it" />
+                        <Button fx:id="fireItButton" alignment="CENTER_RIGHT" layoutX="437.0" layoutY="18.0" mnemonicParsing="false" onAction="#fireItEmployee" styleClass="danger" text="Fire it" />
                      </children>
                   </FlowPane>
                </children>
@@ -59,7 +59,7 @@
                         <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                            <children>
                               <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Employee Information " />
-                              <Button fx:id="saveChangesInformation" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
+                              <Button fx:id="saveChangesInformation" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" onAction="#saveChangesInformation" styleClass="success" text="Save changes">
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
@@ -124,18 +124,13 @@
                                           <TextField fx:id="streetField" layoutY="29.0" prefHeight="25.0" prefWidth="338.0" />
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane layoutY="136.0">
-                                       <children>
-                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="State" />
-                                          <TextField fx:id="stateField" layoutY="29.0" prefWidth="150.0" />
-                                       </children>
-                                    </AnchorPane>
-                                    <Label layoutX="188.0" layoutY="136.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Phone Number" />
-                                    <TextField fx:id="phoneNumberField" layoutX="188.0" layoutY="165.0" prefWidth="150.0" />
+                                    <AnchorPane layoutY="136.0" />
+                                    <Label layoutY="136.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Phone Number" />
+                                    <TextField fx:id="phoneNumberField" layoutY="165.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <Label layoutX="690.0" layoutY="42.0" styleClass="content-title" text="Image" />
-                              <Button fx:id="changeImageButton" onAction="#uploadImage" layoutX="824.0" layoutY="40.0" mnemonicParsing="false" text="Change" />
+                              <Button fx:id="changeImageButton" layoutX="824.0" layoutY="40.0" mnemonicParsing="false" onAction="#uploadImage" text="Change" />
                               <FlowPane alignment="CENTER" layoutX="690.0" layoutY="93.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: -fx-background-content; -fx-background-radius: 8px;">
                                  <children>
                                     <ImageView fx:id="employeeImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
@@ -153,7 +148,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                            <children>
                               <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Employee Contract" />
-                              <Button fx:id="saveCategoryField" layoutX="185.0" layoutY="191.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save">
+                              <Button fx:id="saveCategoryField" layoutX="185.0" layoutY="191.0" mnemonicParsing="false" onAction="#saveChangesCategory" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -189,7 +184,7 @@
                               <TableView fx:id="antiquityView" layoutX="25.0" layoutY="375.0" prefHeight="72.0" prefWidth="301.0" />
                               <Label layoutX="26.0" layoutY="235.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Salary Table Plus" />
                               <Label layoutX="23.0" layoutY="347.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Antiquity Table Plus" />
-                              <Button fx:id="contractSaveButton" layoutX="570.0" layoutY="78.0" mnemonicParsing="false" styleClass="success" text="Save changes">
+                              <Button fx:id="contractSaveButton" layoutX="570.0" layoutY="78.0" mnemonicParsing="false" onAction="#saveChangesContract" styleClass="success" text="Save changes">
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
@@ -203,7 +198,7 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                            <children>
                               <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Schedule Planning" />
-                              <Button fx:id="scheduleSaveButton" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save changes">
+                              <Button fx:id="scheduleSaveButton" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" onAction="#saveChangesSchedule" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Save changes">
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
@@ -212,7 +207,7 @@
                               <Label layoutX="22.0" layoutY="67.0" prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Select Date" />
                               <Label layoutX="22.0" layoutY="107.0" prefHeight="20.0" prefWidth="90.0" styleClass="content-title" stylesheets="@../../css/modules/forms/default.css" text="Selected" />
                               <TextField fx:id="selectedDateField" layoutX="129.0" layoutY="105.0" prefHeight="25.0" prefWidth="180.0" />
-                              <Button fx:id="searchButton" layoutX="129.0" layoutY="144.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Search">
+                              <Button fx:id="searchButton" layoutX="129.0" layoutY="144.0" mnemonicParsing="false" onAction="#searchSchedule" prefHeight="25.0" prefWidth="76.0" styleClass="success" stylesheets="@../../css/modules/forms/default.css" text="Search">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>

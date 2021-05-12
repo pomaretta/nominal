@@ -20,6 +20,7 @@ import view.ViewController;
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -30,6 +31,8 @@ public class EmployeeForm extends ViewController implements Initializable {
     private ObservableList<String> employeeList;
 
     private Employee currentEmployee;
+
+    private ArrayList<Category> categories;
 
     @FXML
     private ComboBox<String> employeeSelector;
@@ -146,6 +149,9 @@ public class EmployeeForm extends ViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        this.cifGenerator.setVisible(false);
+        this.nafGenerator.setVisible(false);
+
     }
 
     @Override
@@ -178,6 +184,9 @@ public class EmployeeForm extends ViewController implements Initializable {
     }
 
     private void updateFields(){
+
+        enableButtons();
+
 
         // PREVIEW
         this.employeePreviewName.setText(this.currentEmployee.getName());
@@ -254,7 +263,8 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.categoryList.clear();
         int index = 0;
         int count = 0;
-        for(Category c : NominalFX.nominalAPI.getCategories(this.controller.getCurrentCompany().getAgreement().getId())){
+        this.categories = NominalFX.nominalAPI.getCategories(this.controller.getCurrentCompany().getAgreement().getId());
+        for(Category c : this.categories){
             if (c.getId() == this.currentEmployee.getCategory().getId()){
                 index = count;
             }
@@ -266,6 +276,9 @@ public class EmployeeForm extends ViewController implements Initializable {
     }
 
     private void setSalaryView() throws SQLException {
+
+        this.salaryView.getItems().clear();
+        this.salaryView.getColumns().clear();
 
         Salary salary = NominalFX.nominalAPI.getSalaryTableByFields(
                 this.controller.getCurrentCompany().getAgreement()
@@ -292,6 +305,9 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     private void setAntiquityView() throws SQLException {
 
+        this.antiquityView.getItems().clear();
+        this.antiquityView.getColumns().clear();
+
         // CHANGE THIS
         Antiquity antiquity = NominalFX.nominalAPI.getAntiquityByFields(
                 this.controller.getCurrentCompany().getAgreement()
@@ -300,17 +316,17 @@ public class EmployeeForm extends ViewController implements Initializable {
                 ,this.currentEmployee.calculateYears()
         );
 
-        TableColumn<Salary,String> column = new TableColumn<>("Quotation");
+        TableColumn<Antiquity,String> column = new TableColumn<>("Quotation");
         column.setCellValueFactory(new PropertyValueFactory<>("quotation"));
 
-        TableColumn<Salary,String> column2 = new TableColumn<>("Category");
+        TableColumn<Antiquity,String> column2 = new TableColumn<>("Category");
         column2.setCellValueFactory(new PropertyValueFactory<>("category"));
 
-        TableColumn<Salary,String> column3 = new TableColumn<>("Years");
-        column3.setCellValueFactory(new PropertyValueFactory<>("year"));
+        TableColumn<Antiquity,String> column3 = new TableColumn<>("Years");
+        column3.setCellValueFactory(new PropertyValueFactory<>("years"));
 
-        TableColumn<Salary,String> column4 = new TableColumn<>("Value");
-        column3.setCellValueFactory(new PropertyValueFactory<>("value"));
+        TableColumn<Antiquity,String> column4 = new TableColumn<>("Value");
+        column4.setCellValueFactory(new PropertyValueFactory<>("value"));
 
         antiquityView.getColumns().add(column);
         antiquityView.getColumns().add(column2);
@@ -319,6 +335,205 @@ public class EmployeeForm extends ViewController implements Initializable {
 
         antiquityView.getItems().add(antiquity);
 
+    }
+
+    @FXML
+    private void saveChangesInformation() throws SQLException {
+        if (
+                this.currentEmployee != null
+                &&
+                hasChanged(this.currentEmployee.getName(),this.nameField.getText())
+                ||
+                hasChanged(this.currentEmployee.getName2(),this.secondNameField.getText())
+                ||
+                hasChanged(this.currentEmployee.getLastName(),this.lastNameField.getText())
+                ||
+                hasChanged(this.currentEmployee.getLastName2(),this.secondLastNameField.getText())
+        ){
+            // INSERT TO INFORMATION
+        }
+
+        if (
+                this.currentEmployee != null
+                &&
+                hasChanged(this.currentEmployee.getMailAddress(),this.emailField.getText())
+                ||
+                hasChanged(this.currentEmployee.getStreetAddress(),this.streetField.getText())
+                ||
+                hasChanged(this.currentEmployee.getPhoneNumber(),this.phoneNumberField.getText())
+        ){
+            // INSERT TO CONTACT
+        }
+
+    }
+
+    @FXML
+    private void saveChangesContract() throws SQLException {
+        if (
+                this.currentEmployee != null
+                        &&
+                hasChanged(String.valueOf(this.currentEmployee.getIrpf()),irpfField.getText())
+                        ||
+                        hasChanged(this.currentEmployee.isHourly(),this.hourlyCheck.isSelected())
+                        ||
+                        hasChanged(String.valueOf(this.currentEmployee.getHiredHours()),this.hiredHoursField.getText())
+        ){
+            // INSERT TO CONTRACT
+        }
+    }
+
+    @FXML
+    private void saveChangesCategory() throws SQLException {
+        if (
+                this.currentEmployee != null
+                &&
+                hasChanged(this.currentEmployee.getCategory().getId(),this.categories.get(this.categoryComboField.getSelectionModel().getSelectedIndex()).getId())
+        ){
+            // CHANGE CATEGORY
+        }
+    }
+
+    @FXML
+    private void saveChangesSchedule() throws SQLException {
+
+    }
+
+    @FXML
+    private void searchSchedule() throws SQLException {
+
+    }
+
+    private void disableButtons(){
+        this.employeeSelector.setDisable(true);
+        this.saveChangesInformation.setVisible(false);
+        this.contractSaveButton.setVisible(false);
+        this.salaryView.setDisable(true);
+        this.antiquityView.setDisable(true);
+        this.saveCategoryField.setVisible(false);
+        this.scheduleSelector.setDisable(true);
+        this.selectedDateField.setDisable(true);
+        this.overwhelmingHoursField.getParent().setVisible(false);
+        this.scheduleSaveButton.setVisible(false);
+        this.searchButton.setVisible(false);
+        this.cifField.setEditable(true);
+        this.nafField.setEditable(true);
+    }
+
+    private void enableButtons(){
+        this.employeeSelector.setDisable(false);
+        this.saveChangesInformation.setVisible(true);
+        this.contractSaveButton.setVisible(true);
+        this.salaryView.setDisable(false);
+        this.antiquityView.setDisable(false);
+        this.saveCategoryField.setVisible(true);
+        this.scheduleSelector.setDisable(false);
+        this.selectedDateField.setDisable(false);
+        this.overwhelmingHoursField.getParent().setVisible(true);
+        this.scheduleSaveButton.setVisible(true);
+        this.fireItButton.setVisible(true);
+        this.newEmployeeButton.setText("New Employee");
+        this.newEmployeeButton.getStyleClass().remove("success");
+        this.fireItButton.setText("Fire It");
+        this.searchButton.setVisible(true);
+        this.cifField.setEditable(false);
+        this.nafField.setEditable(false);
+    }
+
+    @FXML
+    private void clearAllFields() {
+
+        this.currentEmployee = null;
+
+        this.employeeSelector.setDisable(true);
+
+        this.employeePreviewName.setText("");
+        this.employeePreviewPassport.setText("");
+
+        this.cifGenerator.setVisible(true);
+        this.nafGenerator.setVisible(true);
+
+        this.cifField.setText("");
+        this.nafField.setText("");
+
+        this.cifField.setEditable(true);
+        this.nafField.setEditable(true);
+
+        this.nameField.setText("");
+        this.secondNameField.setText("");
+        this.lastNameField.setText("");
+        this.secondLastNameField.setText("");
+
+        this.emailField.setText("");
+        this.streetField.setText("");
+        this.stateField.setText("");
+
+        this.phoneNumberField.setText("");
+
+        this.saveChangesInformation.setVisible(false);
+
+        this.irpfField.setText("");
+        this.hourlyCheck.setSelected(false);
+        this.hiredHoursField.setText("");
+
+        this.contractSaveButton.setVisible(false);
+        this.categoryComboField.getSelectionModel().select(0);
+        this.salaryView.setDisable(true);
+        this.antiquityView.setDisable(true);
+
+        this.saveCategoryField.setVisible(false);
+
+        this.scheduleSelector.setDisable(true);
+        this.selectedDateField.setDisable(true);
+        this.selectedDateField.setText("");
+
+        this.overwhelmingHoursField.getParent().setVisible(false);
+        this.overwhelmingHoursField.setText("");
+        this.extraHoursField.setText("");
+
+        this.scheduleSaveButton.setVisible(false);
+
+        this.newEmployeeButton.setText("Create Employee");
+        this.newEmployeeButton.getStyleClass().add("success");
+
+        this.fireItButton.setText("Cancel");
+
+        disableButtons();
+
+    }
+
+    @FXML
+    private void createNewEmployee(){
+        if(this.currentEmployee != null){
+            clearAllFields();
+        } else {
+            // Insert new user.
+        }
+    }
+
+    @FXML
+    private void fireItEmployee(){
+        if(this.currentEmployee == null){
+            enableButtons();
+            employeeSelection();
+        } else {
+            // Set active = 0 and set expiration date. PROCEDURE??
+        }
+    }
+
+    private boolean hasChanged(String original, String modified){
+        return !original.equals(modified);
+    }
+
+    private boolean hasChanged(float original, float modified){
+        return !(original == modified);
+    }
+
+    private boolean hasChanged(boolean original, boolean modified){
+        return original == modified;
+    }
+
+    private boolean hasChanged(int original, int modified){
+        return original == modified;
     }
 
     @Override

@@ -1055,4 +1055,206 @@ public class NominalAPI extends Driver {
         return shouldUpdate;
     }
 
+    // INSERTS
+
+    public int selectLastId() throws SQLException {
+        ResultSet resultSet = null;
+        int id;
+
+        try {
+            resultSet = this.queries.selectLastId.executeQuery();
+            resultSet.next();
+            id = resultSet.getInt("id");
+        } finally {
+            resultSet.close();
+        }
+
+        return id;
+    }
+
+    // EMPLOYEE
+
+    public void setEmployee(Company company, Employee employee) throws SQLException {
+        this.queries.insertEmployee.setString(1,employee.getPassport());
+        this.queries.insertEmployee.setString(2,employee.getNaf());
+        this.queries.insertEmployee.execute();
+        int employeeId = selectLastId();
+        setEmployeeInformation(employeeId,employee);
+        setEmployeeContact(employeeId,employee);
+        setEmployeeFinancial(employeeId,employee);
+        setEmployeeCompany(employeeId,employee,company);
+    }
+
+    public void setEmployeeInformation(int employeeId, Employee employee) throws SQLException {
+        this.queries.insertEmployeeInformation.setInt(1,employeeId);
+        this.queries.insertEmployeeInformation.setString(2,employee.getName());
+        this.queries.insertEmployeeInformation.setString(3,employee.getName2());
+        this.queries.insertEmployeeInformation.setString(4,employee.getLastName());
+        this.queries.insertEmployeeInformation.setString(5,employee.getLastName2());
+        this.queries.insertEmployeeInformation.setBoolean(6,employee.isActive());
+        this.queries.insertEmployeeInformation.setBoolean(7,employee.isApportion());
+        this.queries.insertEmployeeInformation.execute();
+    }
+
+    public void setEmployeeContact(int employeeId, Employee employee) throws SQLException {
+        this.queries.insertEmployeeContact.setInt(1,employeeId);
+        this.queries.insertEmployeeContact.setString(2,employee.getMailAddress());
+        this.queries.insertEmployeeContact.setString(3,employee.getStreetAddress());
+        this.queries.insertEmployeeContact.setString(4,employee.getPhoneNumber());
+        this.queries.insertEmployeeContact.execute();
+    }
+
+    public void setEmployeeFinancial(int employeeId,Employee employee) throws SQLException {
+        this.queries.insertEmployeeFinancial.setInt(1,employeeId);
+        this.queries.insertEmployeeFinancial.setInt(2,employee.getCategory().getId());
+        this.queries.insertEmployeeFinancial.setFloat(3,employee.getIrpf());
+        this.queries.insertEmployeeFinancial.setBoolean(4,employee.isHourly());
+        this.queries.insertEmployeeFinancial.setFloat(5,employee.getHiredHours());
+        this.queries.insertEmployeeFinancial.execute();
+    }
+
+    public void setEmployeeCompany(int employeeId,Employee employee,Company company) throws SQLException {
+        this.queries.insertEmployeeCompany.setInt(1,company.getId());
+        this.queries.insertEmployeeCompany.setInt(2,employeeId);
+        this.queries.insertEmployeeCompany.setDate(3,employee.getJoinDate());
+        this.queries.insertEmployeeCompany.execute();
+    }
+
+    // COMPANY
+
+    public void setCompany(Company company) throws SQLException {
+        this.queries.insertCompany.setString(1,company.getName());
+        this.queries.insertCompany.execute();
+        int companyId = selectLastId();
+        setCompanyInformation(companyId,company);
+        setCompanyContact(companyId,company);
+        setCompanyFinancial(companyId,company);
+        setCompanyAgreement(companyId,company);
+    }
+
+    public void setCompanyInformation(int companyId, Company company) throws SQLException {
+        this.queries.insertCompanyInformation.setInt(1,companyId);
+        this.queries.insertCompanyInformation.setString(2,company.getCif());
+        this.queries.insertCompanyInformation.setString(3,company.getSocialSecurityId());
+        this.queries.insertCompanyInformation.execute();
+    }
+
+    public void setCompanyContact(int companyId, Company company) throws SQLException {
+        this.queries.insertCompanyContact.setInt(1,companyId);
+        this.queries.insertCompanyContact.setString(2,company.getStreetAddress());
+        this.queries.insertCompanyContact.setString(3,company.getState());
+        this.queries.insertCompanyContact.setString(4,company.getPhoneNumber());
+        this.queries.insertCompanyContact.execute();
+    }
+
+    public void setCompanyFinancial(int companyId, Company company) throws SQLException {
+        this.queries.insertCompanyFinancial.setInt(1,companyId);
+        this.queries.insertCompanyFinancial.setInt(2,company.getCurrency().getId());
+        this.queries.insertCompanyFinancial.setInt(3,company.getQuotation().getId());
+        this.queries.insertCompanyFinancial.execute();
+    }
+
+    public void setCompanyAgreement(int companyId, Company company) throws SQLException {
+        this.queries.insertCompanyAgreement.setInt(1,companyId);
+        this.queries.insertCompanyAgreement.setInt(2,company.getAgreement().getId());
+        this.queries.insertCompanyAgreement.execute();
+    }
+
+    // PAYROLL
+
+    public void setPayroll(Payroll payroll) throws SQLException {
+
+        // OBJECTS
+        this.queries.insertPayroll.setInt(1,payroll.getCompany().getId());
+        this.queries.insertPayroll.setInt(2,payroll.getCompany().getAgreement().getId());
+        this.queries.insertPayroll.setInt(3,payroll.getCompany().getAgreement().getId());
+
+        // DATES
+        this.queries.insertPayroll.setDate(4,payroll.getFrom());
+        this.queries.insertPayroll.setDate(5,payroll.getTo());
+        this.queries.insertPayroll.setInt(6,payroll.getTotalDays());
+
+        // APORTIONS
+        this.queries.insertPayroll.setFloat(7,payroll.getBaseSalary());
+        this.queries.insertPayroll.setBoolean(8,payroll.getEmployee().isApportion());
+        this.queries.insertPayroll.setFloat(9,payroll.getApportion());
+        this.queries.insertPayroll.setFloat(10,payroll.getSalaryKind());
+        this.queries.insertPayroll.setFloat(11,payroll.getTotalEarned());
+
+        // DEDUCTIONS PARTITIONED
+        this.queries.insertPayroll.setFloat(12,payroll.getCcPercentage());
+        this.queries.insertPayroll.setFloat(13,payroll.getCcValue());
+
+        // NON SALARIAL
+        this.queries.insertPayroll.setFloat(14,payroll.getBenefitsAndCompesations());
+        this.queries.insertPayroll.setFloat(15,payroll.getRedundancyPayment());
+        this.queries.insertPayroll.setFloat(16,payroll.getOtherBenefits());
+
+        // DEDUCTIONS PARTITIONED 2
+        this.queries.insertPayroll.setFloat(17,payroll.getUnemploymentPercentage());
+        this.queries.insertPayroll.setFloat(18,payroll.getUnemploymentValue());
+        this.queries.insertPayroll.setFloat(19,payroll.getTrainingPercentage());
+        this.queries.insertPayroll.setFloat(20,payroll.getTrainingValue());
+        this.queries.insertPayroll.setFloat(21,payroll.getOhOriginal());
+        this.queries.insertPayroll.setFloat(22,payroll.getOhPercentage());
+        this.queries.insertPayroll.setFloat(23,payroll.getOhValue());
+        this.queries.insertPayroll.setFloat(24,payroll.getEhOriginal());
+        this.queries.insertPayroll.setFloat(25,payroll.getEhPercentage());
+        this.queries.insertPayroll.setFloat(26,payroll.getEhValue());
+        this.queries.insertPayroll.setFloat(27,payroll.getTotalApportions());
+        this.queries.insertPayroll.setFloat(28,payroll.getIrpfPercentage());
+        this.queries.insertPayroll.setFloat(29,payroll.getIrpfValue());
+        this.queries.insertPayroll.setFloat(30,payroll.getAdvancePays());
+        this.queries.insertPayroll.setFloat(31,payroll.getSalaryKindDeduction());
+        this.queries.insertPayroll.setFloat(32,payroll.getOtherDeduction());
+        this.queries.insertPayroll.setFloat(33,payroll.getTotalDeduction());
+        this.queries.insertPayroll.setFloat(34,payroll.getTotalToReceive());
+
+        // BOTTOM
+        this.queries.insertPayroll.setFloat(35,payroll.getCompanyCCPercentage());
+        this.queries.insertPayroll.setFloat(36,payroll.getCompanyCCValue());
+        this.queries.insertPayroll.setFloat(37,payroll.getCompanyPCAtPercentage());
+        this.queries.insertPayroll.setFloat(38,payroll.getCompanyPCAtValue());
+        this.queries.insertPayroll.setFloat(39,payroll.getCompanyPCUnemploymentPercentage());
+        this.queries.insertPayroll.setFloat(40,payroll.getCompanyPCUnemploymentValue());
+        this.queries.insertPayroll.setFloat(41,payroll.getCompanyPCTrainingPercentage());
+        this.queries.insertPayroll.setFloat(42,payroll.getCompanyPCTrainingValue());
+        this.queries.insertPayroll.setFloat(43,payroll.getCompanyPCFogasaPercentage());
+        this.queries.insertPayroll.setFloat(44,payroll.getCompanyPCFogasaValue());
+        this.queries.insertPayroll.setFloat(45,payroll.getCompanyEhPercentage());
+        this.queries.insertPayroll.setFloat(46,payroll.getCompanyEhValue());
+        this.queries.insertPayroll.setFloat(47,payroll.getCompanyOhPercentage());
+        this.queries.insertPayroll.setFloat(48,payroll.getCompanyOhValue());
+        this.queries.insertPayroll.setFloat(49,payroll.getTotalBccc());
+
+        this.queries.insertPayroll.execute();
+
+        int payrollId = selectLastId();
+
+        // SET COMPLEMENTS
+
+        // SALARIAL
+        setPayrollComplements(payrollId,payroll.getSalaryComplements(),true);
+
+        // NON SALARIAL
+        setPayrollComplements(payrollId,payroll.getNonSalaryComplements(),false);
+
+    }
+
+    public void setPayrollComplements(int payrollId, ArrayList<Complement> complements, boolean salarial) throws SQLException {
+        for (Complement c : complements){
+            setPayrollComplement(payrollId,c,salarial);
+        }
+    }
+
+    public void setPayrollComplement(int payrollId,Complement complement, boolean salarial) throws SQLException {
+        this.queries.insertPayrollComplement.setInt(1,payrollId);
+        this.queries.insertPayrollComplement.setString(2,complement.getName());
+        this.queries.insertPayrollComplement.setBoolean(3,salarial);
+        this.queries.insertPayrollComplement.setFloat(4,complement.getOriginalValue());
+        this.queries.insertPayrollComplement.setFloat(5,complement.getValuePercentage());
+        this.queries.insertPayrollComplement.setFloat(6,complement.getValue());
+        this.queries.insertPayrollComplement.execute();
+    }
+
 }
