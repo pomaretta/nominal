@@ -1,13 +1,433 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane id="root" prefHeight="650.0" prefWidth="1030.0" styleClass="layout-corner-bottom-right" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="650.0" prefWidth="1030.0" style="-fx-background-color: -fx-background-content;" styleClass="layout-corner-bottom-right">
+         <children>
+            <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+               <children>
+                  <ComboBox fx:id="employeeSelector1" layoutX="14.0" layoutY="16.0" onAction="#employeeSelection" prefHeight="40.0" prefWidth="200.0" promptText="Select employee" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
+                  <DatePicker fx:id="scheduleSelector1" layoutX="226.0" layoutY="24.0" promptText="Select Date" />
+                  <FlowPane alignment="CENTER_LEFT" layoutX="430.0" layoutY="17.0" prefHeight="40.0" prefWidth="500.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="131.0" styleClass="selector-title" text="Employee Name">
+                           <FlowPane.margin>
+                              <Insets right="10.0" />
+                           </FlowPane.margin>
+                        </Label>
+                        <Label fx:id="employeePreviewName1" layoutX="10.0" layoutY="22.0" prefHeight="20.0" prefWidth="90.0" styleClass="selector-content" text="&lt;Name&gt;">
+                           <FlowPane.margin>
+                              <Insets />
+                           </FlowPane.margin>
+                        </Label>
+                        <Label styleClass="selector-title" text="Passport">
+                           <FlowPane.margin>
+                              <Insets right="10.0" />
+                           </FlowPane.margin>
+                        </Label>
+                        <Label fx:id="employeePreviewPassport1" styleClass="selector-content" text="&lt;Passport&gt;" />
+                        <Button mnemonicParsing="false" text="Preview" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </FlowPane>
+               </children>
+            </AnchorPane>
+            <TabPane layoutX="40.0" layoutY="125.0" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
+               <tabs>
+                  <Tab closable="false" text="Information">
+                     <content>
+                        <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Payroll Information" />
+                              <AnchorPane layoutX="22.0" layoutY="67.0">
+                                 <children>
+                                    <AnchorPane>
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Identificator" />
+                                          <TextField fx:id="cifField1" editable="false" layoutY="29.0" prefWidth="150.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutY="67.0">
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Agreement" />
+                                          <TextField fx:id="nameField1" layoutY="29.0" prefWidth="150.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="207.0" layoutY="67.0">
+                                 <children>
+                                    <AnchorPane>
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Company" />
+                                          <TextField fx:id="nafField1" editable="false" layoutY="29.0" prefWidth="150.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutY="67.0">
+                                       <children>
+                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Employee" />
+                                          <TextField fx:id="secondNameField1" layoutY="29.0" prefWidth="150.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutY="136.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="208.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Date from" />
+                                    <TextField fx:id="lastNameField1" layoutY="29.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="207.0" layoutY="208.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Date to" />
+                                    <TextField fx:id="secondLastNameField1" layoutY="29.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Salary perceptions">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Salary perception" />
+                              <AnchorPane layoutX="22.0" layoutY="67.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Base salary" />
+                                    <TextField fx:id="emailField1" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="193.0" layoutY="67.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Salary kind" />
+                                    <TextField fx:id="emailField11" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="193.0" layoutY="181.0" />
+                              <AnchorPane layoutX="586.0" layoutY="181.0" />
+                              <AnchorPane layoutX="376.0" layoutY="181.0" />
+                              <AnchorPane layoutX="22.0" layoutY="134.0" prefHeight="119.0" prefWidth="224.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Complements" />
+                                    <TableView fx:id="salaryView" layoutY="30.0" prefHeight="95.0" prefWidth="323.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="246.0" layoutY="283.0">
+                                 <children>
+                                    <Label layoutX="-53.0" prefHeight="20.0" prefWidth="163.0" styleClass="content-title" text="Overwhelming hours" />
+                                    <TextField fx:id="streetField14" layoutX="-53.0" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="281.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="172.0" styleClass="content-title" text="Extraordinary hours" />
+                                    <TextField fx:id="streetField13" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="356.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="200.0" styleClass="content-title" text="Complementary hours" />
+                                    <TextField fx:id="streetField12" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="243.0" layoutY="356.0">
+                                 <children>
+                                    <Label layoutX="-45.0" prefHeight="20.0" prefWidth="200.0" styleClass="content-title" text="Apportion" />
+                                    <TextField fx:id="streetField121" layoutX="-45.0" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Non salary perception">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Non salary perception" />
+                              <AnchorPane layoutX="22.0" layoutY="235.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Benefits and conpensations" />
+                                    <TextField fx:id="streetField1111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="271.0" layoutY="235.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Redundancy payment" />
+                                    <TextField fx:id="streetField111" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="302.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Other  benefits" />
+                                    <TextField fx:id="streetField11111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="62.0" prefHeight="119.0" prefWidth="224.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="210.0" styleClass="content-title" text="Non salary complements" />
+                                    <TableView fx:id="salaryView1" layoutY="30.0" prefHeight="95.0" prefWidth="323.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Reductions 1">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Reductions" />
+                              <AnchorPane layoutX="22.0" layoutY="67.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="CC Percentage" />
+                                    <TextField fx:id="streetField11111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="289.0" layoutY="65.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="CC Values" />
+                                    <TextField fx:id="streetField1111" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="132.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Unemployment Percentage" />
+                                    <TextField fx:id="streetField111111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="289.0" layoutY="132.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Unemployment Values" />
+                                    <TextField fx:id="streetField11112" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="202.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Training Percentage" />
+                                    <TextField fx:id="streetField1111111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="289.0" layoutY="202.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Training Values" />
+                                    <TextField fx:id="streetField111121" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="266.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="247.0" styleClass="content-title" text="Overwhelming hours Percentage" />
+                                    <TextField fx:id="streetField11111111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="289.0" layoutY="266.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="230.0" styleClass="content-title" text="Overwhelming hours Values" />
+                                    <TextField fx:id="streetField1111211" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="328.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Extra hours Percentage" />
+                                    <TextField fx:id="streetField111111111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="289.0" layoutY="328.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Extra hours Values" />
+                                    <TextField fx:id="streetField11112111" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Reductions 2">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Reductions" />
+                              <AnchorPane layoutX="22.0" layoutY="67.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="IRPF percentage" />
+                                    <TextField fx:id="streetField111111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="236.0" layoutY="67.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="IRPF value" />
+                                    <TextField fx:id="streetField11111" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="132.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Advance pays" />
+                                    <TextField fx:id="streetField1111111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="236.0" layoutY="134.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Salary kind reduction" />
+                                    <TextField fx:id="streetField111121" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="206.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Other reduction" />
+                                    <TextField fx:id="streetField1111212" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="222.0" layoutY="206.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Total reduction" />
+                                    <TextField fx:id="streetField11112121" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Total">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Reductions" />
+                              <AnchorPane layoutX="22.0" layoutY="67.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Total recibed" />
+                                    <TextField fx:id="streetField1111111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Common Contingencies">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Common Contingencies" />
+                              <AnchorPane layoutX="193.0" layoutY="69.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Company CC Percentage" />
+                                    <TextField fx:id="streetField1111111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="27.0" layoutY="69.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Company CC Value" />
+                                    <TextField fx:id="streetField111111" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="14.0" layoutY="140.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="320.0" styleClass="content-title" text="Company extra hours percentage" />
+                                    <TextField fx:id="streetField11112121211" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="14.0" layoutY="205.0" prefHeight="40.0" prefWidth="180.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Company extra hours Value" />
+                                    <TextField fx:id="streetField111121211111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="314.0" layoutY="268.0" prefHeight="40.0" prefWidth="180.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Company overwhelming Value" />
+                                    <TextField fx:id="streetField1111212111111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="14.0" layoutY="268.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="320.0" styleClass="content-title" text="Company overwhelming percentage" />
+                                    <TextField fx:id="streetField111121212111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Profesional Contingencies">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Profesional Contingencies" />
+                              <AnchorPane layoutX="22.0" layoutY="71.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Company  AT Percentage" />
+                                    <TextField fx:id="streetField111111121" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="334.0" layoutY="71.0">
+                                 <children>
+                                    <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Company  AT value" />
+                                    <TextField fx:id="streetField11112121" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="145.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="320.0" styleClass="content-title" text="Company unemployment percentage" />
+                                    <TextField fx:id="streetField111121211" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="320.0" layoutY="143.0" prefHeight="40.0" prefWidth="180.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Company pc unemployment Value" />
+                                    <TextField fx:id="streetField1111212111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="212.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="320.0" styleClass="content-title" text="Company training percentage" />
+                                    <TextField fx:id="streetField1111212121" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="320.0" layoutY="212.0" prefHeight="40.0" prefWidth="180.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Company pc training Value" />
+                                    <TextField fx:id="streetField11112121111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="281.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="320.0" styleClass="content-title" text="Company  fogasa percentage" />
+                                    <TextField fx:id="streetField11112121211" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="320.0" layoutY="281.0" prefHeight="40.0" prefWidth="180.0">
+                                 <children>
+                                    <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Company pc fogasa Value" />
+                                    <TextField fx:id="streetField111121211111" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../css/globals.css" />
+      <URL value="@../../css/modules/forms/default.css" />
+   </stylesheets>
 </AnchorPane>
