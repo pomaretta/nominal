@@ -763,6 +763,7 @@ public class NominalAPI extends Driver {
                     ,getCompanyByIdMinimal(resultSet.getInt("company"))
                     ,getAgreementByIdMinimal(resultSet.getInt("agreement"))
                     ,getEmployeeByIdMinimal(resultSet.getInt("employee"))
+                    ,getScheduleById(resultSet.getInt("schedule"))
                     ,resultSet.getDate("date_from")
                     ,resultSet.getDate("date_to")
                     ,resultSet.getInt("total_days")
