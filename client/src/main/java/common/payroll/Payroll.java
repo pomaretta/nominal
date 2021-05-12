@@ -10,6 +10,7 @@
 
 package common.payroll;
 
+import common.NominalObject;
 import common.company.Company;
 import common.employee.Employee;
 import common.NominalMaster;
@@ -19,7 +20,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class Payroll implements NominalMaster {
+public class Payroll extends NominalObject {
 
     // IDENTIFIER
     protected int id;

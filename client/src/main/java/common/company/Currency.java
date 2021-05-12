@@ -1,6 +1,8 @@
 package common.company;
 
-public class Currency {
+import common.NominalObject;
+
+public class Currency extends NominalObject {
 
     private final int id;
     private final String name;

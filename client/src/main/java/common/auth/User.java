@@ -10,11 +10,12 @@
 
 package common.auth;
 
+import common.NominalObject;
 import common.company.Company;
 
 import java.util.HashSet;
 
-public class User {
+public class User extends NominalObject {
 
     private int id;
     private HashSet<Company> companies;

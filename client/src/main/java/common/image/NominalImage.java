@@ -1,9 +1,10 @@
 package common.image;
 
 import common.NominalMaster;
+import common.NominalObject;
 import javafx.scene.image.Image;
 
-public class NominalImage implements NominalMaster {
+public class NominalImage extends NominalObject {
 
     private int id;
     private Image image;
