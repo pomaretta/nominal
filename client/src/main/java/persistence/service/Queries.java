@@ -33,6 +33,7 @@ public class Queries extends persistence.Queries {
     public PreparedStatement selectAntiquityById;
 
     public PreparedStatement selectAgreementById;
+    public PreparedStatement selectAgreementByIdMinimal;
     public PreparedStatement selectAgreementCategories;
     public PreparedStatement selectAgreementQuotations;
     public PreparedStatement selectAgreementSalaryTables;
@@ -44,12 +45,25 @@ public class Queries extends persistence.Queries {
     // COMPANY
 
     public PreparedStatement selectCompanyById;
+    public PreparedStatement selectCompanyByIdMinimal;
     public PreparedStatement selectAllCompaniesId;
     public PreparedStatement selectCompanyEmployees;
+
+    // PAYROLL
+
+    public PreparedStatement selectPayrollById;
+    public PreparedStatement selectPayrollComplementById;
+    public PreparedStatement selectPayrollSchedule;
+
+    public PreparedStatement selectPayrollsByEmployeeId;
+    public PreparedStatement selectPayrollsByCompanyId;
+    public PreparedStatement selectLastPayrollByEmployeeId;
+
 
     // EMPLOYEE
 
     public PreparedStatement selectEmployeeById;
+    public PreparedStatement selectEmployeeByIdMinimal;
     public PreparedStatement selectEmployeeScheduleById;
 
     // MINIMAL
@@ -88,6 +102,7 @@ public class Queries extends persistence.Queries {
         selectAntiquityById = this.connection.prepareStatement(Statements.SELECT_ANTIQUITY_BY_ID.getQuery());
 
         selectAgreementById = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_BY_ID.getQuery());
+        selectAgreementByIdMinimal = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_BY_ID_MINIMAL.getQuery());
         selectAgreementCategories = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_CATEGORIES.getQuery());
         selectAgreementQuotations = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_QUOTATIONS.getQuery());
         selectAgreementSalaryTables = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_SALARY_TABLES.getQuery());
@@ -97,10 +112,22 @@ public class Queries extends persistence.Queries {
         selectAntiquityTableByFields = this.connection.prepareStatement(Statements.SELECT_AGREEMENT_ANTIQUITY_TABLE_BY_FIELDS.getQuery());
 
         selectCompanyById = this.connection.prepareStatement(Statements.SELECT_COMPANY_BY_ID.getQuery());
+        selectCompanyByIdMinimal = this.connection.prepareStatement(Statements.SELECT_COMPANY_BY_ID_MINIMAL.getQuery());
         selectAllCompaniesId = this.connection.prepareStatement(Statements.SELECT_ALL_COMPANIES_ID.getQuery());
         selectCompanyEmployees = this.connection.prepareStatement(Statements.SELECT_COMPANY_EMPLOYEES.getQuery());
 
+        // PAYROLL
+        selectPayrollById = this.connection.prepareStatement(Statements.SELECT_PAYROLL_BY_ID.getQuery());
+        selectPayrollComplementById = this.connection.prepareStatement(Statements.SELECT_PAYROLL_COMPLEMENT_BY_PAYROLL.getQuery());
+        selectPayrollSchedule = this.connection.prepareStatement(Statements.SELECT_PAYROLL_SCHEDULE_BY_ID.getQuery());
+
+        selectPayrollsByEmployeeId = this.connection.prepareStatement(Statements.SELECT_PAYROLL_BY_EMPLOYEE_ID.getQuery());
+        selectPayrollsByCompanyId = this.connection.prepareStatement(Statements.SELECT_PAYROLL_BY_COMPANY_ID.getQuery());
+
+        selectLastPayrollByEmployeeId = this.connection.prepareStatement(Statements.SELECT_LAST_PAYROLL_BY_EMPLOYEE.getQuery());
+
         selectEmployeeById = this.connection.prepareStatement(Statements.SELECT_EMPLOYEE_BY_ID.getQuery());
+        selectEmployeeByIdMinimal = this.connection.prepareStatement(Statements.SELECT_EMPLOYEE_BY_ID_MINIMAL.getQuery());
         selectEmployeeScheduleById = this.connection.prepareStatement(Statements.SELECT_SCHEDULE_BY_ID.getQuery());
 
         selectAgreementsMinimal = this.connection.prepareStatement(Statements.SELECT_AGREEMENTS_MINIMAL.getQuery());

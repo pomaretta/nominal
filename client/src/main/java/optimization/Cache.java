@@ -1,32 +1,43 @@
 package optimization;
 
+import application.NominalFX;
+import common.NominalMaster;
+import common.NominalObject;
 import common.agreement.Agreement;
 import common.company.Company;
 import common.employee.Employee;
 import common.image.NominalImage;
 import common.payroll.Payroll;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Cache {
 
     // ALL
-    private final ArrayList<Object> items;
+    // private final ArrayList<Object> items;
+    private final HashMap<Integer,NominalObject> items;
 
     // AGREEMENTS
-    private final ArrayList<Object> agreements;
+    // private final ArrayList<Object> agreements;
+    private final HashMap<Integer,NominalObject> agreements;
 
     // PAYROLLS
-    private final ArrayList<Object> payrolls;
+    // private final ArrayList<Object> payrolls;
+    private final HashMap<Integer,NominalObject> payrolls;
 
     // COMPANY
-    private final ArrayList<Object> companies;
+    // private final ArrayList<Object> companies;
+    private final HashMap<Integer,NominalObject> companies;
 
     // EMPLOYEES
-    private final ArrayList<Object> employees;
+    // private final ArrayList<Object> employees;
+    private final HashMap<Integer,NominalObject> employees;
 
     // IMAGES
-    private final ArrayList<Object> images;
+    // private final ArrayList<Object> images;
+    private final HashMap<Integer,NominalObject> images;
 
     /**
      *
@@ -35,144 +46,120 @@ public class Cache {
      *
      */
     public Cache(){
-        this.items = new ArrayList<>();
-        this.agreements = new ArrayList<>();
-        this.payrolls = new ArrayList<>();
-        this.companies = new ArrayList<>();
-        this.employees = new ArrayList<>();
-        this.images = new ArrayList<>();
+        this.items = new HashMap<>();
+        // this.agreements = new ArrayList<>();
+        // this.payrolls = new ArrayList<>();
+        // this.companies = new ArrayList<>();
+        // this.employees = new ArrayList<>();
+        // this.images = new ArrayList<>();
+        this.agreements = new HashMap<>();
+        this.payrolls = new HashMap<>();
+        this.companies = new HashMap<>();
+        this.employees = new HashMap<>();
+        this.images = new HashMap<>();
     }
 
-    public ArrayList<Object> getItems() {
+    public HashMap<Integer, NominalObject> getItems() {
         return items;
     }
 
-    public ArrayList<Object> getAgreements() {
+    public HashMap<Integer,NominalObject> getAgreements() {
         return agreements;
     }
 
-    public ArrayList<Object> getPayrolls() {
+    public HashMap<Integer, NominalObject> getPayrolls() {
         return payrolls;
     }
 
-    public ArrayList<Object> getCompanies() {
+    public HashMap<Integer, NominalObject> getCompanies() {
         return companies;
     }
 
-    public ArrayList<Object> getEmployees() {
+    public HashMap<Integer, NominalObject> getEmployees() {
         return employees;
     }
 
-    public ArrayList<Object> getImages() {
+    public HashMap<Integer, NominalObject> getImages() {
         return images;
     }
 
-    public boolean add(Object object, ArrayList<Object> list){
-        return list.add(object);
+    public void add(NominalObject object, HashMap<Integer,NominalObject> list){
+        list.put(object.getId(),object);
     }
 
-    public boolean remove(Object object,ArrayList<Object> list) {
-        return list.remove(object);
+    public void remove(NominalObject object,HashMap<Integer,NominalObject> list) {
+        list.remove(object.getId());
     }
 
-    public void clear(ArrayList<Object> list){
+    public void clear(HashMap list){
         list.clear();
     }
 
     // AGREEMENTS
     public boolean containsAgreement(int agreementId){
-        for(Object a : getAgreements()){
-             if (((Agreement) a).getId() == agreementId){
-                return true;
-            }
-        }
-        return false;
+        return this.agreements.containsKey(agreementId);
     }
 
     // COMPANY
     public boolean containsCompany(int companyId){
-        for(Object c : getCompanies()){
-            if (((Company) c).getId() == companyId){
-                return true;
-            }
-        }
-        return false;
+        return this.companies.containsKey(companyId);
     }
 
     // EMPLOYEE
     public boolean containsEmployee(int employeeId){
-        for(Object e : getEmployees()){
-            if (((Employee) e).getId() == employeeId){
-                return true;
-            }
-        }
-        return false;
+        return this.employees.containsKey(employeeId);
     }
 
     // PAYROLL
     public boolean containsPayroll(int payrollId){
-        for(Object p : getPayrolls()){
-            if (((Payroll) p).getId() == payrollId){
-                return true;
-            }
-        }
-        return false;
+        return this.payrolls.containsKey(payrollId);
     }
 
     // IMAGE
     public boolean containsImage(int imageId){
-        for(Object i : getImages()){
-            if (((NominalImage) i).getId() == imageId){
-                return true;
-            }
-        }
-        return false;
+        return this.images.containsKey(imageId);
     }
 
     // GET ID OBJECTS
     public Agreement getAgreementById(int agreementId){
-        for(Object a : getAgreements()){
-            if (((Agreement) a).getId() == agreementId){
-                return (Agreement) a;
+        try {
+            if (NominalFX.nominalAPI.checkAgreement((Agreement) this.agreements.get(agreementId))){
+                this.agreements.replace(agreementId,NominalFX.nominalAPI.getAgreementById(agreementId));
             }
+            return (Agreement) this.agreements.get(agreementId);
+        } catch (SQLException e){
+            return (Agreement) this.agreements.get(agreementId);
         }
-        return null;
     }
 
     public Company getCompanyById(int companyId){
-        for(Object p : getCompanies()){
-            if (((Company) p).getId() == companyId){
-                return (Company) p;
+        try {
+            if (NominalFX.nominalAPI.checkCompany((Company) this.companies.get(companyId))){
+                this.companies.replace(companyId,NominalFX.nominalAPI.getCompanyById(companyId));
             }
+            return (Company) this.companies.get(companyId);
+        } catch (SQLException e){
+            return (Company) this.companies.get(companyId);
         }
-        return null;
     }
 
     public Employee getEmployeeById(int employeeId){
-        for(Object e : getEmployees()){
-            if (((Employee) e).getId() == employeeId){
-                return (Employee) e;
+        try {
+            if (NominalFX.nominalAPI.checkEmployee((Employee) this.employees.get(employeeId))){
+                this.employees.replace(employeeId,NominalFX.nominalAPI.getEmployeeById(employeeId));
             }
+            return (Employee) this.employees.get(employeeId);
+        } catch (SQLException e){
+            return (Employee) this.employees.get(employeeId);
         }
-        return null;
     }
 
     public Payroll getPayrollById(int payrollId){
-        for(Object p : getPayrolls()){
-            if (((Payroll) p).getId() == payrollId){
-                return (Payroll) p;
-            }
-        }
-        return null;
+        return (Payroll) this.payrolls.get(payrollId);
     }
 
     public NominalImage getImageById(int imageId){
-        for(Object i : getImages()){
-            if (((NominalImage) i).getId() == imageId){
-                return (NominalImage) i;
-            }
-        }
-        return null;
+        return (NominalImage) this.images.get(imageId);
     }
 
 }

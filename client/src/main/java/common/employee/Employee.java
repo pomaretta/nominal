@@ -15,6 +15,7 @@
 package common.employee;
 
 import common.NominalMaster;
+import common.NominalObject;
 import common.agreement.Category;
 
 import java.sql.Date;
@@ -22,7 +23,7 @@ import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDate;
 
-public class Employee implements NominalMaster {
+public class Employee extends NominalObject {
 
     // IDENTIFIER
     protected int id;

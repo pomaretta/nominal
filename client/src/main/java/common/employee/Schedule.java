@@ -1,8 +1,10 @@
 package common.employee;
 
+import common.NominalObject;
+
 import java.sql.Timestamp;
 
-public class Schedule {
+public class Schedule extends NominalObject {
 
     private int id;
     private final Employee employee;

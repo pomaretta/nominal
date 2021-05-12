@@ -15,6 +15,7 @@
 package common.company;
 
 import common.NominalMaster;
+import common.NominalObject;
 import common.agreement.Agreement;
 import common.agreement.Quotation;
 import common.employee.Employee;
@@ -22,7 +23,7 @@ import common.employee.Employee;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class Company implements NominalMaster {
+public class Company extends NominalObject {
 
     // IDENTIFIER
     protected int id;

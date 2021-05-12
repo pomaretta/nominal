@@ -11,11 +11,12 @@
 package common.agreement;
 
 import common.NominalMaster;
+import common.NominalObject;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class Agreement implements NominalMaster {
+public class Agreement extends NominalObject {
 
     // IDENTIFIER
     protected int id;
