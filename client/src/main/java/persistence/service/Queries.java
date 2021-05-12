@@ -68,6 +68,8 @@ public class Queries extends persistence.Queries {
     public PreparedStatement selectEmployeeByIdMinimalPayroll;
     public PreparedStatement selectEmployeeScheduleById;
 
+    public PreparedStatement selectScheduleByDateAndEmployee;
+
     // MINIMAL
 
     public PreparedStatement selectAgreementsMinimal;
@@ -88,6 +90,7 @@ public class Queries extends persistence.Queries {
     public PreparedStatement insertEmployeeInformation;
     public PreparedStatement insertEmployeeFinancial;
     public PreparedStatement insertEmployeeCompany;
+    public PreparedStatement insertEmployeeSchedule;
     public PreparedStatement insertEmployee;
 
     public PreparedStatement insertCompanyContact;
@@ -153,6 +156,8 @@ public class Queries extends persistence.Queries {
         selectEmployeeByIdMinimalPayroll = this.connection.prepareStatement(Statements.SELECT_EMPLOYEE_BY_ID_MINIMAL_PAYROLL.getQuery());
         selectEmployeeScheduleById = this.connection.prepareStatement(Statements.SELECT_SCHEDULE_BY_ID.getQuery());
 
+        selectScheduleByDateAndEmployee = this.connection.prepareStatement(Statements.SELECT_SCHEDULE_BY_DATE.getQuery());
+
         selectAgreementsMinimal = this.connection.prepareStatement(Statements.SELECT_AGREEMENTS_MINIMAL.getQuery());
         selectCompaniesMinimal = this.connection.prepareStatement(Statements.SELECT_COMPANIES_MINIMAL.getQuery());
         selectEmployeesInCompanyMinimal = this.connection.prepareStatement(Statements.SELECT_EMPLOYEES_MINIMAL.getQuery());
@@ -167,6 +172,7 @@ public class Queries extends persistence.Queries {
         insertEmployeeInformation = this.connection.prepareStatement(Statements.INSERT_EMPLOYEE_INFORMATION.getQuery());
         insertEmployeeFinancial = this.connection.prepareStatement(Statements.INSERT_EMPLOYEE_FINANCIAL.getQuery());
         insertEmployeeCompany = this.connection.prepareStatement(Statements.INSERT_EMPLOYEE_COMPANY.getQuery());
+        insertEmployeeSchedule = this.connection.prepareStatement(Statements.INSERT_EMPLOYEE_SCHEDULE.getQuery());
 
         insertCompanyContact = this.connection.prepareStatement(Statements.INSERT_COMPANY_CONTACT.getQuery());
         insertCompanyInformation = this.connection.prepareStatement(Statements.INSERT_COMPANY_INFORMATION.getQuery());

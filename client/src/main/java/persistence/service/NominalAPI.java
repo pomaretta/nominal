@@ -608,6 +608,26 @@ public class NominalAPI extends Driver {
         return schedule;
     }
 
+    public Schedule getScheduleByDateAndEmployee(Employee employee,Date from, Date to) throws SQLException {
+
+        this.queries.selectScheduleByDateAndEmployee.setDate(1,from);
+        this.queries.selectScheduleByDateAndEmployee.setDate(2,to);
+        this.queries.selectScheduleByDateAndEmployee.setInt(3,employee.getId());
+
+        ResultSet resultSet = null;
+        int schedule;
+
+        try {
+            resultSet = this.queries.selectScheduleByDateAndEmployee.executeQuery();
+            resultSet.next();
+            schedule = resultSet.getInt("id");
+        } finally {
+            resultSet.close();
+        }
+
+        return getScheduleById(schedule);
+    }
+
     // COMPANY
 
     /**
@@ -1118,6 +1138,14 @@ public class NominalAPI extends Driver {
         this.queries.insertEmployeeCompany.setInt(2,employeeId);
         this.queries.insertEmployeeCompany.setDate(3,employee.getJoinDate());
         this.queries.insertEmployeeCompany.execute();
+    }
+
+    public void setEmployeeSchedule(Employee employee, Schedule schedule) throws SQLException {
+        this.queries.insertEmployeeSchedule.setInt(1,employee.getId());
+        this.queries.insertEmployeeSchedule.setBoolean(2,schedule.isNocturnal());
+        this.queries.insertEmployeeSchedule.setBoolean(3,schedule.isTurnicity());
+        this.queries.insertEmployeeSchedule.setFloat(4,schedule.getComplementaryHours());
+        this.queries.insertEmployeeSchedule.execute();
     }
 
     // COMPANY
