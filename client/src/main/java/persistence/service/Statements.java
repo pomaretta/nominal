@@ -80,9 +80,9 @@ public enum Statements {
     INSERT_PAYROLL_COMPLEMENTS("INSERT INTO nominal_dev.payroll_complement (payroll,title,salarial,value_original,value_percentage,value) VALUES (?,?,?,?,?,?)"),
 
     // CHECKERS
-    CHECK_COMPANY_UPDATE("SELECT c.last_update >= ? as should_update FROM nominal_dev.company c WHERE c.id = ?"),
-    CHECK_AGREEMENT_UPDATE("SELECT a.last_update >= ? as should_update FROM nominal_dev.agreement a WHERE a.id = ?"),
-    CHECK_EMPLOYEE_UPDATE("SELECT e.last_update >= ? as should_update FROM nominal_dev.employee e WHERE e.id = ?"),
+    CHECK_COMPANY_UPDATE("SELECT c.last_update > ? as should_update FROM nominal_dev.company c WHERE c.id = ?"),
+    CHECK_AGREEMENT_UPDATE("SELECT a.last_update > ? as should_update FROM nominal_dev.agreement a WHERE a.id = ?"),
+    CHECK_EMPLOYEE_UPDATE("SELECT e.last_update > ? as should_update FROM nominal_dev.employee e WHERE e.id = ?"),
 
     PLACEHOLDER("");
 
