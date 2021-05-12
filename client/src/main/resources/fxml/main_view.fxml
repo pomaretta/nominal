@@ -233,6 +233,29 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <Button fx:id="payrollButton" layoutX="35.0" layoutY="141.0" mnemonicParsing="false" onAction="#check" onMouseClicked="#payrollHandler" prefWidth="200.0">
+                     <graphic>
+                        <FlowPane alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                                 <FlowPane.margin>
+                                    <Insets right="25.0" />
+                                 </FlowPane.margin>
+                                 <image>
+                                    <Image url="@../images/icons/primary/profit-report-c-primary.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Payrolls" />
+                           </children>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </FlowPane>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                   <Button fx:id="settingsButton" layoutX="27.0" layoutY="247.0" mnemonicParsing="false" onAction="#check" prefWidth="200.0">
                      <graphic>
                         <FlowPane alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0">

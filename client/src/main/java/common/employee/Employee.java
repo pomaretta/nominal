@@ -198,4 +198,59 @@ public class Employee extends NominalObject {
         }
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setName2(String name2) {
+        this.name2 = name2;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setLastName2(String lastName2) {
+        this.lastName2 = lastName2;
+    }
+
+    public void setMailAddress(String mailAddress) {
+        this.mailAddress = mailAddress;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public void setHourly(boolean hourly) {
+        this.hourly = hourly;
+    }
+
+    public void setApportion(boolean apportion) {
+        this.apportion = apportion;
+    }
+
+    public void setHiredHours(float hiredHours) {
+        this.hiredHours = hiredHours;
+    }
+
+    public void setIrpf(float irpf) {
+        this.irpf = irpf;
+    }
 }

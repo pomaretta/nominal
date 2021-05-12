@@ -159,13 +159,9 @@
                                     <TextField fx:id="irpfField" layoutX="1.0" layoutY="28.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="193.0" layoutY="68.0" prefHeight="40.0" prefWidth="150.0">
+                              <AnchorPane layoutX="193.0" layoutY="68.0" prefHeight="51.0" prefWidth="60.0">
                                  <children>
-                                    <AnchorPane>
-                                       <children>
-                                          <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Hourly" />
-                                       </children>
-                                    </AnchorPane>
+                                    <Label prefHeight="20.0" prefWidth="64.0" styleClass="content-title" text="Hourly" />
                                     <CheckBox fx:id="hourlyCheck" layoutY="34.0" mnemonicParsing="false" text="Yes" />
                                  </children>
                               </AnchorPane>
@@ -177,7 +173,7 @@
                                  </children>
                               </AnchorPane>
                               <Label layoutX="370.0" layoutY="68.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Hired hours" />
-                              <TextField fx:id="hiredHoursField" editable="false" layoutX="370.0" layoutY="97.0" prefWidth="150.0" />
+                              <TextField fx:id="hiredHoursField" layoutX="370.0" layoutY="97.0" prefWidth="150.0" />
                               <Label layoutX="26.0" layoutY="160.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Category" />
                               <ComboBox fx:id="categoryComboField" layoutX="22.0" layoutY="192.0" prefWidth="150.0" styleClass="selector" />
                               <TableView fx:id="salaryView" layoutX="25.0" layoutY="264.0" prefHeight="72.0" prefWidth="224.0" />
@@ -189,6 +185,18 @@
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
                               </Button>
+                              <AnchorPane layoutX="368.0" layoutY="166.0" prefHeight="53.0" prefWidth="194.0">
+                                 <children>
+                                    <Label layoutX="3.0" prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Join Date" />
+                                    <DatePicker fx:id="joinDatePicker" layoutY="27.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="257.0" layoutY="68.0" prefHeight="51.0" prefWidth="60.0">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="90.0" styleClass="content-title" text="Apportion" />
+                                    <CheckBox fx:id="apportionCheck" layoutY="34.0" mnemonicParsing="false" text="Yes" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </content>

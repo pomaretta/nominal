@@ -58,6 +58,8 @@ public class HomeController extends BaseController implements Initializable {
     private Button employeeButton;
     @FXML
     private Button settingsButton;
+    @FXML
+    private Button payrollButton;
 
     private ViewManager formManager;
 
@@ -110,12 +112,14 @@ public class HomeController extends BaseController implements Initializable {
 
         this.companyButton.setDisable(true);
         this.employeeButton.setDisable(true);
+        this.payrollButton.setDisable(true);
 
     }
 
     private void allowConfiguration(){
         this.companyButton.setDisable(false);
         this.employeeButton.setDisable(false);
+        this.payrollButton.setDisable(false);
     }
 
     @FXML
@@ -126,6 +130,11 @@ public class HomeController extends BaseController implements Initializable {
     @FXML
     public void employeeHandler(){
         this.formManager.switchScenes("/fxml/employee/employee_creation.fxml");
+    }
+
+    @FXML
+    public void payrollHandler(){
+        this.formManager.switchScenes("/fxml/payroll/payroll_creation.fxml");
     }
 
     @FXML
@@ -141,6 +150,7 @@ public class HomeController extends BaseController implements Initializable {
             companyButton.getStyleClass().remove("active");
             employeeButton.getStyleClass().remove("active");
             settingsButton.getStyleClass().remove("active");
+            payrollButton.getStyleClass().remove("active");
             button.getStyleClass().add("active");
         }
     }

@@ -15,11 +15,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.w3c.dom.Text;
+import util.generators.GenerateDNI;
+import util.generators.ValidationException;
 import view.ViewController;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -68,8 +72,6 @@ public class EmployeeForm extends ViewController implements Initializable {
     @FXML
     private TextField streetField;
     @FXML
-    private TextField stateField;
-    @FXML
     private TextField phoneNumberField;
 
     @FXML
@@ -89,10 +91,15 @@ public class EmployeeForm extends ViewController implements Initializable {
     @FXML
     private CheckBox hourlyCheck;
     @FXML
+    private CheckBox apportionCheck;
+    @FXML
     private TextField hiredHoursField;
 
     @FXML
     private Button contractSaveButton;
+
+    @FXML
+    private DatePicker joinDatePicker;
 
     // CATEGORY
 
@@ -200,14 +207,16 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.lastNameField.setText(this.currentEmployee.getLastName());
         this.secondLastNameField.setText(this.currentEmployee.getLastName2());
         this.emailField.setText(this.currentEmployee.getMailAddress());
-        this.stateField.setText(this.currentEmployee.getStreetAddress());
         this.streetField.setText(this.currentEmployee.getStreetAddress());
         this.phoneNumberField.setText(this.currentEmployee.getPhoneNumber());
 
         // CONTRACT
         this.irpfField.setText(String.valueOf(this.currentEmployee.getIrpf()));
         this.hourlyCheck.setSelected(this.currentEmployee.isHourly());
+        this.apportionCheck.setSelected(this.currentEmployee.isApportion());
         this.hiredHoursField.setText(String.valueOf(this.currentEmployee.getHiredHours()));
+        this.joinDatePicker.setEditable(false);
+        this.joinDatePicker.setValue(this.currentEmployee.getJoinDate().toLocalDate());
 
         // CATEGORY
         try {
@@ -350,7 +359,11 @@ public class EmployeeForm extends ViewController implements Initializable {
                 ||
                 hasChanged(this.currentEmployee.getLastName2(),this.secondLastNameField.getText())
         ){
-            // INSERT TO INFORMATION
+            this.currentEmployee.setName(this.nameField.getText());
+            this.currentEmployee.setName2(this.secondNameField.getText());
+            this.currentEmployee.setLastName(this.lastNameField.getText());
+            this.currentEmployee.setLastName2(this.secondLastNameField.getText());
+            NominalFX.nominalAPI.setEmployeeInformation(this.currentEmployee.getId(),this.currentEmployee);
         }
 
         if (
@@ -362,13 +375,18 @@ public class EmployeeForm extends ViewController implements Initializable {
                 ||
                 hasChanged(this.currentEmployee.getPhoneNumber(),this.phoneNumberField.getText())
         ){
-            // INSERT TO CONTACT
+            this.currentEmployee.setMailAddress(this.emailField.getText());
+            this.currentEmployee.setStreetAddress(this.streetField.getText());
+            this.currentEmployee.setPhoneNumber(this.phoneNumberField.getText());
+            NominalFX.nominalAPI.setEmployeeContact(this.currentEmployee.getId(),this.currentEmployee);
         }
 
+        updateEmployees();
     }
 
     @FXML
-    private void saveChangesContract() throws SQLException {
+    private void saveChangesContract() throws Exception {
+
         if (
                 this.currentEmployee != null
                         &&
@@ -376,10 +394,19 @@ public class EmployeeForm extends ViewController implements Initializable {
                         ||
                         hasChanged(this.currentEmployee.isHourly(),this.hourlyCheck.isSelected())
                         ||
+                        hasChanged(this.currentEmployee.isApportion(),this.apportionCheck.isSelected())
+                        ||
                         hasChanged(String.valueOf(this.currentEmployee.getHiredHours()),this.hiredHoursField.getText())
         ){
-            // INSERT TO CONTRACT
+            this.currentEmployee.setIrpf(validateField(irpfField.getText()));
+            this.currentEmployee.setHourly(this.hourlyCheck.isSelected());
+            this.currentEmployee.setApportion(this.apportionCheck.isSelected());
+            this.currentEmployee.setHiredHours(validateField(this.hiredHoursField.getText()));
+            System.out.println(this.hourlyCheck.isSelected());
+            NominalFX.nominalAPI.setEmployeeFinancial(this.currentEmployee.getId(),this.currentEmployee);
         }
+
+        updateEmployees();
     }
 
     @FXML
@@ -389,8 +416,11 @@ public class EmployeeForm extends ViewController implements Initializable {
                 &&
                 hasChanged(this.currentEmployee.getCategory().getId(),this.categories.get(this.categoryComboField.getSelectionModel().getSelectedIndex()).getId())
         ){
-            // CHANGE CATEGORY
+            this.currentEmployee.setCategory(this.categories.get(this.categoryComboField.getSelectionModel().getSelectedIndex()));
+            NominalFX.nominalAPI.setEmployeeFinancial(this.currentEmployee.getId(),this.currentEmployee);
         }
+
+        updateEmployees();
     }
 
     @FXML
@@ -465,7 +495,6 @@ public class EmployeeForm extends ViewController implements Initializable {
 
         this.emailField.setText("");
         this.streetField.setText("");
-        this.stateField.setText("");
 
         this.phoneNumberField.setText("");
 
@@ -473,7 +502,11 @@ public class EmployeeForm extends ViewController implements Initializable {
 
         this.irpfField.setText("");
         this.hourlyCheck.setSelected(false);
+        this.apportionCheck.setSelected(false);
         this.hiredHoursField.setText("");
+
+        this.joinDatePicker.setValue(LocalDate.now());
+        this.joinDatePicker.setEditable(true);
 
         this.contractSaveButton.setVisible(false);
         this.categoryComboField.getSelectionModel().select(0);
@@ -501,12 +534,47 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     }
 
+    private float validateField(String field) throws Exception {
+        return Float.parseFloat(field);
+    }
+
     @FXML
     private void createNewEmployee(){
         if(this.currentEmployee != null){
             clearAllFields();
         } else {
-            // Insert new user.
+
+            try {
+                GenerateDNI.validateDNI(this.cifField.getText().toLowerCase());
+
+                Employee employee = new Employee(
+                        this.cifField.getText().toUpperCase()
+                        ,this.nafField.getText().toUpperCase()
+                        ,this.nameField.getText()
+                        ,this.secondNameField.getText()
+                        ,this.lastNameField.getText()
+                        ,this.secondLastNameField.getText()
+                        ,this.emailField.getText()
+                        ,this.phoneNumberField.getText()
+                        ,this.streetField.getText()
+                        ,this.categories.get(this.categoryComboField.getSelectionModel().getSelectedIndex())
+                        ,Date.valueOf(this.joinDatePicker.getValue())
+                        ,null
+                        ,true
+                        ,this.hourlyCheck.isSelected()
+                        ,this.apportionCheck.isSelected()
+                        ,validateField(this.hiredHoursField.getText())
+                        ,validateField(this.irpfField.getText())
+                );
+
+                NominalFX.nominalAPI.setEmployee(this.controller.getCurrentCompany(),employee);
+
+            } catch (ValidationException validationException){
+                // LOGGER
+            } catch (Exception e){
+                // LOG
+            }
+
         }
     }
 
