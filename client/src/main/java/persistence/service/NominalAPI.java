@@ -16,14 +16,17 @@ package persistence.service;
 import common.agreement.*;
 import common.company.Company;
 import common.company.CompanyMinimal;
+import common.company.CompanyPayroll;
 import common.company.Currency;
 import common.employee.Employee;
 import common.employee.EmployeeMinimal;
+import common.employee.EmployeePayroll;
 import common.employee.Schedule;
 import common.payroll.Complement;
 import common.payroll.Payroll;
 import service.Driver;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -541,6 +544,37 @@ public class NominalAPI extends Driver {
         return employee;
     }
 
+    public Employee getEmployeeByIdMinimalPayroll(int id, Date date) throws SQLException {
+
+        this.queries.selectEmployeeByIdMinimalPayroll.setInt(1,id);
+        this.queries.selectEmployeeByIdMinimalPayroll.setDate(2,date);
+        this.queries.selectEmployeeByIdMinimalPayroll.setDate(3,date);
+        this.queries.selectEmployeeByIdMinimalPayroll.setDate(4,date);
+
+        ResultSet resultSet = null;
+        Employee employee;
+
+        try {
+            resultSet = this.queries.selectEmployeeByIdMinimalPayroll.executeQuery();
+            employee = new EmployeePayroll(
+                    resultSet.getInt("id")
+                    ,resultSet.getString("passport")
+                    ,resultSet.getString("naf")
+                    ,resultSet.getString("name")
+                    ,resultSet.getString("name2")
+                    ,resultSet.getString("lastname")
+                    ,resultSet.getString("lastname2")
+                    ,resultSet.getString("email_address")
+                    ,getCategoryById(resultSet.getInt("category"))
+                    ,resultSet.getBoolean("apportion")
+            );
+        } finally {
+            resultSet.close();
+        }
+
+        return employee;
+    }
+
     /**
      *
      * Get an schedule by id.
@@ -720,6 +754,36 @@ public class NominalAPI extends Driver {
         return company;
     }
 
+    public Company getCompanyByIdMinimalPayroll(int id, Date date) throws SQLException {
+
+        this.queries.selectCompanyByIdMinimalPayroll.setInt(1,id);
+        this.queries.selectCompanyByIdMinimalPayroll.setDate(2,date);
+        this.queries.selectCompanyByIdMinimalPayroll.setDate(3,date);
+        this.queries.selectCompanyByIdMinimalPayroll.setDate(4,date);
+
+        ResultSet resultSet = null;
+        Company company;
+
+        try {
+            resultSet = this.queries.selectCompanyByIdMinimalPayroll.executeQuery();
+            resultSet.next();
+            company = new CompanyPayroll(
+                    resultSet.getInt("id")
+                    ,resultSet.getString("name")
+                    ,resultSet.getString("cif")
+                    ,resultSet.getString("street_address")
+                    ,resultSet.getString("ss")
+                    ,resultSet.getString("state")
+                    ,getCurrencyById(resultSet.getInt("currency"))
+                    ,getQuotationById(resultSet.getInt("quotation"))
+            );
+        } finally {
+            resultSet.close();
+        }
+
+        return company;
+    }
+
     /**
      *
      * Get a list of companies, and for each one calls getCompanyById.
@@ -760,9 +824,10 @@ public class NominalAPI extends Driver {
             payroll = new Payroll(
                     resultSet.getInt("id")
                     ,resultSet.getTimestamp("creation")
-                    ,getCompanyByIdMinimal(resultSet.getInt("company"))
+                    ,getCompanyByIdMinimalPayroll(resultSet.getInt("company"),resultSet.getDate("date_to"))
                     ,getAgreementByIdMinimal(resultSet.getInt("agreement"))
-                    ,getEmployeeByIdMinimal(resultSet.getInt("employee"))
+                    ,getEmployeeByIdMinimalPayroll(resultSet.getInt("employee"),resultSet.getDate("date_to"))
+                    ,getScheduleById(resultSet.getInt("schedule"))
                     ,resultSet.getDate("date_from")
                     ,resultSet.getDate("date_to")
                     ,resultSet.getInt("total_days")

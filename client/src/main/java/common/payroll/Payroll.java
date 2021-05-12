@@ -15,6 +15,7 @@ import common.company.Company;
 import common.employee.Employee;
 import common.NominalMaster;
 import common.agreement.Agreement;
+import common.employee.Schedule;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -30,6 +31,7 @@ public class Payroll extends NominalObject {
     protected Company company;
     protected Agreement agreement;
     protected Employee employee;
+    protected Schedule schedule;
 
     // DATES
     protected Date from;
@@ -128,12 +130,13 @@ public class Payroll extends NominalObject {
     public Payroll() {
     }
 
-    public Payroll(int id, Timestamp created, Company company, Agreement agreement, Employee employee, Date from, Date to, int totalDays, float baseSalary, boolean employeeApportion, float apportion, ArrayList<Complement> salaryComplements, ArrayList<Complement> nonSalaryComplements, float salaryKind, float totalEarned, float ccPercentage, float ccValue, float benefitsAndCompesations, float redundancyPayment, float otherBenefits, float unemploymentPercentage, float unemploymentValue, float trainingPercentage, float trainingValue, float ohOriginal, float ohPercentage, float ohValue, float ehOriginal, float ehPercentage, float ehValue, float totalApportions, float irpfPercentage, float irpfValue, float advancePays, float salaryKindDeduction, float otherDeduction, float totalBccc, float totalDeduction, float totalToReceive, float companyCCPercentage, float companyCCValue, float companyPCAtPercentage, float companyPCAtValue, float companyPCUnemploymentPercentage, float companyPCUnemploymentValue, float companyPCTrainingPercentage, float companyPCTrainingValue, float companyPCFogasaPercentage, float companyPCFogasaValue, float companyEhPercentage, float companyEhValue, float companyOhPercentage, float companyOhValue) {
+    public Payroll(int id, Timestamp created, Company company, Agreement agreement, Employee employee, Schedule schedule, Date from, Date to, int totalDays, float baseSalary, boolean employeeApportion, float apportion, ArrayList<Complement> salaryComplements, ArrayList<Complement> nonSalaryComplements, float salaryKind, float totalEarned, float ccPercentage, float ccValue, float benefitsAndCompesations, float redundancyPayment, float otherBenefits, float unemploymentPercentage, float unemploymentValue, float trainingPercentage, float trainingValue, float ohOriginal, float ohPercentage, float ohValue, float ehOriginal, float ehPercentage, float ehValue, float totalApportions, float irpfPercentage, float irpfValue, float advancePays, float salaryKindDeduction, float otherDeduction, float totalBccc, float totalDeduction, float totalToReceive, float companyCCPercentage, float companyCCValue, float companyPCAtPercentage, float companyPCAtValue, float companyPCUnemploymentPercentage, float companyPCUnemploymentValue, float companyPCTrainingPercentage, float companyPCTrainingValue, float companyPCFogasaPercentage, float companyPCFogasaValue, float companyEhPercentage, float companyEhValue, float companyOhPercentage, float companyOhValue) {
         this.id = id;
         this.created = created;
         this.company = company;
         this.agreement = agreement;
         this.employee = employee;
+        this.schedule = schedule;
         this.from = from;
         this.to = to;
         this.totalDays = totalDays;
@@ -184,10 +187,11 @@ public class Payroll extends NominalObject {
         this.companyOhValue = companyOhValue;
     }
 
-    public Payroll(Company company, Agreement agreement, Employee employee, Date from, Date to, int totalDays, float baseSalary, boolean employeeApportion, float apportion, ArrayList<Complement> salaryComplements, ArrayList<Complement> nonSalaryComplements, float salaryKind, float totalEarned, float ccPercentage, float ccValue, float benefitsAndCompesations, float redundancyPayment, float otherBenefits, float unemploymentPercentage, float unemploymentValue, float trainingPercentage, float trainingValue, float ohOriginal, float ohPercentage, float ohValue, float ehOriginal, float ehPercentage, float ehValue, float totalApportions, float irpfPercentage, float irpfValue, float advancePays, float salaryKindDeduction, float otherDeduction, float totalBccc, float totalDeduction, float totalToReceive, float companyCCPercentage, float companyCCValue, float companyPCAtPercentage, float companyPCAtValue, float companyPCUnemploymentPercentage, float companyPCUnemploymentValue, float companyPCTrainingPercentage, float companyPCTrainingValue, float companyPCFogasaPercentage, float companyPCFogasaValue, float companyEhPercentage, float companyEhValue, float companyOhPercentage, float companyOhValue) {
+    public Payroll(Company company, Agreement agreement, Employee employee, Schedule schedule, Date from, Date to, int totalDays, float baseSalary, boolean employeeApportion, float apportion, ArrayList<Complement> salaryComplements, ArrayList<Complement> nonSalaryComplements, float salaryKind, float totalEarned, float ccPercentage, float ccValue, float benefitsAndCompesations, float redundancyPayment, float otherBenefits, float unemploymentPercentage, float unemploymentValue, float trainingPercentage, float trainingValue, float ohOriginal, float ohPercentage, float ohValue, float ehOriginal, float ehPercentage, float ehValue, float totalApportions, float irpfPercentage, float irpfValue, float advancePays, float salaryKindDeduction, float otherDeduction, float totalBccc, float totalDeduction, float totalToReceive, float companyCCPercentage, float companyCCValue, float companyPCAtPercentage, float companyPCAtValue, float companyPCUnemploymentPercentage, float companyPCUnemploymentValue, float companyPCTrainingPercentage, float companyPCTrainingValue, float companyPCFogasaPercentage, float companyPCFogasaValue, float companyEhPercentage, float companyEhValue, float companyOhPercentage, float companyOhValue) {
         this.company = company;
         this.agreement = agreement;
         this.employee = employee;
+        this.schedule = schedule;
         this.from = from;
         this.to = to;
         this.totalDays = totalDays;
@@ -257,6 +261,10 @@ public class Payroll extends NominalObject {
 
     public Employee getEmployee() {
         return employee;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
     }
 
     public Date getFrom() {
@@ -450,4 +458,168 @@ public class Payroll extends NominalObject {
     public float getCompanyOhValue() {
         return companyOhValue;
     }
+
+    public String generateXML(){
+
+        // Initial
+        String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+
+        // Payroll Info
+        addLine(xml,String.format("<payroll id=\"%d\" creation=\"%s\" from=\"%s\" to=\"%s\">",getId(),created.toLocalDateTime().toLocalDate(),from.toLocalDate(),to.toLocalDate()));
+
+        // AGREEMENT
+        addLine(xml,String.format("<agreement id=\"%d\"/>",agreement.getId()));
+        // END AGREEMENT
+
+        companyXML(xml);
+
+        employeeXML(xml);
+
+        // TOTAL DAYS
+        addLine(xml,String.format("<total_days>%d</total_days>",totalDays));
+
+        salaryPerceptionsXML(xml);
+
+        nonSalaryPerceptionsXML(xml);
+
+        deductionsXML(xml);
+
+        quotationBasesXML(xml);
+
+        // IRPF
+        addLine(xml,String.format("<irpf percentage=\"%.2f\" value=\"%.2f\" />",irpfPercentage,irpfValue));
+
+        // TOTAL
+        addLine(xml,String.format("<total>%.2f</total>",totalToReceive));
+
+        addLine(xml,"</payroll>");
+
+        return xml;
+    }
+
+    private void companyXML(String xml){
+        // COMPANY
+        addLine(xml,String.format("<company id=\"%d\">",company.getId()));
+
+        addLine(xml,String.format("<name>%s</name>",company.getName()));
+        addLine(xml,String.format("<address>%s</address>",company.getStreetAddress()));
+        addLine(xml,String.format("<cif>%s</cif>",company.getCif()));
+        addLine(xml,String.format("<ss>%s</ss>",company.getSocialSecurityId()));
+        addLine(xml,String.format("<state>%s</state>",company.getState()));
+        addLine(xml,String.format("<currency>%s</currency>",company.getCurrency().getDigit()));
+        addLine(xml,String.format("<quotation name=\"%s\" />",company.getQuotation().getName()));
+
+        addLine(xml,"</company>");
+        // END COMPANY
+    }
+
+    private void employeeXML(String xml){
+        // EMPLOYEE
+        addLine(xml,String.format("<employee id=\"%d\" nif=\"%s\" naf=\"%s\">",employee.getId(),employee.getPassport(),employee.getNaf()));
+
+        addLine(xml,String.format("<name first=\"%s\" second=\"%s\"/>",employee.getName(),employee.getName2()));
+        addLine(xml,String.format("<lastname first=\"%s\" second=\"%s\"/>",employee.getLastName(),employee.getLastName2()));
+        addLine(xml,String.format("<category name=\"%s\" />",employee.getCategory().getName()));
+        addLine(xml,String.format("<apportion>%d</apportion>",processCardinality(employee.isApportion())));
+
+        // SCHEDULE
+        addLine(xml,"<schedule>");
+
+        addLine(xml,String.format("<nocturnal>%d</nocturnal>",processCardinality(schedule.isNocturnal())));
+        addLine(xml,String.format("<turnicity>%d</turnicity>",processCardinality(schedule.isTurnicity())));
+        addLine(xml,String.format("<complementary_hours>%.2f</complementary_hours>",schedule.getComplementaryHours()));
+
+        addLine(xml,"</schedule>");
+        // END SCHEDULE
+
+        addLine(xml,"</employee>");
+        // END EMPLOYEE
+    }
+
+    private void salaryPerceptionsXML(String xml){
+        // SALARIAL PERCEPTIONS
+        addLine(xml,"<perceptions salarial=\"1\">");
+
+        // COMPLEMENTS
+        generateComplementsXML(xml,getSalaryComplements(),true);
+
+        addLine(xml,String.format("<base_salary>%.2f</base_salary>",baseSalary));
+        addLine(xml,String.format("<apportion>%.2f</apportion>",apportion));
+        addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKind));
+        addLine(xml,String.format("<total_bccc>%.2f</total_bccc>",totalBccc));
+        addLine(xml,String.format("<total>%.2f</total>",totalEarned));
+
+        addLine(xml,"</perceptions>");
+        // END SALARIAL PERCEPTIONS
+    }
+
+    private void nonSalaryPerceptionsXML(String xml){
+        // NON SALARIAL PERCEPTIONS
+        addLine(xml,"<perceptions salarial=\"0\">");
+
+        // COMPLEMENTS
+        generateComplementsXML(xml,getNonSalaryComplements(),false);
+
+        addLine(xml,String.format("<benefits_and_compensations>%.2f</benefits_and_compensations>",benefitsAndCompesations));
+        addLine(xml,String.format("<other_benefits>%.2f</other_benefits>",otherBenefits));
+        addLine(xml,String.format("<redundancy_payment>%.2f</redundancy_payment>",redundancyPayment));
+
+        addLine(xml,"</perceptions>");
+        // END NON SALARIAL PERCEPTIONS
+    }
+
+    private void deductionsXML(String xml){
+        // DEDUCTIONS
+        addLine(xml,"<deductions>");
+
+        addLine(xml,String.format("<cc percentage=\"%.2f\" value=\"%.2f\" />",ccPercentage,ccValue));
+        addLine(xml,String.format("<unemployment percentage=\"%.2f\" value=\"%.2f\" />",unemploymentPercentage,unemploymentValue));
+        addLine(xml,String.format("<training percentage=\"%.2f\" value=\"%.2f\" />",trainingPercentage,trainingValue));
+        addLine(xml,String.format("<oh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ohOriginal,ohPercentage,ohValue));
+        addLine(xml,String.format("<eh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ehOriginal,ehPercentage,ehValue));
+        addLine(xml,String.format("<advance_pays>%.2f</advance_pays>",advancePays));
+        addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKindDeduction));
+        addLine(xml,String.format("<other>%.2f</other>",otherDeduction));
+        addLine(xml,String.format("<total>%.2f</total>",totalDeduction));
+
+        addLine(xml,"</deductions>");
+        // END DEDUCTIONS
+    }
+
+    private void quotationBasesXML(String xml){
+        // QUOTATION BASES
+        addLine(xml,"<quotation_bases>");
+
+        addLine(xml,String.format("<cc percentage=\"%.2f\" value=\"%.2f\" />",companyCCPercentage,companyCCValue));
+        addLine(xml,String.format("<at percentage=\"%.2f\" value=\"%.2f\" />",companyPCAtPercentage,companyPCAtValue));
+        addLine(xml,String.format("<fogasa percentage=\"%.2f\" value=\"%.2f\" />",companyPCFogasaPercentage,companyPCFogasaValue));
+        addLine(xml,String.format("<unemployment percentage=\"%.2f\" value=\"%.2f\" />",companyPCUnemploymentPercentage,companyPCUnemploymentValue));
+        addLine(xml,String.format("<training percentage=\"%.2f\" value=\"%.2f\" />",companyPCTrainingPercentage,companyPCTrainingValue));
+        addLine(xml,String.format("<oh percentage=\"%.2f\" value=\"%.2f\" />",companyOhPercentage,companyOhValue));
+        addLine(xml,String.format("<eh percentage=\"%.2f\" value=\"%.2f\" />",companyEhPercentage,companyEhValue));
+
+        addLine(xml,"</quotation_bases>");
+        // END QUOTATION BASES
+    }
+
+    private void generateComplementsXML(String xml,ArrayList<Complement> complements,boolean salarial){
+        addLine(xml,String.format("<complements salarial=\"%d\">",processCardinality(salarial)));
+        for(Complement c : complements){
+            addLine(xml,String.format("<complement title=\"%s\" original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",c.getName(),c.getOriginalValue(),c.getValuePercentage(),c.getValue()));
+        }
+        addLine(xml,"</complements>");
+    }
+
+    private void addLine(String data, String content){
+        data += "\n" + content;
+    }
+
+    private int processCardinality(boolean cardinality){
+        if(cardinality){
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 }

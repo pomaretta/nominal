@@ -14,6 +14,7 @@ import application.Views;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -29,6 +30,7 @@ public class StageManager {
         loaderManager = new LoaderManager();
         this.primaryStage = stage;
         this.primaryStage.initStyle(StageStyle.TRANSPARENT);
+        this.primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/nominal-w.png"))));
     }
 
     public void switchScenes(final Views view){
