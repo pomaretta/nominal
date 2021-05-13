@@ -57,8 +57,8 @@ public enum Statements {
     INSERT_EMPLOYEE_INFORMATION("INSERT INTO nominal_dev.employee_information (employee,name,name_2,lastname,lastname_2,active,apportion) VALUES (?,?,?,?,?,?,?)"),
     INSERT_EMPLOYEE_COMPANY("INSERT INTO nominal_dev.company_employee (company,employee,join_date) VALUES (?,?,?)"),
 
-    SELECT_SCHEDULE_BY_ID("SELECT es.created_at as creation ,es.id as id ,es.employee as employee ,es.turnicity as turnicity ,es.nocturnal as nocturnal ,es.complementary_hours as complementary_hours FROM nominal_dev.employee_schedule es WHERE es.id = ?"),
-    SELECT_SCHEDULE_BY_DATE("SELECT es.id as id es WHERE es.created_at BETWEEN ? AND ? AND es.employee = ?"),
+    SELECT_SCHEDULE_BY_ID("SELECT es.created_at as creation , es.id as id , es.employee as employee , es.turnicity as turnicity , es.nocturnal as nocturnal , es.complementary_hours as complementary_hours, es.extra_hours as extra_hours , es.overwhelming_hours as overwhelming_hours FROM nominal_dev.employee_schedule es WHERE es.id = ?"),
+    SELECT_SCHEDULE_BY_DATE("SELECT es.id as id FROM nominal_dev.employee_schedule es WHERE es.created_at BETWEEN ? AND ? AND es.employee = ?"),
 
     INSERT_EMPLOYEE_SCHEDULE("INSERT INTO nominal_dev.employee_schedule (employee,nocturnal,turnicity,complementary_hours) VALUES (?,?,?,?)"),
 

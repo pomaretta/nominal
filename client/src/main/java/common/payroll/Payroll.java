@@ -19,6 +19,7 @@ import common.employee.Schedule;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.Duration;
 import java.util.ArrayList;
 
 public class Payroll extends NominalObject {
@@ -482,15 +483,15 @@ public class Payroll extends NominalObject {
 
         xml = nonSalaryPerceptionsXML(xml);
 
+        xml = addLine(xml,String.format("<total_bccc>%.2f</total_bccc>",totalBccc));
+        xml = addLine(xml,String.format("<total_earned>%.2f</total_earned>",totalEarned));
+
         xml = deductionsXML(xml);
 
         xml = quotationBasesXML(xml);
 
-        // IRPF
-        xml = addLine(xml,String.format("<irpf percentage=\"%.2f\" value=\"%.2f\" />",irpfPercentage,irpfValue));
-
         // TOTAL
-        xml = addLine(xml,String.format("<total>%.2f</total>",totalToReceive));
+        xml = addLine(xml,String.format("<total_to_receive>%.2f</total_to_receive>",totalToReceive));
 
         xml = addLine(xml,"</payroll>");
 
@@ -529,6 +530,8 @@ public class Payroll extends NominalObject {
         xml = addLine(xml,String.format("<nocturnal>%d</nocturnal>",processCardinality(schedule.isNocturnal())));
         xml = addLine(xml,String.format("<turnicity>%d</turnicity>",processCardinality(schedule.isTurnicity())));
         xml = addLine(xml,String.format("<complementary_hours>%.2f</complementary_hours>",schedule.getComplementaryHours()));
+        xml = addLine(xml,String.format("<extra_hours>%.2f</extra_hours>",schedule.getExtraHours()));
+        xml = addLine(xml,String.format("<overwhelming_hours>%.2f</overwhelming_hours>",schedule.getOverwhelmingHours()));
 
         xml = addLine(xml,"</schedule>");
         // END SCHEDULE
@@ -543,13 +546,11 @@ public class Payroll extends NominalObject {
         xml = addLine(xml,"<perceptions salarial=\"1\">");
 
         // COMPLEMENTS
-        generateComplementsXML(xml,getSalaryComplements(),true);
+        xml = generateComplementsXML(xml,getSalaryComplements(),true);
 
         xml = addLine(xml,String.format("<base_salary>%.2f</base_salary>",baseSalary));
         xml = addLine(xml,String.format("<apportion>%.2f</apportion>",apportion));
         xml = addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKind));
-        xml = addLine(xml,String.format("<total_bccc>%.2f</total_bccc>",totalBccc));
-        xml = addLine(xml,String.format("<total>%.2f</total>",totalEarned));
 
         xml = addLine(xml,"</perceptions>");
         // END SALARIAL PERCEPTIONS
@@ -561,7 +562,7 @@ public class Payroll extends NominalObject {
         xml = addLine(xml,"<perceptions salarial=\"0\">");
 
         // COMPLEMENTS
-        generateComplementsXML(xml,getNonSalaryComplements(),false);
+        xml = generateComplementsXML(xml,getNonSalaryComplements(),false);
 
         xml = addLine(xml,String.format("<benefits_and_compensations>%.2f</benefits_and_compensations>",benefitsAndCompesations));
         xml = addLine(xml,String.format("<other_benefits>%.2f</other_benefits>",otherBenefits));
@@ -582,6 +583,7 @@ public class Payroll extends NominalObject {
         xml = addLine(xml,String.format("<training percentage=\"%.2f\" value=\"%.2f\" />",trainingPercentage,trainingValue));
         xml = addLine(xml,String.format("<oh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ohOriginal,ohPercentage,ohValue));
         xml = addLine(xml,String.format("<eh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ehOriginal,ehPercentage,ehValue));
+        xml = addLine(xml,String.format("<irpf percentage=\"%.2f\" value=\"%.2f\" />",irpfPercentage,irpfValue));
         xml = addLine(xml,String.format("<advance_pays>%.2f</advance_pays>",advancePays));
         xml = addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKindDeduction));
         xml = addLine(xml,String.format("<other>%.2f</other>",otherDeduction));

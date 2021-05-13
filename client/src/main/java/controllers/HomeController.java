@@ -130,7 +130,7 @@ public class HomeController extends BaseController implements Initializable {
             //
         }
 
-        this.companyButton.setDisable(true);
+        this.companyButton.setDisable(false);
         this.employeeButton.setDisable(true);
         this.payrollButton.setDisable(true);
 

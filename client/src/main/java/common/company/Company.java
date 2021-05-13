@@ -128,6 +128,46 @@ public class Company extends NominalObject {
         return quotation;
     }
 
+    public void setAgreement(Agreement agreement) {
+        this.agreement = agreement;
+    }
+
+    public void setEmployees(ArrayList<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCif(String cif) {
+        this.cif = cif;
+    }
+
+    public void setSocialSecurityId(String socialSecurityId) {
+        this.socialSecurityId = socialSecurityId;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    public void setQuotation(Quotation quotation) {
+        this.quotation = quotation;
+    }
+
     public void updateEmployees() throws SQLException {
         this.employees = NominalFX.nominalAPI.getEmployeesByCompanyId(this.id);
     }

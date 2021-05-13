@@ -196,7 +196,6 @@ public class EmployeeForm extends ViewController implements Initializable {
 
         enableButtons();
 
-
         // PREVIEW
         this.employeePreviewName.setText(this.currentEmployee.getName());
         this.employeePreviewPassport.setText(this.currentEmployee.getPassport());
@@ -453,6 +452,9 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.searchButton.setVisible(false);
         this.cifField.setEditable(true);
         this.nafField.setEditable(true);
+        this.changeImageButton.setDisable(true);
+        this.salaryView.getItems().clear();
+        this.antiquityView.getItems().clear();
     }
 
     private void enableButtons(){
@@ -473,6 +475,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.searchButton.setVisible(true);
         this.cifField.setEditable(false);
         this.nafField.setEditable(false);
+        this.changeImageButton.setDisable(false);
     }
 
     @FXML
@@ -580,6 +583,7 @@ public class EmployeeForm extends ViewController implements Initializable {
                 // LOG
             }
 
+            updateEmployees();
         }
     }
 
@@ -605,15 +609,15 @@ public class EmployeeForm extends ViewController implements Initializable {
     }
 
     private boolean hasChanged(float original, float modified){
-        return !(original == modified);
+        return original != modified;
     }
 
     private boolean hasChanged(boolean original, boolean modified){
-        return original == modified;
+        return original != modified;
     }
 
     private boolean hasChanged(int original, int modified){
-        return original == modified;
+        return original != modified;
     }
 
     @Override

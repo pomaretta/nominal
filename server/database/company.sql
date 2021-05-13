@@ -246,3 +246,10 @@ ON nominal_dev.company_agreement FOR EACH ROW
 BEGIN 
 	UPDATE nominal_dev.company SET last_update = NOW() WHERE id = NEW.company;
 END
+
+CREATE PROCEDURE fire_employee(in companyId int, in employeeId int)
+BEGIN
+	UPDATE nominal_dev.company_employee e 
+	SET e.expiration_date = NOW() 
+	WHERE e.company = companyId AND e.employee = employeeId;
+END

@@ -47,7 +47,7 @@
                   </FlowPane>
                </children>
             </AnchorPane>
-            <TabPane layoutX="40.0" layoutY="125.0" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
+            <TabPane fx:id="payrollPane" layoutX="40.0" layoutY="125.0" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
                <tabs>
                   <Tab closable="false" text="Information">
                      <content>
@@ -144,7 +144,7 @@
                               <AnchorPane layoutX="22.0" layoutY="356.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="200.0" styleClass="content-title" text="Complementary hours" />
-                                    <TextField fx:id="complementaryHoursFIeld" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="complementaryHoursField" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="243.0" layoutY="356.0">

@@ -601,6 +601,8 @@ public class NominalAPI extends Driver {
                     ,resultSet.getBoolean("nocturnal")
                     ,resultSet.getBoolean("turnicity")
                     ,resultSet.getFloat("complementary_hours")
+                    ,resultSet.getFloat("extra_hours")
+                    ,resultSet.getFloat("overwhelming_hours")
             );
         } finally {
             resultSet.close();
