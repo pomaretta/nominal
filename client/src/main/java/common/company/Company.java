@@ -1,17 +1,3 @@
-/*
-
- Nominal Application
- Company
-
- @author     Adán Inarejos
- Date        2021-04-23
-
- Last revision
- @author     Carlos Pomares
- Date        2021-04-23
-
-*/
-
 package common.company;
 
 import common.NominalMaster;

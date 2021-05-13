@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Nominal FX MAIN
-
- @author     Carlos Pomares
- Date        2021-04-28
-
-*/
-
 package application;
 
 import common.company.Company;

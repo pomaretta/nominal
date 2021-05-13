@@ -31,8 +31,8 @@
                </children>
             </AnchorPane>
             <TabPane layoutX="40.0" layoutY="125.0" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
-              <tabs>
-                <Tab closable="false" style="-fx-background-color: #713BDB; -fx-text-fill: #fff; -fx-fill: #fff;" text="Information">
+               <tabs>
+                  <Tab closable="false" style="-fx-background-color: #713BDB; -fx-text-fill: #fff; -fx-fill: #fff;" text="Information">
                      <content>
                         <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root">
                            <children>
@@ -178,7 +178,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-              </tabs>
+               </tabs>
             </TabPane>
          </children>
       </AnchorPane>

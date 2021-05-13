@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Salary
-
- @author     Carlos Pomares
- Date        2021-04-23
-
-*/
-
 package common.agreement;
 
 import java.sql.Timestamp;

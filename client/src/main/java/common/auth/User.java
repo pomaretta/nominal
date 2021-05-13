@@ -1,20 +1,9 @@
-/*
-
- Nominal Application
- Auth User
-
- @author     Carlos Pomares
- Date        2021-04-29
-
-*/
-
 package common.auth;
 
 import common.NominalObject;
 import common.company.Company;
 
 import java.util.HashSet;
-
 public class User extends NominalObject {
 
     private int id;

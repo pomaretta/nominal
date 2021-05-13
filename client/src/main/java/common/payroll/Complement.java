@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Complement
-
- @author     Carlos Pomares
- Date        2021-04-24
-
-*/
-
 package common.payroll;
 
 public class Complement {

@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Nominal Views
-
- @author     Carlos Pomares
- Date        2021-04-28
-
-*/
-
 package application;
 
 public enum Views {
