@@ -1,3 +1,18 @@
+/*
+ Nominal Application
+ Home
+
+ Date        2021-04-23
+
+ Last revision
+ Date        2021-04-23
+
+ Description:
+ The HomeContoller class is a controller
+ for the main_view fxml file.
+
+*/
+
 package controllers;
 
 import application.NominalFX;
@@ -11,10 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -38,6 +50,7 @@ public class HomeController extends BaseController implements Initializable {
 
     private double xOffset, yOffset;
 
+    // Atributes for fxml class
     @FXML
     private AnchorPane root;
 
@@ -66,9 +79,16 @@ public class HomeController extends BaseController implements Initializable {
     @FXML
     private ComboBox companySelector;
 
+    @FXML
+    private MenuButton menuButton;
+
+    // List for items
     private ObservableList<String> items;
+
+    // List for companies.
     private ArrayList<Company> companies;
 
+    // Atribute for current company
     private Company currentCompany;
 
     @Override
@@ -122,6 +142,7 @@ public class HomeController extends BaseController implements Initializable {
         this.payrollButton.setDisable(false);
     }
 
+    //Handlers for change views.
     @FXML
     public void companyHandler(){
         this.formManager.switchScenes("/fxml/company/company_creation.fxml");
@@ -143,6 +164,16 @@ public class HomeController extends BaseController implements Initializable {
     }
 
     @FXML
+    public void usersHandler() {
+        this.formManager.switchScenes("/fxml/User/user_view.fxml");
+    }
+
+    @FXML
+    public void exitHandler() {
+        Platform.exit();
+    }
+
+    @FXML
     public void check(ActionEvent actionEvent){
         Button button = (Button) actionEvent.getSource();
         if (!button.getStyleClass().contains("active")){
@@ -155,6 +186,7 @@ public class HomeController extends BaseController implements Initializable {
         }
     }
 
+    // Method to select the company and get his information
     @FXML
     public void companySelection() throws SQLException {
         if(NominalFX.cache.containsCompany(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId())){
@@ -169,6 +201,8 @@ public class HomeController extends BaseController implements Initializable {
         }
     }
 
+
+    // Return the current selected company
     public Company getCurrentCompany() {
         return currentCompany;
     }
