@@ -556,6 +556,7 @@ public class NominalAPI extends Driver {
 
         try {
             resultSet = this.queries.selectEmployeeByIdMinimalPayroll.executeQuery();
+            resultSet.next();
             employee = new EmployeePayroll(
                     resultSet.getInt("id")
                     ,resultSet.getString("passport")
@@ -841,6 +842,7 @@ public class NominalAPI extends Driver {
 
         try {
             resultSet = this.queries.selectPayrollById.executeQuery();
+            resultSet.next();
             payroll = new Payroll(
                     resultSet.getInt("id")
                     ,resultSet.getTimestamp("creation")
@@ -1194,8 +1196,8 @@ public class NominalAPI extends Driver {
 
         // OBJECTS
         this.queries.insertPayroll.setInt(1,payroll.getCompany().getId());
-        this.queries.insertPayroll.setInt(2,payroll.getCompany().getAgreement().getId());
-        this.queries.insertPayroll.setInt(3,payroll.getCompany().getAgreement().getId());
+        this.queries.insertPayroll.setInt(2,payroll.getAgreement().getId());
+        this.queries.insertPayroll.setInt(3,payroll.getEmployee().getId());
 
         // DATES
         this.queries.insertPayroll.setDate(4,payroll.getFrom());
