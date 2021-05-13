@@ -10,6 +10,7 @@
  @author     Carlos Pomares
  Date        2021-04-23
 
+
 */
 
 package common.employee;
@@ -54,6 +55,8 @@ public class Employee extends NominalObject {
     protected float hiredHours;
     protected float irpf;
 
+
+    // CONSTRUCTORS
     public Employee(){}
 
     public Employee(int id, Timestamp lastUpdated, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, String streetAddress, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
@@ -98,6 +101,7 @@ public class Employee extends NominalObject {
         this.irpf = irpf;
     }
 
+    //GETTERS
     @Override
     public int getId() {
         return id;
@@ -175,6 +179,7 @@ public class Employee extends NominalObject {
         return irpf;
     }
 
+// Method to calculate the years of antiquity
     public int calculateYears(){
         LocalDate d1 = this.joinDate.toLocalDate();
         LocalDate d2 = LocalDate.now();
@@ -198,6 +203,7 @@ public class Employee extends NominalObject {
         }
     }
 
+    // SETTERS
     public void setName(String name) {
         this.name = name;
     }
