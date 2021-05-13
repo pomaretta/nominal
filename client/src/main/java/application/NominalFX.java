@@ -1,27 +1,37 @@
 package application;
 
-import common.company.Company;
 import configuration.DatabaseDeveloper;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import optimization.Cache;
 import persistence.auth.AuthAPI;
+import persistence.file.FileAPI;
 import persistence.image.ImageAPI;
 import persistence.report.ReportAPI;
 import persistence.service.NominalAPI;
-import util.MD5;
 import view.StageManager;
 
+import org.apache.commons.cli.*;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Properties;
 
 public class NominalFX extends Application {
 
+    public static FileAPI fileAPI;
     public static AuthAPI authAPI;
     public static NominalAPI nominalAPI;
     public static ReportAPI reportAPI;
     public static ImageAPI imageAPI;
-    public static String configuration = System.getProperty("user.home") + System.getProperty("file.separator") + "nominal.xml";
+
+    // CONFIG
+    public static String credentials;
+    public static String configurationPath = System.getProperty("user.home") + System.getProperty("file.separator") + "nominal.xml";
+
+    public static Properties configuration;
 
     public static Cache cache;
 
@@ -48,12 +58,44 @@ public class NominalFX extends Application {
     }
 
     public static void main(String[] args) throws Exception {
+
+        fileAPI = new FileAPI();
+
+        try {
+            configuration = fileAPI.getFromFile(configurationPath);
+        } catch (IOException e){
+            HashMap<String,Object> data = new HashMap<>();
+            data.put("version","1.0");
+            fileAPI.saveToFile(data,configurationPath,"Nominal Configuration");
+        }
+
         try {
             authAPI = new AuthAPI(DatabaseDeveloper.AUTH.getURL(), DatabaseDeveloper.AUTH.getUser(),DatabaseDeveloper.AUTH.getPassword());
         } catch (SQLException exception){
-            //
+            // ignore
         }
         cache = new Cache();
+
+        Options options = new Options();
+
+        Option conf = new Option("c","configuration",true,"Configuration file");
+        conf.setRequired(false);
+        options.addOption(conf);
+
+        CommandLineParser parser = new DefaultParser();
+        HelpFormatter helpFormatter = new HelpFormatter();
+        CommandLine cmd = null;
+
+        try {
+            cmd = parser.parse(options,args);
+            credentials = cmd.getOptionValue("configuration");
+        } catch (ParseException p){
+            System.out.println(p.getMessage());
+            helpFormatter.printHelp("utility-name",options);
+        } catch (Exception e){
+            // ignore
+        }
+
         launch(args);
     }
 

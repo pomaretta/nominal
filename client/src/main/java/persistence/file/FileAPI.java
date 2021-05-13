@@ -11,6 +11,13 @@ public class FileAPI {
         OutputStream outputStream = new FileOutputStream(path);
         properties.putAll(data);
         properties.storeToXML(outputStream,comment);
+        outputStream.close();
+    }
+
+    public void saveToFile(Properties data, String path,String comment) throws IOException {
+        OutputStream outputStream = new FileOutputStream(path);
+        data.storeToXML(outputStream,comment);
+        outputStream.close();
     }
 
     public Properties getFromFile(String path) throws IOException {
