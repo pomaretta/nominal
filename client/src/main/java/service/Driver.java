@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Nominal Driver
-
- @author     Carlos Pomares
- Date        2021-04-24
-
-*/
-
 package service;
 
 import persistence.API;

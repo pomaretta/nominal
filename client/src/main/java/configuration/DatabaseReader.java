@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Database Reader Credentials
-
- @author     Carlos Pomares
- Date        2021-04-29
-
-*/
-
 package configuration;
 
 public enum DatabaseReader {

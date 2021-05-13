@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- MD5 Utility
-
- @author     Carlos Pomares
- Date        2021-04-29
-
-*/
-
 package util;
 
 import java.math.BigInteger;

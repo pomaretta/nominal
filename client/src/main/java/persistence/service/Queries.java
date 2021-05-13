@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Nominal API Queries
-
- @author     Carlos Pomares
- Date        2021-04-24
-
-*/
-
 package persistence.service;
 
 import java.sql.Connection;

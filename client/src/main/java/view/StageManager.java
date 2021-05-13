@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Nominal Stage Manager
-
- @author     Carlos Pomares
- Date        2021-04-28
-
-*/
-
 package view;
 
 import application.Views;

@@ -1,17 +1,3 @@
-/*
-
- Nominal Application
- Employee
-
- @author     Adán Inarejos
- Date        2021-04-23
-
- Last revision
- @author     Carlos Pomares
- Date        2021-04-23
-
-*/
-
 package common.employee;
 
 import common.NominalMaster;

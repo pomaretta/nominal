@@ -1,16 +1,3 @@
-/*
-
- Nominal Application
- Nominal FX Login Controller
-
- @author     Carlos Pomares
- Date        2021-04-28
-
- Last revision
- Date        2021-04-29
-
-*/
-
 package controllers;
 
 import application.NominalFX;
