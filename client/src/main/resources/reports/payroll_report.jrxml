@@ -988,7 +988,7 @@ LIMIT 1]]>
 				<reportElement x="0" y="10" width="20" height="21" uuid="df6125d2-45ab-44cd-bf69-b811bf0af899"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Arial ExtraBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[I. ]]></text>
 			</staticText>
@@ -996,7 +996,7 @@ LIMIT 1]]>
 				<reportElement x="0" y="31" width="150" height="19" uuid="b98a3b46-89d3-4f49-ba26-9409bb6363d7"/>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Arial SemiBold"/>
+					<font fontName="Arial"/>
 				</textElement>
 				<text><![CDATA[1.- Percepciones Salariales]]></text>
 			</staticText>
@@ -1012,7 +1012,7 @@ LIMIT 1]]>
 				<reportElement x="20" y="10" width="90" height="21" uuid="047a55a8-ae62-4346-88dc-fba58aa73a01"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Arial ExtraBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[DEVENGOS]]></text>
 			</staticText>
@@ -1020,7 +1020,7 @@ LIMIT 1]]>
 				<reportElement x="474" y="10" width="81" height="21" uuid="7912d407-2d69-4cb8-b9dd-a96135706b95"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Arial SemiBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Totales]]></text>
 			</staticText>
@@ -1106,7 +1106,7 @@ LIMIT 1]]>
 				<reportElement x="0" y="150" width="170" height="19" uuid="2aafa7af-8aa8-4194-bb4a-34a7427c4c61"/>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Arial SemiBold"/>
+					<font fontName="Arial"/>
 				</textElement>
 				<text><![CDATA[2.- Percepciones no salariales]]></text>
 			</staticText>
@@ -1162,7 +1162,7 @@ LIMIT 1]]>
 				<reportElement x="170" y="270" width="190" height="19" uuid="bb5252e4-5aa8-4ecc-a195-ddc41fc453ad"/>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Arial SemiBold" size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[A.- TOTAL DEVENGADO]]></text>
 			</staticText>
@@ -1170,7 +1170,7 @@ LIMIT 1]]>
 				<reportElement x="0" y="290" width="20" height="21" uuid="cba1a686-cafb-4ed1-a891-0bd4f4ce10aa"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Arial ExtraBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[II. ]]></text>
 			</staticText>
@@ -1178,7 +1178,7 @@ LIMIT 1]]>
 				<reportElement x="20" y="290" width="90" height="21" uuid="ca2e590b-625a-4c8f-a4a1-3663324d1679"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Arial ExtraBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[DEDUCCIONES]]></text>
 			</staticText>
@@ -1315,7 +1315,7 @@ LIMIT 1]]>
 				<reportElement x="170" y="441" width="190" height="19" uuid="847d229b-e448-44c8-9223-084d1345a57a"/>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Arial SemiBold" size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[B.- TOTAL A DEDUCIR]]></text>
 			</staticText>
@@ -1323,7 +1323,7 @@ LIMIT 1]]>
 				<reportElement x="105" y="460" width="255" height="19" uuid="acad8847-e846-4d3e-a154-108cd49ad031"/>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Arial SemiBold"/>
+					<font fontName="Arial"/>
 				</textElement>
 				<text><![CDATA[LIQUIDO TOTAL A PERCIBIR ( A - B )]]></text>
 			</staticText>
@@ -1813,7 +1813,7 @@ de la Empresa]]></text>
 				<reportElement x="179" y="70" width="81" height="21" uuid="53513802-41c5-486c-b6de-e0f8fe5395eb"/>
 				<box topPadding="0" leftPadding="0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial SemiBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[*Total*]]></text>
 			</staticText>
