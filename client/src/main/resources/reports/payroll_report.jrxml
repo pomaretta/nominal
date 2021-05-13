@@ -797,7 +797,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{comp_cif}]]></textFieldExpression>
@@ -807,7 +807,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{comp_ss}]]></textFieldExpression>
@@ -817,7 +817,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{comp_street_address}]]></textFieldExpression>
@@ -827,7 +827,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{comp_name}]]></textFieldExpression>
@@ -837,7 +837,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{state}]]></textFieldExpression>
@@ -847,7 +847,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{quotation_name}]]></textFieldExpression>
@@ -857,7 +857,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{emp_naf}]]></textFieldExpression>
@@ -867,7 +867,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{emp_nif}]]></textFieldExpression>
@@ -877,7 +877,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{category_name}]]></textFieldExpression>
@@ -887,7 +887,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
@@ -928,7 +928,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{date_from}.toLocalDate()]]></textFieldExpression>
@@ -939,7 +939,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{date_to}.toLocalDate()]]></textFieldExpression>
@@ -949,7 +949,7 @@ LIMIT 1]]>
 					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total_days}]]></textFieldExpression>
@@ -988,7 +988,7 @@ LIMIT 1]]>
 				<reportElement x="0" y="10" width="20" height="21" uuid="df6125d2-45ab-44cd-bf69-b811bf0af899"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Poppins ExtraBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial ExtraBold" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[I. ]]></text>
 			</staticText>
@@ -996,7 +996,7 @@ LIMIT 1]]>
 				<reportElement x="0" y="31" width="150" height="19" uuid="b98a3b46-89d3-4f49-ba26-9409bb6363d7"/>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Poppins SemiBold"/>
+					<font fontName="Arial SemiBold"/>
 				</textElement>
 				<text><![CDATA[1.- Percepciones Salariales]]></text>
 			</staticText>
@@ -1004,7 +1004,7 @@ LIMIT 1]]>
 				<reportElement x="150" y="31" width="140" height="19" forecolor="rgba(0, 0, 0, 0.7058824)" uuid="66723549-d1f7-4bb1-b76e-8dd45f363b6c"/>
 				<box topPadding="2" leftPadding="0"/>
 				<textElement>
-					<font fontName="Poppins" size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[(Sujetas a cotización)]]></text>
 			</staticText>
@@ -1012,7 +1012,7 @@ LIMIT 1]]>
 				<reportElement x="20" y="10" width="90" height="21" uuid="047a55a8-ae62-4346-88dc-fba58aa73a01"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Poppins ExtraBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial ExtraBold" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[DEVENGOS]]></text>
 			</staticText>
@@ -1020,7 +1020,7 @@ LIMIT 1]]>
 				<reportElement x="474" y="10" width="81" height="21" uuid="7912d407-2d69-4cb8-b9dd-a96135706b95"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Poppins SemiBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial SemiBold" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[Totales]]></text>
 			</staticText>
@@ -1028,7 +1028,7 @@ LIMIT 1]]>
 				<reportElement x="360" y="10" width="80" height="21" forecolor="rgba(0, 0, 0, 0.7058824)" uuid="c0fafbaf-0f68-48e9-b2f0-d9276ff75d41"/>
 				<box topPadding="2" leftPadding="0"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Poppins" isBold="false" isUnderline="false"/>
+					<font fontName="Arial" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[IMPORTE]]></text>
 			</staticText>
@@ -1038,7 +1038,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Salario Base]]></text>
 			</staticText>
@@ -1048,7 +1048,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6" isBold="true"/>
+					<font fontName="Arial" size="6" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Complementos Salariales]]></text>
 			</staticText>
@@ -1058,7 +1058,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Horas Extras Fuerza Mayor]]></text>
 			</staticText>
@@ -1068,7 +1068,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Horas Extras Resto]]></text>
 			</staticText>
@@ -1078,7 +1078,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Horas Complementarias (contratos a tiempo parcial)]]></text>
 			</staticText>
@@ -1088,7 +1088,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Gratificaciones extraordinarias]]></text>
 			</staticText>
@@ -1098,7 +1098,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Salario en especie]]></text>
 			</staticText>
@@ -1106,7 +1106,7 @@ LIMIT 1]]>
 				<reportElement x="0" y="150" width="170" height="19" uuid="2aafa7af-8aa8-4194-bb4a-34a7427c4c61"/>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Poppins SemiBold"/>
+					<font fontName="Arial SemiBold"/>
 				</textElement>
 				<text><![CDATA[2.- Percepciones no salariales]]></text>
 			</staticText>
@@ -1114,7 +1114,7 @@ LIMIT 1]]>
 				<reportElement x="170" y="150" width="140" height="19" forecolor="rgba(0, 0, 0, 0.7058824)" uuid="13c55ee9-55e9-4f43-ac79-6b1b102681ae"/>
 				<box topPadding="2" leftPadding="0"/>
 				<textElement>
-					<font fontName="Poppins" size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<text><![CDATA[(Excluidas de cotización)]]></text>
 			</staticText>
@@ -1124,7 +1124,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Otras percepciones salariales:]]></text>
 			</staticText>
@@ -1134,7 +1134,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Prestaciones e indemnizaciones de la Seguridad Social:]]></text>
 			</staticText>
@@ -1144,7 +1144,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Indemnizaciones por traslados, suspensiones o despidos:]]></text>
 			</staticText>
@@ -1154,7 +1154,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Indemnizaciones o suplidos:]]></text>
 			</staticText>
@@ -1162,7 +1162,7 @@ LIMIT 1]]>
 				<reportElement x="170" y="270" width="190" height="19" uuid="bb5252e4-5aa8-4ecc-a195-ddc41fc453ad"/>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins SemiBold" size="8"/>
+					<font fontName="Arial SemiBold" size="8"/>
 				</textElement>
 				<text><![CDATA[A.- TOTAL DEVENGADO]]></text>
 			</staticText>
@@ -1170,7 +1170,7 @@ LIMIT 1]]>
 				<reportElement x="0" y="290" width="20" height="21" uuid="cba1a686-cafb-4ed1-a891-0bd4f4ce10aa"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Poppins ExtraBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial ExtraBold" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[II. ]]></text>
 			</staticText>
@@ -1178,7 +1178,7 @@ LIMIT 1]]>
 				<reportElement x="20" y="290" width="90" height="21" uuid="ca2e590b-625a-4c8f-a4a1-3663324d1679"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Poppins ExtraBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial ExtraBold" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[DEDUCCIONES]]></text>
 			</staticText>
@@ -1188,7 +1188,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[1. Aportaciones del trabajador a las cotizaciones a la S.S. Y conceptos de recaudación conjunta:]]></text>
 			</staticText>
@@ -1199,7 +1199,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Contingencias Comunes]]></text>
 			</staticText>
@@ -1209,7 +1209,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Desempleo]]></text>
 			</staticText>
@@ -1219,7 +1219,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Formación Profesional]]></text>
 			</staticText>
@@ -1229,7 +1229,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Horas Extras Fuerza Mayor]]></text>
 			</staticText>
@@ -1239,7 +1239,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[Horas Extras Resto]]></text>
 			</staticText>
@@ -1249,7 +1249,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="true"/>
+					<font fontName="Arial" size="6" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[%]]></text>
 			</staticText>
@@ -1257,7 +1257,7 @@ LIMIT 1]]>
 				<reportElement x="20" y="380" width="340" height="21" forecolor="rgba(0, 0, 0, 0.7058824)" uuid="1e91f9f0-3d80-4b6d-9442-b69be4a6d83a"/>
 				<box topPadding="2" leftPadding="20"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Poppins" isBold="false" isUnderline="false"/>
+					<font fontName="Arial" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[TOTAL APORTACIONES]]></text>
 			</staticText>
@@ -1267,7 +1267,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[2. Impuesto sobre la Renta de las Personas Físicas ( IRPF ) ]]></text>
 			</staticText>
@@ -1277,7 +1277,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="true"/>
+					<font fontName="Arial" size="6" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[%]]></text>
 			</staticText>
@@ -1287,7 +1287,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[3. Anticipos]]></text>
 			</staticText>
@@ -1297,7 +1297,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[4. Valor de los productos recibidos en especie]]></text>
 			</staticText>
@@ -1307,7 +1307,7 @@ LIMIT 1]]>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[5. Otras deducciones]]></text>
 			</staticText>
@@ -1315,7 +1315,7 @@ LIMIT 1]]>
 				<reportElement x="170" y="441" width="190" height="19" uuid="847d229b-e448-44c8-9223-084d1345a57a"/>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins SemiBold" size="8"/>
+					<font fontName="Arial SemiBold" size="8"/>
 				</textElement>
 				<text><![CDATA[B.- TOTAL A DEDUCIR]]></text>
 			</staticText>
@@ -1323,7 +1323,7 @@ LIMIT 1]]>
 				<reportElement x="105" y="460" width="255" height="19" uuid="acad8847-e846-4d3e-a154-108cd49ad031"/>
 				<box leftPadding="10"/>
 				<textElement>
-					<font fontName="Poppins SemiBold"/>
+					<font fontName="Arial SemiBold"/>
 				</textElement>
 				<text><![CDATA[LIQUIDO TOTAL A PERCIBIR ( A - B )]]></text>
 			</staticText>
@@ -1331,7 +1331,7 @@ LIMIT 1]]>
 				<reportElement x="20" y="450" width="85" height="40" forecolor="rgba(0, 0, 0, 0.7058824)" uuid="71603a24-46fd-421d-8f6d-0647245e509b"/>
 				<box topPadding="5" leftPadding="5" bottomPadding="5" rightPadding="5"/>
 				<textElement verticalAlignment="Top">
-					<font fontName="Poppins" size="8" isBold="false" isItalic="true" isUnderline="false"/>
+					<font fontName="Arial" size="8" isBold="false" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Firma y sello 
 de la Empresa]]></text>
@@ -1342,7 +1342,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[*Ciudad*]]></text>
 			</staticText>
@@ -1370,7 +1370,7 @@ de la Empresa]]></text>
 				<reportElement x="105" y="500" width="250" height="20" forecolor="rgba(0, 0, 0, 0.7058824)" uuid="a2219e84-9a3c-4dba-b44c-4d8cf4387b75"/>
 				<box topPadding="2" leftPadding="10"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Poppins" isBold="false" isItalic="true" isUnderline="false"/>
+					<font fontName="Arial" isBold="false" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Recibí]]></text>
 			</staticText>
@@ -1380,13 +1380,13 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{base_salary}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="20" y="70" width="419" height="10" uuid="62fd3bcb-0ec5-4465-a570-dd712864605a"/>
-				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+				<reportElement x="20" y="70" width="419" height="10" uuid="62fd3bcb-0ec5-4465-a570-dd712864605a"/><![CDATA[
+				]]><jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="Dataset1" uuid="39f55a7c-a104-4b86-be1d-9604082c93e1">
 						<datasetParameter name="PAYROLL_ID">
 							<datasetParameterExpression><![CDATA[$P{PAYROLL_ID}]]></datasetParameterExpression>
@@ -1398,7 +1398,7 @@ de la Empresa]]></text>
 							<reportElement x="0" y="0" width="200" height="10" uuid="758e84c0-a68f-4710-997f-ab1d65732292"/>
 							<box leftPadding="5"/>
 							<textElement>
-								<font fontName="Poppins" size="6"/>
+								<font fontName="Arial" size="6"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
 						</textField>
@@ -1406,7 +1406,7 @@ de la Empresa]]></text>
 							<reportElement x="279" y="0" width="140" height="10" uuid="e1abf0e0-9ecc-4a58-aee5-4128e055176e"/>
 							<box leftPadding="0" rightPadding="30"/>
 							<textElement textAlignment="Right">
-								<font fontName="Poppins" size="6"/>
+								<font fontName="Arial" size="6"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$F{value}]]></textFieldExpression>
 						</textField>
@@ -1419,7 +1419,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eh_value}]]></textFieldExpression>
 			</textField>
@@ -1429,7 +1429,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{oh_value}]]></textFieldExpression>
 			</textField>
@@ -1439,7 +1439,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{comp_hours}]]></textFieldExpression>
 			</textField>
@@ -1449,7 +1449,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{advance_pays}]]></textFieldExpression>
 			</textField>
@@ -1459,7 +1459,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{salary_kind}]]></textFieldExpression>
 			</textField>
@@ -1476,7 +1476,7 @@ de la Empresa]]></text>
 						<textField>
 							<reportElement x="0" y="0" width="50" height="10" uuid="673ad5fe-d7d7-4ff4-ab5d-ac1ddac58918"/>
 							<textElement>
-								<font fontName="Poppins" size="6"/>
+								<font fontName="Arial" size="6"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
 						</textField>
@@ -1484,7 +1484,7 @@ de la Empresa]]></text>
 							<reportElement x="360" y="0" width="60" height="10" uuid="74ff3db5-0e70-4254-97cc-4508889954c1"/>
 							<box rightPadding="30"/>
 							<textElement textAlignment="Right">
-								<font fontName="Poppins" size="6"/>
+								<font fontName="Arial" size="6"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$F{value}]]></textFieldExpression>
 						</textField>
@@ -1494,21 +1494,21 @@ de la Empresa]]></text>
 			<textField>
 				<reportElement x="210" y="330" width="60" height="10" uuid="1e3ddeb7-b550-497b-9bfa-ce99215f344d"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cc_percentage}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="330" width="50" height="10" uuid="a7bb72ee-2a1e-4008-a2a2-5cf91d7955a8"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cc_value}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="401" width="40" height="10" uuid="cdeda394-78ac-44c7-8308-e33106584613"/>
 				<textElement textAlignment="Right">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{irpf_percentage}]]></textFieldExpression>
 			</textField>
@@ -1522,28 +1522,28 @@ de la Empresa]]></text>
 			<textField>
 				<reportElement x="210" y="340" width="60" height="10" uuid="0948653e-b0ac-4b28-afa5-50927689bcb9"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{training_percentage}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="210" y="350" width="60" height="10" uuid="ecea9126-b23d-44a9-b007-f2d13d91159b"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{training_percentage}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="210" y="370" width="60" height="10" uuid="a3623692-46c9-4601-b522-404308f6b41f"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eh_percentage}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="210" y="360" width="60" height="10" uuid="68390f18-1cf3-4798-bcfa-67978ce9b36e"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{oh_percentage}]]></textFieldExpression>
 			</textField>
@@ -1553,7 +1553,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="true"/>
+					<font fontName="Arial" size="6" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[%]]></text>
 			</staticText>
@@ -1563,7 +1563,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="true"/>
+					<font fontName="Arial" size="6" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[%]]></text>
 			</staticText>
@@ -1573,7 +1573,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="true"/>
+					<font fontName="Arial" size="6" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[%]]></text>
 			</staticText>
@@ -1583,28 +1583,28 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="true"/>
+					<font fontName="Arial" size="6" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[%]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="310" y="340" width="50" height="10" uuid="a812d90d-0491-45df-a9cd-eee1b90ca9ab"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{unemployment_value}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="350" width="50" height="10" uuid="47900644-6a9f-4068-82ba-b1f822ab60b0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{training_value}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="360" y="390" width="80" height="10" uuid="c5282ede-52bf-4c05-89d8-bc1672a78059"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isBold="true"/>
+					<font fontName="Arial" size="6" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total_aportations}]]></textFieldExpression>
 			</textField>
@@ -1636,7 +1636,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box rightPadding="5"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Poppins" size="8" isBold="true"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total_deduction}]]></textFieldExpression>
 			</textField>
@@ -1654,7 +1654,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box rightPadding="5"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Poppins" size="8" isBold="true"/>
+					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total_earned}]]></textFieldExpression>
 			</textField>
@@ -1672,7 +1672,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box rightPadding="5"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Poppins" size="8" isBold="true" isUnderline="true"/>
+					<font fontName="Arial" size="8" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total_to_receive}]]></textFieldExpression>
 			</textField>
@@ -1689,7 +1689,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{benefits_and_compensations}]]></textFieldExpression>
 			</textField>
@@ -1699,7 +1699,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{other_benefits}]]></textFieldExpression>
 			</textField>
@@ -1709,21 +1709,21 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{redundancy_payment}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="360" width="50" height="10" uuid="3c1abaea-114e-4291-9f25-df0c03c45dbb"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{training_value}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="310" y="370" width="50" height="10" uuid="41db9b2a-1f09-4e16-a489-52270d580f4b"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eh_original_value}]]></textFieldExpression>
 			</textField>
@@ -1733,7 +1733,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{date_to}.getMonth()]]></textFieldExpression>
@@ -1744,7 +1744,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{date_to}.getYear()]]></textFieldExpression>
@@ -1765,7 +1765,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="5"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[DETERMINACION DE LAS BASES DE COTIZA. A LA S.S. Y CONCEPTOS DE RECAUDACION CONJUNTA Y D E LA BASE SUJETA A RETENCION DEL I.R.P.F.:]]></text>
 			</staticText>
@@ -1775,7 +1775,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="15"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[1. Base de Cotización por Contingencias Comunes:]]></text>
 			</staticText>
@@ -1785,7 +1785,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="15"/>
 				<textElement>
-					<font fontName="Poppins" size="6" isItalic="true"/>
+					<font fontName="Arial" size="6" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Remuneración mensual sujeta a cotización]]></text>
 			</staticText>
@@ -1795,7 +1795,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="15"/>
 				<textElement>
-					<font fontName="Poppins" size="6" isItalic="true"/>
+					<font fontName="Arial" size="6" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Prorrata pagas extras]]></text>
 			</staticText>
@@ -1805,7 +1805,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="15"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[2. Base de Cotización Conting. Profesionales]]></text>
 			</staticText>
@@ -1813,7 +1813,7 @@ de la Empresa]]></text>
 				<reportElement x="179" y="70" width="81" height="21" uuid="53513802-41c5-486c-b6de-e0f8fe5395eb"/>
 				<box topPadding="0" leftPadding="0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Poppins SemiBold" isBold="false" isUnderline="true"/>
+					<font fontName="Arial SemiBold" isBold="false" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[*Total*]]></text>
 			</staticText>
@@ -1823,7 +1823,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="false"/>
+					<font fontName="Arial" size="6" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[BCCC]]></text>
 			</staticText>
@@ -1833,7 +1833,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="false"/>
+					<font fontName="Arial" size="6" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[BASE]]></text>
 			</staticText>
@@ -1843,7 +1843,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="false"/>
+					<font fontName="Arial" size="6" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[TIPO]]></text>
 			</staticText>
@@ -1853,7 +1853,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6" isUnderline="false"/>
+					<font fontName="Arial" size="6" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[APORTACION EMPRESA]]></text>
 			</staticText>
@@ -1861,7 +1861,7 @@ de la Empresa]]></text>
 				<reportElement x="110" y="110" width="150" height="10" uuid="9c9afebb-1cf5-4c9c-943e-19b714a1a7ff"/>
 				<box topPadding="0" leftPadding="5"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Poppins" size="6" isBold="false" isUnderline="false"/>
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[AT y EP ( Aportacion empresa )]]></text>
 			</staticText>
@@ -1869,7 +1869,7 @@ de la Empresa]]></text>
 				<reportElement x="110" y="120" width="150" height="10" uuid="e28691ac-daad-4e3d-926e-d16c2015aaa0"/>
 				<box topPadding="0" leftPadding="5"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Poppins" size="6" isBold="false" isUnderline="false"/>
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Desempleo]]></text>
 			</staticText>
@@ -1879,7 +1879,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box topPadding="0" leftPadding="5"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Poppins" size="6" isBold="false" isUnderline="false"/>
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Formacion Profesional]]></text>
 			</staticText>
@@ -1887,7 +1887,7 @@ de la Empresa]]></text>
 				<reportElement x="110" y="140" width="150" height="10" uuid="b1a143be-062b-4167-a89b-a741f221c1dd"/>
 				<box topPadding="0" leftPadding="5"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Poppins" size="6" isBold="false" isUnderline="false"/>
+					<font fontName="Arial" size="6" isBold="false" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Fondo Garantía Social]]></text>
 			</staticText>
@@ -1903,7 +1903,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="15"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[3. Base de Cotización Horas Extras Fuerza Mayor]]></text>
 			</staticText>
@@ -1913,7 +1913,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="15"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[4. Base de Cotización Horas Extras Resto]]></text>
 			</staticText>
@@ -1923,7 +1923,7 @@ de la Empresa]]></text>
 				</reportElement>
 				<box leftPadding="15"/>
 				<textElement>
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<text><![CDATA[5. Base sujeta a retención del I.R.P.F.]]></text>
 			</staticText>
@@ -1975,7 +1975,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{oh_value}]]></textFieldExpression>
 			</textField>
@@ -1985,21 +1985,21 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eh_value}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="464" y="160" width="12" height="11" uuid="55e45251-5dd7-425f-a692-c449e7ea067f"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_eh_percentage}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="464" y="149" width="12" height="11" uuid="50fbdf77-816e-4105-9237-0544dccc0971"/>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_oh_percentage}]]></textFieldExpression>
 			</textField>
@@ -2008,7 +2008,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_pc_fogasa_percentage}]]></textFieldExpression>
 			</textField>
@@ -2017,7 +2017,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_pc_training_percentage}]]></textFieldExpression>
 			</textField>
@@ -2026,7 +2026,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_pc_unemployment_percentage}]]></textFieldExpression>
 			</textField>
@@ -2035,7 +2035,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_pc_at_percentage}]]></textFieldExpression>
 			</textField>
@@ -2044,7 +2044,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_cc_percentage}]]></textFieldExpression>
 			</textField>
@@ -2053,7 +2053,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_cc_value}]]></textFieldExpression>
 			</textField>
@@ -2062,7 +2062,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_pc_at_value}]]></textFieldExpression>
 			</textField>
@@ -2071,7 +2071,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_pc_unemployment_value}]]></textFieldExpression>
 			</textField>
@@ -2080,7 +2080,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_pc_training_value}]]></textFieldExpression>
 			</textField>
@@ -2089,7 +2089,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_pc_fogasa_value}]]></textFieldExpression>
 			</textField>
@@ -2098,7 +2098,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_eh_value}]]></textFieldExpression>
 			</textField>
@@ -2107,7 +2107,7 @@ de la Empresa]]></text>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font fontName="Poppins" size="6"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company_oh_value}]]></textFieldExpression>
 			</textField>
