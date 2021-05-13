@@ -155,10 +155,8 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         this.cifGenerator.setVisible(false);
         this.nafGenerator.setVisible(false);
-
     }
 
     @Override
@@ -172,8 +170,12 @@ public class EmployeeForm extends ViewController implements Initializable {
     @FXML
     private void employeeSelection(){
         try {
-            this.currentEmployee = this.controller.getCurrentCompany().getEmployees().get(this.employeeSelector.getSelectionModel().getSelectedIndex());
-        } catch (IndexOutOfBoundsException e){
+            if(NominalFX.nominalAPI.checkEmployee(this.controller.getCurrentCompany().getEmployees().get(this.employeeSelector.getSelectionModel().getSelectedIndex()))){
+                this.currentEmployee = NominalFX.nominalAPI.getEmployeeById(this.controller.getCurrentCompany().getEmployees().get(this.employeeSelector.getSelectionModel().getSelectedIndex()).getId());
+            } else {
+                this.currentEmployee = this.controller.getCurrentCompany().getEmployees().get(this.employeeSelector.getSelectionModel().getSelectedIndex());
+            }
+        } catch (IndexOutOfBoundsException | SQLException e){
             //
         }
         updateFields();
@@ -255,6 +257,11 @@ public class EmployeeForm extends ViewController implements Initializable {
         } catch (Exception e){
             this.employeeImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/unknown.jpg"))));
         }
+    }
+
+    @FXML
+    private void setGeneratedCif(){
+        this.cifField.setText(GenerateDNI.generateDNI().toUpperCase());
     }
 
     @FXML
@@ -419,7 +426,6 @@ public class EmployeeForm extends ViewController implements Initializable {
             this.currentEmployee.setCategory(this.categories.get(this.categoryComboField.getSelectionModel().getSelectedIndex()));
             NominalFX.nominalAPI.setEmployeeFinancial(this.currentEmployee.getId(),this.currentEmployee);
         }
-
         updateEmployees();
     }
 
@@ -480,7 +486,6 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.employeePreviewPassport.setText("");
 
         this.cifGenerator.setVisible(true);
-        this.nafGenerator.setVisible(true);
 
         this.cifField.setText("");
         this.nafField.setText("");
@@ -584,8 +589,15 @@ public class EmployeeForm extends ViewController implements Initializable {
             enableButtons();
             employeeSelection();
         } else {
-            // Set active = 0 and set expiration date. PROCEDURE??
+            try {
+                NominalFX.nominalAPI.fireEmployee(this.controller.getCurrentCompany(),this.currentEmployee);
+                this.controller.getCurrentCompany().updateEmployees();
+            } catch (SQLException e){
+                // LOGGER
+                System.out.println(e.getMessage());
+            }
         }
+        updateEmployees();
     }
 
     private boolean hasChanged(String original, String modified){

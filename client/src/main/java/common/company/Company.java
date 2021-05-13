@@ -1,11 +1,13 @@
 package common.company;
 
+import application.NominalFX;
 import common.NominalMaster;
 import common.NominalObject;
 import common.agreement.Agreement;
 import common.agreement.Quotation;
 import common.employee.Employee;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -125,4 +127,9 @@ public class Company extends NominalObject {
     public Quotation getQuotation() {
         return quotation;
     }
+
+    public void updateEmployees() throws SQLException {
+        this.employees = NominalFX.nominalAPI.getEmployeesByCompanyId(this.id);
+    }
+
 }

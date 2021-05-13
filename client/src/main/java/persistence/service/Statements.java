@@ -84,6 +84,9 @@ public enum Statements {
 
     SELECT_LAST_INSERT_ID("SELECT LAST_INSERT_ID() as id"),
 
+    // PROCEDURES
+    FIRE_EMPLOYEE("call fire_employee(?,?)"),
+
     PLACEHOLDER("");
 
     private final String query;

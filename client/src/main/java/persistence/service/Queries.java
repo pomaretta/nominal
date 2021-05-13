@@ -1,5 +1,6 @@
 package persistence.service;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -92,6 +93,8 @@ public class Queries extends persistence.Queries {
     public PreparedStatement insertPayroll;
     public PreparedStatement insertPayrollComplement;
 
+    public CallableStatement fireEmployee;
+
     /**
      *
      * All queries from NominalAPI using PreparedStatement
@@ -174,6 +177,8 @@ public class Queries extends persistence.Queries {
         insertPayrollComplement = this.connection.prepareStatement(Statements.INSERT_PAYROLL_COMPLEMENTS.getQuery());
 
         selectLastId = this.connection.prepareStatement(Statements.SELECT_LAST_INSERT_ID.getQuery());
+
+        fireEmployee = this.connection.prepareCall(Statements.FIRE_EMPLOYEE.getQuery());
 
     }
 

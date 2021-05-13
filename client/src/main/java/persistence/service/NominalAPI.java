@@ -1287,4 +1287,11 @@ public class NominalAPI extends Driver {
         this.queries.insertPayrollComplement.execute();
     }
 
+    // PROCEDURES
+    public void fireEmployee(Company company, Employee employee) throws SQLException {
+        this.queries.fireEmployee.setInt(1,company.getId());
+        this.queries.fireEmployee.setInt(2,employee.getId());
+        this.queries.fireEmployee.execute();
+    }
+
 }
