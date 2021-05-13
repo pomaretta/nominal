@@ -465,153 +465,162 @@ public class Payroll extends NominalObject {
         String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 
         // Payroll Info
-        addLine(xml,String.format("<payroll id=\"%d\" creation=\"%s\" from=\"%s\" to=\"%s\">",getId(),created.toLocalDateTime().toLocalDate(),from.toLocalDate(),to.toLocalDate()));
+        xml = addLine(xml,String.format("<payroll id=\"%d\" creation=\"%s\" from=\"%s\" to=\"%s\">",getId(),created.toLocalDateTime().toLocalDate(),from.toLocalDate(),to.toLocalDate()));
 
         // AGREEMENT
-        addLine(xml,String.format("<agreement id=\"%d\"/>",agreement.getId()));
+        xml = addLine(xml,String.format("<agreement id=\"%d\"/>",agreement.getId()));
         // END AGREEMENT
 
-        companyXML(xml);
+        xml = companyXML(xml);
 
-        employeeXML(xml);
+        xml = employeeXML(xml);
 
         // TOTAL DAYS
-        addLine(xml,String.format("<total_days>%d</total_days>",totalDays));
+        xml = addLine(xml,String.format("<total_days>%d</total_days>",totalDays));
 
-        salaryPerceptionsXML(xml);
+        xml = salaryPerceptionsXML(xml);
 
-        nonSalaryPerceptionsXML(xml);
+        xml = nonSalaryPerceptionsXML(xml);
 
-        deductionsXML(xml);
+        xml = deductionsXML(xml);
 
-        quotationBasesXML(xml);
+        xml = quotationBasesXML(xml);
 
         // IRPF
-        addLine(xml,String.format("<irpf percentage=\"%.2f\" value=\"%.2f\" />",irpfPercentage,irpfValue));
+        xml = addLine(xml,String.format("<irpf percentage=\"%.2f\" value=\"%.2f\" />",irpfPercentage,irpfValue));
 
         // TOTAL
-        addLine(xml,String.format("<total>%.2f</total>",totalToReceive));
+        xml = addLine(xml,String.format("<total>%.2f</total>",totalToReceive));
 
-        addLine(xml,"</payroll>");
+        xml = addLine(xml,"</payroll>");
 
         return xml;
     }
 
-    private void companyXML(String xml){
+    private String companyXML(String xml){
         // COMPANY
-        addLine(xml,String.format("<company id=\"%d\">",company.getId()));
+        xml = addLine(xml,String.format("<company id=\"%d\">",company.getId()));
 
-        addLine(xml,String.format("<name>%s</name>",company.getName()));
-        addLine(xml,String.format("<address>%s</address>",company.getStreetAddress()));
-        addLine(xml,String.format("<cif>%s</cif>",company.getCif()));
-        addLine(xml,String.format("<ss>%s</ss>",company.getSocialSecurityId()));
-        addLine(xml,String.format("<state>%s</state>",company.getState()));
-        addLine(xml,String.format("<currency>%s</currency>",company.getCurrency().getDigit()));
-        addLine(xml,String.format("<quotation name=\"%s\" />",company.getQuotation().getName()));
+        xml = addLine(xml,String.format("<name>%s</name>",company.getName()));
+        xml = addLine(xml,String.format("<address>%s</address>",company.getStreetAddress()));
+        xml = addLine(xml,String.format("<cif>%s</cif>",company.getCif()));
+        xml = addLine(xml,String.format("<ss>%s</ss>",company.getSocialSecurityId()));
+        xml = addLine(xml,String.format("<state>%s</state>",company.getState()));
+        xml = addLine(xml,String.format("<currency>%s</currency>",company.getCurrency().getDigit()));
+        xml = addLine(xml,String.format("<quotation name=\"%s\" />",company.getQuotation().getName()));
 
-        addLine(xml,"</company>");
+        xml = addLine(xml,"</company>");
         // END COMPANY
+        return xml;
     }
 
-    private void employeeXML(String xml){
+    private String employeeXML(String xml){
         // EMPLOYEE
-        addLine(xml,String.format("<employee id=\"%d\" nif=\"%s\" naf=\"%s\">",employee.getId(),employee.getPassport(),employee.getNaf()));
+        xml = addLine(xml,String.format("<employee id=\"%d\" nif=\"%s\" naf=\"%s\">",employee.getId(),employee.getPassport(),employee.getNaf()));
 
-        addLine(xml,String.format("<name first=\"%s\" second=\"%s\"/>",employee.getName(),employee.getName2()));
-        addLine(xml,String.format("<lastname first=\"%s\" second=\"%s\"/>",employee.getLastName(),employee.getLastName2()));
-        addLine(xml,String.format("<category name=\"%s\" />",employee.getCategory().getName()));
-        addLine(xml,String.format("<apportion>%d</apportion>",processCardinality(employee.isApportion())));
+        xml = addLine(xml,String.format("<name first=\"%s\" second=\"%s\"/>",employee.getName(),employee.getName2()));
+        xml = addLine(xml,String.format("<lastname first=\"%s\" second=\"%s\"/>",employee.getLastName(),employee.getLastName2()));
+        xml = addLine(xml,String.format("<category name=\"%s\" />",employee.getCategory().getName()));
+        xml = addLine(xml,String.format("<apportion>%d</apportion>",processCardinality(employee.isApportion())));
 
         // SCHEDULE
-        addLine(xml,"<schedule>");
+        xml = addLine(xml,"<schedule>");
 
-        addLine(xml,String.format("<nocturnal>%d</nocturnal>",processCardinality(schedule.isNocturnal())));
-        addLine(xml,String.format("<turnicity>%d</turnicity>",processCardinality(schedule.isTurnicity())));
-        addLine(xml,String.format("<complementary_hours>%.2f</complementary_hours>",schedule.getComplementaryHours()));
+        xml = addLine(xml,String.format("<nocturnal>%d</nocturnal>",processCardinality(schedule.isNocturnal())));
+        xml = addLine(xml,String.format("<turnicity>%d</turnicity>",processCardinality(schedule.isTurnicity())));
+        xml = addLine(xml,String.format("<complementary_hours>%.2f</complementary_hours>",schedule.getComplementaryHours()));
 
-        addLine(xml,"</schedule>");
+        xml = addLine(xml,"</schedule>");
         // END SCHEDULE
 
-        addLine(xml,"</employee>");
+        xml = addLine(xml,"</employee>");
         // END EMPLOYEE
+        return xml;
     }
 
-    private void salaryPerceptionsXML(String xml){
+    private String salaryPerceptionsXML(String xml){
         // SALARIAL PERCEPTIONS
-        addLine(xml,"<perceptions salarial=\"1\">");
+        xml = addLine(xml,"<perceptions salarial=\"1\">");
 
         // COMPLEMENTS
         generateComplementsXML(xml,getSalaryComplements(),true);
 
-        addLine(xml,String.format("<base_salary>%.2f</base_salary>",baseSalary));
-        addLine(xml,String.format("<apportion>%.2f</apportion>",apportion));
-        addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKind));
-        addLine(xml,String.format("<total_bccc>%.2f</total_bccc>",totalBccc));
-        addLine(xml,String.format("<total>%.2f</total>",totalEarned));
+        xml = addLine(xml,String.format("<base_salary>%.2f</base_salary>",baseSalary));
+        xml = addLine(xml,String.format("<apportion>%.2f</apportion>",apportion));
+        xml = addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKind));
+        xml = addLine(xml,String.format("<total_bccc>%.2f</total_bccc>",totalBccc));
+        xml = addLine(xml,String.format("<total>%.2f</total>",totalEarned));
 
-        addLine(xml,"</perceptions>");
+        xml = addLine(xml,"</perceptions>");
         // END SALARIAL PERCEPTIONS
+        return xml;
     }
 
-    private void nonSalaryPerceptionsXML(String xml){
+    private String nonSalaryPerceptionsXML(String xml){
         // NON SALARIAL PERCEPTIONS
-        addLine(xml,"<perceptions salarial=\"0\">");
+        xml = addLine(xml,"<perceptions salarial=\"0\">");
 
         // COMPLEMENTS
         generateComplementsXML(xml,getNonSalaryComplements(),false);
 
-        addLine(xml,String.format("<benefits_and_compensations>%.2f</benefits_and_compensations>",benefitsAndCompesations));
-        addLine(xml,String.format("<other_benefits>%.2f</other_benefits>",otherBenefits));
-        addLine(xml,String.format("<redundancy_payment>%.2f</redundancy_payment>",redundancyPayment));
+        xml = addLine(xml,String.format("<benefits_and_compensations>%.2f</benefits_and_compensations>",benefitsAndCompesations));
+        xml = addLine(xml,String.format("<other_benefits>%.2f</other_benefits>",otherBenefits));
+        xml = addLine(xml,String.format("<redundancy_payment>%.2f</redundancy_payment>",redundancyPayment));
 
-        addLine(xml,"</perceptions>");
+        xml = addLine(xml,"</perceptions>");
         // END NON SALARIAL PERCEPTIONS
+
+        return xml;
     }
 
-    private void deductionsXML(String xml){
+    private String deductionsXML(String xml){
         // DEDUCTIONS
-        addLine(xml,"<deductions>");
+        xml = addLine(xml,"<deductions>");
 
-        addLine(xml,String.format("<cc percentage=\"%.2f\" value=\"%.2f\" />",ccPercentage,ccValue));
-        addLine(xml,String.format("<unemployment percentage=\"%.2f\" value=\"%.2f\" />",unemploymentPercentage,unemploymentValue));
-        addLine(xml,String.format("<training percentage=\"%.2f\" value=\"%.2f\" />",trainingPercentage,trainingValue));
-        addLine(xml,String.format("<oh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ohOriginal,ohPercentage,ohValue));
-        addLine(xml,String.format("<eh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ehOriginal,ehPercentage,ehValue));
-        addLine(xml,String.format("<advance_pays>%.2f</advance_pays>",advancePays));
-        addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKindDeduction));
-        addLine(xml,String.format("<other>%.2f</other>",otherDeduction));
-        addLine(xml,String.format("<total>%.2f</total>",totalDeduction));
+        xml = addLine(xml,String.format("<cc percentage=\"%.2f\" value=\"%.2f\" />",ccPercentage,ccValue));
+        xml = addLine(xml,String.format("<unemployment percentage=\"%.2f\" value=\"%.2f\" />",unemploymentPercentage,unemploymentValue));
+        xml = addLine(xml,String.format("<training percentage=\"%.2f\" value=\"%.2f\" />",trainingPercentage,trainingValue));
+        xml = addLine(xml,String.format("<oh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ohOriginal,ohPercentage,ohValue));
+        xml = addLine(xml,String.format("<eh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ehOriginal,ehPercentage,ehValue));
+        xml = addLine(xml,String.format("<advance_pays>%.2f</advance_pays>",advancePays));
+        xml = addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKindDeduction));
+        xml = addLine(xml,String.format("<other>%.2f</other>",otherDeduction));
+        xml = addLine(xml,String.format("<total>%.2f</total>",totalDeduction));
 
-        addLine(xml,"</deductions>");
+        xml = addLine(xml,"</deductions>");
         // END DEDUCTIONS
+        return xml;
     }
 
-    private void quotationBasesXML(String xml){
+    private String quotationBasesXML(String xml){
         // QUOTATION BASES
-        addLine(xml,"<quotation_bases>");
+        xml = addLine(xml,"<quotation_bases>");
 
-        addLine(xml,String.format("<cc percentage=\"%.2f\" value=\"%.2f\" />",companyCCPercentage,companyCCValue));
-        addLine(xml,String.format("<at percentage=\"%.2f\" value=\"%.2f\" />",companyPCAtPercentage,companyPCAtValue));
-        addLine(xml,String.format("<fogasa percentage=\"%.2f\" value=\"%.2f\" />",companyPCFogasaPercentage,companyPCFogasaValue));
-        addLine(xml,String.format("<unemployment percentage=\"%.2f\" value=\"%.2f\" />",companyPCUnemploymentPercentage,companyPCUnemploymentValue));
-        addLine(xml,String.format("<training percentage=\"%.2f\" value=\"%.2f\" />",companyPCTrainingPercentage,companyPCTrainingValue));
-        addLine(xml,String.format("<oh percentage=\"%.2f\" value=\"%.2f\" />",companyOhPercentage,companyOhValue));
-        addLine(xml,String.format("<eh percentage=\"%.2f\" value=\"%.2f\" />",companyEhPercentage,companyEhValue));
+        xml = addLine(xml,String.format("<cc percentage=\"%.2f\" value=\"%.2f\" />",companyCCPercentage,companyCCValue));
+        xml = addLine(xml,String.format("<at percentage=\"%.2f\" value=\"%.2f\" />",companyPCAtPercentage,companyPCAtValue));
+        xml = addLine(xml,String.format("<fogasa percentage=\"%.2f\" value=\"%.2f\" />",companyPCFogasaPercentage,companyPCFogasaValue));
+        xml = addLine(xml,String.format("<unemployment percentage=\"%.2f\" value=\"%.2f\" />",companyPCUnemploymentPercentage,companyPCUnemploymentValue));
+        xml = addLine(xml,String.format("<training percentage=\"%.2f\" value=\"%.2f\" />",companyPCTrainingPercentage,companyPCTrainingValue));
+        xml = addLine(xml,String.format("<oh percentage=\"%.2f\" value=\"%.2f\" />",companyOhPercentage,companyOhValue));
+        xml = addLine(xml,String.format("<eh percentage=\"%.2f\" value=\"%.2f\" />",companyEhPercentage,companyEhValue));
 
-        addLine(xml,"</quotation_bases>");
+        xml = addLine(xml,"</quotation_bases>");
         // END QUOTATION BASES
+        return xml;
     }
 
-    private void generateComplementsXML(String xml,ArrayList<Complement> complements,boolean salarial){
-        addLine(xml,String.format("<complements salarial=\"%d\">",processCardinality(salarial)));
+    private String generateComplementsXML(String xml,ArrayList<Complement> complements,boolean salarial){
+        xml = addLine(xml,String.format("<complements salarial=\"%d\">",processCardinality(salarial)));
         for(Complement c : complements){
-            addLine(xml,String.format("<complement title=\"%s\" original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",c.getName(),c.getOriginalValue(),c.getValuePercentage(),c.getValue()));
+            xml = addLine(xml,String.format("<complement title=\"%s\" original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",c.getName(),c.getOriginalValue(),c.getValuePercentage(),c.getValue()));
         }
-        addLine(xml,"</complements>");
+        xml = addLine(xml,"</complements>");
+        return xml;
     }
 
-    private void addLine(String data, String content){
+    private String addLine(String data, String content){
         data += "\n" + content;
+        return data;
     }
 
     private int processCardinality(boolean cardinality){
