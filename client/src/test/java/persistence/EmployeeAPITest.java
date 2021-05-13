@@ -1,20 +1,23 @@
 package persistence;
 
 import common.company.Company;
+import common.employee.Employee;
 import configuration.DatabaseDeveloper;
 import org.junit.Assert;
 import org.junit.Test;
 import persistence.service.NominalAPI;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
-public class CompanyAPITest {
+public class EmployeeAPITest {
 
     @Test
-    public void checkerTest(){
+    public void checkerTest() {
 
         NominalAPI api = null;
-        Company company = null;
+        Employee employee = null;
 
         try {
             api = new NominalAPI(DatabaseDeveloper.NOMINAL.getURL(), DatabaseDeveloper.NOMINAL.getUser(), DatabaseDeveloper.NOMINAL.getPassword());
@@ -23,15 +26,15 @@ public class CompanyAPITest {
         }
 
         try {
-            company = api.getCompanyById(1);
+            employee = api.getEmployeeById(1);
         } catch (Exception e){
             Assert.fail(e.getMessage());
         }
 
-        Assert.assertEquals(1,company.getId());
+        Assert.assertEquals(1,employee.getId());
 
         try {
-            Assert.assertFalse(api.checkCompany(company));
+            Assert.assertFalse(api.checkEmployee(employee));
         } catch (SQLException e){
             Assert.fail(e.getMessage());
         }
@@ -42,7 +45,7 @@ public class CompanyAPITest {
     public void insertTest(){
 
         NominalAPI api = null;
-        Company company = null;
+        Employee employee = null;
 
         try {
             api = new NominalAPI(DatabaseDeveloper.NOMINAL.getURL(), DatabaseDeveloper.NOMINAL.getUser(), DatabaseDeveloper.NOMINAL.getPassword());
@@ -51,23 +54,31 @@ public class CompanyAPITest {
         }
 
         try {
-            company = new Company(
-                    api.getAgreementById(1)
-                    ,"Palma City"
-                    ,"B63553"
-                    ,"32442/242332/34543"
-                    ,"Calle Melia 2"
-                    ,"Spain"
-                    ,"984235464"
-                    ,api.getCurrencyById(48)
-                    ,api.getQuotationById(4)
+            employee = new Employee(
+                    "43662356R"
+                    ,"324352"
+                    ,"Pepe"
+                    ,""
+                    ,"Lastname"
+                    ,"Lastname2"
+                    ,"pepe@test.es"
+                    ,"745678934"
+                    ,"Calle Bichuela, 5"
+                    ,api.getCategoryById(1)
+                    ,Date.valueOf(LocalDate.now())
+                    ,null
+                    ,true
+                    ,false
+                    ,false
+                    ,40f
+                    ,12.5f
             );
         } catch (SQLException e){
             Assert.fail(e.getMessage());
         }
 
         try {
-            api.setCompany(company);
+            api.setEmployee(api.getCompanyByIdMinimal(1),employee);
         } catch (SQLException e){
             Assert.fail(e.getMessage());
         }
