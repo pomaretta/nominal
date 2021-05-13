@@ -21,6 +21,7 @@ public class NominalFX extends Application {
     public static NominalAPI nominalAPI;
     public static ReportAPI reportAPI;
     public static ImageAPI imageAPI;
+    public static String configuration = System.getProperty("user.home") + System.getProperty("file.separator") + "nominal.xml";
 
     public static Cache cache;
 
