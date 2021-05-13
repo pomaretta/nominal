@@ -231,6 +231,8 @@ CREATE TABLE employee_schedule (
     nocturnal               BOOLEAN DEFAULT 0,
     turnicity               BOOLEAN DEFAULT 0,
     complementary_hours     FLOAT DEFAULT 0,
+    extra_hours             FLOAT DEFAULT 0,
+    overwhelming_hours      FLOAT DEFAULT 0,
 
     PRIMARY KEY (id),
     FOREIGN KEY (employee) REFERENCES employee (id)
