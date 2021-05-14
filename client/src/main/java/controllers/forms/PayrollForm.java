@@ -242,6 +242,8 @@ public class PayrollForm extends ViewController implements Initializable {
         controller = (HomeController) this.manager.getController();
         this.employeeList = FXCollections.observableArrayList();
         updateEmployees();
+        this.xmlExport.setVisible(false);
+        this.pdfExport.setVisible(false);
     }
 
     // Method to select the employee
@@ -254,6 +256,7 @@ public class PayrollForm extends ViewController implements Initializable {
         }
         employeePreviewName.setText(this.currentEmployee.getName());
         employeePreviewPassport.setText(this.currentEmployee.getPassport());
+        this.controller.updateNotifications();
     }
 
     // Method to add the employees to the employees list
@@ -266,6 +269,7 @@ public class PayrollForm extends ViewController implements Initializable {
         this.employeeSelector.setItems(this.employeeList);
         this.employeeSelector.getSelectionModel().select(0);
         employeeSelection();
+        this.controller.updateNotifications();
     }
 
     // Method for update the text fields with the data from the database
@@ -320,6 +324,9 @@ public class PayrollForm extends ViewController implements Initializable {
         setComplementView(salaryComplementsView,this.currentPayroll.getSalaryComplements());
         setComplementView(nonSalaryComplementsView,this.currentPayroll.getNonSalaryComplements());
 
+        this.xmlExport.setVisible(true);
+        this.pdfExport.setVisible(true);
+
     }
 
     // Method to add teh data for the complements view
@@ -359,8 +366,9 @@ public class PayrollForm extends ViewController implements Initializable {
             Payroll payroll = Payroll.generatePayroll(this.controller.getCurrentCompany(),this.currentEmployee,dates.get(0),dates.get(1),NominalFX.nominalAPI);
             int id = NominalFX.nominalAPI.setPayroll(payroll);
             this.currentPayroll = NominalFX.nominalAPI.getPayrollById(id);
-        } catch (SQLException e){
-            // LOGGER
+        } catch (Exception e){
+            NominalFX.logger.add("An error ocurred ocurred while trying to preview a payroll");
+            this.controller.updateNotifications();
         }
         updateFields();
     }
@@ -409,6 +417,7 @@ public class PayrollForm extends ViewController implements Initializable {
     @Override
     public void shouldUpdate() {
         updateEmployees();
+        this.controller.updateNotifications();
     }
 
 }

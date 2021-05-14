@@ -117,7 +117,7 @@ public class CompanyForm extends ViewController implements Initializable {
             System.out.println("PETA" + e.getMessage());
             NominalFX.logger.add("Error while trying to get agreement data.");
         } catch (Exception e){
-            //
+            NominalFX.logger.add("Error while trying to get agreement data.");
         }
 
         updateFields();
@@ -129,14 +129,17 @@ public class CompanyForm extends ViewController implements Initializable {
 
         enableButtons();
 
-        idField.setText(String.valueOf(controller.getCurrentCompany().getId()));
-        nameField.setText(controller.getCurrentCompany().getName());
-        stateField.setText(controller.getCurrentCompany().getState());
-        cifField.setText(controller.getCurrentCompany().getCif());
-        streetAddressField.setText(controller.getCurrentCompany().getStreetAddress());
-        phoneNumberField.setText(controller.getCurrentCompany().getPhoneNumber());
-
-        socialSecurityField.setText(controller.getCurrentCompany().getSocialSecurityId());
+        try {
+            idField.setText(String.valueOf(controller.getCurrentCompany().getId()));
+            nameField.setText(controller.getCurrentCompany().getName());
+            stateField.setText(controller.getCurrentCompany().getState());
+            cifField.setText(controller.getCurrentCompany().getCif());
+            streetAddressField.setText(controller.getCurrentCompany().getStreetAddress());
+            phoneNumberField.setText(controller.getCurrentCompany().getPhoneNumber());
+            socialSecurityField.setText(controller.getCurrentCompany().getSocialSecurityId());
+        } catch (Exception e){
+            NominalFX.logger.add("Error while updating company fields.");
+        }
 
         try {
             setAgreement();
@@ -226,7 +229,7 @@ public class CompanyForm extends ViewController implements Initializable {
                 try {
                     this.quotationMap.put(a.getId(),NominalFX.nominalAPI.getQuotations(a.getId()));
                 } catch (SQLException e){
-                    // LOGGER
+                    NominalFX.logger.add("Error while trying to get quotation data.");
                 }
             }
             this.currentAgreement = 1;

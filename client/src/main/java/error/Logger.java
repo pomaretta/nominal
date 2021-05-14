@@ -19,6 +19,9 @@ public class Logger {
     }
 
     public ArrayList<Object> getErrors() {
+        if(this.errors.size() > 10){
+            this.errors.clear();
+        }
         return errors;
     }
 

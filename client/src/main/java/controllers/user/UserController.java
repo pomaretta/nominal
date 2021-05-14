@@ -216,6 +216,6 @@ public class UserController extends ViewController {
 
     @Override
     public void shouldUpdate() {
-
+        this.controller.updateNotifications();
     }
 }

@@ -28,6 +28,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -98,6 +100,18 @@ public class HomeController extends BaseController implements Initializable {
     // Atribute for current company
     private Company currentCompany;
 
+    @FXML
+    private Pane notificationsPane;
+
+    @FXML
+    private ListView notificationList;
+
+    @FXML
+    private ObservableList notifications;
+
+    @FXML
+    private Label notificationSize;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // When this controller in called with the stage manager calls this function.
@@ -140,6 +154,12 @@ public class HomeController extends BaseController implements Initializable {
 
         setImage();
 
+        this.notifications = FXCollections.observableArrayList();
+
+        viewNotifications();
+
+        overviewHandler();
+
     }
 
     public void updateCompanies(){
@@ -159,6 +179,11 @@ public class HomeController extends BaseController implements Initializable {
         this.companyButton.setDisable(false);
         this.employeeButton.setDisable(false);
         this.payrollButton.setDisable(false);
+    }
+
+    @FXML
+    public void overviewHandler(){
+        this.formManager.switchScenes("/fxml/overview.fxml");
     }
 
     //Handlers for change views.
@@ -245,10 +270,32 @@ public class HomeController extends BaseController implements Initializable {
         }
     }
 
+    // Notifications
+    @FXML
+    private void viewNotifications(){
+        if(this.notificationsPane.getPrefHeight() == 0){
+            this.notificationsPane.setPrefHeight(200);
+            for(Node n : this.notificationsPane.getChildren()){
+                n.setVisible(true);
+            }
+        } else {
+            this.notificationsPane.setPrefHeight(0);
+            for(Node n : this.notificationsPane.getChildren()){
+                n.setVisible(false);
+            }
+        }
+    }
 
     // Return the current selected company
     public Company getCurrentCompany() {
         return currentCompany;
+    }
+
+    public void updateNotifications(){
+        this.notifications.clear();
+        this.notifications.addAll(NominalFX.logger.getErrors());
+        this.notificationList.setItems(this.notifications);
+        this.notificationSize.setText(String.format("%d",NominalFX.logger.getErrors().size()));
     }
 
 }

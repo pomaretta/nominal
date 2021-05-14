@@ -219,6 +219,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.employeeSelector.setItems(this.employeeList);
         this.employeeSelector.getSelectionModel().select(0);
         employeeSelection();
+        this.controller.updateNotifications();
     }
 
     // Method for update the text fields with the data from the database

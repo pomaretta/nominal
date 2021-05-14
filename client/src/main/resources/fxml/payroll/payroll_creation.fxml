@@ -39,7 +39,7 @@
                            </FlowPane.margin>
                         </Label>
                         <Label fx:id="employeePreviewPassport" styleClass="selector-content" text="&lt;Passport&gt;" />
-                        <Button onAction="#previewPayroll" mnemonicParsing="false" text="Preview" />
+                        <Button mnemonicParsing="false" onAction="#previewPayroll" text="Preview" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -65,7 +65,7 @@
                                     <AnchorPane layoutY="67.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Agreement" />
-                                          <TextField fx:id="agreementField" layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="agreementField" editable="false" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -81,7 +81,7 @@
                                     <AnchorPane fx:id="employeeField" layoutY="67.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Employee" />
-                                          <TextField fx:id="employeeNameField" layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="employeeNameField" editable="false" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="136.0" />
@@ -90,13 +90,13 @@
                               <AnchorPane layoutX="22.0" layoutY="208.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Date from" />
-                                    <TextField fx:id="fromField" layoutY="29.0" prefWidth="150.0" />
+                                    <TextField fx:id="fromField" editable="false" layoutY="29.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="207.0" layoutY="208.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Date to" />
-                                    <TextField fx:id="toField" layoutY="29.0" prefWidth="150.0" />
+                                    <TextField fx:id="toField" editable="false" layoutY="29.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -423,8 +423,8 @@
                   </Tab>
                </tabs>
             </TabPane>
-            <Button fx:id="pdfExport" onAction="#exportToPdf" layoutX="40.0" layoutY="604.0" mnemonicParsing="false" text="PDF" />
-            <Button onAction="#exportToXML" layoutX="93.0" layoutY="604.0" mnemonicParsing="false" text="XML" fx:id="xmlExport" />
+            <Button fx:id="pdfExport" layoutX="40.0" layoutY="604.0" mnemonicParsing="false" onAction="#exportToPdf" text="PDF" />
+            <Button layoutX="93.0" layoutY="604.0" mnemonicParsing="false" onAction="#exportToXML" text="XML" fx:id="xmlExport" />
          </children>
       </AnchorPane>
    </children>
