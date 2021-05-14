@@ -3,9 +3,6 @@
  Nominal Application
  Payroll
 
- @author     Carlos Pomares
- Date        2021-04-24
-
 */
 
 package common.payroll;
@@ -133,6 +130,7 @@ public class Payroll extends NominalObject {
     protected float companyOhPercentage;
     protected float companyOhValue;
 
+    // CONSTRUCTORS.
     public Payroll() {
     }
 
@@ -248,6 +246,7 @@ public class Payroll extends NominalObject {
         this.companyOhValue = companyOhValue;
     }
 
+    // GETTERS
     @Override
     public int getId() {
         return id;
@@ -465,6 +464,7 @@ public class Payroll extends NominalObject {
         return companyOhValue;
     }
 
+    // This methods generate the XML with the atributes of the payroll, employee and company
     public String generateXML(){
 
         // Initial
@@ -640,6 +640,7 @@ public class Payroll extends NominalObject {
 
     // CALCS
 
+    // Arraylist for the complemets
     private static ArrayList<Complement> generateComplements(Employee employee,Antiquity antiquity, Salary salary,Schedule schedule, boolean salarial){
 
         ArrayList<Complement> complements = new ArrayList<>();
@@ -666,6 +667,7 @@ public class Payroll extends NominalObject {
         return complements;
     }
 
+    // This method do the necessary calcs for the payroll and create a payroll with al the nesessary information
     public static Payroll generatePayroll(Company company, Employee employee, Date from, Date to, NominalAPI api) throws SQLException  {
 
         Salary salary = api.getSalaryTableByFields(company.getAgreement(), employee.getCategory(), company.getQuotation());

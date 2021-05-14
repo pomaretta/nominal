@@ -1,3 +1,19 @@
+/*
+
+ Nominal Application
+ Employee
+
+ Date        2021-04-23
+
+ Last revision
+ Date        2021-04-23
+
+ Description:
+ The employeeForm class is a controller
+ for the employee_creation fxml file.
+
+*/
+
 package controllers.forms;
 
 import application.NominalFX;
@@ -30,14 +46,19 @@ import java.util.ResourceBundle;
 
 public class EmployeeForm extends ViewController implements Initializable {
 
+    // Atribute for home controller
     private HomeController controller;
 
+    // List for employees
     private ObservableList<String> employeeList;
 
+    // Atribute for the selected current employee
     private Employee currentEmployee;
 
+    // List for Categories
     private ArrayList<Category> categories;
 
+    // FXML class atributes
     @FXML
     private ComboBox<String> employeeSelector;
 
@@ -153,12 +174,14 @@ public class EmployeeForm extends ViewController implements Initializable {
     @FXML
     private Button fireItButton;
 
+    // Initialize
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.cifGenerator.setVisible(false);
         this.nafGenerator.setVisible(false);
     }
 
+    // Initialize
     @Override
     public void run() {
         controller = (HomeController) this.manager.getController();
@@ -167,6 +190,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         updateEmployees();
     }
 
+    // Method to select a employee from the selected company
     @FXML
     private void employeeSelection(){
         try {
@@ -181,6 +205,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         updateFields();
     }
 
+    // Update the list of employees for the employeeSelector
     private void updateEmployees(){
         this.employeeSelector.getSelectionModel().clearSelection();
         this.employeeList.clear();
@@ -192,6 +217,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         employeeSelection();
     }
 
+    // Method for update the text fields with the data from the database
     private void updateFields(){
 
         enableButtons();
@@ -241,7 +267,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         setImage();
 
     }
-
+    // This method add the employee image from cach
     private void setImage(){
         try {
             int id = NominalFX.imageAPI.getEmployeeImageMinimal(this.currentEmployee.getId());
@@ -256,11 +282,13 @@ public class EmployeeForm extends ViewController implements Initializable {
         }
     }
 
+    // Method to get the generated cif for the employee
     @FXML
     private void setGeneratedCif(){
         this.cifField.setText(GenerateDNI.generateDNI().toUpperCase());
     }
 
+    // This method is a selector for the images
     @FXML
     private void uploadImage(){
         try {
@@ -272,6 +300,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         }
     }
 
+    // Method to select and set the category of the employees
     private void setCategory() throws SQLException {
         this.categoryList.clear();
         int index = 0;
@@ -288,6 +317,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.categoryComboField.getSelectionModel().select(index);
     }
 
+    // Add the data for the salaryView
     private void setSalaryView() throws SQLException {
 
         this.salaryView.getItems().clear();
@@ -316,6 +346,7 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     }
 
+    // Add the data for the antiquityView
     private void setAntiquityView() throws SQLException {
 
         this.antiquityView.getItems().clear();
@@ -350,6 +381,7 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     }
 
+    // This method updates the database with the changed fields from the information tab
     @FXML
     private void saveChangesInformation() {
         if (
@@ -396,6 +428,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         updateEmployees();
     }
 
+    // This method updates the database with the changed fields from the contract tab
     @FXML
     private void saveChangesContract() {
 
@@ -434,6 +467,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         updateEmployees();
     }
 
+    // Update the category using the category selector
     @FXML
     private void saveChangesCategory() {
         if (
@@ -451,16 +485,19 @@ public class EmployeeForm extends ViewController implements Initializable {
         updateEmployees();
     }
 
+    // This method updates the database with the changed fields from the Schedule tab
     @FXML
     private void saveChangesSchedule() throws SQLException {
 
     }
 
+    // This method search a schedule
     @FXML
     private void searchSchedule() throws SQLException {
 
     }
 
+    // Method for disable all the button of the form
     private void disableButtons(){
         this.employeeSelector.setDisable(true);
         this.saveChangesInformation.setVisible(false);
@@ -480,6 +517,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.antiquityView.getItems().clear();
     }
 
+    // Method for enable all the button of the form
     private void enableButtons(){
         this.employeeSelector.setDisable(false);
         this.saveChangesInformation.setVisible(true);
@@ -501,6 +539,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.changeImageButton.setDisable(false);
     }
 
+    // This method clear all the content of the textFields
     @FXML
     private void clearAllFields() {
 
@@ -565,10 +604,12 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     }
 
+    // validator for the text fields
     private float validateField(String field) throws Exception {
         return Float.parseFloat(field);
     }
 
+    // This methos create a new employee with the data of the text Fields
     @FXML
     private void createNewEmployee(){
         if(this.currentEmployee != null){
@@ -610,6 +651,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         }
     }
 
+    // Method for fire it an employee
     @FXML
     private void fireItEmployee(){
         if(this.currentEmployee == null){
@@ -626,6 +668,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         updateEmployees();
     }
 
+    // Methods for check if any of the information has changed
     private boolean hasChanged(String original, String modified){
         return !original.equals(modified);
     }

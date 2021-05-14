@@ -1,3 +1,14 @@
+/*
+
+ Nominal Application
+ Payroll Form
+
+ Description:
+ The PayrollForm class is a controller
+ for the payroll_creation fxml file.
+
+*/
+
 package controllers.forms;
 
 import application.NominalFX;
@@ -26,14 +37,19 @@ import java.util.ResourceBundle;
 
 public class PayrollForm extends ViewController implements Initializable {
 
+    // Atributte for home contorller
     private HomeController controller;
 
+    // List for employees
     private ObservableList<String> employeeList;
 
+    // Atribute for the current selected employee
     private Employee currentEmployee;
 
+    // Atribute for the selected payroll
     private Payroll currentPayroll;
 
+    // FXML class Atributes
     @FXML
     private ComboBox employeeSelector;
 
@@ -221,12 +237,14 @@ public class PayrollForm extends ViewController implements Initializable {
 
     }
 
+    // Initialize
     public void run() {
         controller = (HomeController) this.manager.getController();
         this.employeeList = FXCollections.observableArrayList();
         updateEmployees();
     }
 
+    // Method to select the employee
     @FXML
     private void employeeSelection(){
         try {
@@ -238,6 +256,7 @@ public class PayrollForm extends ViewController implements Initializable {
         employeePreviewPassport.setText(this.currentEmployee.getPassport());
     }
 
+    // Method to add the employees to the employees list
     private void updateEmployees(){
         this.employeeSelector.getSelectionModel().clearSelection();
         this.employeeList.clear();
@@ -249,6 +268,7 @@ public class PayrollForm extends ViewController implements Initializable {
         employeeSelection();
     }
 
+    // Method for update the text fields with the data from the database
     private void updateFields(){
         baseSalaryField.setText(String.format("%.2f",currentPayroll.getBaseSalary()));
         apportionField.setText(String.format("%.2f",currentPayroll.getApportion()));
@@ -280,9 +300,11 @@ public class PayrollForm extends ViewController implements Initializable {
         advancePaysField.setText(String.format("%.2f", currentPayroll.getAdvancePays()));
         salaryKindReductionField.setText(String.format("%.2f", currentPayroll.getSalaryKindDeduction()));
         otherReductionField.setText(String.format("%.2f", currentPayroll.getOtherDeduction()));
+        totalReceivedField.setText(String.format("%.2f", currentPayroll.getTotalToReceive()));
         totalReductionField.setText(String.format("%.2f", currentPayroll.getTotalDeduction()));
         companyCCValueField.setText(String.format("%.2f", currentPayroll.getCompanyCCValue()));
         companyCCPercentageField.setText(String.format("%.2f,", currentPayroll.getCompanyCCPercentage()));
+        cEhPercentageField.setText(String.format("%.2f", currentPayroll.getCompanyEhPercentage()));
         cEhValueField.setText(String.format("%.2f,", currentPayroll.getCompanyEhValue()));
         cOhValueField.setText(String.format("%.2f,", currentPayroll.getCompanyOhValue()));
         cOhPercentageField.setText(String.format("%.2f", currentPayroll.getCompanyOhPercentage()));
@@ -300,6 +322,7 @@ public class PayrollForm extends ViewController implements Initializable {
 
     }
 
+    // Method to add teh data for the complements view
     public void setComplementView(TableView view, ArrayList<Complement> complements){
 
         view.getItems().clear();
@@ -328,6 +351,7 @@ public class PayrollForm extends ViewController implements Initializable {
 
     }
 
+    // Method to preview the information of the payroll
     @FXML
     private void previewPayroll(){
         try {
@@ -341,6 +365,7 @@ public class PayrollForm extends ViewController implements Initializable {
         updateFields();
     }
 
+    // Method to optain the from and to data
     private ArrayList<Date> getDates(){
 
         LocalDate date = this.scheduleSelector.getValue();
@@ -360,6 +385,7 @@ public class PayrollForm extends ViewController implements Initializable {
         return dates;
     }
 
+    // Method for do the export to PDS with Jasperfeport.
     @FXML
     private void exportToPdf() throws JRException, IOException {
         HashMap<String,Object> parameters = new HashMap<>();
@@ -367,6 +393,7 @@ public class PayrollForm extends ViewController implements Initializable {
         JasperViewer.viewReport(NominalFX.reportAPI.getPrint(NominalFX.reportAPI.getReport(getClass().getResource("/reports/payroll_report.jrxml").getPath()),parameters),false);
     }
 
+    //Method to do de xml export.
     @FXML
     private void exportToXML(){
         LocalDate date = LocalDate.now();
