@@ -3,11 +3,8 @@
  Nominal Application
  Nominal FX Company Form
 
+ @author     Carlos Pomares
  Date        2021-05-04
-
- Description:
- The companyForm class is a controller
- for the company_creation fxml file.
 
 */
 
@@ -42,15 +39,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-
-
 public class CompanyForm extends ViewController implements Initializable {
 
-
-    //Atribute for the HomeController.
     private HomeController controller;
 
-    //FXML class atributes.
     @FXML
     private ImageView companyImage;
 
@@ -75,19 +67,14 @@ public class CompanyForm extends ViewController implements Initializable {
     @FXML
     private Button removeImageButton;
 
-    // List for the agreements.
     private ObservableList<String> agreementsList;
-
     @FXML
     private ComboBox agreementSelector;
 
-    // List for currency.
     private ObservableList<String> currencyList;
-
     @FXML
     private ComboBox currencySelector;
 
-    //List for Quotations.
     private ObservableList<String> quotationList;
     @FXML
     private ComboBox quotationSelector;
@@ -96,8 +83,6 @@ public class CompanyForm extends ViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-
-    // Initialize.
     @Override
     public void run() {
         controller = (HomeController) this.manager.getController();
@@ -107,7 +92,6 @@ public class CompanyForm extends ViewController implements Initializable {
         updateFields();
     }
 
-    // Method for update the text fields with the data from the database.
     @FXML
     public void updateFields() {
         idField.setText(String.valueOf(controller.getCurrentCompany().getId()));
@@ -131,7 +115,6 @@ public class CompanyForm extends ViewController implements Initializable {
 
     }
 
-    // Method for add the agreements from the database to the agreement list.
     private void setAgreement() throws SQLException {
         this.agreementsList.clear();
         int index = 0;
@@ -147,7 +130,6 @@ public class CompanyForm extends ViewController implements Initializable {
         this.agreementSelector.getSelectionModel().select(index);
     }
 
-    // Method for add the Currency from the database to the currency list.
     private void setCurrency() throws SQLException {
         this.currencyList.clear();
         int index = 0;
@@ -163,7 +145,6 @@ public class CompanyForm extends ViewController implements Initializable {
         this.currencySelector.getSelectionModel().select(index);
     }
 
-    // Method for add the Quotations from the database to the currency list.
     private void setQuotation() throws SQLException {
         this.quotationList.clear();
         int index = 0;
@@ -179,7 +160,6 @@ public class CompanyForm extends ViewController implements Initializable {
         this.quotationSelector.getSelectionModel().select(index);
     }
 
-    // This method add the company image from cache.
     private void setImage() {
         try {
             if(NominalFX.cache.containsImage(NominalFX.imageAPI.getCompanyImageMinimal(this.controller.getCurrentCompany().getId()))){
@@ -194,7 +174,6 @@ public class CompanyForm extends ViewController implements Initializable {
         }
     }
 
-    // This method is a selector for the images.
     @FXML
     private void uploadImage(){
         FileChooser fileChooser = new FileChooser();
