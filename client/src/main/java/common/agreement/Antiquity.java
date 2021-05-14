@@ -1,3 +1,10 @@
+/*
+
+ Nominal Application
+ Antiquity
+
+*/
+
 package common.agreement;
 
 import java.sql.Timestamp;
@@ -15,6 +22,14 @@ public class Antiquity {
     // VALUE
     float value;
 
+    /**
+     *
+     * @param id antiquity identificator
+     * @param category antiquity categorie
+     * @param quotation antiquity quatation
+     * @param years years of antiquity
+     * @param value antiquity value
+     */
     public Antiquity(int id, int category, int quotation, int years, float value) {
         this.id = id;
         this.category = category;
@@ -23,6 +38,7 @@ public class Antiquity {
         this.value = value;
     }
 
+    // GETTERS
     public int getId() {
         return id;
     }

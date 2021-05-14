@@ -1,3 +1,11 @@
+/*
+
+ Nominal Application
+ Salary
+
+*/
+
+
 package common.agreement;
 
 import java.sql.Timestamp;
@@ -14,6 +22,13 @@ public class Salary {
     // VALUE
     float value;
 
+    /**
+     *
+     * @param id salary identificator
+     * @param category salary category
+     * @param quotation salary quotation
+     * @param value salary value
+     */
     public Salary(int id, int category, int quotation, float value) {
         this.id = id;
         this.category = category;
@@ -21,6 +36,7 @@ public class Salary {
         this.value = value;
     }
 
+    // GETTERS
     public int getId() {
         return id;
     }

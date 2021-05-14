@@ -134,6 +134,63 @@ public class Payroll extends NominalObject {
     public Payroll() {
     }
 
+    /**
+     *
+     * @param id payroll identificator
+     * @param created creation date
+     * @param company company to which the employee belongs
+     * @param agreement agreement to which the employee belongs
+     * @param employee employee who is doing the payroll
+     * @param schedule schedule of th employee
+     * @param from first day
+     * @param to last day
+     * @param totalDays total days worked
+     * @param baseSalary salary base of the employee
+     * @param employeeApportion employee aportions
+     * @param apportion extra pays and prorated pays
+     * @param salaryComplements salary complements
+     * @param nonSalaryComplements non salary complements
+     * @param salaryKind salary in kind
+     * @param totalEarned sum of perceptions
+     * @param ccPercentage percentage to calcs common contingencies value
+     * @param ccValue common contingencies value
+     * @param benefitsAndCompesations perceptions of benefits and conpensations
+     * @param redundancyPayment compensation for transfers, suspensions or dismissals
+     * @param otherBenefits other benefits
+     * @param unemploymentPercentage percentage to calcs enemployment value
+     * @param unemploymentValue calculated unemployment value
+     * @param trainingPercentage percentage to calcs training value
+     * @param trainingValue calculed training value
+     * @param ohOriginal overwhelming hours made
+     * @param ohPercentage percentage for calcs overwhelming hours value
+     * @param ohValue calculed overwhelming hours value
+     * @param ehOriginal extra hours made
+     * @param ehPercentage percentage for calcs extra hours value
+     * @param ehValue calculed extra hours value
+     * @param totalApportions sum of all apportions
+     * @param irpfPercentage percentage for calcs irpf
+     * @param irpfValue calculed irpf value
+     * @param advancePays value of advancePays
+     * @param salaryKindDeduction deduction for the salarykind
+     * @param otherDeduction other deductions
+     * @param totalBccc calculed total Bccc
+     * @param totalDeduction sum of al deductions
+     * @param totalToReceive calculed total to receive
+     * @param companyCCPercentage percentage for calcs the company common contingencies value
+     * @param companyCCValue calculed company common contingencies
+     * @param companyPCAtPercentage percentage to calc company AT/ET value
+     * @param companyPCAtValue calculed company AT/ET value
+     * @param companyPCUnemploymentPercentage percentage to cals company unemployment value
+     * @param companyPCUnemploymentValue calculated company unemploymet value
+     * @param companyPCTrainingPercentage percentage to calcs company training value
+     * @param companyPCTrainingValue calculed company training value
+     * @param companyPCFogasaPercentage percentage to calcs company fogasa value
+     * @param companyPCFogasaValue calculed company fogasa value
+     * @param companyEhPercentage percentage to calcs company extra hours value
+     * @param companyEhValue calculated company extra hours value
+     * @param companyOhPercentage percenatage to calcs overwhelming hours value
+     * @param companyOhValue calculated overwhelming hours value
+     */
     public Payroll(int id, Timestamp created, Company company, Agreement agreement, Employee employee, Schedule schedule, Date from, Date to, int totalDays, float baseSalary, boolean employeeApportion, float apportion, ArrayList<Complement> salaryComplements, ArrayList<Complement> nonSalaryComplements, float salaryKind, float totalEarned, float ccPercentage, float ccValue, float benefitsAndCompesations, float redundancyPayment, float otherBenefits, float unemploymentPercentage, float unemploymentValue, float trainingPercentage, float trainingValue, float ohOriginal, float ohPercentage, float ohValue, float ehOriginal, float ehPercentage, float ehValue, float totalApportions, float irpfPercentage, float irpfValue, float advancePays, float salaryKindDeduction, float otherDeduction, float totalBccc, float totalDeduction, float totalToReceive, float companyCCPercentage, float companyCCValue, float companyPCAtPercentage, float companyPCAtValue, float companyPCUnemploymentPercentage, float companyPCUnemploymentValue, float companyPCTrainingPercentage, float companyPCTrainingValue, float companyPCFogasaPercentage, float companyPCFogasaValue, float companyEhPercentage, float companyEhValue, float companyOhPercentage, float companyOhValue) {
         this.id = id;
         this.created = created;

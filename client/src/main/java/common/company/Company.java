@@ -47,6 +47,21 @@ public class Company extends NominalObject {
     //CONSTRUCTORS
     public Company(){}
 
+    /**
+     *
+     * @param id company identificator
+     * @param lastUpdated last update date
+     * @param agreement agreement of the company
+     * @param employees employees of the company
+     * @param name company name
+     * @param cif company cif
+     * @param socialSecurityId id for social security
+     * @param streetAddress street address of the company
+     * @param state company state
+     * @param phoneNumber phone of the company
+     * @param currency company currency
+     * @param quotation company quotation
+     */
     public Company(int id, Timestamp lastUpdated, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency, Quotation quotation) {
         this.id = id;
         this.lastUpdated = lastUpdated;
