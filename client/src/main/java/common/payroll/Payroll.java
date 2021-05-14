@@ -728,7 +728,13 @@ public class Payroll extends NominalObject {
     public static Payroll generatePayroll(Company company, Employee employee, Date from, Date to, NominalAPI api) throws SQLException  {
 
         Salary salary = api.getSalaryTableByFields(company.getAgreement(), employee.getCategory(), company.getQuotation());
-        Antiquity antiquity = api.getAntiquityByFields(company.getAgreement(), employee.getCategory(), company.getQuotation(), employee.calculateYears());
+        Antiquity antiquity = null;
+        try {
+            antiquity = api.getAntiquityByFields(company.getAgreement(), employee.getCategory(), company.getQuotation(), employee.calculateYears());
+        } catch (SQLException e){
+            // Ignore
+        }
+
         Schedule schedule = api.getScheduleByDateAndEmployee(employee, from, to);
 
         Duration diff = Duration.between(from.toLocalDate().atStartOfDay(),to.toLocalDate().atStartOfDay());
