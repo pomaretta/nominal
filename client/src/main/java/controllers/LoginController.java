@@ -1,3 +1,13 @@
+/*
+ Nominal Application
+ Login
+
+ Description:
+ The LoginController class is a controller
+ for the login fxml file.
+
+*/
+
 package controllers;
 
 import application.NominalFX;
@@ -28,6 +38,7 @@ public class LoginController extends BaseController implements Initializable {
 
     private double xOffset, yOffset;
 
+    // FXML classes Attributes
     @FXML
     private AnchorPane root;
 
@@ -45,6 +56,7 @@ public class LoginController extends BaseController implements Initializable {
     @FXML
     private PasswordField passwordField;
 
+    // Initialize
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // When this controller in called with the stage manager calls this function.
@@ -71,16 +83,19 @@ public class LoginController extends BaseController implements Initializable {
 
     }
 
+    // Handler for exit button
     @FXML
     private void exitHandler(){
         Platform.exit();
     }
 
+    // Handler for minimize button
     @FXML
     private void minimizeHandler(){
         this.stageManager.getPrimaryStage().setIconified(true);
     }
 
+    // Handler for user auth, this handler use the nominal_auth_dev db
     @FXML
     private void loginHandler(){
         // SEARCH FOR AN USER WITH GET TEXT FROM EMAIL FIELD

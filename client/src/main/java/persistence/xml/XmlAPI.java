@@ -9,20 +9,16 @@ import java.io.*;
 public class XmlAPI {
 
     public void exportXml(String xml, String path) throws IOException {
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(path);
-            writer.write(xml);
-        } finally {
-            writer.close();
-        }
+        FileWriter writer = new FileWriter(path);
+        writer.write(xml);
+        writer.close();
     }
 
     public void exportXmlWithDialog(String xml, String key, Stage stage) throws IOException {
         DirectoryChooser chooser = new DirectoryChooser();
         File file = chooser.showDialog(stage);
         if (file != null){
-            exportXml(xml,file.getPath() + System.getProperty("line.separator") + key);
+            exportXml(xml,String.format("%s%s%s",file.getPath(),System.getProperty("file.separator"),key));
         }
     }
 

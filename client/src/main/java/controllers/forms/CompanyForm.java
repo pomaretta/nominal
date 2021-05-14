@@ -14,6 +14,8 @@
 package controllers.forms;
 
 import application.NominalFX;
+import com.sun.org.apache.xpath.internal.operations.Quo;
+import common.NominalObject;
 import common.agreement.Agreement;
 import common.agreement.Quotation;
 import common.company.Company;
@@ -37,15 +39,15 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class CompanyForm extends ViewController implements Initializable {
 
     // Atribute for the HomeController
     private HomeController controller;
+
+    private HashMap<Integer,ArrayList<Quotation>> quotationMap;
+    private int currentAgreement;
 
     // FXML class atributes
     @FXML
@@ -105,6 +107,19 @@ public class CompanyForm extends ViewController implements Initializable {
         this.agreementsList = FXCollections.observableArrayList();
         this.currencyList = FXCollections.observableArrayList();
         this.quotationList = FXCollections.observableArrayList();
+        this.quotationMap = new HashMap<>();
+
+        try {
+            setAgreement();
+            setQuotation();
+            setCurrency();
+        } catch (SQLException e){
+            System.out.println("PETA" + e.getMessage());
+            NominalFX.logger.add("Error while trying to get agreement data.");
+        } catch (Exception e){
+            //
+        }
+
         updateFields();
     }
 
@@ -141,16 +156,22 @@ public class CompanyForm extends ViewController implements Initializable {
         int index = 0;
         int count = 0;
         this.agreements = NominalFX.nominalAPI.getAgreementsMinimal();
-        for(Agreement a : this.agreements){
-            try {
-                if (a.getId() == controller.getCurrentCompany().getAgreement().getId()){
-                    index = count;
+        if(this.controller.getCurrentCompany() != null){
+            for(Agreement a : this.agreements){
+                try {
+                    if (a.getId() == controller.getCurrentCompany().getAgreement().getId()){
+                        index = count;
+                    }
+                } catch (Exception e){
+                    continue;
                 }
-            } catch (Exception e){
-                continue;
+                this.agreementsList.add(a.getName());
+                count++;
             }
-            this.agreementsList.add(a.getName());
-            count++;
+        } else {
+            for(Agreement a : this.agreements){
+                this.agreementsList.add(a.getName());
+            }
         }
         this.agreementSelector.setItems(this.agreementsList);
         this.agreementSelector.getSelectionModel().select(index);
@@ -162,12 +183,22 @@ public class CompanyForm extends ViewController implements Initializable {
         int index = 0;
         int count = 0;
         this.currencies = NominalFX.nominalAPI.getCurrencies();
-        for(Currency c : this.currencies){
-            if (c.getId() == controller.getCurrentCompany().getCurrency().getId()){
-                index = count;
+        if(this.controller.getCurrentCompany() != null){
+            for(Currency c : this.currencies){
+                try {
+                    if (c.getId() == controller.getCurrentCompany().getCurrency().getId()){
+                        index = count;
+                    }
+                } catch (Exception e){
+                    continue;
+                }
+                this.currencyList.add(c.getDigit());
+                count++;
             }
-            this.currencyList.add(c.getDigit());
-            count++;
+        } else {
+            for(Currency c : this.currencies){
+                this.currencyList.add(c.getDigit());
+            }
         }
         this.currencySelector.setItems(this.currencyList);
         this.currencySelector.getSelectionModel().select(index);
@@ -178,13 +209,30 @@ public class CompanyForm extends ViewController implements Initializable {
         this.quotationList.clear();
         int index = 0;
         int count = 0;
-        this.quotations = NominalFX.nominalAPI.getQuotations(this.controller.getCurrentCompany().getAgreement().getId());
-        for(Quotation q : this.quotations){
-            if (q.getId() == controller.getCurrentCompany().getQuotation().getId()){
-                index = count;
+        if (this.controller.getCurrentCompany() != null){
+            for(Quotation q : NominalFX.nominalAPI.getQuotations(this.controller.getCurrentCompany().getAgreement().getId())){
+                try {
+                    if (q.getId() == controller.getCurrentCompany().getQuotation().getId()){
+                        index = count;
+                    }
+                } catch (Exception e){
+                    continue;
+                }
+                this.quotationList.add(q.getName());
+                count++;
             }
-            this.quotationList.add(q.getName());
-            count++;
+        } else {
+            for(Agreement a : this.agreements){
+                try {
+                    this.quotationMap.put(a.getId(),NominalFX.nominalAPI.getQuotations(a.getId()));
+                } catch (SQLException e){
+                    // LOGGER
+                }
+            }
+            this.currentAgreement = 1;
+            for(Quotation a : this.quotationMap.get(this.currentAgreement)){
+                this.quotationList.add(a.getName());
+            }
         }
         this.quotationSelector.setItems(this.quotationList);
         this.quotationSelector.getSelectionModel().select(index);
@@ -288,11 +336,7 @@ public class CompanyForm extends ViewController implements Initializable {
             }
         }
 
-        try {
-            this.controller.companySelection();
-        } catch (SQLException sqlException) {
-            NominalFX.logger.add("Error while trying to update company selection.");
-        }
+        this.controller.companySelection();
     }
 
     // Method to enable the form buttons
@@ -302,6 +346,7 @@ public class CompanyForm extends ViewController implements Initializable {
 
         this.saveChangesInformationButton.setVisible(true);
         this.saveChangesFinancialButton.setVisible(true);
+        this.changeImageButton.setDisable(false);
         this.nameField.setEditable(false);
         this.cifField.setEditable(false);
         this.socialSecurityField.setEditable(false);
@@ -314,8 +359,10 @@ public class CompanyForm extends ViewController implements Initializable {
 
         creation = true;
 
+        this.companyImage.setImage(new Image(getClass().getResourceAsStream("/images/unknown.jpg")));
         this.saveChangesInformationButton.setVisible(false);
         this.saveChangesFinancialButton.setVisible(false);
+        this.changeImageButton.setDisable(true);
         this.cifField.setEditable(true);
         this.nameField.setEditable(true);
         this.socialSecurityField.setEditable(true);
@@ -354,7 +401,7 @@ public class CompanyForm extends ViewController implements Initializable {
                     ,this.stateField.getText()
                     ,this.phoneNumberField.getText()
                     ,this.currencies.get(this.currencySelector.getSelectionModel().getSelectedIndex())
-                    ,this.quotations.get(this.quotationSelector.getSelectionModel().getSelectedIndex())
+                    ,this.quotationMap.get(this.agreements.get(this.agreementSelector.getSelectionModel().getSelectedIndex()).getId()).get(this.quotationSelector.getSelectionModel().getSelectedIndex())
             );
 
             try {
@@ -363,12 +410,8 @@ public class CompanyForm extends ViewController implements Initializable {
                 NominalFX.logger.add("Error while trying to create new company.");
             }
 
-            try {
-                this.controller.companySelection();
-            } catch (SQLException sqlException) {
-                NominalFX.logger.add("Error while trying to update company selection.");
-            }
-
+            this.controller.updateCompanies();
+            this.controller.companySelection();
         } else {
             clearAllFields();
         }

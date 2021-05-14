@@ -17,8 +17,10 @@ package controllers;
 
 import application.NominalFX;
 import application.Views;
+import common.agreement.Agreement;
 import common.auth.User;
 import common.company.Company;
+import common.company.Currency;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +29,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -44,6 +47,7 @@ import view.ViewManager;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HomeController extends BaseController implements Initializable {
@@ -82,6 +86,9 @@ public class HomeController extends BaseController implements Initializable {
     @FXML
     private MenuButton menuButton;
 
+    @FXML
+    private MenuItem usersMenu;
+
     // List for items
     private ObservableList<String> items;
 
@@ -119,6 +126,23 @@ public class HomeController extends BaseController implements Initializable {
 
         formManager = new ViewManager(this.contentPane,this);
 
+        updateCompanies();
+
+        this.companyButton.setDisable(false);
+        this.employeeButton.setDisable(true);
+        this.payrollButton.setDisable(true);
+
+        if(NominalFX.authAPI.getLogedUser().getPrivilege().getName().equals("admin")){
+            this.usersMenu.setVisible(true);
+        } else {
+            this.usersMenu.setVisible(false);
+        }
+
+        setImage();
+
+    }
+
+    public void updateCompanies(){
         try {
             this.items = FXCollections.observableArrayList();
             this.companies = NominalFX.nominalAPI.getCompaniesMinimal();
@@ -129,11 +153,6 @@ public class HomeController extends BaseController implements Initializable {
         } catch (Exception e){
             NominalFX.logger.add("Error while obtaining companies.");
         }
-
-        this.companyButton.setDisable(false);
-        this.employeeButton.setDisable(true);
-        this.payrollButton.setDisable(true);
-
     }
 
     private void allowConfiguration(){
@@ -193,16 +212,36 @@ public class HomeController extends BaseController implements Initializable {
 
     // Method to select the company and get his information
     @FXML
-    public void companySelection() throws SQLException {
-        if(NominalFX.cache.containsCompany(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId())){
-            this.currentCompany = NominalFX.cache.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId());
-            for (ViewController c : this.formManager.getViewControllers()){
-                c.shouldUpdate();
+    public void companySelection() {
+        try {
+            if(NominalFX.cache.containsCompany(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId())){
+                this.currentCompany = NominalFX.cache.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId());
+                for (ViewController c : this.formManager.getViewControllers()){
+                    c.shouldUpdate();
+                }
+                allowConfiguration();
+            } else {
+                NominalFX.cache.add(NominalFX.nominalAPI.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId()),NominalFX.cache.getCompanies());
+                companySelection();
             }
-            allowConfiguration();
-        } else {
-            NominalFX.cache.add(NominalFX.nominalAPI.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId()),NominalFX.cache.getCompanies());
-            companySelection();
+        } catch (SQLException e){
+            NominalFX.logger.add("Error while updating companies.");
+        } catch (Exception e){
+            NominalFX.logger.add("Error while selecting company.");
+        }
+    }
+
+    private void setImage(){
+        try {
+            int id = NominalFX.imageAPI.getUserImageMinimal(NominalFX.authAPI.getLogedUser().getId());
+            if(NominalFX.cache.containsImage(id)){
+                this.avatar.setImage(NominalFX.cache.getImageById(id).getImage());
+            } else {
+                NominalFX.cache.add(NominalFX.imageAPI.getImageById(id),NominalFX.cache.getImages());
+                setImage();
+            }
+        } catch (Exception e){
+            this.avatar.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/unknown.jpg"))));
         }
     }
 

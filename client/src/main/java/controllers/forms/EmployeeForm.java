@@ -17,6 +17,8 @@
 package controllers.forms;
 
 import application.NominalFX;
+import com.lowagie.text.pdf.ArabicLigaturizer;
+import common.agreement.Agreement;
 import common.agreement.Antiquity;
 import common.agreement.Category;
 import common.agreement.Salary;
@@ -41,9 +43,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class EmployeeForm extends ViewController implements Initializable {
 
