@@ -17,8 +17,10 @@ package controllers;
 
 import application.NominalFX;
 import application.Views;
+import common.agreement.Agreement;
 import common.auth.User;
 import common.company.Company;
+import common.company.Currency;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -119,6 +121,15 @@ public class HomeController extends BaseController implements Initializable {
 
         formManager = new ViewManager(this.contentPane,this);
 
+        updateCompanies();
+
+        this.companyButton.setDisable(false);
+        this.employeeButton.setDisable(true);
+        this.payrollButton.setDisable(true);
+
+    }
+
+    public void updateCompanies(){
         try {
             this.items = FXCollections.observableArrayList();
             this.companies = NominalFX.nominalAPI.getCompaniesMinimal();
@@ -129,11 +140,6 @@ public class HomeController extends BaseController implements Initializable {
         } catch (Exception e){
             NominalFX.logger.add("Error while obtaining companies.");
         }
-
-        this.companyButton.setDisable(false);
-        this.employeeButton.setDisable(true);
-        this.payrollButton.setDisable(true);
-
     }
 
     private void allowConfiguration(){
@@ -193,16 +199,22 @@ public class HomeController extends BaseController implements Initializable {
 
     // Method to select the company and get his information
     @FXML
-    public void companySelection() throws SQLException {
-        if(NominalFX.cache.containsCompany(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId())){
-            this.currentCompany = NominalFX.cache.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId());
-            for (ViewController c : this.formManager.getViewControllers()){
-                c.shouldUpdate();
+    public void companySelection() {
+        try {
+            if(NominalFX.cache.containsCompany(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId())){
+                this.currentCompany = NominalFX.cache.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId());
+                for (ViewController c : this.formManager.getViewControllers()){
+                    c.shouldUpdate();
+                }
+                allowConfiguration();
+            } else {
+                NominalFX.cache.add(NominalFX.nominalAPI.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId()),NominalFX.cache.getCompanies());
+                companySelection();
             }
-            allowConfiguration();
-        } else {
-            NominalFX.cache.add(NominalFX.nominalAPI.getCompanyById(this.companies.get(this.companySelector.getSelectionModel().getSelectedIndex()).getId()),NominalFX.cache.getCompanies());
-            companySelection();
+        } catch (SQLException e){
+            NominalFX.logger.add("Error while updating companies.");
+        } catch (Exception e){
+            NominalFX.logger.add("Error while selecting company.");
         }
     }
 
