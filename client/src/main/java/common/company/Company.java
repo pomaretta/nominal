@@ -1,25 +1,13 @@
-/*
-
- Nominal Application
- Company
-
- @author     Adán Inarejos
- Date        2021-04-23
-
- Last revision
- @author     Carlos Pomares
- Date        2021-04-23
-
-*/
-
 package common.company;
 
+import application.NominalFX;
 import common.NominalMaster;
 import common.NominalObject;
 import common.agreement.Agreement;
 import common.agreement.Quotation;
 import common.employee.Employee;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -139,4 +127,49 @@ public class Company extends NominalObject {
     public Quotation getQuotation() {
         return quotation;
     }
+
+    public void setAgreement(Agreement agreement) {
+        this.agreement = agreement;
+    }
+
+    public void setEmployees(ArrayList<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCif(String cif) {
+        this.cif = cif;
+    }
+
+    public void setSocialSecurityId(String socialSecurityId) {
+        this.socialSecurityId = socialSecurityId;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    public void setQuotation(Quotation quotation) {
+        this.quotation = quotation;
+    }
+
+    public void updateEmployees() throws SQLException {
+        this.employees = NominalFX.nominalAPI.getEmployeesByCompanyId(this.id);
+    }
+
 }

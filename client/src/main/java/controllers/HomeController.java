@@ -127,10 +127,10 @@ public class HomeController extends BaseController implements Initializable {
             }
             companySelector.setItems(items);
         } catch (Exception e){
-            //
+            NominalFX.logger.add("Error while obtaining companies.");
         }
 
-        this.companyButton.setDisable(true);
+        this.companyButton.setDisable(false);
         this.employeeButton.setDisable(true);
         this.payrollButton.setDisable(true);
 
@@ -161,6 +161,11 @@ public class HomeController extends BaseController implements Initializable {
     @FXML
     public void logoutHandler(){
         this.stageManager.switchScenes(Views.LOGIN);
+    }
+
+    @FXML
+    public void configurationHandler(){
+        this.formManager.switchScenes("/fxml/configuration/configuration.fxml");
     }
 
     @FXML

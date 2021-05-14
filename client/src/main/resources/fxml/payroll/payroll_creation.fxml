@@ -39,7 +39,7 @@
                            </FlowPane.margin>
                         </Label>
                         <Label fx:id="employeePreviewPassport" styleClass="selector-content" text="&lt;Passport&gt;" />
-                        <Button mnemonicParsing="false" text="Preview" />
+                        <Button onAction="#previewPayroll" mnemonicParsing="false" text="Preview" />
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -47,7 +47,7 @@
                   </FlowPane>
                </children>
             </AnchorPane>
-            <TabPane layoutX="40.0" layoutY="125.0" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
+            <TabPane fx:id="payrollPane" layoutX="40.0" layoutY="125.0" prefHeight="468.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
                <tabs>
                   <Tab closable="false" text="Information">
                      <content>
@@ -81,7 +81,7 @@
                                     <AnchorPane fx:id="employeeField" layoutY="67.0">
                                        <children>
                                           <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Employee" />
-                                          <TextField fx:id="secondNameField1" layoutY="29.0" prefWidth="150.0" />
+                                          <TextField fx:id="employeeNameField" layoutY="29.0" prefWidth="150.0" />
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutY="136.0" />
@@ -111,13 +111,13 @@
                               <AnchorPane layoutX="22.0" layoutY="67.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Base salary" />
-                                    <TextField fx:id="baseSalaryField" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="baseSalaryField" editable="false" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="193.0" layoutY="67.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="150.0" styleClass="content-title" text="Salary kind" />
-                                    <TextField fx:id="salaryKindField" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="salaryKindField" editable="false" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="193.0" layoutY="181.0" />
@@ -132,25 +132,25 @@
                               <AnchorPane layoutX="246.0" layoutY="283.0">
                                  <children>
                                     <Label layoutX="-53.0" prefHeight="20.0" prefWidth="163.0" styleClass="content-title" text="Overwhelming hours" />
-                                    <TextField fx:id="overHoursField" layoutX="-53.0" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="overHoursField" editable="false" layoutX="-53.0" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="281.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="172.0" styleClass="content-title" text="Extraordinary hours" />
-                                    <TextField fx:id="extraHoursField" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="extraHoursField" editable="false" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="356.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="200.0" styleClass="content-title" text="Complementary hours" />
-                                    <TextField fx:id="complementaryHoursFIeld" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="complementaryHoursField" editable="false" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="243.0" layoutY="356.0">
                                  <children>
                                     <Label layoutX="-45.0" prefHeight="20.0" prefWidth="200.0" styleClass="content-title" text="Apportion" />
-                                    <TextField fx:id="apportionField" layoutX="-45.0" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="apportionField" editable="false" layoutX="-45.0" layoutY="29.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -165,19 +165,19 @@
                               <AnchorPane layoutX="22.0" layoutY="235.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Benefits and conpensations" />
-                                    <TextField fx:id="benefitsAndCompensationsField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="benefitsAndCompensationsField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="271.0" layoutY="235.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Redundancy payment" />
-                                    <TextField fx:id="redundancyPaymentField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="redundancyPaymentField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="302.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Other  benefits" />
-                                    <TextField fx:id="otherBenefitsField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="otherBenefitsField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="62.0" prefHeight="119.0" prefWidth="224.0">
@@ -198,61 +198,61 @@
                               <AnchorPane layoutX="22.0" layoutY="67.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="CC Percentage" />
-                                    <TextField fx:id="ccPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="ccPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="289.0" layoutY="65.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="CC Value" />
-                                    <TextField fx:id="ccValueField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="ccValueField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="132.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Unemployment Percentage" />
-                                    <TextField fx:id="unemploymentPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="unemploymentPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="289.0" layoutY="132.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Unemployment Value" />
-                                    <TextField fx:id="unemploymentValueField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="unemploymentValueField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="202.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Training Percentage" />
-                                    <TextField fx:id="trainingPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="trainingPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="289.0" layoutY="202.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Training Value" />
-                                    <TextField fx:id="trainingValueField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="trainingValueField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="266.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="247.0" styleClass="content-title" text="Overwhelming hours Percentage" />
-                                    <TextField fx:id="ohPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="ohPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="289.0" layoutY="266.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="230.0" styleClass="content-title" text="Overwhelming hours Value" />
-                                    <TextField fx:id="ohValueField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="ohValueField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="328.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Extra hours Percentage" />
-                                    <TextField fx:id="ehPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="ehPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="289.0" layoutY="328.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Extra hours Value" />
-                                    <TextField fx:id="ehValueField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="ehValueField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -267,37 +267,37 @@
                               <AnchorPane layoutX="22.0" layoutY="67.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="IRPF percentage" />
-                                    <TextField fx:id="irpfPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="irpfPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="236.0" layoutY="67.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="IRPF value" />
-                                    <TextField fx:id="irpfValueField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="irpfValueField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="132.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Advance pays" />
-                                    <TextField fx:id="advancePaysPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="advancePaysField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="236.0" layoutY="134.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Salary kind reduction" />
-                                    <TextField fx:id="salaryKindReductionField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="salaryKindReductionField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="206.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Other reduction" />
-                                    <TextField fx:id="otherReductionField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="otherReductionField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="222.0" layoutY="206.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="Total reduction" />
-                                    <TextField fx:id="totalReductionField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="totalReductionField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -312,7 +312,7 @@
                               <AnchorPane layoutX="22.0" layoutY="67.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="Total received" />
-                                    <TextField fx:id="totalReceivedField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="totalReceivedField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -327,37 +327,37 @@
                               <AnchorPane layoutX="238.0" layoutY="70.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="CC Value" />
-                                    <TextField fx:id="companyCCValueField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="companyCCValueField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="35.0" layoutY="70.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="200.0" styleClass="content-title" text="CC Percentage" />
-                                    <TextField fx:id="companyCCPercentageField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="companyCCPercentageField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="141.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="252.0" styleClass="content-title" text="Extra hours percentage" />
-                                    <TextField fx:id="cEhPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cEhPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="238.0" layoutY="141.0" prefHeight="40.0" prefWidth="180.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Extra hours Value" />
-                                    <TextField fx:id="cEhValueField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cEhValueField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="238.0" layoutY="214.0" prefHeight="40.0" prefWidth="180.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Overwhelming Value" />
-                                    <TextField fx:id="cOhValueField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cOhValueField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="214.0" prefHeight="41.0" prefWidth="216.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="211.0" styleClass="content-title" text="Overwhelming percentage" />
-                                    <TextField fx:id="cOhPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cOhPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -366,55 +366,55 @@
                   </Tab>
                   <Tab text="Profesional Contingencies">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="948.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                            <children>
                               <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" styleClass="content-root-title" text="Profesional Contingencies" />
                               <AnchorPane layoutX="22.0" layoutY="71.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="214.0" styleClass="content-title" text="AT Percentage" />
-                                    <TextField fx:id="atPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="atPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="334.0" layoutY="71.0">
                                  <children>
                                     <Label layoutX="-14.0" layoutY="-13.0" prefHeight="20.0" prefWidth="180.0" styleClass="content-title" text="AT value" />
-                                    <TextField fx:id="atValueField" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="atValueField" editable="false" layoutX="-14.0" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="145.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="232.0" styleClass="content-title" text="Unemployment percentage" />
-                                    <TextField fx:id="cUnemploymentPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cUnemploymentPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="320.0" layoutY="145.0" prefHeight="40.0" prefWidth="256.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Unemployment Value" />
-                                    <TextField fx:id="cUnemploymentValueField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cUnemploymentValueField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="212.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="320.0" styleClass="content-title" text="Training percentage" />
-                                    <TextField fx:id="cTrainingPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cTrainingPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="320.0" layoutY="212.0" prefHeight="40.0" prefWidth="180.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Training Value" />
-                                    <TextField fx:id="cTrainingValueField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cTrainingValueField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="22.0" layoutY="281.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="320.0" styleClass="content-title" text="Fogasa percentage" />
-                                    <TextField fx:id="cFogasaPercentageField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cFogasaPercentageField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="320.0" layoutY="281.0" prefHeight="40.0" prefWidth="180.0">
                                  <children>
                                     <Label layoutY="-13.0" prefHeight="20.0" prefWidth="256.0" styleClass="content-title" text="Fogasa Value" />
-                                    <TextField fx:id="cFogasaValueField" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
+                                    <TextField fx:id="cFogasaValueField" editable="false" layoutY="16.0" prefHeight="25.0" prefWidth="150.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -423,6 +423,8 @@
                   </Tab>
                </tabs>
             </TabPane>
+            <Button fx:id="pdfExport" onAction="#exportToPdf" layoutX="40.0" layoutY="604.0" mnemonicParsing="false" text="PDF" />
+            <Button onAction="#exportToXML" layoutX="93.0" layoutY="604.0" mnemonicParsing="false" text="XML" fx:id="xmlExport" />
          </children>
       </AnchorPane>
    </children>

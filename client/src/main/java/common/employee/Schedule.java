@@ -12,22 +12,28 @@ public class Schedule extends NominalObject {
     private final boolean nocturnal;
     private final boolean turnicity;
     private final float complementaryHours;
+    private final float extraHours;
+    private final float overwhelmingHours;
 
-    public Schedule(int id, Employee employee, Timestamp creation, boolean nocturnal, boolean turnicity, float complementaryHours) {
+    public Schedule(int id, Employee employee, Timestamp creation, boolean nocturnal, boolean turnicity, float complementaryHours, float extraHours, float overwhelmingHours) {
         this.id = id;
         this.employee = employee;
         this.creation = creation;
         this.nocturnal = nocturnal;
         this.turnicity = turnicity;
         this.complementaryHours = complementaryHours;
+        this.extraHours = extraHours;
+        this.overwhelmingHours = overwhelmingHours;
     }
 
-    public Schedule(Employee employee, Timestamp creation, boolean nocturnal, boolean turnicity, float complementaryHours) {
+    public Schedule(Employee employee, Timestamp creation, boolean nocturnal, boolean turnicity, float complementaryHours, float extraHours, float overwhelmingHours) {
         this.employee = employee;
         this.creation = creation;
         this.nocturnal = nocturnal;
         this.turnicity = turnicity;
         this.complementaryHours = complementaryHours;
+        this.extraHours = extraHours;
+        this.overwhelmingHours = overwhelmingHours;
     }
 
     public int getId() {
@@ -54,4 +60,11 @@ public class Schedule extends NominalObject {
         return complementaryHours;
     }
 
+    public float getExtraHours() {
+        return extraHours;
+    }
+
+    public float getOverwhelmingHours() {
+        return overwhelmingHours;
+    }
 }

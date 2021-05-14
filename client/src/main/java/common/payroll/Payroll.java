@@ -11,14 +11,20 @@
 package common.payroll;
 
 import common.NominalObject;
+import common.agreement.Antiquity;
 import common.company.Company;
 import common.employee.Employee;
 import common.NominalMaster;
 import common.agreement.Agreement;
 import common.employee.Schedule;
+import common.agreement.Salary;
+import persistence.service.NominalAPI;
+import application.NominalFX;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.Duration;
 import java.util.ArrayList;
 
 public class Payroll extends NominalObject {
@@ -482,15 +488,15 @@ public class Payroll extends NominalObject {
 
         xml = nonSalaryPerceptionsXML(xml);
 
+        xml = addLine(xml,String.format("<total_bccc>%.2f</total_bccc>",totalBccc));
+        xml = addLine(xml,String.format("<total_earned>%.2f</total_earned>",totalEarned));
+
         xml = deductionsXML(xml);
 
         xml = quotationBasesXML(xml);
 
-        // IRPF
-        xml = addLine(xml,String.format("<irpf percentage=\"%.2f\" value=\"%.2f\" />",irpfPercentage,irpfValue));
-
         // TOTAL
-        xml = addLine(xml,String.format("<total>%.2f</total>",totalToReceive));
+        xml = addLine(xml,String.format("<total_to_receive>%.2f</total_to_receive>",totalToReceive));
 
         xml = addLine(xml,"</payroll>");
 
@@ -529,6 +535,8 @@ public class Payroll extends NominalObject {
         xml = addLine(xml,String.format("<nocturnal>%d</nocturnal>",processCardinality(schedule.isNocturnal())));
         xml = addLine(xml,String.format("<turnicity>%d</turnicity>",processCardinality(schedule.isTurnicity())));
         xml = addLine(xml,String.format("<complementary_hours>%.2f</complementary_hours>",schedule.getComplementaryHours()));
+        xml = addLine(xml,String.format("<extra_hours>%.2f</extra_hours>",schedule.getExtraHours()));
+        xml = addLine(xml,String.format("<overwhelming_hours>%.2f</overwhelming_hours>",schedule.getOverwhelmingHours()));
 
         xml = addLine(xml,"</schedule>");
         // END SCHEDULE
@@ -543,13 +551,11 @@ public class Payroll extends NominalObject {
         xml = addLine(xml,"<perceptions salarial=\"1\">");
 
         // COMPLEMENTS
-        generateComplementsXML(xml,getSalaryComplements(),true);
+        xml = generateComplementsXML(xml,getSalaryComplements(),true);
 
         xml = addLine(xml,String.format("<base_salary>%.2f</base_salary>",baseSalary));
         xml = addLine(xml,String.format("<apportion>%.2f</apportion>",apportion));
         xml = addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKind));
-        xml = addLine(xml,String.format("<total_bccc>%.2f</total_bccc>",totalBccc));
-        xml = addLine(xml,String.format("<total>%.2f</total>",totalEarned));
 
         xml = addLine(xml,"</perceptions>");
         // END SALARIAL PERCEPTIONS
@@ -561,7 +567,7 @@ public class Payroll extends NominalObject {
         xml = addLine(xml,"<perceptions salarial=\"0\">");
 
         // COMPLEMENTS
-        generateComplementsXML(xml,getNonSalaryComplements(),false);
+        xml = generateComplementsXML(xml,getNonSalaryComplements(),false);
 
         xml = addLine(xml,String.format("<benefits_and_compensations>%.2f</benefits_and_compensations>",benefitsAndCompesations));
         xml = addLine(xml,String.format("<other_benefits>%.2f</other_benefits>",otherBenefits));
@@ -582,6 +588,7 @@ public class Payroll extends NominalObject {
         xml = addLine(xml,String.format("<training percentage=\"%.2f\" value=\"%.2f\" />",trainingPercentage,trainingValue));
         xml = addLine(xml,String.format("<oh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ohOriginal,ohPercentage,ohValue));
         xml = addLine(xml,String.format("<eh original=\"%.2f\" percentage=\"%.2f\" value=\"%.2f\" />",ehOriginal,ehPercentage,ehValue));
+        xml = addLine(xml,String.format("<irpf percentage=\"%.2f\" value=\"%.2f\" />",irpfPercentage,irpfValue));
         xml = addLine(xml,String.format("<advance_pays>%.2f</advance_pays>",advancePays));
         xml = addLine(xml,String.format("<salary_kind>%.2f</salary_kind>",salaryKindDeduction));
         xml = addLine(xml,String.format("<other>%.2f</other>",otherDeduction));
@@ -630,5 +637,215 @@ public class Payroll extends NominalObject {
             return 0;
         }
     }
+
+    // CALCS
+
+    private static ArrayList<Complement> generateComplements(Employee employee,Antiquity antiquity, Salary salary,Schedule schedule, boolean salarial){
+
+        ArrayList<Complement> complements = new ArrayList<>();
+
+        if(salarial){
+
+            if(schedule.isNocturnal()){
+                float nocturnity = ((salary.getValue() / 4) / employee.getHiredHours()) * schedule.getComplementaryHours();
+                complements.add(new Complement("Nocturnity",nocturnity,0.0f,nocturnity));
+            }
+
+            if(schedule.isTurnicity()){
+                float turnicity = salary.getValue() * 0.01f;
+                complements.add(new Complement("Turnicity",turnicity,0.0f,turnicity));
+            }
+
+            if(antiquity != null){
+                float antiquityValue = antiquity.getValue() * employee.companyYears();
+                complements.add(new Complement("Antiquity",antiquityValue,0.0f,antiquityValue));
+            }
+
+        }
+
+        return complements;
+    }
+
+    public static Payroll generatePayroll(Company company, Employee employee, Date from, Date to, NominalAPI api) throws SQLException  {
+
+        Salary salary = api.getSalaryTableByFields(company.getAgreement(), employee.getCategory(), company.getQuotation());
+        Antiquity antiquity = api.getAntiquityByFields(company.getAgreement(), employee.getCategory(), company.getQuotation(), employee.calculateYears());
+        Schedule schedule = api.getScheduleByDateAndEmployee(employee, from, to);
+
+        Duration diff = Duration.between(from.toLocalDate().atStartOfDay(),to.toLocalDate().atStartOfDay());
+        int totalDays = (int) diff.toDays();
+
+        float employeeHour = ((salary.getValue() / 4) / employee.getHiredHours());
+
+        // Salarial Perceptions
+        float baseSalary = salary.getValue();
+
+        float apportion = (baseSalary * 2) / 12;
+
+        // SALARY COMPLEMENTS
+        float salaryComplements = 0f;
+        ArrayList<Complement> salaryComplementsList = generateComplements(employee,antiquity,salary,schedule,true);
+        for(Complement c : salaryComplementsList){
+            salaryComplements += c.getValue();
+        }
+
+        float ohPercentage = 1.14f;
+        float oh = (employeeHour * ohPercentage) * schedule.getOverwhelmingHours();
+
+        float ehPercentage = 1f;
+        if(schedule.getExtraHours() > 9){
+            ehPercentage = 2f;
+        }
+        float eh = (employeeHour * ehPercentage) * schedule.getExtraHours();
+
+        float complementaryHours = employeeHour * schedule.getComplementaryHours();
+
+        float salaryKind = 0;
+
+        // Non salarial Perceptions
+
+        // NON SALARIAL COMPLEMENTS
+        float nonSalaryComplements = 0f;
+        ArrayList<Complement> nonSalaryComplementsList = generateComplements(employee,antiquity,salary,schedule,false);
+        for(Complement c : salaryComplementsList){
+            nonSalaryComplements += c.getValue();
+        }
+
+        float benefitsAndCompensations = 0;
+        float redudancyPayment = 0;
+        float otherBenefits = 0;
+
+        float totalEarned = baseSalary + salaryComplements + oh + eh + complementaryHours + salaryKind + nonSalaryComplements + benefitsAndCompensations + redudancyPayment + otherBenefits;
+
+        if(employee.isApportion()){
+            totalEarned += apportion;
+        }
+
+        // Reductions.
+
+        float ccPercentage = 4.7f;
+        float ccValue = baseSalary * (ccPercentage/100);
+
+        //Variable
+
+        float unemploymentPercentage = 5.50f;
+        if(employee.isHourly()){
+            unemploymentPercentage = 6.70f;
+        }
+        float unemploymentValue = baseSalary * (unemploymentPercentage / 100);
+
+        float trainingPercentage = 1.55f;
+        if(employee.isHourly()){
+            trainingPercentage = 0.10f;
+        }
+        float trainingValue = baseSalary * (trainingPercentage / 100);
+
+        float reductionOhPercentage = 2.0f;
+        float reductionOhValue= oh * ( reductionOhPercentage / 100);
+
+        float reductionEhPercentage = 4.7f;
+        float reductionEhValue = eh * (reductionEhPercentage / 100);
+
+        float totalApportions = ccValue + unemploymentValue + trainingValue + reductionOhValue + reductionEhValue;
+
+        float irpfPercentage = employee.getIrpf();
+        float irpfValue = baseSalary * (irpfPercentage / 100);
+
+        float advancePays = 0;
+
+        float salaryKindReduction = 0;
+
+        float otherReductions = 0;
+
+        float totalReductions = totalApportions + irpfValue + advancePays + salaryKindReduction + otherReductions;
+
+        //
+
+        float totalToReceive = totalEarned - totalReductions;
+        float totalBccc = baseSalary + apportion;
+
+        float companyAtPercentage = 23.60f;
+        float companyAtValue = totalEarned * (companyAtPercentage / 100);
+
+        float companyUnemploymentPercentage;
+        if (employee.isHourly()) {
+            companyUnemploymentPercentage = 6.70f;
+
+        } else {
+            companyUnemploymentPercentage = 5.50f;
+        }
+        float companyUnemploymentValue = totalEarned * (companyUnemploymentPercentage / 100);
+
+        float companyTrainingPercentage = 0.60f;
+        float companyTrainingValue = totalEarned * (companyTrainingPercentage / 100);
+
+        float companyFogasaPercentage = 0.20f;
+        float companyFogasaValue = totalEarned * (companyFogasaPercentage / 100);
+
+        float companyCCPercentage = 23.6f;
+        float companyCCValue = (companyAtValue + companyUnemploymentValue + companyTrainingValue + companyFogasaValue) * (companyCCPercentage / 100);
+
+        float companyOhPercentage = 12.0f;
+        float companyOhValue = oh * (companyOhPercentage / 100);
+
+        float companyEhPercentage = 23.60f;
+        float companyEhValue = eh * (companyEhPercentage / 100);
+
+        return new Payroll(
+                company
+                ,company.getAgreement()
+                ,employee
+                ,schedule
+                ,from
+                ,to
+                ,totalDays
+                ,baseSalary
+                ,employee.isApportion()
+                ,employee.isApportion() ? apportion : 0f
+                ,salaryComplementsList
+                ,nonSalaryComplementsList
+                ,salaryKind
+                ,totalEarned
+                ,ccPercentage
+                ,ccValue
+                ,benefitsAndCompensations
+                ,redudancyPayment
+                ,otherBenefits
+                ,unemploymentPercentage
+                ,unemploymentValue
+                ,trainingPercentage
+                ,trainingValue
+                ,oh
+                ,reductionOhPercentage
+                ,reductionOhValue
+                ,eh
+                ,reductionEhPercentage
+                ,reductionEhValue
+                ,totalApportions
+                ,irpfPercentage
+                ,irpfValue
+                ,advancePays
+                ,salaryKindReduction
+                ,otherReductions
+                ,totalBccc
+                ,totalReductions
+                ,totalToReceive
+                ,companyCCPercentage
+                ,companyCCValue
+                ,companyAtPercentage
+                ,companyAtValue
+                ,companyUnemploymentPercentage
+                ,companyUnemploymentValue
+                ,companyTrainingPercentage
+                ,companyTrainingValue
+                ,companyFogasaPercentage
+                ,companyFogasaValue
+                ,companyEhPercentage
+                ,companyEhValue
+                ,companyOhPercentage
+                ,companyOhValue
+        );
+    }
+
 
 }

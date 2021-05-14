@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Nominal AUTH API Queries
-
- @author     Carlos Pomares
- Date        2021-04-24
-
-*/
-
 package persistence.auth;
 
 import java.sql.Connection;

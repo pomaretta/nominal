@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Auth User
-
- @author     Carlos Pomares
- Date        2021-04-29
-
-*/
-
 package common.auth;
 
 public class Privilege {

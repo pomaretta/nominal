@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Nominal Connections
-
- @author     Carlos Pomares
- Date        2021-04-24
-
-*/
-
 package service;
 
 import java.sql.Connection;

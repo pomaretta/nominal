@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Quotation
-
- @author     Carlos Pomares
- Date        2021-04-23
-
-*/
-
 package common.agreement;
 
 public class Quotation {

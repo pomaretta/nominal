@@ -1,13 +1,3 @@
-/*
-
- Nominal Application
- Nominal API Statements
-
- @author     Carlos Pomares
- Date        2021-04-24
-
-*/
-
 package persistence.service;
 
 public enum Statements {
@@ -67,8 +57,8 @@ public enum Statements {
     INSERT_EMPLOYEE_INFORMATION("INSERT INTO nominal_dev.employee_information (employee,name,name_2,lastname,lastname_2,active,apportion) VALUES (?,?,?,?,?,?,?)"),
     INSERT_EMPLOYEE_COMPANY("INSERT INTO nominal_dev.company_employee (company,employee,join_date) VALUES (?,?,?)"),
 
-    SELECT_SCHEDULE_BY_ID("SELECT es.created_at as creation ,es.id as id ,es.employee as employee ,es.turnicity as turnicity ,es.nocturnal as nocturnal ,es.complementary_hours as complementary_hours FROM nominal_dev.employee_schedule es WHERE es.id = ?"),
-    SELECT_SCHEDULE_BY_DATE("SELECT es.id as id es WHERE es.created_at BETWEEN ? AND ? AND es.employee = ?"),
+    SELECT_SCHEDULE_BY_ID("SELECT es.created_at as creation , es.id as id , es.employee as employee , es.turnicity as turnicity , es.nocturnal as nocturnal , es.complementary_hours as complementary_hours, es.extra_hours as extra_hours , es.overwhelming_hours as overwhelming_hours FROM nominal_dev.employee_schedule es WHERE es.id = ?"),
+    SELECT_SCHEDULE_BY_DATE("SELECT es.id as id FROM nominal_dev.employee_schedule es WHERE es.created_at BETWEEN ? AND ? AND es.employee = ?"),
 
     INSERT_EMPLOYEE_SCHEDULE("INSERT INTO nominal_dev.employee_schedule (employee,nocturnal,turnicity,complementary_hours) VALUES (?,?,?,?)"),
 
@@ -82,6 +72,8 @@ public enum Statements {
     SELECT_PAYROLL_BY_COMPANY_ID("SELECT p.id as id FROM nominal_dev.payroll p WHERE p.company = ?"),
     SELECT_PAYROLL_SCHEDULE_BY_ID("SELECT DISTINCT E.id as schedule_id FROM nominal_dev.payroll A INNER JOIN nominal_dev.employee B ON A.employee = B.id INNER JOIN nominal_dev.employee_information C ON A.employee = C.id INNER JOIN nominal_dev.employee_contract D ON A.employee = D.id INNER JOIN nominal_dev.employee_schedule E ON A.employee = E.employee INNER JOIN nominal_dev.company_financial H ON H.company = A.company INNER JOIN nominal_dev.company_information I ON I.company = A.company INNER JOIN nominal_dev.company_contact J ON J.company = A.company INNER JOIN nominal_dev.company O ON O.id = A.company INNER JOIN nominal_dev.currency K ON K.id = H.currency INNER JOIN nominal_dev.agreement_com_quotation F ON F.id = H.quotation INNER JOIN nominal_dev.agreement_emp_category G ON G.id = D.category WHERE A.id = ? AND E.created_at BETWEEN date_from AND date_to AND B.created_at BETWEEN DATE(\"2000-01-01\") AND date_to AND C.created_at BETWEEN DATE(\"2000-01-01\") AND date_to AND D.created_at BETWEEN DATE(\"2000-01-01\") AND date_to AND H.created_at BETWEEN DATE(\"2000-01-01\") AND date_to AND I.created_at BETWEEN DATE(\"2000-01-01\") AND date_to AND J.created_at BETWEEN DATE(\"2000-01-01\") AND date_to ORDER BY C.created_at DESC , B.created_at DESC , D.created_at DESC , H.created_at DESC , I.created_at DESC , J.created_at DESC LIMIT 1"),
 
+    SEARCH_PAYROLL_BY_FIELDS("SELECT p.id as id FROM nominal_dev.payroll p WHERE p.employee = ? AND p.company = ? AND p.date_from = ? AND p.date_to = ?"),
+
     INSERT_PAYROLL("INSERT INTO nominal_dev.payroll ( company ,agreement ,employee ,date_from ,date_to ,date_total_days ,base_salary ,employee_apportion ,apportion ,salary_kind ,total_earned ,cc_percentage ,cc_value ,benefits_and_compensations ,redundancy_payment ,other_benefits ,unemployment_percentage ,unemployment_value ,training_percentage ,training_value ,oh_original_value ,oh_percentage ,oh_value ,eh_original_value ,eh_percentage ,eh_value ,total_aportations ,irpf_percentage ,irpf_value ,advance_pays ,sk_reduction ,other_reduction ,total_deduction ,total_to_receive ,company_cc_percentage ,company_cc_value ,company_pc_at_percentage ,company_pc_at_value ,company_pc_unemployment_percentage ,company_pc_unemployment_value ,company_pc_training_percentage ,company_pc_training_value ,company_pc_fogasa_percentage ,company_pc_fogasa_value ,company_eh_percentage ,company_eh_value ,company_oh_percentage ,company_oh_value ,total_bccc ) VALUES ( ? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? )"),
     INSERT_PAYROLL_COMPLEMENTS("INSERT INTO nominal_dev.payroll_complement (payroll,title,salarial,value_original,value_percentage,value) VALUES (?,?,?,?,?,?)"),
 
@@ -93,6 +85,9 @@ public enum Statements {
     CHECK_EMPLOYEE_UPDATE("SELECT e.last_update > ? as should_update FROM nominal_dev.employee e WHERE e.id = ?"),
 
     SELECT_LAST_INSERT_ID("SELECT LAST_INSERT_ID() as id"),
+
+    // PROCEDURES
+    FIRE_EMPLOYEE("call fire_employee(?,?)"),
 
     PLACEHOLDER("");
 

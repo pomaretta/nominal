@@ -1,15 +1,6 @@
-/*
-
- Nominal Application
- Nominal API Queries
-
- @author     Carlos Pomares
- Date        2021-04-24
-
-*/
-
 package persistence.service;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -55,6 +46,8 @@ public class Queries extends persistence.Queries {
     public PreparedStatement selectPayrollById;
     public PreparedStatement selectPayrollComplementById;
     public PreparedStatement selectPayrollSchedule;
+
+    public PreparedStatement searchPayrollByFields;
 
     public PreparedStatement selectPayrollsByEmployeeId;
     public PreparedStatement selectPayrollsByCompanyId;
@@ -102,6 +95,8 @@ public class Queries extends persistence.Queries {
     public PreparedStatement insertPayroll;
     public PreparedStatement insertPayrollComplement;
 
+    public CallableStatement fireEmployee;
+
     /**
      *
      * All queries from NominalAPI using PreparedStatement
@@ -146,6 +141,8 @@ public class Queries extends persistence.Queries {
         selectPayrollComplementById = this.connection.prepareStatement(Statements.SELECT_PAYROLL_COMPLEMENT_BY_PAYROLL.getQuery());
         selectPayrollSchedule = this.connection.prepareStatement(Statements.SELECT_PAYROLL_SCHEDULE_BY_ID.getQuery());
 
+        searchPayrollByFields = this.connection.prepareStatement(Statements.SEARCH_PAYROLL_BY_FIELDS.getQuery());
+
         selectPayrollsByEmployeeId = this.connection.prepareStatement(Statements.SELECT_PAYROLL_BY_EMPLOYEE_ID.getQuery());
         selectPayrollsByCompanyId = this.connection.prepareStatement(Statements.SELECT_PAYROLL_BY_COMPANY_ID.getQuery());
 
@@ -184,6 +181,8 @@ public class Queries extends persistence.Queries {
         insertPayrollComplement = this.connection.prepareStatement(Statements.INSERT_PAYROLL_COMPLEMENTS.getQuery());
 
         selectLastId = this.connection.prepareStatement(Statements.SELECT_LAST_INSERT_ID.getQuery());
+
+        fireEmployee = this.connection.prepareCall(Statements.FIRE_EMPLOYEE.getQuery());
 
     }
 

@@ -22,7 +22,7 @@
                <children>
                   <FlowPane alignment="CENTER_LEFT" layoutX="13.0" layoutY="16.0" prefHeight="40.0" prefWidth="90.0">
                      <children>
-                        <Button fx:id="newCompanyButton" mnemonicParsing="false" text="New company">
+                        <Button fx:id="newCompanyButton" onAction="#createNewCompany" mnemonicParsing="false" text="New company">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
@@ -31,8 +31,8 @@
                </children>
             </AnchorPane>
             <TabPane layoutX="40.0" layoutY="125.0" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
-              <tabs>
-                <Tab closable="false" style="-fx-background-color: #713BDB; -fx-text-fill: #fff; -fx-fill: #fff;" text="Information">
+               <tabs>
+                  <Tab closable="false" style="-fx-background-color: #713BDB; -fx-text-fill: #fff; -fx-fill: #fff;" text="Information">
                      <content>
                         <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root">
                            <children>
@@ -106,7 +106,7 @@
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="89.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: -fx-dark;" text="Logo" />
                                  </children>
                               </AnchorPane>
-                              <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
+                              <Button fx:id="saveChangesInformationButton" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" onAction="#saveInformation" styleClass="success" text="Save changes">
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
@@ -147,7 +147,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <Button layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
+                              <Button fx:id="saveChangesFinancialButton" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" onAction="#saveFinancial" styleClass="success" text="Save changes">
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
@@ -178,7 +178,7 @@
                         </AnchorPane>
                      </content>
                   </Tab>
-              </tabs>
+               </tabs>
             </TabPane>
          </children>
       </AnchorPane>

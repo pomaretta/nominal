@@ -155,10 +155,8 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         this.cifGenerator.setVisible(false);
         this.nafGenerator.setVisible(false);
-
     }
 
     @Override
@@ -172,8 +170,12 @@ public class EmployeeForm extends ViewController implements Initializable {
     @FXML
     private void employeeSelection(){
         try {
-            this.currentEmployee = this.controller.getCurrentCompany().getEmployees().get(this.employeeSelector.getSelectionModel().getSelectedIndex());
-        } catch (IndexOutOfBoundsException e){
+            if(NominalFX.nominalAPI.checkEmployee(this.controller.getCurrentCompany().getEmployees().get(this.employeeSelector.getSelectionModel().getSelectedIndex()))){
+                this.currentEmployee = NominalFX.nominalAPI.getEmployeeById(this.controller.getCurrentCompany().getEmployees().get(this.employeeSelector.getSelectionModel().getSelectedIndex()).getId());
+            } else {
+                this.currentEmployee = this.controller.getCurrentCompany().getEmployees().get(this.employeeSelector.getSelectionModel().getSelectedIndex());
+            }
+        } catch (IndexOutOfBoundsException | SQLException e){
             //
         }
         updateFields();
@@ -193,7 +195,6 @@ public class EmployeeForm extends ViewController implements Initializable {
     private void updateFields(){
 
         enableButtons();
-
 
         // PREVIEW
         this.employeePreviewName.setText(this.currentEmployee.getName());
@@ -222,20 +223,18 @@ public class EmployeeForm extends ViewController implements Initializable {
         try {
             setCategory();
         } catch (Exception e){
-            //
+            NominalFX.logger.add("Error while trying to update employee category.");
         }
 
         try {
             setSalaryView();
         } catch (SQLException sqlException) {
-            //
             salaryView.setDisable(true);
         }
 
         try {
             setAntiquityView();
         } catch (SQLException sqlException) {
-            //
             antiquityView.setDisable(true);
         }
 
@@ -258,13 +257,18 @@ public class EmployeeForm extends ViewController implements Initializable {
     }
 
     @FXML
+    private void setGeneratedCif(){
+        this.cifField.setText(GenerateDNI.generateDNI().toUpperCase());
+    }
+
+    @FXML
     private void uploadImage(){
         try {
             File file = NominalFX.imageAPI.chooseFile(this.manager.getController().getStageManager().getPrimaryStage());
             NominalFX.imageAPI.registerNewEmployeeImage(this.currentEmployee,file);
             setImage();
         } catch (Exception e){
-            //
+            NominalFX.logger.add("Error while trying to upload new employee image.");
         }
     }
 
@@ -347,7 +351,7 @@ public class EmployeeForm extends ViewController implements Initializable {
     }
 
     @FXML
-    private void saveChangesInformation() throws SQLException {
+    private void saveChangesInformation() {
         if (
                 this.currentEmployee != null
                 &&
@@ -363,7 +367,11 @@ public class EmployeeForm extends ViewController implements Initializable {
             this.currentEmployee.setName2(this.secondNameField.getText());
             this.currentEmployee.setLastName(this.lastNameField.getText());
             this.currentEmployee.setLastName2(this.secondLastNameField.getText());
-            NominalFX.nominalAPI.setEmployeeInformation(this.currentEmployee.getId(),this.currentEmployee);
+            try {
+                NominalFX.nominalAPI.setEmployeeInformation(this.currentEmployee.getId(),this.currentEmployee);
+            } catch (SQLException throwables) {
+                NominalFX.logger.add("Error while trying to update employee information.");
+            }
         }
 
         if (
@@ -378,14 +386,18 @@ public class EmployeeForm extends ViewController implements Initializable {
             this.currentEmployee.setMailAddress(this.emailField.getText());
             this.currentEmployee.setStreetAddress(this.streetField.getText());
             this.currentEmployee.setPhoneNumber(this.phoneNumberField.getText());
-            NominalFX.nominalAPI.setEmployeeContact(this.currentEmployee.getId(),this.currentEmployee);
+            try {
+                NominalFX.nominalAPI.setEmployeeContact(this.currentEmployee.getId(),this.currentEmployee);
+            } catch (SQLException throwables) {
+                NominalFX.logger.add("Error while trying to update employee contact.");
+            }
         }
 
         updateEmployees();
     }
 
     @FXML
-    private void saveChangesContract() throws Exception {
+    private void saveChangesContract() {
 
         if (
                 this.currentEmployee != null
@@ -398,28 +410,44 @@ public class EmployeeForm extends ViewController implements Initializable {
                         ||
                         hasChanged(String.valueOf(this.currentEmployee.getHiredHours()),this.hiredHoursField.getText())
         ){
-            this.currentEmployee.setIrpf(validateField(irpfField.getText()));
-            this.currentEmployee.setHourly(this.hourlyCheck.isSelected());
-            this.currentEmployee.setApportion(this.apportionCheck.isSelected());
-            this.currentEmployee.setHiredHours(validateField(this.hiredHoursField.getText()));
-            System.out.println(this.hourlyCheck.isSelected());
-            NominalFX.nominalAPI.setEmployeeFinancial(this.currentEmployee.getId(),this.currentEmployee);
+            try {
+                try {
+                    this.currentEmployee.setIrpf(validateField(irpfField.getText()));
+                } catch (Exception e) {
+                    NominalFX.logger.add("Error while parsing IRPF employee field.");
+                    throw new Exception(e.getMessage());
+                }
+                this.currentEmployee.setHourly(this.hourlyCheck.isSelected());
+                this.currentEmployee.setApportion(this.apportionCheck.isSelected());
+                try {
+                    this.currentEmployee.setHiredHours(validateField(this.hiredHoursField.getText()));
+                } catch (Exception e) {
+                    NominalFX.logger.add("Error while parsing Hired Hours employee field.");
+                    throw new Exception(e.getMessage());
+                }
+                NominalFX.nominalAPI.setEmployeeFinancial(this.currentEmployee.getId(),this.currentEmployee);
+            } catch (Exception e){
+                NominalFX.logger.add("Error while trying to update employee financial.");
+            }
         }
 
         updateEmployees();
     }
 
     @FXML
-    private void saveChangesCategory() throws SQLException {
+    private void saveChangesCategory() {
         if (
                 this.currentEmployee != null
                 &&
                 hasChanged(this.currentEmployee.getCategory().getId(),this.categories.get(this.categoryComboField.getSelectionModel().getSelectedIndex()).getId())
         ){
             this.currentEmployee.setCategory(this.categories.get(this.categoryComboField.getSelectionModel().getSelectedIndex()));
-            NominalFX.nominalAPI.setEmployeeFinancial(this.currentEmployee.getId(),this.currentEmployee);
+            try {
+                NominalFX.nominalAPI.setEmployeeFinancial(this.currentEmployee.getId(),this.currentEmployee);
+            } catch (SQLException throwables) {
+                NominalFX.logger.add("Error while trying to update employee category.");
+            }
         }
-
         updateEmployees();
     }
 
@@ -447,6 +475,9 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.searchButton.setVisible(false);
         this.cifField.setEditable(true);
         this.nafField.setEditable(true);
+        this.changeImageButton.setDisable(true);
+        this.salaryView.getItems().clear();
+        this.antiquityView.getItems().clear();
     }
 
     private void enableButtons(){
@@ -467,6 +498,7 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.searchButton.setVisible(true);
         this.cifField.setEditable(false);
         this.nafField.setEditable(false);
+        this.changeImageButton.setDisable(false);
     }
 
     @FXML
@@ -480,7 +512,6 @@ public class EmployeeForm extends ViewController implements Initializable {
         this.employeePreviewPassport.setText("");
 
         this.cifGenerator.setVisible(true);
-        this.nafGenerator.setVisible(true);
 
         this.cifField.setText("");
         this.nafField.setText("");
@@ -570,11 +601,12 @@ public class EmployeeForm extends ViewController implements Initializable {
                 NominalFX.nominalAPI.setEmployee(this.controller.getCurrentCompany(),employee);
 
             } catch (ValidationException validationException){
-                // LOGGER
+                NominalFX.logger.add("Error while validating fields in employee creation. (Check numeric values)");
             } catch (Exception e){
-                // LOG
+                NominalFX.logger.add("Error while trying to create new employee.");
             }
 
+            updateEmployees();
         }
     }
 
@@ -584,8 +616,14 @@ public class EmployeeForm extends ViewController implements Initializable {
             enableButtons();
             employeeSelection();
         } else {
-            // Set active = 0 and set expiration date. PROCEDURE??
+            try {
+                NominalFX.nominalAPI.fireEmployee(this.controller.getCurrentCompany(),this.currentEmployee);
+                this.controller.getCurrentCompany().updateEmployees();
+            } catch (SQLException e){
+                NominalFX.logger.add("Error while trying to fire an employee.");
+            }
         }
+        updateEmployees();
     }
 
     private boolean hasChanged(String original, String modified){
@@ -593,15 +631,15 @@ public class EmployeeForm extends ViewController implements Initializable {
     }
 
     private boolean hasChanged(float original, float modified){
-        return !(original == modified);
+        return original != modified;
     }
 
     private boolean hasChanged(boolean original, boolean modified){
-        return original == modified;
+        return original != modified;
     }
 
     private boolean hasChanged(int original, int modified){
-        return original == modified;
+        return original != modified;
     }
 
     @Override

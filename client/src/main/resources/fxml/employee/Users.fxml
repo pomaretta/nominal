@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane id="root" prefHeight="650.0" prefWidth="1030.0" styleClass="layout-corner-bottom-right" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.forms.EmployeeForm">
+   <children>
+      <AnchorPane prefHeight="650.0" prefWidth="1030.0" style="-fx-background-color: -fx-background-content;" styleClass="layout-corner-bottom-right">
+         <children>
+            <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+               <children>
+                  <ComboBox fx:id="employeeSelector" layoutX="14.0" layoutY="16.0" onAction="#employeeSelection" prefHeight="40.0" prefWidth="200.0" promptText="Select user" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
+                  <FlowPane alignment="CENTER_LEFT" layoutX="231.0" layoutY="16.0" prefHeight="40.0" prefWidth="707.0">
+                     <children>
+                        <Button fx:id="newEmployeeButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#createNewEmployee" text="New User">
+                           <FlowPane.margin>
+                              <Insets right="25.0" />
+                           </FlowPane.margin>
+                        </Button>
+                     </children>
+                  </FlowPane>
+               </children>
+            </AnchorPane>
+            <TabPane layoutX="40.0" layoutY="125.0" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #F5F6FB; -fx-border-color: transparent;" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="150.0" tabMinWidth="100.0">
+               <tabs>
+                  <Tab closable="false" text="Information">
+                     <content>
+                        <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
+                           <children>
+                              <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" style="-fx-font-size: 32px;" styleClass="content-root-title" text="User Information " />
+                              <Button fx:id="saveChangesInformation" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" onAction="#saveChangesInformation" styleClass="success" text="Save changes">
+                                 <padding>
+                                    <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
+                                 </padding>
+                              </Button>
+                              <AnchorPane layoutX="22.0" layoutY="67.0" prefHeight="390.0" prefWidth="280.0">
+                                 <children>
+                                    <AnchorPane prefHeight="66.0" prefWidth="281.0">
+                                       <children>
+                                          <Label layoutX="1.0" layoutY="7.0" prefHeight="40.0" prefWidth="278.0" style="-fx-font-size: 20px;" styleClass="content-title" text="Identificator" />
+                                          <TextField fx:id="cifField1" editable="false" layoutX="1.0" layoutY="58.0" prefHeight="30.0" prefWidth="280.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutY="88.0" prefHeight="72.0" prefWidth="281.0">
+                                       <children>
+                                          <Label layoutX="1.0" layoutY="7.0" prefHeight="40.0" prefWidth="278.0" style="-fx-font-size: 20px;" styleClass="content-title" text="Name" />
+                                          <TextField fx:id="cifField11" editable="false" layoutX="1.0" layoutY="58.0" prefHeight="30.0" prefWidth="280.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutY="176.0" prefHeight="130.0" prefWidth="280.0">
+                                       <children>
+                                          <Label layoutX="1.0" layoutY="7.0" prefHeight="40.0" prefWidth="278.0" style="-fx-font-size: 20px;" styleClass="content-title" text="Password" />
+                                          <PasswordField layoutX="1.0" layoutY="58.0" prefHeight="30.0" prefWidth="280.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <Label layoutX="697.0" layoutY="39.0" style="-fx-font-size: 20px;" styleClass="content-title" text="Image" />
+                              <Button fx:id="changeImageButton" layoutX="824.0" layoutY="41.0" mnemonicParsing="false" onAction="#uploadImage" text="Change" />
+                              <FlowPane alignment="CENTER" layoutX="690.0" layoutY="93.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: -fx-background-content; -fx-background-radius: 8px;">
+                                 <children>
+                                    <ImageView fx:id="employeeImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                 </padding>
+                              </FlowPane>
+                              <AnchorPane layoutX="363.0" layoutY="62.0" prefHeight="130.0" prefWidth="280.0">
+                                 <children>
+                                    <ComboBox fx:id="employeeSelector1" layoutX="1.0" layoutY="53.0" onAction="#employeeSelection" prefHeight="47.0" prefWidth="278.0" promptText="Select privilege" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
+                                    <Label layoutX="2.0" layoutY="8.0" prefHeight="40.0" prefWidth="278.0" style="-fx-font-size: 20px;" styleClass="content-title" text="Privilege" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../css/globals.css" />
+      <URL value="@../../css/modules/forms/default.css" />
+   </stylesheets>
+</AnchorPane>

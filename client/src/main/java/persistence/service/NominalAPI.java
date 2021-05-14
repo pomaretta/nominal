@@ -601,6 +601,8 @@ public class NominalAPI extends Driver {
                     ,resultSet.getBoolean("nocturnal")
                     ,resultSet.getBoolean("turnicity")
                     ,resultSet.getFloat("complementary_hours")
+                    ,resultSet.getFloat("extra_hours")
+                    ,resultSet.getFloat("overwhelming_hours")
             );
         } finally {
             resultSet.close();
@@ -931,6 +933,27 @@ public class NominalAPI extends Driver {
         return complements;
     }
 
+    public Payroll searchPayrollByFields(Company company, Employee employee, Date from, Date to) throws SQLException {
+
+        this.queries.searchPayrollByFields.setInt(1,employee.getId());
+        this.queries.searchPayrollByFields.setInt(2,company.getId());
+        this.queries.searchPayrollByFields.setDate(3,from);
+        this.queries.searchPayrollByFields.setDate(4,to);
+
+        ResultSet resultSet = null;
+        int payroll;
+
+        try {
+            resultSet = this.queries.searchPayrollByFields.executeQuery();
+            resultSet.next();
+            payroll = resultSet.getInt("id");
+        } finally {
+            resultSet.close();
+        }
+
+        return getPayrollById(payroll);
+    }
+
     /**
      *
      * Get companies name and id only for performance design.
@@ -1192,7 +1215,7 @@ public class NominalAPI extends Driver {
 
     // PAYROLL
 
-    public void setPayroll(Payroll payroll) throws SQLException {
+    public int setPayroll(Payroll payroll) throws SQLException {
 
         // OBJECTS
         this.queries.insertPayroll.setInt(1,payroll.getCompany().getId());
@@ -1269,6 +1292,7 @@ public class NominalAPI extends Driver {
         // NON SALARIAL
         setPayrollComplements(payrollId,payroll.getNonSalaryComplements(),false);
 
+        return payrollId;
     }
 
     public void setPayrollComplements(int payrollId, ArrayList<Complement> complements, boolean salarial) throws SQLException {
@@ -1285,6 +1309,13 @@ public class NominalAPI extends Driver {
         this.queries.insertPayrollComplement.setFloat(5,complement.getValuePercentage());
         this.queries.insertPayrollComplement.setFloat(6,complement.getValue());
         this.queries.insertPayrollComplement.execute();
+    }
+
+    // PROCEDURES
+    public void fireEmployee(Company company, Employee employee) throws SQLException {
+        this.queries.fireEmployee.setInt(1,company.getId());
+        this.queries.fireEmployee.setInt(2,employee.getId());
+        this.queries.fireEmployee.execute();
     }
 
 }
