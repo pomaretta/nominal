@@ -47,7 +47,6 @@ public class Employee extends NominalObject {
     protected float hiredHours;
     protected float irpf;
 
-    // CONSTRUCTORS
     public Employee(){}
 
     public Employee(int id, Timestamp lastUpdated, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, String streetAddress, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
@@ -226,7 +225,12 @@ public class Employee extends NominalObject {
         this.irpf = irpf;
     }
 
-    // This method calcs the years of the company
+    /**
+     *
+     * Calculates the years between join date and now
+     *
+     * @return the years in the company
+     */
     public int companyYears(){
         LocalDate d1 = this.joinDate.toLocalDate();
         LocalDate d2 = LocalDate.now();
@@ -235,13 +239,14 @@ public class Employee extends NominalObject {
         return (int)Math.floor(difference);
     }
 
-    // This method calcs the Antiquity of a employee
+    /**
+     *
+     * Calculates the Antiquity of a employee in the company by acceptable values.
+     *
+     * @return the exact years by the agreement values.
+     */
     public int calculateYears(){
-        LocalDate d1 = this.joinDate.toLocalDate();
-        LocalDate d2 = LocalDate.now();
-        Duration diff = Duration.between(d1.atStartOfDay(),d2.atStartOfDay());
-        double difference = (double) diff.toDays() / 365;
-        int years = (int)Math.floor(difference);
+        int years = companyYears();
         if(years >= 24){
             return 24;
         } else if (years >= 19){
