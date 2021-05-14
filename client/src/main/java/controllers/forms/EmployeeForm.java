@@ -683,7 +683,11 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     // validator for the text fields
     private float validateField(String field) throws ValidationException {
-        return Float.parseFloat(field);
+        if(field.equals("")){
+            return 0f;
+        } else {
+            return Float.parseFloat(field);
+        }
     }
 
     // This methos create a new employee with the data of the text Fields
