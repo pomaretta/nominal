@@ -1,3 +1,10 @@
+/*
+
+ Nominal Application
+ Company
+
+*/
+
 package common.company;
 
 import application.NominalFX;
@@ -37,6 +44,7 @@ public class Company extends NominalObject {
     protected Currency currency;
     protected Quotation quotation;
 
+    //CONSTRUCTORS
     public Company(){}
 
     public Company(int id, Timestamp lastUpdated, Agreement agreement, ArrayList<Employee> employees, String name, String cif, String socialSecurityId, String streetAddress, String state, String phoneNumber, Currency currency, Quotation quotation) {
@@ -79,6 +87,7 @@ public class Company extends NominalObject {
         this.quotation = quotation;
     }
 
+    // GETTERS & SETTERS
     @Override
     public int getId() {
         return id;

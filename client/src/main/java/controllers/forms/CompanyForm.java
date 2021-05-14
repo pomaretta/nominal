@@ -3,8 +3,11 @@
  Nominal Application
  Nominal FX Company Form
 
- @author     Carlos Pomares
  Date        2021-05-04
+
+ Description:
+ The companyForm class is a controller
+ for the company_creation fxml file.
 
 */
 
@@ -41,8 +44,10 @@ import java.util.ResourceBundle;
 
 public class CompanyForm extends ViewController implements Initializable {
 
+    // Atribute for the HomeController
     private HomeController controller;
 
+    // FXML class atributes
     @FXML
     private ImageView companyImage;
 
@@ -93,6 +98,7 @@ public class CompanyForm extends ViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
+    // Initialize.
     @Override
     public void run() {
         controller = (HomeController) this.manager.getController();
@@ -102,6 +108,7 @@ public class CompanyForm extends ViewController implements Initializable {
         updateFields();
     }
 
+    // Method for update the text fields with the data from the database
     @FXML
     public void updateFields() {
 
@@ -128,6 +135,7 @@ public class CompanyForm extends ViewController implements Initializable {
 
     }
 
+    // Method for add the agreements from the database to the agreement list
     private void setAgreement() throws SQLException {
         this.agreementsList.clear();
         int index = 0;
@@ -148,6 +156,7 @@ public class CompanyForm extends ViewController implements Initializable {
         this.agreementSelector.getSelectionModel().select(index);
     }
 
+    // Method for add the Currency from the database to the currency list
     private void setCurrency() throws SQLException {
         this.currencyList.clear();
         int index = 0;
@@ -164,6 +173,7 @@ public class CompanyForm extends ViewController implements Initializable {
         this.currencySelector.getSelectionModel().select(index);
     }
 
+    // Method for add the Quotations from the database to the currency list
     private void setQuotation() throws SQLException {
         this.quotationList.clear();
         int index = 0;
@@ -180,6 +190,7 @@ public class CompanyForm extends ViewController implements Initializable {
         this.quotationSelector.getSelectionModel().select(index);
     }
 
+    // This method add the company image from cache
     private void setImage() {
         try {
             if(NominalFX.cache.containsImage(NominalFX.imageAPI.getCompanyImageMinimal(this.controller.getCurrentCompany().getId()))){
@@ -193,6 +204,7 @@ public class CompanyForm extends ViewController implements Initializable {
         }
     }
 
+    // This method is a selector for the images
     @FXML
     private void uploadImage(){
         FileChooser fileChooser = new FileChooser();
@@ -208,6 +220,7 @@ public class CompanyForm extends ViewController implements Initializable {
         }
     }
 
+    // This method save the information of the text Fields from the information tab
     @FXML
     private void saveInformation(){
 
@@ -235,6 +248,7 @@ public class CompanyForm extends ViewController implements Initializable {
         }
     }
 
+    // This method save the information of the text Fields from the financial tab
     @FXML
     private void saveFinancial(){
 
@@ -281,6 +295,7 @@ public class CompanyForm extends ViewController implements Initializable {
         }
     }
 
+    // Method to enable the form buttons
     private void enableButtons(){
 
         creation = false;
@@ -294,6 +309,7 @@ public class CompanyForm extends ViewController implements Initializable {
         this.newCompanyButton.getStyleClass().remove("success");
     }
 
+    // Method to disable the form buttons
     private void disableButtons(){
 
         creation = true;
@@ -307,6 +323,7 @@ public class CompanyForm extends ViewController implements Initializable {
         this.newCompanyButton.getStyleClass().add("success");
     }
 
+    // This method clear all the content of the textFields
     private void clearAllFields(){
 
         creation = true;
@@ -323,6 +340,7 @@ public class CompanyForm extends ViewController implements Initializable {
         this.quotationSelector.getSelectionModel().select(0);
     }
 
+    // Method to create a company with the information of the text fields.
     @FXML
     private void createNewCompany(){
         if(this.creation){
@@ -356,6 +374,7 @@ public class CompanyForm extends ViewController implements Initializable {
         }
     }
 
+    // Methods for check if any of the information has changed
     private boolean hasChanged(String original, String modified){
         return !original.equals(modified);
     }

@@ -1,3 +1,10 @@
+/*
+
+ Nominal Application
+ Employee
+
+*/
+
 package common.employee;
 
 import common.NominalMaster;
@@ -40,6 +47,7 @@ public class Employee extends NominalObject {
     protected float hiredHours;
     protected float irpf;
 
+    // CONSTRUCTORS
     public Employee(){}
 
     public Employee(int id, Timestamp lastUpdated, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, String streetAddress, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
@@ -84,6 +92,7 @@ public class Employee extends NominalObject {
         this.irpf = irpf;
     }
 
+    // GETTERS
     @Override
     public int getId() {
         return id;
@@ -217,6 +226,7 @@ public class Employee extends NominalObject {
         this.irpf = irpf;
     }
 
+    // This method calcs the years of the company
     public int companyYears(){
         LocalDate d1 = this.joinDate.toLocalDate();
         LocalDate d2 = LocalDate.now();
@@ -225,6 +235,7 @@ public class Employee extends NominalObject {
         return (int)Math.floor(difference);
     }
 
+    // This method calcs the Antiquity of a employee
     public int calculateYears(){
         LocalDate d1 = this.joinDate.toLocalDate();
         LocalDate d2 = LocalDate.now();
