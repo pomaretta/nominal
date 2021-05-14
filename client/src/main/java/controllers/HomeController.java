@@ -127,7 +127,7 @@ public class HomeController extends BaseController implements Initializable {
             }
             companySelector.setItems(items);
         } catch (Exception e){
-            //
+            NominalFX.logger.add("Error while obtaining companies.");
         }
 
         this.companyButton.setDisable(false);

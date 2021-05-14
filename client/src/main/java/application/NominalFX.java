@@ -1,6 +1,7 @@
 package application;
 
 import configuration.DatabaseDeveloper;
+import error.Logger;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import optimization.Cache;
@@ -36,6 +37,7 @@ public class NominalFX extends Application {
     public static Properties configuration;
 
     public static Cache cache;
+    public static Logger logger;
 
     protected StageManager stageManager;
 
@@ -64,6 +66,8 @@ public class NominalFX extends Application {
 
         fileAPI = new FileAPI();
 
+        logger = new Logger();
+
         try {
             configuration = fileAPI.getFromFile(configurationPath);
         } catch (IOException e){
@@ -75,8 +79,9 @@ public class NominalFX extends Application {
         try {
             authAPI = new AuthAPI(DatabaseDeveloper.AUTH.getURL(), DatabaseDeveloper.AUTH.getUser(),DatabaseDeveloper.AUTH.getPassword());
         } catch (SQLException exception){
-            // ignore
+            logger.add("AUTH FAILED");
         }
+
         cache = new Cache();
 
         Options options = new Options();
@@ -93,7 +98,7 @@ public class NominalFX extends Application {
             cmd = parser.parse(options,args);
             credentials = cmd.getOptionValue("configuration");
         } catch (ParseException p){
-            System.out.println(p.getMessage());
+            // ignore
             helpFormatter.printHelp("utility-name",options);
         } catch (Exception e){
             // ignore

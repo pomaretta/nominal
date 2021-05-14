@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Popup;
 import persistence.auth.AuthenticationException;
 import util.MD5;
 import view.BaseController;
@@ -92,9 +93,9 @@ public class LoginController extends BaseController implements Initializable {
                 this.stageManager.switchScenes(Views.HOME);
             }
         } catch (AuthenticationException authenticationException){
-            //
+            NominalFX.logger.add("Bad password.");
         } catch (Exception sqlException){
-            System.out.println(sqlException.getMessage());
+            NominalFX.logger.add("Error while trying to auth.");
         }
     }
 

@@ -38,6 +38,8 @@ public class ConfigurationController extends ViewController implements Initializ
             } catch (IOException e){
                 System.out.println(e.getMessage());
             }
+        } else {
+            NominalFX.logger.add("No directory found.");
         }
         this.payrollDirectory.setText(NominalFX.configuration.getProperty("payrollDirectory"));
     }

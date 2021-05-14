@@ -121,7 +121,7 @@ public class CompanyForm extends ViewController implements Initializable {
             setCurrency();
             setQuotation();
         } catch (Exception e){
-            //
+            NominalFX.logger.add("Error while updating company fields.");
         }
 
         setImage();
@@ -189,7 +189,6 @@ public class CompanyForm extends ViewController implements Initializable {
                 setImage();
             }
         } catch (Exception e){
-             // System.out.println("No image in BBDD.");
              this.companyImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/unknown.jpg"))));
         }
     }
@@ -205,7 +204,7 @@ public class CompanyForm extends ViewController implements Initializable {
                 setImage();
             }
         } catch (Exception exception){
-            System.out.println(exception.getMessage());
+            NominalFX.logger.add("No image selected in company logo.");
         }
     }
 
@@ -225,14 +224,14 @@ public class CompanyForm extends ViewController implements Initializable {
             try {
                 NominalFX.nominalAPI.setCompanyContact(this.controller.getCurrentCompany().getId(),this.controller.getCurrentCompany());
             } catch (SQLException sqlException) {
-                System.out.println(sqlException.getMessage());
+                NominalFX.logger.add("Error while trying to update company contact.");
             }
         }
 
         try {
             this.controller.companySelection();
         } catch (Exception e){
-            //
+            NominalFX.logger.add("Error while trying to update company selection.");
         }
     }
 
@@ -240,19 +239,15 @@ public class CompanyForm extends ViewController implements Initializable {
     private void saveFinancial(){
 
         // CURRENCY
-        System.out.println(this.controller.getCurrentCompany().getCurrency().getId());
-        System.out.println(this.currencies.get(this.currencySelector.getSelectionModel().getSelectedIndex()).getId());
         if (
                 hasChanged(this.controller.getCurrentCompany().getCurrency().getId(),this.currencies.get(this.currencySelector.getSelectionModel().getSelectedIndex()).getId())
         ) {
-            System.out.println("currency");
-            System.out.println(this.controller.getCurrentCompany().getCurrency().getId());
+
             this.controller.getCurrentCompany().setCurrency(this.currencies.get(this.currencySelector.getSelectionModel().getSelectedIndex()));
-            System.out.println(this.controller.getCurrentCompany().getCurrency().getId());
             try {
                 NominalFX.nominalAPI.setCompanyFinancial(this.controller.getCurrentCompany().getId(),this.controller.getCurrentCompany());
             } catch (Exception e){
-                System.out.println(e.getMessage());
+                NominalFX.logger.add("Error while trying to update company currency.");
             }
         }
 
@@ -260,31 +255,29 @@ public class CompanyForm extends ViewController implements Initializable {
         if (
                 hasChanged(this.controller.getCurrentCompany().getAgreement().getId(),this.agreements.get(this.agreementSelector.getSelectionModel().getSelectedIndex()).getId())
         ){
-            System.out.println("agreement");
             this.controller.getCurrentCompany().setAgreement(this.agreements.get(this.agreementSelector.getSelectionModel().getSelectedIndex()));
             try {
                 NominalFX.nominalAPI.setCompanyAgreement(this.controller.getCurrentCompany().getId(),this.controller.getCurrentCompany());
             } catch (Exception e){
-                System.out.println(e.getMessage());
+                NominalFX.logger.add("Error while trying to update company agreement.");
             }
         }
 
         if (
                 hasChanged(this.controller.getCurrentCompany().getQuotation().getId(),this.quotations.get(this.quotationSelector.getSelectionModel().getSelectedIndex()).getId())
         ){
-            System.out.println("quotation");
             this.controller.getCurrentCompany().setQuotation(this.quotations.get(this.quotationSelector.getSelectionModel().getSelectedIndex()));
             try {
                 NominalFX.nominalAPI.setCompanyFinancial(this.controller.getCurrentCompany().getId(),this.controller.getCurrentCompany());
             } catch (Exception e){
-                System.out.println(e.getMessage());
+                NominalFX.logger.add("Error while trying to update company quotation.");
             }
         }
 
         try {
             this.controller.companySelection();
         } catch (SQLException sqlException) {
-            System.out.println(sqlException.getMessage());
+            NominalFX.logger.add("Error while trying to update company selection.");
         }
     }
 
@@ -349,22 +342,18 @@ public class CompanyForm extends ViewController implements Initializable {
             try {
                 NominalFX.nominalAPI.setCompany(company);
             } catch (Exception e){
-                System.out.println(e.getMessage());
+                NominalFX.logger.add("Error while trying to create new company.");
             }
 
             try {
                 this.controller.companySelection();
             } catch (SQLException sqlException) {
-                // LOGGER
+                NominalFX.logger.add("Error while trying to update company selection.");
             }
 
         } else {
             clearAllFields();
         }
-    }
-
-    private float validateField(String field) throws Exception {
-        return Float.parseFloat(field);
     }
 
     private boolean hasChanged(String original, String modified){
