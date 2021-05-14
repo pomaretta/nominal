@@ -933,6 +933,27 @@ public class NominalAPI extends Driver {
         return complements;
     }
 
+    public Payroll searchPayrollByFields(Company company, Employee employee, Date from, Date to) throws SQLException {
+
+        this.queries.searchPayrollByFields.setInt(1,employee.getId());
+        this.queries.searchPayrollByFields.setInt(2,company.getId());
+        this.queries.searchPayrollByFields.setDate(3,from);
+        this.queries.searchPayrollByFields.setDate(4,to);
+
+        ResultSet resultSet = null;
+        int payroll;
+
+        try {
+            resultSet = this.queries.searchPayrollByFields.executeQuery();
+            resultSet.next();
+            payroll = resultSet.getInt("id");
+        } finally {
+            resultSet.close();
+        }
+
+        return getPayrollById(payroll);
+    }
+
     /**
      *
      * Get companies name and id only for performance design.
@@ -1194,7 +1215,7 @@ public class NominalAPI extends Driver {
 
     // PAYROLL
 
-    public void setPayroll(Payroll payroll) throws SQLException {
+    public int setPayroll(Payroll payroll) throws SQLException {
 
         // OBJECTS
         this.queries.insertPayroll.setInt(1,payroll.getCompany().getId());
@@ -1271,6 +1292,7 @@ public class NominalAPI extends Driver {
         // NON SALARIAL
         setPayrollComplements(payrollId,payroll.getNonSalaryComplements(),false);
 
+        return payrollId;
     }
 
     public void setPayrollComplements(int payrollId, ArrayList<Complement> complements, boolean salarial) throws SQLException {

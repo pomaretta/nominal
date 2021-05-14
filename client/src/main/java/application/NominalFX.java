@@ -9,6 +9,7 @@ import persistence.file.FileAPI;
 import persistence.image.ImageAPI;
 import persistence.report.ReportAPI;
 import persistence.service.NominalAPI;
+import persistence.xml.XmlAPI;
 import view.StageManager;
 
 import org.apache.commons.cli.*;
@@ -26,6 +27,7 @@ public class NominalFX extends Application {
     public static NominalAPI nominalAPI;
     public static ReportAPI reportAPI;
     public static ImageAPI imageAPI;
+    public static XmlAPI xmlAPI;
 
     // CONFIG
     public static String credentials;
@@ -52,6 +54,7 @@ public class NominalFX extends Application {
             nominalAPI = new NominalAPI(DatabaseDeveloper.NOMINAL.getURL(),DatabaseDeveloper.NOMINAL.getUser(),DatabaseDeveloper.NOMINAL.getPassword());
             reportAPI = new ReportAPI(DatabaseDeveloper.NOMINAL.getURL(),DatabaseDeveloper.NOMINAL.getUser(),DatabaseDeveloper.NOMINAL.getPassword());
             imageAPI = new ImageAPI(DatabaseDeveloper.IMAGE.getURL(),DatabaseDeveloper.IMAGE.getUser(),DatabaseDeveloper.IMAGE.getPassword());
+            xmlAPI = new XmlAPI();
         } catch (Exception e){
             System.out.println(e.getMessage());
         }

@@ -47,6 +47,8 @@ public class Queries extends persistence.Queries {
     public PreparedStatement selectPayrollComplementById;
     public PreparedStatement selectPayrollSchedule;
 
+    public PreparedStatement searchPayrollByFields;
+
     public PreparedStatement selectPayrollsByEmployeeId;
     public PreparedStatement selectPayrollsByCompanyId;
     public PreparedStatement selectLastPayrollByEmployeeId;
@@ -138,6 +140,8 @@ public class Queries extends persistence.Queries {
         selectPayrollById = this.connection.prepareStatement(Statements.SELECT_PAYROLL_BY_ID.getQuery());
         selectPayrollComplementById = this.connection.prepareStatement(Statements.SELECT_PAYROLL_COMPLEMENT_BY_PAYROLL.getQuery());
         selectPayrollSchedule = this.connection.prepareStatement(Statements.SELECT_PAYROLL_SCHEDULE_BY_ID.getQuery());
+
+        searchPayrollByFields = this.connection.prepareStatement(Statements.SEARCH_PAYROLL_BY_FIELDS.getQuery());
 
         selectPayrollsByEmployeeId = this.connection.prepareStatement(Statements.SELECT_PAYROLL_BY_EMPLOYEE_ID.getQuery());
         selectPayrollsByCompanyId = this.connection.prepareStatement(Statements.SELECT_PAYROLL_BY_COMPANY_ID.getQuery());
