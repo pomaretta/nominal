@@ -14,8 +14,6 @@
 package controllers.forms;
 
 import application.NominalFX;
-import com.sun.org.apache.xpath.internal.operations.Quo;
-import common.NominalObject;
 import common.agreement.Agreement;
 import common.agreement.Quotation;
 import common.company.Company;
@@ -31,12 +29,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import optimization.Cache;
-import persistence.service.NominalAPI;
 import view.ViewController;
 
 import java.io.File;
-import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
