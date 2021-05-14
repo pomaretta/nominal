@@ -84,4 +84,9 @@ public class User extends NominalObject {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setPrivilege(Privilege privilege) {
+        this.privilege = privilege;
+    }
+
 }

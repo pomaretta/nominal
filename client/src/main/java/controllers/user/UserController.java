@@ -163,7 +163,9 @@ public class UserController extends ViewController {
     private void saveChanges(){
         try {
             this.currentUser.setPassword(MD5.getMD5(this.passwordUser.getText()));
+            this.currentUser.setPrivilege(this.privileges.get(this.privilegeSelector.getSelectionModel().getSelectedIndex()));
             NominalFX.authAPI.updateUserPassword(this.currentUser);
+            NominalFX.authAPI.setUserPrivilege(this.currentUser.getId(),this.currentUser);
         } catch (Exception e){
             NominalFX.logger.add("Error while trying to save changes of an user.");
         }
