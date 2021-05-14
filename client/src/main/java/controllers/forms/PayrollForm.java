@@ -401,7 +401,8 @@ public class PayrollForm extends ViewController implements Initializable {
         try {
             NominalFX.xmlAPI.exportXmlWithDialog(this.currentPayroll.generateXML(),key,this.manager.getController().getStageManager().getPrimaryStage());
         } catch (IOException e){
-            // LOGGER
+            System.out.println(e.getMessage());
+            NominalFX.logger.add("Failed to create XML.");
         }
     }
 

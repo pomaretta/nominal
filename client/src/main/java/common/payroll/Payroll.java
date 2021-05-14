@@ -675,7 +675,7 @@ public class Payroll extends NominalObject {
         Schedule schedule = api.getScheduleByDateAndEmployee(employee, from, to);
 
         Duration diff = Duration.between(from.toLocalDate().atStartOfDay(),to.toLocalDate().atStartOfDay());
-        int totalDays = (int) diff.toDays();
+        int totalDays = (int) diff.toDays() + 1;
 
         float employeeHour = ((salary.getValue() / 4) / employee.getHiredHours());
 
