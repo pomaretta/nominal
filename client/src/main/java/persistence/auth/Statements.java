@@ -2,8 +2,8 @@ package persistence.auth;
 
 public enum Statements {
 
-    SELECT_ALL_USERS("SELECT id FROM user"),
-    SELECT_ALL_PRIVILEGES("SELECT id FROM privilege"),
+    SELECT_ALL_USERS("SELECT id as id FROM nominal_auth_dev.user"),
+    SELECT_ALL_PRIVILEGES("SELECT id as id FROM nominal_auth_dev.privilege"),
 
     SELECT_USER_BY_NAME("SELECT id FROM user WHERE name = ?"),
     
@@ -13,6 +13,8 @@ public enum Statements {
     SELECT_COMPANIES_BY_USER("SELECT uc.company as id FROM nominal_auth_dev.user_companies uc WHERE uc.`user` = ?"),
 
     UPDATE_USER_PASSWORD("UPDATE nominal_auth_dev.`user` u SET u.password = ? WHERE u.id = ?"),
+
+    SELECT_LAST_INSERT_ID("SELECT LAST_INSERT_ID() as id"),
 
     INSERT_NEW_USER("INSERT INTO nominal_auth_dev.`user` (name,password) VALUES (?,?)"),
     INSERT_NEW_PRIVILEGE("INSERT INTO nominal_auth_dev.privilege (name) VALUES (?)"),

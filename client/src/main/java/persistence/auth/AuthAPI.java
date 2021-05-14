@@ -8,6 +8,7 @@ import service.Driver;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class AuthAPI extends Driver {
@@ -54,10 +55,10 @@ public class AuthAPI extends Driver {
             result = this.queries.selectUserById.executeQuery();
             result.next();
             user = new User(
-                    result.getInt("user"),
-                    getPrivilege(result.getInt("privilege")),
-                    result.getString("name"),
-                    result.getString("password")
+                    result.getInt("user")
+                    ,getPrivilege(result.getInt("privilege"))
+                    ,result.getString("name")
+                    ,result.getString("password")
             );
         } finally {
             result.close();
@@ -81,6 +82,40 @@ public class AuthAPI extends Driver {
         }
 
         return getUser(id);
+    }
+
+    public ArrayList<User> getUsers() throws SQLException {
+
+        ResultSet resultSet = null;
+        ArrayList<User> users = new ArrayList<>();
+
+        try {
+            resultSet = this.queries.selectAllUsers.executeQuery();
+            while(resultSet.next()){
+                users.add(getUser(resultSet.getInt("id")));
+            }
+        } finally {
+            resultSet.close();
+        }
+
+        return users;
+    }
+
+    public ArrayList<Privilege> getPrivileges() throws SQLException {
+
+        ResultSet resultSet = null;
+        ArrayList<Privilege> privileges = new ArrayList<>();
+
+        try {
+            resultSet = this.queries.selectAllPrivileges.executeQuery();
+            while(resultSet.next()){
+                privileges.add(getPrivilege(resultSet.getInt("id")));
+            }
+        } finally {
+            resultSet.close();
+        }
+
+        return privileges;
     }
 
     public ArrayList<Company> getCompaniesByUser(User user) throws SQLException {
@@ -111,14 +146,28 @@ public class AuthAPI extends Driver {
 
         this.queries.setUser.setString(1,user.getName());
         this.queries.setUser.setString(2,user.getPassword());
-
         this.queries.setUser.execute();
+
+        ResultSet resultSet = null;
+        int id;
+
+        try {
+            resultSet = this.queries.selectLastId.executeQuery();
+            resultSet.next();
+            id = resultSet.getInt("id");
+            System.out.println(id);
+        } finally {
+            resultSet.close();
+        }
+
+        setUserPrivilege(id,user);
+
     }
 
-    public void setUserPrivilege(User user, Privilege privilege) throws SQLException {
+    public void setUserPrivilege(int userId, User user) throws SQLException {
 
-        this.queries.setUserPrivilege.setInt(1,user.getId());
-        this.queries.setUserPrivilege.setInt(2,privilege.getId());
+        this.queries.setUserPrivilege.setInt(1,userId);
+        this.queries.setUserPrivilege.setInt(2,user.getPrivilege().getId());
 
         this.queries.setUserPrivilege.execute();
     }

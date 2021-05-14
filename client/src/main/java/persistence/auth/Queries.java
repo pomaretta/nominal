@@ -22,6 +22,8 @@ public class Queries extends persistence.Queries {
     public PreparedStatement setUserCompany;
     public PreparedStatement setPrivilege;
 
+    public PreparedStatement selectLastId;
+
     public Queries(Connection connection) throws SQLException {
         super(connection);
         this.selectAllUsers = this.connection.prepareStatement(Statements.SELECT_ALL_USERS.getQuery());
@@ -37,6 +39,8 @@ public class Queries extends persistence.Queries {
         this.setPrivilege = this.connection.prepareStatement(Statements.INSERT_NEW_PRIVILEGE.getQuery());
 
         this.selectCompaniesByUser = this.connection.prepareStatement(Statements.SELECT_COMPANIES_BY_USER.getQuery());
+
+        this.selectLastId = this.connection.prepareStatement(Statements.SELECT_LAST_INSERT_ID.getQuery());
 
     }
 

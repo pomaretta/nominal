@@ -29,6 +29,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -46,6 +47,7 @@ import view.ViewManager;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HomeController extends BaseController implements Initializable {
@@ -83,6 +85,9 @@ public class HomeController extends BaseController implements Initializable {
 
     @FXML
     private MenuButton menuButton;
+
+    @FXML
+    private MenuItem usersMenu;
 
     // List for items
     private ObservableList<String> items;
@@ -126,6 +131,14 @@ public class HomeController extends BaseController implements Initializable {
         this.companyButton.setDisable(false);
         this.employeeButton.setDisable(true);
         this.payrollButton.setDisable(true);
+
+        if(NominalFX.authAPI.getLogedUser().getPrivilege().getName().equals("admin")){
+            this.usersMenu.setVisible(true);
+        } else {
+            this.usersMenu.setVisible(false);
+        }
+
+        setImage();
 
     }
 
@@ -215,6 +228,20 @@ public class HomeController extends BaseController implements Initializable {
             NominalFX.logger.add("Error while updating companies.");
         } catch (Exception e){
             NominalFX.logger.add("Error while selecting company.");
+        }
+    }
+
+    private void setImage(){
+        try {
+            int id = NominalFX.imageAPI.getUserImageMinimal(NominalFX.authAPI.getLogedUser().getId());
+            if(NominalFX.cache.containsImage(id)){
+                this.avatar.setImage(NominalFX.cache.getImageById(id).getImage());
+            } else {
+                NominalFX.cache.add(NominalFX.imageAPI.getImageById(id),NominalFX.cache.getImages());
+                setImage();
+            }
+        } catch (Exception e){
+            this.avatar.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/unknown.jpg"))));
         }
     }
 

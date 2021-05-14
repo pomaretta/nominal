@@ -13,18 +13,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane id="root" prefHeight="650.0" prefWidth="1030.0" styleClass="layout-corner-bottom-right" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.forms.UserForm">
+<AnchorPane id="root" prefHeight="650.0" prefWidth="1030.0" styleClass="layout-corner-bottom-right" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.user.UserController">
    <children>
       <AnchorPane prefHeight="650.0" prefWidth="1030.0" style="-fx-background-color: -fx-background-content;" styleClass="layout-corner-bottom-right">
          <children>
             <AnchorPane layoutX="40.0" layoutY="26.0" prefHeight="72.0" prefWidth="950.0" style="-fx-background-color: #fff; -fx-background-radius: 4px; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.1),5,0,0,0);" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                <children>
-                  <ComboBox id="selectUser"  layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" promptText="Select user" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
+                  <ComboBox fx:id="userSelector" onAction="#userSelection" layoutX="14.0" layoutY="16.0" prefHeight="40.0" prefWidth="200.0" promptText="Select user" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
                   <FlowPane alignment="CENTER_LEFT" layoutX="231.0" layoutY="16.0" prefHeight="40.0" prefWidth="707.0">
                      <children>
-                        <Button id="newUser" alignment="CENTER_RIGHT" mnemonicParsing="false" text="New User">
+                        <Button fx:id="newUser" onAction="#newUser" alignment="CENTER_RIGHT" mnemonicParsing="false" text="New User">
                            <FlowPane.margin>
-                              <Insets right="25.0"/>
+                              <Insets right="25.0" />
                            </FlowPane.margin>
                         </Button>
                      </children>
@@ -38,7 +38,7 @@
                         <AnchorPane prefHeight="280.0" prefWidth="950.0" styleClass="content-root" stylesheets="@../../css/modules/forms/default.css">
                            <children>
                               <Label layoutX="22.0" layoutY="25.0" prefHeight="27.0" prefWidth="341.0" style="-fx-font-size: 32px;" styleClass="content-root-title" text="User Information " />
-                              <Button id="successUser" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
+                              <Button fx:id="successUser" onAction="#saveChanges" layoutX="790.0" layoutY="411.0" mnemonicParsing="false" styleClass="success" text="Save changes">
                                  <padding>
                                     <Insets bottom="10.0" left="16.0" right="16.0" top="10.0" />
                                  </padding>
@@ -60,16 +60,16 @@
                                     <AnchorPane layoutY="176.0" prefHeight="130.0" prefWidth="280.0">
                                        <children>
                                           <Label layoutX="1.0" layoutY="7.0" prefHeight="40.0" prefWidth="278.0" style="-fx-font-size: 20px;" styleClass="content-title" text="Password" />
-                                          <PasswordField id="passwordUser" layoutX="1.0" layoutY="58.0" prefHeight="30.0" prefWidth="280.0" />
+                                          <PasswordField fx:id="passwordUser" layoutX="1.0" layoutY="58.0" prefHeight="30.0" prefWidth="280.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
                               <Label layoutX="690.0" layoutY="42.0" styleClass="content-title" text="Image" />
-                              <Button id="change_image" layoutX="824.0" layoutY="40.0" mnemonicParsing="false" text="Change" />
+                              <Button onAction="#uploadImage" id="change_image" fx:id="changeImageButton" layoutX="824.0" layoutY="40.0" mnemonicParsing="false" text="Change" />
                               <FlowPane alignment="CENTER" layoutX="690.0" layoutY="93.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: -fx-background-content; -fx-background-radius: 8px;">
                                  <children>
-                                    <ImageView id="image_id" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="userImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                                  <padding>
                                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -77,7 +77,7 @@
                               </FlowPane>
                               <AnchorPane layoutX="363.0" layoutY="62.0" prefHeight="130.0" prefWidth="280.0">
                                  <children>
-                                    <ComboBox id="select_privilege" layoutX="1.0" layoutY="53.0" prefHeight="47.0" prefWidth="278.0" promptText="Select privilege" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
+                                    <ComboBox fx:id="privilegeSelector" layoutX="1.0" layoutY="53.0" prefHeight="47.0" prefWidth="278.0" promptText="Select privilege" style="-fx-background-color: #F5F6FB;" styleClass="selector" />
                                     <Label layoutX="2.0" layoutY="8.0" prefHeight="40.0" prefWidth="278.0" style="-fx-font-size: 20px;" styleClass="content-title" text="Privilege" />
                                  </children>
                               </AnchorPane>

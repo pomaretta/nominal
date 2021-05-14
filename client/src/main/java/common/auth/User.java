@@ -10,7 +10,7 @@ public class User extends NominalObject {
     private HashSet<Company> companies;
     private Privilege privilege;
     private final String name;
-    private final String password;
+    private String password;
 
     public User(int id, HashSet<Company> companies, String name, String password, Privilege privilege) {
         this.id = id;
@@ -38,6 +38,12 @@ public class User extends NominalObject {
         this.password = password;
     }
 
+    public User(String name, String password, Privilege privilege) {
+        this.name = name;
+        this.password = password;
+        this.privilege = privilege;
+    }
+
     public int getId() {
         return id;
     }
@@ -58,4 +64,7 @@ public class User extends NominalObject {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
