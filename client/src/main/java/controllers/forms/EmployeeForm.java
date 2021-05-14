@@ -21,6 +21,7 @@ import common.agreement.Antiquity;
 import common.agreement.Category;
 import common.agreement.Salary;
 import common.employee.Employee;
+import common.employee.Schedule;
 import controllers.HomeController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,6 +55,9 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     // Atribute for the selected current employee
     private Employee currentEmployee;
+
+    // Current Schedule by Employee selection
+    private Schedule currentSchedule;
 
     // List for Categories
     private ArrayList<Category> categories;
@@ -487,14 +491,87 @@ public class EmployeeForm extends ViewController implements Initializable {
 
     // This method updates the database with the changed fields from the Schedule tab
     @FXML
-    private void saveChangesSchedule() throws SQLException {
-
+    private void saveChangesSchedule() {
+        try {
+            Schedule schedule = new Schedule(
+                    this.currentEmployee
+                    ,this.nocturnalCheck.isSelected()
+                    ,this.turnicityCheck.isSelected()
+                    ,validateField(this.complementaryHoursField.getText())
+                    ,validateField(this.extraHoursField.getText())
+                    ,validateField(this.overwhelmingHoursField.getText())
+            );
+            NominalFX.nominalAPI.setEmployeeSchedule(this.currentEmployee,schedule);
+        } catch (ValidationException validationException){
+            System.out.println(validationException.getMessage());
+            NominalFX.logger.add("Error while parsing schedule values.");
+        } catch (SQLException sql){
+            System.out.println(sql.getMessage());
+            NominalFX.logger.add("Database error while trying to create schedule.");
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            NominalFX.logger.add("Error while trying to create schedule.");
+        }
     }
 
     // This method search a schedule
     @FXML
-    private void searchSchedule() throws SQLException {
+    private void searchSchedule() {
+        try {
+            ArrayList<Date> dates = getDates();
+            this.currentSchedule = NominalFX.nominalAPI.getScheduleByDateAndEmployee(this.currentEmployee,dates.get(0),dates.get(1));
+            System.out.println(this.currentSchedule.getId());
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+            NominalFX.logger.add("No schedule for employee by selected dates.");
+        }
+        updateScheduleFields();
+    }
 
+    private void updateScheduleFields() {
+
+        ArrayList<Date> dates = getDates();
+        this.selectedDateField.setText(String.format("%s-%s",dates.get(0),dates.get(1)));
+
+        this.nocturnalCheck.setSelected(this.currentSchedule.isNocturnal());
+        this.turnicityCheck.setSelected(this.currentSchedule.isTurnicity());
+        this.complementaryHoursField.setText(String.format("%.2f",this.currentSchedule.getComplementaryHours()));
+        this.overwhelmingHoursField.setText(String.format("%.2f",this.currentSchedule.getOverwhelmingHours()));
+        this.extraHoursField.setText(String.format("%.2f",this.currentSchedule.getExtraHours()));
+
+    }
+
+    private void clearScheduleFields(){
+
+        this.selectedDateField.setText("");
+
+        this.nocturnalCheck.setSelected(false);
+        this.turnicityCheck.setSelected(false);
+        this.complementaryHoursField.setText("");
+        this.overwhelmingHoursField.setText("");
+        this.extraHoursField.setText("");
+
+
+    }
+
+    // Method to optain the from and to data
+    private ArrayList<Date> getDates(){
+
+        LocalDate date = this.scheduleSelector.getValue();
+        int toDay = 30;
+
+        if(date.getMonthValue() == 2){
+            toDay = 28;
+        }
+
+        Date from = Date.valueOf(String.format("%d-%02d-%02d",date.getYear(),date.getMonthValue(),1));
+        Date to = Date.valueOf(String.format("%d-%02d-%02d",date.getYear(),date.getMonthValue(),toDay));
+
+        ArrayList<Date> dates = new ArrayList<>();
+        dates.add(from);
+        dates.add(to);
+
+        return dates;
     }
 
     // Method for disable all the button of the form
@@ -605,7 +682,7 @@ public class EmployeeForm extends ViewController implements Initializable {
     }
 
     // validator for the text fields
-    private float validateField(String field) throws Exception {
+    private float validateField(String field) throws ValidationException {
         return Float.parseFloat(field);
     }
 

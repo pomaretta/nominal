@@ -68,3 +68,8 @@
     -fx-font-family: "Poppins SemiBold";
     -fx-fill: -fx-dark;
 }
+
+.combo-box-popup .list-view {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 125px;
+}

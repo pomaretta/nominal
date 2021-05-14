@@ -7,8 +7,8 @@ import java.sql.Timestamp;
 public class Schedule extends NominalObject {
 
     private int id;
+    private Timestamp creation;
     private final Employee employee;
-    private final Timestamp creation;
     private final boolean nocturnal;
     private final boolean turnicity;
     private final float complementaryHours;
@@ -26,15 +26,16 @@ public class Schedule extends NominalObject {
         this.overwhelmingHours = overwhelmingHours;
     }
 
-    public Schedule(Employee employee, Timestamp creation, boolean nocturnal, boolean turnicity, float complementaryHours, float extraHours, float overwhelmingHours) {
+    public Schedule(Employee employee, boolean nocturnal, boolean turnicity, float complementaryHours, float extraHours, float overwhelmingHours) {
         this.employee = employee;
-        this.creation = creation;
         this.nocturnal = nocturnal;
         this.turnicity = turnicity;
         this.complementaryHours = complementaryHours;
         this.extraHours = extraHours;
         this.overwhelmingHours = overwhelmingHours;
     }
+
+
 
     public int getId() {
         return id;
