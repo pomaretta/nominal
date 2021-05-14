@@ -176,7 +176,7 @@ public class HomeController extends BaseController implements Initializable {
 
     @FXML
     public void usersHandler() {
-        this.formManager.switchScenes("/fxml/User/user_view.fxml");
+        this.formManager.switchScenes("/fxml/users/user.fxml");
     }
 
     @FXML
