@@ -49,6 +49,28 @@ public class Employee extends NominalObject {
 
     public Employee(){}
 
+    /**
+     *
+     * @param id employee identificator
+     * @param lastUpdated last update date
+     * @param passport employee passport
+     * @param naf social security identification
+     * @param name employee name
+     * @param name2 employee second name
+     * @param lastName employee firs lastname
+     * @param lastName2 employee second lastna,e
+     * @param mailAddress email of the employee
+     * @param phoneNumber phone of the employee
+     * @param streetAddress street address of the employee
+     * @param category employee category
+     * @param joinDate day the employee joined to the company
+     * @param expirationDate day of employee expiration
+     * @param active boolean to know the status of the employee
+     * @param hourly boolean to know the employee hourly
+     * @param apportion extra pays and prorated pays
+     * @param hiredHours hired hours of the employee
+     * @param irpf irpf percentage of the employee
+     */
     public Employee(int id, Timestamp lastUpdated, String passport, String naf, String name, String name2, String lastName, String lastName2, String mailAddress, String phoneNumber, String streetAddress, Category category, Date joinDate, Date expirationDate, boolean active, boolean hourly, boolean apportion, float hiredHours, float irpf) {
         this.id = id;
         this.lastUpdated = lastUpdated;

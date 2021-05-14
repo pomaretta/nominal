@@ -1,3 +1,10 @@
+/*
+
+ Nominal Application
+ Agreement
+
+*/
+
 package common.agreement;
 
 import common.NominalMaster;
@@ -28,6 +35,16 @@ public class Agreement extends NominalObject {
     public Agreement() {
     }
 
+    /**
+     *
+     * @param id agreemt identificator
+     * @param lastUpdated date of last update
+     * @param name agreement name
+     * @param quotations agreement quotation
+     * @param categories agreement categories
+     * @param salaries agreement salaries
+     * @param antiquities agreement antiquities
+     */
     public Agreement(int id, Timestamp lastUpdated, String name, ArrayList<Quotation> quotations, ArrayList<Category> categories, ArrayList<Salary> salaries, ArrayList<Antiquity> antiquities) {
         this.id = id;
         this.lastUpdated = lastUpdated;
@@ -38,6 +55,7 @@ public class Agreement extends NominalObject {
         this.antiquities = antiquities;
     }
 
+    // GETTERS
     @Override
     public int getId() {
         return id;

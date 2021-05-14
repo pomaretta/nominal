@@ -1,3 +1,10 @@
+/*
+
+ Nominal Application
+ User
+
+*/
+
 package common.auth;
 
 import common.NominalObject;
@@ -6,12 +13,21 @@ import common.company.Company;
 import java.util.HashSet;
 public class User extends NominalObject {
 
+    //Atributtes
     private int id;
     private HashSet<Company> companies;
     private Privilege privilege;
     private final String name;
     private String password;
 
+    /**
+     *
+     * @param id user identificator
+     * @param companies companies that the user can manage
+     * @param name user name
+     * @param password password for user auth
+     * @param privilege user privileges
+     */
     public User(int id, HashSet<Company> companies, String name, String password, Privilege privilege) {
         this.id = id;
         this.companies = companies;
@@ -44,6 +60,7 @@ public class User extends NominalObject {
         this.privilege = privilege;
     }
 
+    // GETTERS
     public int getId() {
         return id;
     }

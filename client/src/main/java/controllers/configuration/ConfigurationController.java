@@ -1,3 +1,12 @@
+/*
+ Nominal Application
+ Configuration
+
+ Description:
+ The ConfigurationController class is a controller
+ for the congigurtion fxml file.
+
+*/
 package controllers.configuration;
 
 import application.NominalFX;
@@ -14,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class ConfigurationController extends ViewController implements Initializable {
 
+    //FXML class Attributes
     @FXML
     private TextField payrollDirectory;
 
@@ -22,11 +32,13 @@ public class ConfigurationController extends ViewController implements Initializ
 
     }
 
+    // Set the defualt path to payrollDirectory
     @Override
     public void run() {
         this.payrollDirectory.setText(NominalFX.configuration.getProperty("payrollDirectory"));
     }
 
+    // Method for select a path for payrollDirectory
     @FXML
     private void setDirectory(){
         DirectoryChooser chooser = new DirectoryChooser();
