@@ -139,6 +139,7 @@ public class AuthAPI extends Driver {
 
     public void updateUserPassword(User user) throws SQLException {
         this.queries.updatePassword.setString(1,user.getPassword());
+        this.queries.updatePassword.setInt(2,user.getId());
         this.queries.updatePassword.execute();
     }
 

@@ -107,7 +107,7 @@ public class UserController extends ViewController {
     private void updateFields(){
 
         this.nameUser.setText(this.currentUser.getName());
-        this.passwordUser.setText(this.currentUser.getPassword());
+        // this.passwordUser.setText(this.currentUser.getPassword());
         this.identificatorField.setText(String.format("%d",this.currentUser.getId()));
 
         setPrivilege();
@@ -162,9 +162,11 @@ public class UserController extends ViewController {
     @FXML
     private void saveChanges(){
         try {
-            this.currentUser.setPassword(MD5.getMD5(this.passwordUser.getText()));
+            if(!this.passwordUser.getText().equals("")){
+                this.currentUser.setPassword(MD5.getMD5(this.passwordUser.getText()));
+                NominalFX.authAPI.updateUserPassword(this.currentUser);
+            }
             this.currentUser.setPrivilege(this.privileges.get(this.privilegeSelector.getSelectionModel().getSelectedIndex()));
-            NominalFX.authAPI.updateUserPassword(this.currentUser);
             NominalFX.authAPI.setUserPrivilege(this.currentUser.getId(),this.currentUser);
         } catch (Exception e){
             NominalFX.logger.add("Error while trying to save changes of an user.");
