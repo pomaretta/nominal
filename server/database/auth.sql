@@ -11,9 +11,9 @@
 -- CREATE DATABASE
 -- #####################################
 
-DROP DATABASE IF EXISTS nominal_auth;
-CREATE DATABASE nominal_auth;
-USE nominal_auth;
+DROP DATABASE IF EXISTS nominal_auth_dev;
+CREATE DATABASE nominal_auth_dev;
+USE nominal_auth_dev;
 
 -- #####################################
 -- CREATE MASTER TABLES

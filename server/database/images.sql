@@ -9,9 +9,9 @@
 --      ADÁN INAREJOS (https://github.com/ainarejos)
 --      JOSHUA MAS (https://github.com/Masmayer)
 
-DROP IF EXISTS nominal_images;
-CREATE DATABASE nominal_images;
-USE nominal_images;
+DROP IF EXISTS nominal_images_dev;
+CREATE DATABASE nominal_images_dev;
+USE nominal_images_dev;
 
 CREATE TABLE image (
 

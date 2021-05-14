@@ -13,9 +13,9 @@
 -- CREATE DATABASE
 -- #####################################
 
-DROP DATABASE IF EXISTS nominal;
-CREATE DATABASE nominal;
-USE nominal;
+DROP DATABASE IF EXISTS nominal_dev;
+CREATE DATABASE nominal_dev;
+USE nominal_dev;
 
 -- #####################################
 -- CREATE MASTER TABLES
