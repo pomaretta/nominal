@@ -65,5 +65,5 @@ CREATE TABLE user_companies (
 
     PRIMARY KEY (id),
     FOREIGN KEY (user) REFERENCES user (id),
-    FOREIGN KEY (company) REFERENCES nominal.company (id)
+    FOREIGN KEY (company) REFERENCES nominal_dev.company (id)
 );

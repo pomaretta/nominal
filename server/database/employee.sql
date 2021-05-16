@@ -51,17 +51,17 @@ INSERT INTO nominal_dev.employee_contract (employee,category,irpf,hourly,hired_h
     ,(9,10,12.00,0,40)
     ,(10,95,12.00,0,40);
 
-INSERT INTO nominal_dev.employee_schedule (employee,nocturnal,turnicity,complementary_hours) VALUES
-    (1,0,0,0)
-    ,(2,0,0,0)
-    ,(3,0,0,0)
-    ,(4,0,0,0)
-    ,(5,0,0,0)
-    ,(6,0,0,0)
-    ,(7,0,0,0)
-    ,(8,0,0,0)
-    ,(9,0,0,0)
-    ,(10,0,0,0);
+INSERT INTO nominal_dev.employee_schedule (employee,nocturnal,turnicity,complementary_hours,extra_hours,overwhelming_hours) VALUES
+    (1,0,0,0,0,0)
+    ,(2,0,0,0,0,0)
+    ,(3,0,0,0,0,0)
+    ,(4,0,0,0,0,0)
+    ,(5,0,0,0,0,0)
+    ,(6,0,0,0,0,0)
+    ,(7,0,0,0,0,0)
+    ,(8,0,0,0,0,0)
+    ,(9,0,0,0,0,0)
+    ,(10,0,0,0,0,0);
 
 INSERT INTO nominal_dev.company_employee (company,employee,join_date) VALUES
     (1,1,DATE('2021-02-03'))
@@ -75,20 +75,3 @@ INSERT INTO nominal_dev.company_employee (company,employee,join_date) VALUES
     ,(2,9,DATE('2020-06-03'))
     ,(1,10,DATE('2014-06-03'));
 
-CREATE TRIGGER employee_contact AFTER INSERT 
-ON nominal_dev.employee_contact FOR EACH ROW
-BEGIN 
-	UPDATE nominal_dev.employee SET last_update = NOW() WHERE id = NEW.employee;
-END
-
-CREATE TRIGGER employee_information AFTER INSERT 
-ON nominal_dev.employee_information FOR EACH ROW
-BEGIN 
-	UPDATE nominal_dev.employee SET last_update = NOW() WHERE id = NEW.employee;
-END
-
-CREATE TRIGGER employee_contract AFTER INSERT 
-ON nominal_dev.employee_contract FOR EACH ROW
-BEGIN 
-	UPDATE nominal_dev.employee SET last_update = NOW() WHERE id = NEW.employee;
-END
