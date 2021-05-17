@@ -417,3 +417,16 @@ CREATE TABLE company_agreement (
         FOREIGN KEY (agreement)
         REFERENCES agreement (id)
 );
+
+
+
+-- Fire employee procedure
+
+DELIMITER ;;
+CREATE DEFINER=`nominal_dev`@`%` PROCEDURE `fire_employee`(in companyId int, in employeeId int)
+BEGIN
+	UPDATE nominal_dev.company_employee e 
+	SET e.expiration_date = NOW() 
+	WHERE e.company = companyId AND e.employee = employeeId;
+END ;;
+DELIMITER ;
