@@ -55,7 +55,7 @@ public class NominalFX extends Application {
         try {
             nominalAPI = new NominalAPI(DatabaseDeveloper.NOMINAL.getURL(),DatabaseDeveloper.NOMINAL.getUser(),DatabaseDeveloper.NOMINAL.getPassword());
             reportAPI = new ReportAPI(DatabaseDeveloper.NOMINAL.getURL(),DatabaseDeveloper.NOMINAL.getUser(),DatabaseDeveloper.NOMINAL.getPassword());
-            imageAPI = new ImageAPI(DatabaseDeveloper.IMAGE.getURL(),DatabaseDeveloper.IMAGE.getUser(),DatabaseDeveloper.IMAGE.getPassword());
+            imageAPI = new ImageAPI(DatabaseDeveloper.NOMINAL.getURL(),DatabaseDeveloper.NOMINAL.getUser(),DatabaseDeveloper.NOMINAL.getPassword());
             xmlAPI = new XmlAPI();
         } catch (Exception e){
             System.out.println(e.getMessage());
@@ -77,7 +77,7 @@ public class NominalFX extends Application {
         }
 
         try {
-            authAPI = new AuthAPI(DatabaseDeveloper.AUTH.getURL(), DatabaseDeveloper.AUTH.getUser(),DatabaseDeveloper.AUTH.getPassword());
+            authAPI = new AuthAPI(DatabaseDeveloper.NOMINAL.getURL(), DatabaseDeveloper.NOMINAL.getUser(),DatabaseDeveloper.NOMINAL.getPassword());
         } catch (SQLException exception){
             logger.add("AUTH FAILED");
         }

@@ -22,67 +22,67 @@ public enum DatabaseDeveloper {
     NOMINAL {
         @Override
         public String getUser() {
-            return "USERNAME";
+            return "grup2";
         }
         @Override
         public String getPassword() {
-            return "PASSWORD";
+            return "Adan";
         }
         @Override
         public String getHostname() {
-            return "HOSTNAME";
+            return "194.224.79.42";
         }
         @Override
         public String getPort() {
-            return "PORT";
+            return "43306";
         }
         @Override
         public String getDatabase() {
-            return "DATABASE";
+            return "grup2";
         }
     },
     AUTH {
         @Override
         public String getUser() {
-            return "USERNAME";
+            return "grup2";
         }
         @Override
         public String getPassword() {
-            return "PASSWORD";
+            return "Adan";
         }
         @Override
         public String getHostname() {
-            return "HOSTNAME";
+            return "194.224.79.42";
         }
         @Override
         public String getPort() {
-            return "PORT";
+            return "43306";
         }
         @Override
         public String getDatabase() {
-            return "DATABASE";
+            return "grup2";
         }
     },
     IMAGE {
         @Override
         public String getUser() {
-            return "USERNAME";
+            return "grup2";
         }
         @Override
         public String getPassword() {
-            return "PASSWORD";
+            return "Adan";
         }
         @Override
         public String getHostname() {
-            return "HOSTNAME";
+            return "194.224.79.42";
         }
         @Override
         public String getPort() {
-            return "PORT";
+            return "43306";
         }
         @Override
         public String getDatabase() {
-            return "DATABASE";
+            return "grup2";
         }
     };
 

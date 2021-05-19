@@ -1,10 +1,10 @@
 USE nominal_dev;
 
 -- HOSTELERIA
-INSERT INTO nominal_dev.agreement (name) VALUES ("Hosteleria");
+INSERT INTO grup2.agreement (name) VALUES ("Hosteleria");
 
 -- EMPLOYEE CATEGORIES
-INSERT INTO nominal_dev.agreement_emp_category (agreement,name,level) VALUES
+INSERT INTO grup2.agreement_emp_category (agreement,name,level) VALUES
     (1,"Jefe/a de recepción",1)
     ,(1,"Primer/a conserje",1)
     ,(1,"Jefe/a de cocina",1)
@@ -142,7 +142,7 @@ INSERT INTO nominal_dev.agreement_emp_category (agreement,name,level) VALUES
     ,(1,"Peón de catering",6)
     ,(1,"Socorrista",6);
 
-INSERT INTO nominal_dev.agreement_com_quotation (agreement,name,level) VALUES
+INSERT INTO grup2.agreement_com_quotation (agreement,name,level) VALUES
     (1,'Hotel de 4 y 5 estrellas',1)
     ,(1,'Hotel residencia de 4 estrellas ',1)
     ,(1,'Hotel apartamentos de 4 estrellas ',1)
@@ -198,7 +198,7 @@ INSERT INTO nominal_dev.agreement_com_quotation (agreement,name,level) VALUES
     ,(1,'Salón de baile',3)
     ,(1,'Agroturismo',3);
 
-INSERT INTO nominal_dev.employee_salary_values (agreement,category,quotation,value) VALUES
+INSERT INTO grup2.employee_salary_values (agreement,category,quotation,value) VALUES
     (1,1,1,1816.25)
     ,(1,1,2,1791.16)
     ,(1,1,3,1762.35)
@@ -218,7 +218,7 @@ INSERT INTO nominal_dev.employee_salary_values (agreement,category,quotation,val
     ,(1,6,2,1268.83)
     ,(1,6,3,1268.83);
 
-INSERT INTO nominal_dev.employee_antiquity_values (agreement,category,quotation,years,value) VALUES
+INSERT INTO grup2.employee_antiquity_values (agreement,category,quotation,years,value) VALUES
     (1,1,1,3,12.08)
     ,(1,1,1,6,33.77)
     ,(1,1,1,9,64.58)

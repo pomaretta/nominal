@@ -101,6 +101,7 @@ public class LoginController extends BaseController implements Initializable {
         // SEARCH FOR AN USER WITH GET TEXT FROM EMAIL FIELD
         User user;
         try {
+            System.out.println("hola");
             user = NominalFX.authAPI.getUserByName(emailField.getText());
             if (user.getPassword().equals(MD5.getMD5(passwordField.getText()))) {
                 NominalFX.authAPI.setLogedUser(user);
@@ -109,9 +110,12 @@ public class LoginController extends BaseController implements Initializable {
             }
         } catch (AuthenticationException authenticationException){
             NominalFX.logger.add("Bad password.");
+            System.out.println("bad password");
         } catch (Exception sqlException){
             NominalFX.logger.add("Error while trying to auth.");
+            System.out.println(sqlException);
         }
     }
+
 
 }

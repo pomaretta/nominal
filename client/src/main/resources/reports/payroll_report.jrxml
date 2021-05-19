@@ -43,7 +43,7 @@ YWE3NC00N2QwMTlmNmQ3OGI7]]>
 	pc.value_original AS original,
 	pc.value_percentage AS percentage,
 	pc.value AS value
-FROM nominal_dev.payroll_complement pc
+FROM grup2.payroll_complement pc
 WHERE 
 	 pc.payroll =  $P{PAYROLL_ID} 
 	 AND pc.salarial = 1]]>
@@ -81,7 +81,7 @@ WHERE
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Nominal"/>
 		<queryString language="SQL">
-			<![CDATA[SELECT pc.title as title ,pc.salarial as salarial ,pc.value_original as original ,pc.value_percentage as percentage ,pc.value as value FROM nominal_dev.payroll_complement pc WHERE pc.payroll = 1 AND pc.salarial = 0]]>
+			<![CDATA[SELECT pc.title as title ,pc.salarial as salarial ,pc.value_original as original ,pc.value_percentage as percentage ,pc.value as value FROM grup2.payroll_complement pc WHERE pc.payroll = 1 AND pc.salarial = 0]]>
 		</queryString>
 		<field name="title" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="title"/>
@@ -103,7 +103,7 @@ YWE3Yi04MTg4ZDY3OTg2ZWE7]]>
 	pc.value_original AS original,
 	pc.value_percentage AS percentage,
 	pc.value AS value
-FROM nominal_dev.payroll_complement pc
+FROM grup2.payroll_complement pc
 WHERE 
 	 pc.payroll = $P{PAYROLL_ID} 
 	 AND pc.salarial = 0]]>
@@ -209,28 +209,28 @@ WHERE
 	E.complementary_hours as comp_hours,
 	K.digit as currency_digit
 FROM
-	nominal_dev.payroll A
-INNER JOIN nominal_dev.employee B ON
+	grup2.payroll A
+INNER JOIN grup2.employee B ON
 	A.employee = B.id
-INNER JOIN nominal_dev.employee_information C ON
+INNER JOIN grup2.employee_information C ON
 	A.employee = C.id
-INNER JOIN nominal_dev.employee_contract D ON
+INNER JOIN grup2.employee_contract D ON
 	A.employee = D.id
-INNER JOIN nominal_dev.employee_schedule E ON
+INNER JOIN grup2.employee_schedule E ON
 	A.employee = E.employee
-INNER JOIN nominal_dev.company_financial H ON
+INNER JOIN grup2.company_financial H ON
 	H.company = A.company
-INNER JOIN nominal_dev.company_information I ON
+INNER JOIN grup2.company_information I ON
 	I.company = A.company
-INNER JOIN nominal_dev.company_contact J ON
+INNER JOIN grup2.company_contact J ON
 	J.company = A.company
-INNER JOIN nominal_dev.company O ON
+INNER JOIN grup2.company O ON
 	O.id = A.company
-INNER JOIN nominal_dev.currency K ON
+INNER JOIN grup2.currency K ON
 	K.id = H.currency
-INNER JOIN nominal_dev.agreement_com_quotation F ON
+INNER JOIN grup2.agreement_com_quotation F ON
 	F.id = H.quotation
-INNER JOIN nominal_dev.agreement_emp_category G ON
+INNER JOIN grup2.agreement_emp_category G ON
 	G.id = D.category
 WHERE
 	A.id = $P{PAYROLL_ID} 

@@ -2,7 +2,7 @@ USE nominal_dev;
 
 -- EMPLOYEE
 
-INSERT INTO nominal_dev.employee (passport,naf) VALUES
+INSERT INTO grup2.employee (passport,naf) VALUES
     ("99999999R","")
     ,('53559315C',"")
     ,('45399445K',"")
@@ -15,7 +15,7 @@ INSERT INTO nominal_dev.employee (passport,naf) VALUES
     ,('53823675H',"")
     ,('18938831X',"");
 
-INSERT INTO nominal_dev.employee_information (employee,name,name_2,lastname,lastname_2,active,apportion) VALUES
+INSERT INTO grup2.employee_information (employee,name,name_2,lastname,lastname_2,active,apportion) VALUES
     (1,"Manolo","","Martinez","Cabrera",1,0)
     ,(2,"Manolo","","Martinez","Cabrera",1,0)
     ,(3,"Manolo","","Martinez","Cabrera",1,0)
@@ -27,7 +27,7 @@ INSERT INTO nominal_dev.employee_information (employee,name,name_2,lastname,last
     ,(9,"Manolo","","Martinez","Cabrera",1,0)
     ,(10,"Manolo","","Martinez","Cabrera",1,0);
 
-INSERT INTO nominal_dev.employee_contact (employee,email_address,street_address,phone_number) VALUES
+INSERT INTO grup2.employee_contact (employee,email_address,street_address,phone_number) VALUES
     (1,"manolo@gmail.com","Calle Lopez, 23","634952395")
     ,(2,"manolo@gmail.com","Calle Lopez, 23","634952395")
     ,(3,"manolo@gmail.com","Calle Lopez, 23","634952395")
@@ -39,7 +39,7 @@ INSERT INTO nominal_dev.employee_contact (employee,email_address,street_address,
     ,(9,"manolo@gmail.com","Calle Lopez, 23","634952395")
     ,(10,"manolo@gmail.com","Calle Lopez, 23","634952395");
 
-INSERT INTO nominal_dev.employee_contract (employee,category,irpf,hourly,hired_hours) VALUES
+INSERT INTO grup2.employee_contract (employee,category,irpf,hourly,hired_hours) VALUES
     (1,5,12.50,0,25)
     ,(2,12,12.50,0,25)
     ,(3,56,12.50,0,25)
@@ -51,7 +51,7 @@ INSERT INTO nominal_dev.employee_contract (employee,category,irpf,hourly,hired_h
     ,(9,10,12.00,0,40)
     ,(10,95,12.00,0,40);
 
-INSERT INTO nominal_dev.employee_schedule (employee,nocturnal,turnicity,complementary_hours,extra_hours,overwhelming_hours) VALUES
+INSERT INTO grup2.employee_schedule (employee,nocturnal,turnicity,complementary_hours,extra_hours,overwhelming_hours) VALUES
     (1,0,0,0,0,0)
     ,(2,0,0,0,0,0)
     ,(3,0,0,0,0,0)
@@ -63,7 +63,7 @@ INSERT INTO nominal_dev.employee_schedule (employee,nocturnal,turnicity,compleme
     ,(9,0,0,0,0,0)
     ,(10,0,0,0,0,0);
 
-INSERT INTO nominal_dev.company_employee (company,employee,join_date) VALUES
+INSERT INTO grup2.company_employee (company,employee,join_date) VALUES
     (1,1,DATE('2021-02-03'))
     ,(3,2,DATE('2013-02-03'))
     ,(2,3,DATE('2017-02-03'))

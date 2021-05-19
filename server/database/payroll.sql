@@ -1,6 +1,6 @@
 USE nominal_dev;
 
-INSERT INTO nominal_dev.payroll (
+INSERT INTO grup2.payroll (
     company
     ,agreement
     ,employee

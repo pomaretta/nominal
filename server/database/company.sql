@@ -1,6 +1,6 @@
 USE nominal_dev;
 
-INSERT INTO nominal_dev.currency (name,digit) VALUES
+INSERT INTO grup2.currency (name,digit) VALUES
     ('United Arab Emirates dirham','AED')
     ,('Afghan afghani','AFN')
     ,('Albanian lek','ALL')
@@ -181,35 +181,35 @@ INSERT INTO nominal_dev.currency (name,digit) VALUES
     ,('Zimbabwean dollar','ZWL');
 
 -- COMPANIES
-INSERT INTO nominal_dev.company (name) VALUES
+INSERT INTO grup2.company (name) VALUES
     ("Webbeds")
     ,("Iberostar")
     ,("Melia")
     ,("Barcelo")
     ,("Gas Soller");
 
-INSERT INTO nominal_dev.company_information (company,cif,socialSecurityId) VALUES
+INSERT INTO grup2.company_information (company,cif,socialSecurityId) VALUES
     (1,"B-235323","SS-22543")
     ,(2,"A-643434","SS-23444")
     ,(3,"A-235895","SS-24243")
     ,(4,"B-325673","SS-26243")
     ,(5,"A-956840","SS-24243");
 
-INSERT INTO nominal_dev.company_contact (company,street_address,state,phone_number) VALUES
+INSERT INTO grup2.company_contact (company,street_address,state,phone_number) VALUES
     (1,"C\ Calcat 2, 1ro 1era","Spain","971568423")
     ,(2,"C\ Valentin 43","Spain","971243523")
     ,(3,"C\ Can Valero 123","Spain","971236734")
     ,(4,"C\ Son Castello 67","Spain","971235783")
     ,(5,"C\ Gerani 23","Spain","986235633");
 
-INSERT INTO nominal_dev.company_financial (company,currency,quotation) VALUES
+INSERT INTO grup2.company_financial (company,currency,quotation) VALUES
     (1,48,3)
     ,(2,48,6)
     ,(3,48,1)
     ,(4,48,15)
     ,(5,48,2);
 
-INSERT INTO nominal_dev.company_agreement (company,agreement) VALUES
+INSERT INTO grup2.company_agreement (company,agreement) VALUES
     (1,1)
     ,(2,1)
     ,(3,1)
