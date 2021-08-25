@@ -4,6 +4,7 @@ import common.company.Company;
 import common.payroll.Payroll;
 import configuration.DatabaseDeveloper;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import persistence.service.NominalAPI;
 import persistence.xml.XmlAPI;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 public class PayrollAPI {
 
     @Test
-    public void xmlTest(){
+    @Ignore public void xmlTest(){
 
         XmlAPI xmlAPI = new XmlAPI();
         NominalAPI api = null;
@@ -42,7 +43,7 @@ public class PayrollAPI {
     }
 
     @Test
-    public void insertPayroll(){
+    @Ignore public void insertPayroll(){
 
         NominalAPI api = null;
         Payroll payroll = null;

@@ -4,13 +4,14 @@ import common.employee.Employee;
 import configuration.DatabaseDeveloper;
 import optimization.Cache;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import persistence.service.NominalAPI;
 
 public class CacheTest {
 
     @Test
-    public void employeeTest(){
+    @Ignore public void employeeTest(){
 
         NominalAPI nominalAPI;
         Employee emp = null;
