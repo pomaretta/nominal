@@ -4,6 +4,7 @@ import common.company.Company;
 import common.employee.Employee;
 import configuration.DatabaseDeveloper;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import persistence.service.NominalAPI;
 
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 public class EmployeeAPITest {
 
     @Test
-    public void checkerTest() {
+    @Ignore public void checkerTest() {
 
         NominalAPI api = null;
         Employee employee = null;
@@ -42,7 +43,7 @@ public class EmployeeAPITest {
     }
 
     @Test
-    public void insertTest(){
+    @Ignore public void insertTest(){
 
         NominalAPI api = null;
         Employee employee = null;

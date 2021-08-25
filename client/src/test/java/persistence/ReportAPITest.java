@@ -3,6 +3,7 @@ package persistence;
 import common.payroll.Payroll;
 import configuration.DatabaseDeveloper;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import persistence.report.ReportAPI;
 import persistence.service.NominalAPI;
@@ -14,7 +15,7 @@ import java.util.HashMap;
 public class ReportAPITest {
 
     @Test
-    public void createReport(){
+    @Ignore public void createReport(){
 
         ReportAPI reportAPI = null;
         URL report = getClass().getResource("/reports/payroll_report.jrxml");

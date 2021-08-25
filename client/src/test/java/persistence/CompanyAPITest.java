@@ -3,6 +3,7 @@ package persistence;
 import common.company.Company;
 import configuration.DatabaseDeveloper;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import persistence.service.NominalAPI;
 
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 public class CompanyAPITest {
 
     @Test
-    public void checkerTest(){
+    @Ignore public void checkerTest(){
 
         NominalAPI api = null;
         Company company = null;
@@ -39,7 +40,7 @@ public class CompanyAPITest {
     }
 
     @Test
-    public void insertTest(){
+    @Ignore public void insertTest(){
 
         NominalAPI api = null;
         Company company = null;
